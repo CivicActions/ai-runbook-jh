@@ -1,3 +1,4 @@
+// Copyright (c) 2026 CivicActions. Licensed under the MIT License.
 // Builds a self-contained HTML skills explorer.
 // Reads all SKILL.md files from skills/, extracts frontmatter +
 // key sections, and emits a single index.html with embedded data.

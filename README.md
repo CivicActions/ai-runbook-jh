@@ -145,3 +145,7 @@ before ingestion; screenshots are PII-redacted before being saved anywhere persi
   paper checklists. The phases are durable; the skills are disposable.
 - Working artifacts (plans, handoffs, reviews, drafts) are personal/local and git-ignored — they may
   contain ticket details and shouldn't be committed.
+
+## License
+
+MIT — see [LICENSE](LICENSE).

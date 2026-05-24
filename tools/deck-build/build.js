@@ -1,3 +1,4 @@
+// Copyright (c) 2026 CivicActions. Licensed under the MIT License.
 const pptxgen = require("pptxgenjs");
 
 const pres = new pptxgen();
