@@ -1,0 +1,97 @@
+---
+name: qa-steps
+description: "Writes QA steps for a ticket or PR. Use when the user says write QA steps, add testing instructions, how do I test this, write the QA section, or what should QA check. Apply when the user is preparing a ticket or PR for review and needs test instructions."
+---
+
+# QA Steps
+
+## Project profile
+The output markup, review labels, and environment details are **project-specific**. Read them from
+`.agents/profile.md`:
+- **`## Tracker`** — heading/checkbox/monospace markup and how to wrap output.
+- **`## Workflow states`** — any review labels (e.g. UXQA/VXQA) that gate certain changes.
+- **`## Environments`** — local URL pattern, local-vs-CI differences, higher-env validation, a11y
+  test commands, and any tooling caveats.
+- **`## Sanctioned AI` → Browser inspection MCP** — which browser tool `browser-check` uses.
+
+If no profile is present, ask the user for the tracker markup and test environment.
+
+## When to Use
+Invoke to write QA steps for a ticket or PR — clear instructions for a reviewer or QA engineer to
+verify the change works correctly.
+
+## Approach
+1. **Summarize what changed** — one paragraph on the scope of the change
+2. **Environment setup** — what environment to use, any setup steps (enable a module, create
+   content, use a specific URL), per the profile's `## Environments`
+3. **Execute browser validation** — use `browser-check` (with the profile's browser MCP) to
+   navigate the relevant pages, capture screenshots, check console for errors, and validate DOM
+4. **Test steps** — ordered, concrete steps to verify the change
+5. **Expected results** — what success looks like for each step
+6. **Regression check** — what adjacent functionality to spot-check
+7. **Success criteria** — the minimum bar for the change to be considered passing
+
+## Output Format
+Render using the profile's `## Tracker` markup. In the structure below, `[heading]` = the profile's
+section-heading markup, `[checkbox]` = its checkbox markup, and `[step]` = a plain bullet (no
+checkbox). Wrap the full output per the profile's output-wrapping convention.
+
+```
+[heading] What Changed
+[1 sentence summary in plain language]
+
+[heading] Setup
+[Any prerequisite steps, login state, content needed, environment]
+
+[heading] <Review label section, e.g. VXQA>
+[Include only if the profile defines such a label AND the change has the relevant surface]
+[step] Setup step
+[step] Navigation step
+[checkbox] Validation — what to verify
+
+[heading] Test Scenarios
+
+[heading] Scenario 1: [Plain language description]
+[step] Setup or navigation step
+[step] Setup or navigation step
+[checkbox] Expected: [what you should see]
+[checkbox] Expected: [what you should see]
+
+[heading] Scenario 2: [Plain language description]
+[step] Step
+...
+
+[heading] Caveats
+[Known edge cases, limitations, or follow-up decisions]
+```
+
+- Use plain bullets for setup/navigation steps (no checkbox)
+- Use the profile's checkbox markup before validation/expected lines
+- Omit sections that don't apply (e.g. no review-label section if purely functional, no Caveats if
+  none)
+- For bug tickets, Scenario 1 should be the reproduce-then-verify flow
+- Include Desktop and Mobile device views as separate checkbox lines when layout differs
+
+## Voice
+Apply `.agents/style/voice.md` to the "What Changed" summary and any explanatory prose.
+
+## Environment notes
+Pull from the profile's `## Environments`: note local-vs-CI differences, reference the project's
+local URL pattern, flag if higher-environment validation is required, add the profile's a11y check
+command when the change has accessibility implications, and respect any tooling caveats.
+
+## Definition of Done
+After writing QA steps, append the relevant DoD by invoking `definition-of-done` with the
+ticket/PR type. The DoD lives in one place (the profile, surfaced via `definition-of-done`) so it
+doesn't drift across QA steps, refinement output, and closure notes.
+
+## Attribution
+QA steps are appended to a ticket/PR. **This skill does not emit a marker.** If the active profile
+defines an attribution marker, ensure the **final assembled ticket/PR** ends with that marker as its
+last line whenever any section was AI-assisted — one marker per artifact, at the very bottom. Skip
+it entirely if no section was AI-assisted, or if the profile defines no marker (e.g. public OSS).
+
+## Related Skills
+- **Invokes:** `browser-check` (live page validation), `definition-of-done` (appends the DoD)
+- **Often invoked by:** `issue-closure-notes` (closure notes link to QA steps), `ticket-refinement`
+  (QA steps may be written ahead of time during refinement)

@@ -1,0 +1,45 @@
+# macOS
+.DS_Store
+.AppleDouble
+.LSOverride
+._*
+.fuse_hidden*
+
+# Editor / IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Node
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+.pnpm-debug.log*
+
+# Build artifacts
+dist/
+build/
+
+# Local-only / sensitive content
+# These directories hold per-session working notes, plans, and drafts that may
+# contain client ticket details, internal URLs, reporter names, or screenshots.
+# Review carefully before un-ignoring or committing anything from here.
+handoffs/
+reviews/
+proposals/
+plans/
+decks/
+
+# Client-specific profiles — keep local, not in the shared repo.
+# The shared repo ships only generic example profiles (e.g. profiles/uswds.md)
+# and profiles/_template.md. Create your own client profile locally from the template.
+profiles/nsf.md
+
+# Secrets / env
+.env
+.env.*
+*.pem
+*.key
+secrets/
