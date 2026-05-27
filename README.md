@@ -16,11 +16,11 @@
 There's no one right way to run this; freedom is the point. Three common modes:
 
 - **Autonomous chain.** An agent runs the phases end-to-end, invoking skills as their triggers fire. Minimal hand-driving.
-  *e.g. you paste the ticket body, "Triage this and bring it to ready-for-estimation" → `triage` → `ticket-refinement` → `definition-of-done` → refined ticket you paste back into the tracker.*
+  *e.g. you paste the ticket body and say "triage this and bring it to ready-for-estimation"; the agent runs `triage`, then `ticket-refinement`, then `definition-of-done`, and hands back a refined ticket you paste into the tracker.*
 - **One-off.** Pull a single skill when you want it. No chain, no agent in charge.
-  *e.g. "`@check-tone` on this commit message" → just `check-tone` runs, nothing before or after.*
+  *e.g. "`@check-tone` on this commit message"; only `check-tone` runs, nothing before or after.*
 - **Mix.** Agent drives some phases; you take the wheel for others. Most common in practice.
-  *e.g. you write the plan by hand, then "Implement step 2 of `plans/NSF-13412-plan.md`" → agent runs Build, you steer commits.*
+  *e.g. you write the plan by hand, then say "implement step 2 of `plans/NSF-13412-plan.md`"; the agent runs Build while you steer commits.*
 
 ---
 
