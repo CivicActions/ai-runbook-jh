@@ -1,4 +1,4 @@
-// Copyright (c) 2026 CivicActions. Licensed under the MIT License.
+// Copyright (c) 2026. Licensed under the MIT License.
 // Builds a self-contained HTML skills explorer.
 // Reads all SKILL.md files from skills/, extracts frontmatter +
 // key sections, and emits a single index.html with embedded data.
@@ -20,19 +20,19 @@ const SKILL_META = {
   "definition-of-done":     { phase: "refinement", foundation: true },
   "issue-plan":             { phase: "plan" },
   "implementation-details": { phase: "plan", foundation: true },
+  "pattern-alignment":      { phase: "build" },
   "frontend-design":        { phase: "build" },
   kiss:                     { phase: "build" },
-  "pattern-alignment":      { phase: "build" },
   "handoff-message":        { phase: "build" },
+  "organize-commits":       { phase: "build" },
+  "squash-commits":         { phase: "build" },
+  "commit-message-writer":  { phase: "build" },
   "browser-check":          { phase: "validate", foundation: true },
   "accessibility-audit":    { phase: "validate" },
   "responsive-design":      { phase: "validate" },
   "performance-frontend":   { phase: "validate" },
   "frontend-peer-review":   { phase: "validate" },
   "drupal-critic":          { phase: "validate" },
-  "organize-commits":       { phase: "communicate" },
-  "squash-commits":         { phase: "communicate" },
-  "commit-message-writer":  { phase: "communicate" },
   "summarize-commits":      { phase: "communicate" },
   "qa-steps":               { phase: "communicate" },
   "issue-closure-notes":    { phase: "communicate" },
@@ -46,10 +46,10 @@ const PHASES = [
   { id: "triage",        num: 1, name: "Triage",        desc: "First touch. Keep, defer, decline. Minimum required fields, initial priority, reviewed tag.", jira: "Open", section: "pre-dev" },
   { id: "refinement",    num: 2, name: "Refinement",    desc: "Prep for Estimation. User story, acceptance criteria, dependencies, DoD.",                         jira: "Open  ▸  Ready for Est", section: "pre-dev" },
   { id: "plan",          num: 3, name: "Plan",          desc: "Write the approach as a file before touching code. Generates the implementation-details checklist.", jira: "Selected  ▸  In Progress", section: "dev" },
-  { id: "build",         num: 4, name: "Build",         desc: "Implement against the plan. Pattern and simplicity checks. Handoffs carry state across chats.",     jira: "In Progress", section: "dev" },
+  { id: "build",         num: 4, name: "Build",         desc: "Implement against the plan. Pattern and simplicity checks. Handoffs carry state across chats. Clean commits before handoff.",     jira: "In Progress", section: "dev" },
   { id: "validate",      num: 5, name: "Validate",      desc: "Confirm it works. Browser, accessibility, responsiveness, performance, peer review.",               jira: "In Progress", section: "dev" },
-  { id: "communicate",   num: 6, name: "Communicate",   desc: "Hand off and reflect. Clean commits, QA steps, closure notes, lessons captured at handoff.",        jira: "→ UXQA/VXQA → Code Review → QA → Done", section: "dev" },
-  { id: "cross-cutting", num: null, name: "Cross-cutting", desc: "Voice and security run across all phases.", jira: "Always on", section: "cross" },
+  { id: "communicate",   num: 6, name: "Communicate",   desc: "Hand off and reflect. PR summary, QA steps, closure notes, lessons captured at handoff.",        jira: "→ Visual/UX QA → Code Review → QA → Done", section: "dev" },
+  { id: "cross-cutting", num: null, name: "Cross-cutting", desc: "Not tied to a phase. check-tone fires on anything written for an audience; security-check fires on anything touching secrets or sensitive data.", jira: "Always on", section: "cross" },
 ];
 
 // ============ PARSE SKILL.md ============
@@ -135,9 +135,11 @@ function mdToHtml(md) {
 
 // ============ COLLECT ============
 
-const dirs = fs.readdirSync(SKILLS_DIR)
-  .filter(d => fs.statSync(path.join(SKILLS_DIR, d)).isDirectory())
-  .filter(d => SKILL_META[d]); // only include skills we have metadata for
+const dirs = Object.keys(SKILL_META)
+  .filter(name => {
+    const dir = path.join(SKILLS_DIR, name);
+    return fs.existsSync(dir) && fs.statSync(dir).isDirectory();
+  });
 
 const skills = dirs.map(name => {
   const filePath = path.join(SKILLS_DIR, name, "SKILL.md");
@@ -152,6 +154,7 @@ const skills = dirs.map(name => {
     crossCutting: meta.crossCutting || null,
     description: fm.description || "",
     typicalNext: fm.typicalNext || extractSection(body, /^Typical Next$/i),
+    invokedBy: fm.invokedBy || "",
     whenToUse: extractSection(body, /^When to Use$/i),
     approach: extractSection(body, /^Approach$/i),
     outputFormat: extractSection(body, /^Output Format$/i),
@@ -171,7 +174,7 @@ const html = `<!DOCTYPE html>
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>ai-runbook-jh — Skills Explorer</title>
+  <title>ai-runbook-jh: Skills Explorer</title>
   <style>
     :root {
       --navy: #0b2545;
@@ -486,10 +489,6 @@ const html = `<!DOCTYPE html>
       font-size: 13px;
       color: var(--text-mid);
       line-height: 1.5;
-      display: -webkit-box;
-      -webkit-line-clamp: 3;
-      -webkit-box-orient: vertical;
-      overflow: hidden;
     }
     .skill-card-tags {
       display: flex;
@@ -590,9 +589,9 @@ const html = `<!DOCTYPE html>
 
     /* Accent legend: decodes the card border-left colors */
     .accent-legend {
-      max-width: 1200px;
-      margin: 0 auto 16px;
-      padding: 0 32px;
+      max-width: 1280px;
+      margin: 20px auto 16px;
+      padding: 0 24px;
       display: flex;
       flex-wrap: wrap;
       gap: 16px;
@@ -620,6 +619,113 @@ const html = `<!DOCTYPE html>
     .accent-legend-swatch[data-accent="foundation"] { background: var(--gold); }
     .accent-legend-swatch[data-accent="voice"]      { background: var(--voice); }
     .accent-legend-swatch[data-accent="security"]   { background: var(--security); }
+    .accent-legend-note {
+      flex-basis: 100%;
+      margin-top: 4px;
+      font-size: 11px;
+      font-weight: 400;
+      letter-spacing: 0;
+      text-transform: none;
+      color: var(--text-muted);
+    }
+
+    /* Usage modes: framing strip between hero and search */
+    .usage-modes {
+      background: #fff;
+      border-bottom: 1px solid var(--border);
+    }
+    .usage-modes-inner {
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 18px 24px 20px;
+    }
+    .usage-modes-title {
+      font-size: 11px;
+      letter-spacing: 0.5px;
+      text-transform: uppercase;
+      font-weight: 700;
+      color: var(--text-muted);
+      margin: 0 0 10px;
+    }
+    .usage-modes-list {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+      font-size: 13px;
+      line-height: 1.5;
+      color: var(--text-mid);
+    }
+    .usage-modes-list li strong {
+      color: var(--text-dark);
+      display: block;
+      margin-bottom: 2px;
+      font-size: 13px;
+    }
+    .usage-modes-list code {
+      font-size: 12px;
+      background: var(--bg);
+      padding: 1px 4px;
+      border-radius: 3px;
+    }
+    .usage-mode-example {
+      display: block;
+      margin-top: 6px;
+      font-size: 12px;
+      line-height: 1.5;
+      color: var(--text-muted);
+    }
+    .usage-mode-example em {
+      color: var(--text-mid);
+      font-style: italic;
+    }
+    .usage-mode-example code {
+      font-size: 11px;
+    }
+    .usage-mode-chat {
+      margin-top: 10px;
+      background: #fff;
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      padding: 8px 10px;
+      font-size: 12px;
+      line-height: 1.5;
+    }
+    .usage-mode-chat-row {
+      display: flex;
+      gap: 8px;
+      align-items: flex-start;
+    }
+    .usage-mode-chat-row + .usage-mode-chat-row {
+      margin-top: 4px;
+      padding-top: 4px;
+      border-top: 1px dashed var(--border);
+    }
+    .usage-mode-chat-who {
+      flex: 0 0 auto;
+      width: 44px;
+      font-weight: 700;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      font-size: 9.5px;
+      padding-top: 3px;
+    }
+    .usage-mode-chat-msg {
+      color: var(--text-dark);
+      flex: 1 1 auto;
+    }
+    .usage-mode-chat-msg code {
+      font-size: 11px;
+      background: var(--bg);
+      padding: 1px 4px;
+      border-radius: 3px;
+    }
+    .usage-mode-chat-row[data-who="agent"] .usage-mode-chat-msg {
+      color: var(--text-mid);
+    }
 
     .empty-state {
       padding: 64px 0;
@@ -739,6 +845,30 @@ const html = `<!DOCTYPE html>
     .modal-body ul { padding-left: 22px; margin: 4px 0; }
     .modal-body li { margin-bottom: 4px; font-size: 14px; }
     .modal-body p { margin: 8px 0; font-size: 14px; line-height: 1.55; }
+    .modal-body .md-table {
+      border-collapse: collapse;
+      width: 100%;
+      margin: 10px 0 14px;
+      font-size: 12.5px;
+      font-family: "Courier New", Consolas, monospace;
+      background: #fafafa;
+      border: 1px solid var(--border);
+    }
+    .modal-body .md-table th,
+    .modal-body .md-table td {
+      border: 1px solid var(--border);
+      padding: 6px 8px;
+      text-align: left;
+      vertical-align: top;
+      color: var(--text-dark);
+    }
+    .modal-body .md-table thead {
+      background: #fff;
+    }
+    .modal-body .md-table th {
+      font-weight: 700;
+      color: var(--text-mid);
+    }
     .modal-body code {
       font-family: "Courier New", Consolas, monospace;
       font-size: 13px;
@@ -789,33 +919,34 @@ const html = `<!DOCTYPE html>
       .phase-minimap { padding: 10px 12px; }
       .phase-tile { min-width: 92px; padding: 6px 8px; }
       .phase-tile-name { font-size: 11px; }
-      .accent-legend { padding: 0 16px; gap: 10px; font-size: 10px; }
+      .accent-legend { padding: 0 16px; gap: 10px; font-size: 10px; margin-top: 14px; }
+      .usage-modes-list { grid-template-columns: 1fr; gap: 12px; }
+      .usage-modes-inner { padding: 14px 16px 16px; }
     }
   </style>
 </head>
 <body>
   <header class="site-header">
     <div class="container">
-      <h1>ai-runbook-jh <span class="subtitle">— Skills Explorer</span></h1>
-      <p class="tagline">Six phases. AI skills that codify each. Voice and security as keystones.</p>
-      <p class="meta">ai-runbook-jh — Skills Explorer / CivicActions</p>
+      <h1>ai-runbook-jh<span class="subtitle">: Skills Explorer</span></h1>
+      <p class="tagline">Six phases. A skill for each move. Voice and security run through all of them.</p>
     </div>
   </header>
+
+  <section class="usage-modes" aria-label="How to use this framework">
+    <div class="usage-modes-inner">
+      <h2 class="usage-modes-title">How you use the skills</h2>
+      <ul class="usage-modes-list">
+        <li><strong>Autonomous chain.</strong> An agent runs the phases end-to-end, invoking skills as their triggers fire. Minimal hand-driving.<div class="usage-mode-chat"><div class="usage-mode-chat-row" data-who="you"><span class="usage-mode-chat-who">You</span><span class="usage-mode-chat-msg">(paste the ticket body) Triage this and bring it to ready-for-estimation.</span></div><div class="usage-mode-chat-row" data-who="agent"><span class="usage-mode-chat-who">Agent</span><span class="usage-mode-chat-msg">Runs <code>triage</code> &rarr; <code>ticket-refinement</code> &rarr; <code>definition-of-done</code>, hands back a refined ticket to paste back into the tracker.</span></div></div></li>
+        <li><strong>One-off.</strong> Pull a single skill when you want it. No chain, no agent in charge.<div class="usage-mode-chat"><div class="usage-mode-chat-row" data-who="you"><span class="usage-mode-chat-who">You</span><span class="usage-mode-chat-msg"><code>@check-tone</code> on this commit message.</span></div><div class="usage-mode-chat-row" data-who="agent"><span class="usage-mode-chat-who">Agent</span><span class="usage-mode-chat-msg">Runs only <code>check-tone</code>. Nothing before or after.</span></div></div></li>
+        <li><strong>Mix.</strong> Agent drives some phases; you take the wheel for others. Most common in practice; freedom is the point.<div class="usage-mode-chat"><div class="usage-mode-chat-row" data-who="you"><span class="usage-mode-chat-who">You</span><span class="usage-mode-chat-msg">(write the plan by hand) Implement step 2 of <code>plans/NSF-13412-plan.md</code>.</span></div><div class="usage-mode-chat-row" data-who="agent"><span class="usage-mode-chat-who">Agent</span><span class="usage-mode-chat-msg">Runs Build skills against the plan.</span></div><div class="usage-mode-chat-row" data-who="you"><span class="usage-mode-chat-who">You</span><span class="usage-mode-chat-msg">Take back over for commits and the handoff.</span></div></div></li>
+      </ul>
+    </div>
+  </section>
 
   <div class="controls">
     <div class="controls-inner">
       <input type="search" id="search" placeholder="Search skills by name, description, or content...">
-      <div class="filters" id="filters">
-        <button class="filter-btn active" data-filter="all">All <span class="count" id="count-all"></span></button>
-        <button class="filter-btn" data-filter="triage">1. Triage</button>
-        <button class="filter-btn" data-filter="refinement">2. Refinement</button>
-        <button class="filter-btn" data-filter="plan">3. Plan</button>
-        <button class="filter-btn" data-filter="build">4. Build</button>
-        <button class="filter-btn" data-filter="validate">5. Validate</button>
-        <button class="filter-btn" data-filter="communicate">6. Communicate</button>
-        <button class="filter-btn" data-filter="cross-cutting">Cross-cutting</button>
-        <button class="filter-btn" data-filter="foundation">Foundations</button>
-      </div>
     </div>
   </div>
 
@@ -825,9 +956,10 @@ const html = `<!DOCTYPE html>
 
   <div class="accent-legend" aria-label="Card accent legend">
     <span class="accent-legend-label">Card accents:</span>
-    <span class="accent-legend-item"><span class="accent-legend-swatch" data-accent="foundation" aria-hidden="true"></span>Foundation</span>
-    <span class="accent-legend-item"><span class="accent-legend-swatch" data-accent="voice" aria-hidden="true"></span>Voice cross-cutting</span>
-    <span class="accent-legend-item"><span class="accent-legend-swatch" data-accent="security" aria-hidden="true"></span>Security cross-cutting</span>
+    <span class="accent-legend-item" title="Invoked by other skills more than used alone."><span class="accent-legend-swatch" data-accent="foundation" aria-hidden="true"></span>Foundation</span>
+    <span class="accent-legend-item" title="Runs alongside every phase. Voice gates prose; security gates sensitive data."><span class="accent-legend-swatch" data-accent="voice" aria-hidden="true"></span>Voice cross-cutting</span>
+    <span class="accent-legend-item" title="Runs alongside every phase. Voice gates prose; security gates sensitive data."><span class="accent-legend-swatch" data-accent="security" aria-hidden="true"></span>Security cross-cutting</span>
+    <span class="accent-legend-note"><strong>Foundation</strong>: called by other skills more than invoked directly. <strong>Cross-cutting</strong>: not tied to a phase. <code>check-tone</code> fires on anything written for an audience; <code>security-check</code> fires on anything touching secrets or sensitive data.</span>
   </div>
 
   <main class="container" id="main">
@@ -848,12 +980,12 @@ const html = `<!DOCTYPE html>
 
   <footer>
     <div class="container">
-      <p>ai-runbook-jh — Skills Explorer / CivicActions</p>
+      <p>ai-runbook-jh: Skills Explorer</p>
       <p>
         <a href="../README.md">Canonical doc</a> ·
         <a href="../skills/">Skills directory</a> ·
         <a href="../diagrams/six-phase-flow.svg">One-pager</a> ·
-        <a href="../decks/how-i-work-fe-tickets.pptx">Deck</a>
+        <a href="../decks/ai-runbook-jh.pptx">Deck</a>
       </p>
     </div>
   </footer>
@@ -1003,7 +1135,8 @@ const html = `<!DOCTYPE html>
     }
 
     function updateCounts() {
-      document.getElementById("count-all").textContent = \`(\${SKILLS.length})\`;
+      const el = document.getElementById("count-all");
+      if (el) el.textContent = \`(\${SKILLS.length})\`;
     }
 
     // Count of skills per phase (computed once, used by the mini-map).
@@ -1079,10 +1212,39 @@ const html = `<!DOCTYPE html>
       html = html.replace(/\\*\\*([^*]+)\\*\\*/g, "<strong>$1</strong>");
       html = html.replace(/(^|[^*])\\*([^*\\n]+)\\*/g, "$1<em>$2</em>");
 
+      // 2.5) GFM tables: |a|b|\\n|---|---|\\n|x|y|...
+      {
+        const tLines = html.split("\\n");
+        const tOut = [];
+        const isRow = (ln) => /^\\s*\\|.+\\|\\s*$/.test(ln);
+        const isSep = (ln) => /^\\s*\\|?[\\s\\-:|]+\\|[\\s\\-:|]+\\s*$/.test(ln) && /-/.test(ln);
+        const cells = (ln) => ln.trim().replace(/^\\||\\|$/g, "").split("|").map(c => c.trim());
+        let ti = 0;
+        while (ti < tLines.length) {
+          if (isRow(tLines[ti]) && ti + 1 < tLines.length && isSep(tLines[ti + 1])) {
+            const header = cells(tLines[ti]);
+            ti += 2;
+            const rows = [];
+            while (ti < tLines.length && isRow(tLines[ti])) {
+              rows.push(cells(tLines[ti]));
+              ti++;
+            }
+            const thead = "<thead><tr>" + header.map(c => \`<th>\${c}</th>\`).join("") + "</tr></thead>";
+            const tbody = "<tbody>" + rows.map(r => "<tr>" + r.map(c => \`<td>\${c}</td>\`).join("") + "</tr>").join("") + "</tbody>";
+            tOut.push(\`<table class="md-table">\${thead}\${tbody}</table>\`);
+          } else {
+            tOut.push(tLines[ti]);
+            ti++;
+          }
+        }
+        html = tOut.join("\\n");
+      }
+
       // 3) Block-level pass with indent-aware nested lists + headings.
       const lines = html.split("\\n");
       const out = [];
       const stack = []; // { type: 'ul'|'ol', indent }
+      let lastWasBlank = false;
       const closeTo = (indent) => {
         while (stack.length && stack[stack.length - 1].indent >= indent) {
           out.push(\`</\${stack.pop().type}>\`);
@@ -1093,6 +1255,7 @@ const html = `<!DOCTYPE html>
         if (heading) {
           closeTo(-1);
           out.push(\`<h4>\${heading[2]}</h4>\`);
+          lastWasBlank = false;
           continue;
         }
         const item = raw.match(/^(\\s*)([-*]|(\\d+)\\.)\\s+(.+)$/);
@@ -1113,11 +1276,23 @@ const html = `<!DOCTYPE html>
             stack.push({ type, indent });
           }
           out.push(\`<li>\${item[4]}</li>\`);
+          lastWasBlank = false;
           continue;
         }
         if (raw.trim() === "") {
           out.push("");
+          lastWasBlank = true;
           continue;
+        }
+        // Lazy continuation: a non-blank, non-list, non-heading line that follows
+        // a list item with no blank between them is appended to the previous <li>.
+        if (stack.length && !lastWasBlank) {
+          const prevIdx = out.length - 1;
+          const prev = out[prevIdx];
+          if (prev && prev.endsWith("</li>")) {
+            out[prevIdx] = prev.slice(0, -"</li>".length) + " " + raw.trim() + "</li>";
+            continue;
+          }
         }
         closeTo(-1);
         if (raw.startsWith("<") || raw.startsWith("@@FENCE")) {
@@ -1125,6 +1300,7 @@ const html = `<!DOCTYPE html>
         } else {
           out.push(\`<p>\${raw}</p>\`);
         }
+        lastWasBlank = false;
       }
       closeTo(-1);
       let result = out.join("\\n");
@@ -1166,6 +1342,15 @@ const html = `<!DOCTYPE html>
       if (skill.outputFormat) {
         sections.push(\`<div class="modal-section" data-section="output"><h3>Output Format</h3>\${mdToHtmlInline(skill.outputFormat)}</div>\`);
       }
+      if (skill.invokedBy) {
+        const callers = skill.invokedBy.split(",").map(s => s.trim()).filter(s => KNOWN_SKILLS.has(s));
+        if (callers.length) {
+          const chips = callers.map(s =>
+            \`<button type="button" class="next-chip" data-skill="\${s}" aria-label="Open skill: \${s}">\${s}</button>\`
+          ).join("");
+          sections.push(\`<div class="modal-section" data-section="called-by"><h3>Called by</h3><p>Typically invoked by other skills, not directly: \${chips}</p></div>\`);
+        }
+      }
       if (skill.typicalNext) {
         sections.push(\`<div class="modal-section" data-section="next"><h3>Typical Next</h3>\${mdToHtmlInline(linkifyNextRefs(skill.typicalNext))}</div>\`);
       }
@@ -1198,7 +1383,7 @@ const html = `<!DOCTYPE html>
       if (!body || !nav) return;
       const sections = body.querySelectorAll(".modal-section[data-section]");
       if (sections.length < 2) { nav.innerHTML = ""; nav.hidden = true; return; }
-      const labels = { description:"Description", when:"When", approach:"Approach", output:"Output", next:"Next", security:"Security", related:"Related", voice:"Voice" };
+      const labels = { description:"Description", when:"When", approach:"Approach", output:"Output", "called-by":"Called by", next:"Next", security:"Security", related:"Related", voice:"Voice" };
       const pills = Array.from(sections).map(sec => {
         const slug = sec.dataset.section;
         return \`<a class="modal-nav-pill" href="#" data-target="\${slug}">\${labels[slug] || slug}</a>\`;
