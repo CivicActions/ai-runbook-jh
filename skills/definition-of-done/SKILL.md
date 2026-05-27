@@ -1,6 +1,7 @@
 ---
 name: definition-of-done
 description: "Outputs the appropriate Definition of Done checklist for a ticket type (FE, BE, DevOps), read from the active project profile. Use when the user says DoD checklist, definition of done, append the DoD, what's the checklist, or when another skill (ticket-refinement, qa-steps, issue-closure-notes) needs to append the DoD. Single canonical source so the DoD list doesn't drift across artifacts."
+invokedBy: "ticket-refinement, qa-steps, issue-closure-notes"
 ---
 
 # Definition of Done
@@ -11,8 +12,8 @@ duplicating the lists, so the DoD never drifts across artifacts.
 ## Project profile
 The DoD lists, ticket types, and checkbox markup are **project-specific**. Read them from
 `.agents/profile.md`:
-- **`## Definition of Done`** — the checklist(s) for this project, keyed by type.
-- **`## Tracker` → Checkbox markup** — how to render checkboxes (e.g. `()` for Jira, `- [ ]` for
+- **`## Definition of Done`**: the checklist(s) for this project, keyed by type.
+- **`## Tracker` → Checkbox markup**: how to render checkboxes (e.g. `()` for Jira, `- [ ]` for
   GitHub Markdown).
 
 If no profile is present, ask the user for the project's DoD rather than inventing one. The profile
@@ -20,7 +21,7 @@ is the single source of truth; if the DoD changes, update the profile, not this 
 
 ## When to Use
 Invoke when a skill or user needs the Definition of Done for a ticket/PR. Identify the type (the
-profile defines which exist — e.g. one profile may define FE/BE/DevOps; a GitHub project may have one PR checklist)
+profile defines which exist: e.g. one profile may define FE/BE/DevOps; a GitHub project may have one PR checklist)
 and output the appropriate subset.
 
 Most commonly invoked by:
@@ -31,13 +32,13 @@ Most commonly invoked by:
 ## Approach
 1. **Identify the ticket/PR type** from the profile's Definition of Done section (e.g. FE, BE,
    DevOps, or a single PR checklist)
-2. **Identify whether bug or task/story** — bugs may use a smaller subset
+2. **Identify whether bug or task/story**: bugs may use a smaller subset
 3. **Output the relevant checklist** in the profile's checkbox markup
 4. **Prune items that don't apply**, but err toward including items that are arguably relevant
 
 ## Output Format
 Use the checkbox markup from the profile's Tracker section. Output only the relevant subset for the
-type. Pull the exact line items from the profile's `## Definition of Done` section — do not
+type. Pull the exact line items from the profile's `## Definition of Done` section; do not
 paraphrase or reorder them.
 
 ## Pruning Guidance
@@ -56,7 +57,7 @@ AI-assisted content.
 
 If the active profile defines an attribution marker (see the profile's `## Attribution marker`
 section), ensure the **final assembled artifact** ends with that marker as its last line whenever
-any section was AI-assisted — one marker per artifact, at the very bottom, covering everything
+any section was AI-assisted; one marker per artifact, at the very bottom, covering everything
 above it. Skip it entirely if no section was AI-assisted, or if the profile defines no marker (e.g.
 public OSS contributions).
 

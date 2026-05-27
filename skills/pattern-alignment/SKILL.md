@@ -6,20 +6,20 @@ description: "Checks whether a new implementation follows existing codebase patt
 # Pattern Alignment
 
 The methodology is project-agnostic: **match existing patterns before inventing new ones.** Find
-the canonical example, compare, flag divergences, suggest alignment. The project-specific bits —
-where the canon lives, and which stack-specific conventions to check — come from the profile.
+the canonical example, compare, flag divergences, suggest alignment. The project-specific bits
+(where the canon lives, and which stack-specific conventions to check) come from the profile.
 
 ## Project profile
 Read project-specific values from `.agents/profile.md`:
-- **`## Patterns / canon`** — where this project's canonical components/patterns live (the
+- **`## Patterns / canon`**: where this project's canonical components/patterns live (the
   component library, design source of truth, Storybook/docs). This is the first place to look for a
   reference example. If the section is absent, fall back to locating 1–2 existing examples of the
   same type anywhere in the codebase.
-- **`## Stack`** — the framework, template, styling, and JS conventions to check (design-system
+- **`## Stack`**: the framework, template, styling, and JS conventions to check (design-system
   rules like tokens and BEM, naming, banned constructs). Only apply stack-specific checks the
   profile actually defines; skip checks for a stack this project doesn't use.
-- **`## Attribution marker`** — whether to append a marker to shared output (see Attribution).
-- **`## Voice`** — the voice config to apply to prose.
+- **`## Attribution marker`**: whether to append a marker to shared output (see Attribution).
+- **`## Voice`**: the voice config to apply to prose.
 
 If no profile is present, fall back to the generic behavior described below.
 
@@ -27,7 +27,7 @@ If no profile is present, fall back to the generic behavior described below.
 Invoke when the user wants to check whether a new implementation is consistent with existing
 patterns in the codebase, before or after writing code.
 
-**Scope boundary:** `pattern-alignment` covers code conventions — how things are written in this
+**Scope boundary:** `pattern-alignment` covers code conventions: how things are written in this
 project (services, hooks, styling architecture, tests, commits). For questions about whether a
 component's structure or markup matches the project's design system or design spec, use
 `frontend-design` instead.
@@ -62,12 +62,12 @@ Apply the voice config named in the profile's `## Voice` section (e.g. `.agents/
 Apply it to divergence descriptions and suggestions.
 
 ## Patterns to Check
-What to check depends on the project's stack — read the profile's `## Stack` section and apply only
+What to check depends on the project's stack; read the profile's `## Stack` section and apply only
 the conventions it defines. Make stack-specific checks conditional: a check for a construct the
 project doesn't use (e.g. Drupal hooks on a non-Drupal project) doesn't apply.
 
 Generic categories, mapped to the profile's `## Stack` rules:
-- **Styling / design system:** follow the profile's design-system rules — design tokens (no raw
+- **Styling / design system:** follow the profile's design-system rules: design tokens (no raw
   hex), the project's BEM/naming convention, mobile-first media queries, and any banned constructs
   (e.g. no `!important`, no ID selectors).
 - **Templates:** the project's escaping convention for dynamic output, and its component-variable
@@ -75,7 +75,7 @@ Generic categories, mapped to the profile's `## Stack` rules:
 - **JS:** the project's behavior/init pattern, `const`/`let` over `var`, no inline handlers,
   accessible keyboard/focus handling.
 - **Tests:** the project's test tags, setup/cleanup convention, and structure (e.g. page object).
-- **Commits:** the profile's commit format (issue-ref prefix if any, imperative mood) — defer to
+- **Commits:** the profile's commit format (issue-ref prefix if any, imperative mood); defer to
   the profile's `## Commit conventions` for exact rules.
 
 Stack-specific examples (apply only when the profile's `## Stack` declares them):
@@ -88,8 +88,8 @@ Append an attribution marker **only if the profile's `## Attribution marker` sec
 When it does, and you share this alignment check with the team (PR comment, chat message, posted to
 the tracker) or use it to inform a business decision, end the output with that marker as the last
 line. If the check is only for your own immediate use, or the profile defines no marker (e.g. a
-public OSS project), skip it. The marker is intentionally tool-agnostic — don't name the specific AI
-tool — and the wording is a team convention, not policy text verbatim (see `security-check`).
+public OSS project), skip it. The marker is intentionally tool-agnostic (don't name the specific AI
+tool), and the wording is a team convention, not policy text verbatim (see `security-check`).
 
 ### Examples
 

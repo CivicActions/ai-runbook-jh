@@ -7,15 +7,15 @@ description: "Organizes unstaged changes into clean logical commits ready to pus
 
 The git-hygiene methodology here (group by logical unit, one change per commit, stage with
 `git add -p`, don't rewrite shared history) is project-agnostic. The commit-message format and
-issue-reference convention are project-specific — read them from the profile.
+issue-reference convention are project-specific; read them from the profile.
 
 ## Project profile
 Read project-specific values from `.agents/profile.md`:
-- **`## Tracker` → Issue ref format** — how to reference a tracker item in a commit subject (e.g.
+- **`## Tracker` → Issue ref format**: how to reference a tracker item in a commit subject (e.g.
   `PROJ-123` for Jira, `#NNNN` for GitHub).
-- **`## Commit conventions`** — the commit-message format and any subject-line regex the project
+- **`## Commit conventions`**: the commit-message format and any subject-line regex the project
   enforces (see "Commit message format" below).
-- **`## Branch / plan conventions` → Base branch** — the shared branch (e.g. `develop`); never
+- **`## Branch / plan conventions` → Base branch**: the shared branch (e.g. `develop`); never
   rewrite commits already pushed there.
 
 If no profile is present, ask the user for the project's commit format and issue-ref convention
@@ -62,7 +62,7 @@ Flag anything that needs a decision before committing, e.g. unrelated changes th
 - **Sibling skills:** `squash-commits` (use when squashing existing commits rather than organizing working-tree changes), `summarize-commits` (use to write the PR description after commits are organized)
 
 ## Commit message format
-These rules are project-agnostic — apply them on every project:
+These rules are project-agnostic; apply them on every project:
 - Use imperative mood in the subject line.
 - One logical change per commit.
 - Never rewrite commits already pushed to a shared branch (the profile's `## Branch / plan
@@ -74,5 +74,5 @@ If the profile defines a subject-line regex, every generated commit message must
 that regex to `commit-message-writer` so it produces a conforming subject.
 
 If the profile has no `## Commit conventions` section, fall back to a conventional subject:
-`<ISSUE-REF> Subject in imperative mood` — and ask the user whether the project enforces a stricter
+`<ISSUE-REF> Subject in imperative mood`; and ask the user whether the project enforces a stricter
 format before committing.

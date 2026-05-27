@@ -9,18 +9,18 @@ typicalNext: "After confirming the component structure, move to `pattern-alignme
 ## Project profile
 The design-system rules, framework, and component conventions are **project-specific**. Read them
 from `.agents/profile.md`:
-- **`## Stack` → Framework** — the project's framework (e.g. Drupal, or a vanilla component
+- **`## Stack` → Framework**: the project's framework (e.g. Drupal, or a vanilla component
   library). Determines whether framework-specific guidance below applies (templates, behaviors,
   component definitions, library registration).
-- **`## Stack` → Templates** — the templating language and how dynamic output / component variables
+- **`## Stack` → Templates**: the templating language and how dynamic output / component variables
   are handled.
-- **`## Stack` → Styling** — the design-system styling rules: token system, naming convention, and
+- **`## Stack` → Styling**: the design-system styling rules: token system, naming convention, and
   the prohibitions (e.g. no hex, no `!important`, no ID selectors). Treat these as hard constraints.
-- **`## Stack` → JS** — the JavaScript pattern for behaviors.
-- **`## Stack` → Library registration** — where CSS/JS is declared, if the framework requires it.
-- **`## Stack` → A11y baseline** — the accessibility standard the design must meet.
-- **`## Voice`** — the voice config to apply to prose.
-- **`## Attribution marker`** — the marker to append to shared output, if the project defines one.
+- **`## Stack` → JS**: the JavaScript pattern for behaviors.
+- **`## Stack` → Library registration**: where CSS/JS is declared, if the framework requires it.
+- **`## Stack` → A11y baseline**: the accessibility standard the design must meet.
+- **`## Voice`**: the voice config to apply to prose.
+- **`## Attribution marker`**: the marker to append to shared output, if the project defines one.
 
 If no profile is present, ask the user for the project's design system and framework rather than
 inventing conventions. The profile is the single source of truth.
@@ -46,7 +46,7 @@ implementation.
    - JavaScript behavior (if any), using the pattern in `## Stack` → JS
    - Component definition file, if the framework uses one (e.g. SDC `.component.yml` on a Drupal
      stack)
-5. **Accessibility requirements**, keyboard nav, ARIA roles, focus management, color contrast — meet
+5. **Accessibility requirements**, keyboard nav, ARIA roles, focus management, color contrast; meet
    the `## Stack` → A11y baseline
 6. **Responsive behavior**, mobile-first breakpoints, the design system's grid system
 7. **Library definition**, register the CSS/JS where the framework requires it (`## Stack` →

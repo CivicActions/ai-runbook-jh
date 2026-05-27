@@ -18,7 +18,7 @@
 - **Purpose/summary format:** <the one-line value-statement format, if any>
 
 ## Review markers / tags
-- **Reviewed marker:** <tag/label, or "n/a — maintainers triage">
+- **Reviewed marker:** <tag/label, or "n/a; maintainers triage">
 - **Stakeholder/prioritization tag:** <if any>
 
 ## Priority guide
@@ -34,7 +34,7 @@
 - <lifecycle / board columns; any review labels and when they apply>
 
 ## Team context
-- <team size and review norms — sets how formal vs. lightweight peer review should be>
+- <team size and review norms; sets how formal vs. lightweight peer review should be>
 
 ## Knowledge base
 - <where durable knowledge / process notes get filed>
@@ -88,5 +88,5 @@
 - **Config path:** `.agents/style/voice.md` (author this per project)
 
 ## Attribution marker
-- <the AI-assisted-output marker string and when to apply it — or "none" (e.g. public OSS),
+- <the AI-assisted-output marker string and when to apply it; or "none" (e.g. public OSS),
   in which case human review is still required before sharing>

@@ -9,25 +9,25 @@ typicalNext: "Document the findings in the ticket/issue (or a new one), prioriti
 ## Project profile
 The impact-to-priority mapping, validation tooling, environment, and stack-specific checks are
 **project-specific**. Read them from `.agents/profile.md`:
-- **`## Priority guide` → Accessibility impact levels** — the A/B/C (or equivalent) impact-to-
+- **`## Priority guide` → Accessibility impact levels**: the A/B/C (or equivalent) impact-to-
   priority mapping and bump up/down rules.
-- **`## Environments`** — local environment to audit against, and the a11y validation tooling
+- **`## Environments`**: local environment to audit against, and the a11y validation tooling
   (e.g. Pa11y, cypress-axe, axe).
-- **`## Stack`** — design-system styling rules (tokens vs. hex, `!important`, BEM) and the a11y
+- **`## Stack`**: design-system styling rules (tokens vs. hex, `!important`, BEM) and the a11y
   baseline; whether the stack is Drupal/Twig (enables the template checks below).
-- **`## Sanctioned AI` → Browser inspection MCP** — which browser tool `browser-check` uses.
+- **`## Sanctioned AI` → Browser inspection MCP**: which browser tool `browser-check` uses.
 
 If no profile is present, default to WCAG 2.1 AA and ask the user for the project's tooling.
 
 ## When to Use
-Invoke to audit a page, template, component, or test spec for accessibility issues — WCAG 2.1 AA,
+Invoke to audit a page, template, component, or test spec for accessibility issues; WCAG 2.1 AA,
 Section 508, or project-specific a11y requirements.
 
 ## Approach
-1. **Identify scope** — page URL, component path, or template file
-2. **Live page inspection** — use `browser-check` (with the profile's browser MCP) to navigate,
+1. **Identify scope**: page URL, component path, or template file
+2. **Live page inspection**: use `browser-check` (with the profile's browser MCP) to navigate,
    capture screenshots, and inspect the rendered DOM before static analysis
-3. **Static analysis** — review markup for:
+3. **Static analysis**: review markup for:
    - Missing or inadequate alt text on images
    - Heading hierarchy violations (skipped levels, multiple H1s)
    - Form inputs without associated labels
@@ -36,11 +36,11 @@ Section 508, or project-specific a11y requirements.
    - Missing ARIA roles, labels, or landmarks where needed
    - Keyboard trap risks (modals, dropdowns, custom widgets)
    - Focus management gaps in dynamic content
-4. **Design-system checks** — verify the profile's `## Stack` styling rules (e.g. color tokens, no
+4. **Design-system checks**: verify the profile's `## Stack` styling rules (e.g. color tokens, no
    hex; no `!important`; class-based styling)
-5. **Template checks (if the profile's stack is Drupal/Twig)** — confirm `|e` filter on dynamic
+5. **Template checks (if the profile's stack is Drupal/Twig)**: confirm `|e` filter on dynamic
    output, `#plain_text` for user content
-6. **Report findings** — classify each by impact level and priority using the profile's
+6. **Report findings**: classify each by impact level and priority using the profile's
    Accessibility impact levels
 
 ## Output Format
@@ -65,7 +65,7 @@ profile defines no marker. Don't name the specific AI tool (see `security-check`
 ## Related Skills
 - **Invokes:** `browser-check` (live page inspection before static analysis)
 - **Sibling Validate-phase skills:** `responsive-design`, `performance-frontend`,
-  `frontend-peer-review`, `drupal-critic` (the last only when the profile's stack is Drupal) — these
+  `frontend-peer-review`, `drupal-critic` (the last only when the profile's stack is Drupal); these
   may all run on the same change
 - **Downstream:** `qa-steps` (a11y findings often produce QA verification steps)
 

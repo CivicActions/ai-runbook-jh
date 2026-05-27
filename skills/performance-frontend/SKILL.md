@@ -5,19 +5,19 @@ description: "Audits a page or component for frontend performance issues, render
 
 # Performance Frontend
 
-> Note: this skill is aspirational — not yet a habitual part of the workflow. Keep audits
+> Note: this skill is aspirational; not yet a habitual part of the workflow. Keep audits
 > lightweight; reach for it when a page actually feels slow, not as a routine gate.
 
 ## Project profile
 The local env, perf tooling, perf budgets, and stack-specific caching concerns are
 **project-specific**. Read them from `.agents/profile.md`:
-- **`## Environments`** — the local env to audit against, perf tooling (Lighthouse, axe, etc.),
+- **`## Environments`**: the local env to audit against, perf tooling (Lighthouse, axe, etc.),
   and any A11y/visual tooling that doubles as a perf signal.
-- **`## Stack`** — the framework. Stack-specific perf checks below (Drupal aggregation, BigPipe,
+- **`## Stack`**: the framework. Stack-specific perf checks below (Drupal aggregation, BigPipe,
   render-array caching, image styles) apply **only when the profile's Stack is Drupal**. For a
   vanilla / non-Drupal stack, skip them and audit generic asset/image/font/caching behavior.
-- **`## Sanctioned AI` → Browser inspection MCP** — which MCP `browser-check` uses for the live audit.
-- **`## Performance budgets`** — page-load / TTI / Lighthouse / asset-size targets, if defined.
+- **`## Sanctioned AI` → Browser inspection MCP**: which MCP `browser-check` uses for the live audit.
+- **`## Performance budgets`**: page-load / TTI / Lighthouse / asset-size targets, if defined.
   Not present in every profile; see "Performance targets" below for the fallback.
 
 If no profile is present, fall back to the generic Core Web Vitals targets and ask the user for any
@@ -67,7 +67,7 @@ For each finding:
 
 End with a summary of the highest-impact fixes to tackle first.
 
-## Priority — performance lens
+## Priority; performance lens
 Map findings to the profile's `## Priority guide`. As a guide:
 - **Highest**: Core functionality broken or unusable for public users due to load
 - **High**: Significant performance regression on high-visibility pages
@@ -94,7 +94,7 @@ audit with the team (PR comment, chat, posted to the tracker) or use it to infor
 decision, end the output with that marker as the last line.
 
 If the audit is only for your own immediate use, or the profile defines no marker (e.g. public OSS
-contributions), skip it. Don't name the specific AI tool — the marker is intentionally tool-agnostic
+contributions), skip it. Don't name the specific AI tool; the marker is intentionally tool-agnostic
 where one is defined (see `security-check`).
 
 ### Examples (using a profile that defines the CA marker)

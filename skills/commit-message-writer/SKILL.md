@@ -1,7 +1,7 @@
 ---
 name: commit-message-writer
 description: "Writes a well-formed git commit message. Use when the user says write a commit, commit message, what should my commit say, help me commit, or draft a commit. Apply even when the user just says 'commit this' or shares a diff without explicitly asking for a message."
-typicalNext: "Use `organize-commits` or `squash-commits` to review the whole series before pushing, and `check-tone` if you want a second pass on the wording."
+typicalNext: "Run `check-tone` if you want a second pass on the wording before committing."
 ---
 
 # Commit Message Writer
@@ -12,12 +12,12 @@ Invoke when the user wants to write or improve a git commit message, given a dif
 ## Project profile
 The commit-message format, issue-ref convention, and any required commit annotations are
 **project-specific**. Read them from `.agents/profile.md`:
-- **`## Commit conventions`** — the message format, the required-fields regex (if any), and any
+- **`## Commit conventions`**: the message format, the required-fields regex (if any), and any
   per-commit annotations this project mandates (e.g. an embedded issue ref, a Release Notes line).
-- **`## Tracker` → Issue ref format** — how this project writes an issue reference (e.g. `PROJ-123`
+- **`## Tracker` → Issue ref format**: how this project writes an issue reference (e.g. `PROJ-123`
   for Jira, `#NNNN` for GitHub). Use this whenever the convention embeds a ref in the message.
-- **`## Voice`** — the voice config to apply to the subject and body.
-- **`## Attribution marker`** — only if the profile defines one (see Attribution below).
+- **`## Voice`**: the voice config to apply to the subject and body.
+- **`## Attribution marker`**: only if the profile defines one (see Attribution below).
 
 If no profile is present, fall back to the generic methodology below: conventional-commit-style
 subject, imperative mood, one sentence, no required ref. Ask the user for the project's commit

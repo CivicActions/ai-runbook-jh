@@ -11,16 +11,16 @@ Invoke when the user wants a plain-language summary of what changed across a set
 ## Project profile
 Summarizing a range of commits is mostly project-agnostic, but a few touch points are
 **project-specific**. Read them from `.agents/profile.md`:
-- **`## Tracker` → Issue ref format** — how to cite tickets/issues in the summary (e.g. `PROJ-123`
+- **`## Tracker` → Issue ref format**: how to cite tickets/issues in the summary (e.g. `PROJ-123`
   for Jira, `#NNNN` for GitHub). Use this format wherever the summary references an issue.
-- **`## Tracker` → Output wrapping / markup** — where a PR description or summary lands (a Jira
+- **`## Tracker` → Output wrapping / markup**: where a PR description or summary lands (a Jira
   comment, a GitHub PR body, a standup post) and how to mark it up. Wrap copyable output per the
   profile (e.g. a code block for Jira ticket output, fenced blocks on GitHub).
-- **`## Stack` / `## Environments`** — what counts as a deploy-affecting or compliance-relevant
+- **`## Stack` / `## Environments`**: what counts as a deploy-affecting or compliance-relevant
   change worth flagging (see Project Context below).
-- **`## Attribution marker`** — the marker wording (if the profile defines one) and whether it
+- **`## Attribution marker`**: the marker wording (if the profile defines one) and whether it
   applies to the destination surface.
-- **`## Voice`** — the voice config path for all generated prose.
+- **`## Voice`**: the voice config path for all generated prose.
 
 If no profile is present, fall back to generic behavior: cite issues however the user references
 them, plain Markdown output, no attribution marker.
@@ -79,17 +79,17 @@ generated prose. Run the result through `check-tone` before publishing.
 
 Attribution depends on whether the active profile defines a marker (the profile's
 `## Attribution marker` section). If it does **not** (e.g. a public OSS project where a marker
-reads oddly), skip everything below — just human-review the output before posting. The rest of this
+reads oddly), skip everything below: human-review the output before posting. The rest of this
 section applies when the profile **does** define a marker.
 
-When the output is used as a **PR description**, the marker is mandatory whenever any commit being summarized was AI-assisted — the PR description is the disclosure surface for AI-assisted code. PR descriptions are also capped at **1–4 sentences total**.
+When the output is used as a **PR description**, the marker is mandatory whenever any commit being summarized was AI-assisted; the PR description is the disclosure surface for AI-assisted code. PR descriptions are also capped at **1–4 sentences total**.
 
 - **Marker placement:** at the **bottom** of the PR description as the very last block.
 - **Marker wording:** use the exact wording from the profile's `## Attribution marker` section (a team convention, not policy text verbatim; see `security-check` for context).
 - **"How" line:** include a one-sentence "how" line accompanying the marker. Disclosure asks for "if/how," not just "if." Be honest about what AI actually did, no boilerplate.
-- **Don't name the AI tool** — the marker is intentionally tool-agnostic.
+- **Don't name the AI tool**: the marker is intentionally tool-agnostic.
 
-When the output is a **changelog, release note, or sprint summary**, the marker is conditional, apply it if the artifact gets shared (Slack, Confluence, customer-facing notes); skip it if it's just for your own review.
+When the output is a **changelog, release note, or sprint summary**, the marker is conditional: apply it if the artifact gets shared (Slack, Confluence, customer-facing notes); skip it if it's for your own review.
 
 ### "How" line, pick the one that matches reality
 

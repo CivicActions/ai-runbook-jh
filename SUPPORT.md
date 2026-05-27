@@ -2,9 +2,9 @@
 
 ## Where to get help
 
-- **GitHub Issues** — bugs, feature requests, and questions:
+- **GitHub Issues**: bugs, feature requests, and questions:
   [open an issue](../../issues)
-- **Maintainers** — see [MAINTAINERS.md](MAINTAINERS.md) for direct contacts
+- **Maintainers**: see [MAINTAINERS.md](MAINTAINERS.md) for direct contacts
 
 ## Scope
 

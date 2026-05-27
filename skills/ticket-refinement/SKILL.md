@@ -16,25 +16,25 @@ This is the second pass on a ticket, not the first. If the ticket hasn't been tr
 
 The tracker markup, required fields, workflow-state language, priority guide, and any
 estimation/LOE scale are **project-specific**. Read them from `.agents/profile.md`:
-- **`## Tracker`** — issue-ref format, checkbox/section/monospace markup, and output wrapping for
+- **`## Tracker`**: issue-ref format, checkbox/section/monospace markup, and output wrapping for
   the ticket body.
-- **`## Required fields`** — the fields a ticket needs (component, functional area, Purpose-statement
+- **`## Required fields`**: the fields a ticket needs (component, functional area, Purpose-statement
   format, etc.) before it advances.
-- **`## Workflow states`** — the lifecycle this project uses and the gates between states (what a
+- **`## Workflow states`**: the lifecycle this project uses and the gates between states (what a
   ticket needs to move from refinement-ready to estimation-ready to dev-ready), plus any pre-merge
-  review labels (e.g. UXQA/VXQA) and who pulls work onto the board.
-- **`## Priority guide`** — for revisiting the initial priority if scope or risk understanding shifts.
-- **`## Estimation`** — the LOE/estimation scale, *if the profile defines one* (see note below).
-- **`## Environments`** / **`## Stack`** — for the project-specific context flags (config exports,
+  review labels (e.g. visual / UX QA) and who pulls work onto the board.
+- **`## Priority guide`**: for revisiting the initial priority if scope or risk understanding shifts.
+- **`## Estimation`**: the LOE/estimation scale, *if the profile defines one* (see note below).
+- **`## Environments`** / **`## Stack`**: for the project-specific context flags (config exports,
   shared infrastructure, higher-env validation, compliance surfaces).
-- **`## Attribution marker`** — the trailing marker for shared output, *if the profile defines one*.
+- **`## Attribution marker`**: the trailing marker for shared output, *if the profile defines one*.
 
 If no profile is present, ask the user for the project's fields, workflow states, and markup rather
 than inventing them.
 
 > **Estimation/LOE:** refinement gets a ticket *ready* to be estimated; it does not set the LOE
 > itself (that's owned by the estimating practice area/team). If the profile defines a `## Estimation`
-> section, reference its scale when flagging what estimation still needs. If it doesn't, just flag
+> section, reference its scale when flagging what estimation still needs. If it doesn't, flag
 > that the ticket is ready for estimation per the profile's workflow states.
 
 ## When to Use
@@ -46,19 +46,19 @@ directly into the tracker ticket body.
 
 ## Approach
 
-1. **Confirm scope** — what's in, what's explicitly out
-2. **Write the user story** — `As a [user], I want to [action], so that I can [outcome]`
+1. **Confirm scope**: what's in, what's explicitly out
+2. **Write the user story**: `As a [user], I want to [action], so that I can [outcome]`
 3. **Define acceptance criteria** (for tasks/stories) or steps to reproduce + expected behavior (for
    bugs)
-4. **Identify dependencies** — other tickets, modules, environments, people who need to weigh in
-5. **Note implementation surface area** — high-level pointers to modules, services, files. The
+4. **Identify dependencies**: other tickets, modules, environments, people who need to weigh in
+5. **Note implementation surface area**: high-level pointers to modules, services, files. The
    detailed `implementation-details` checklist gets generated later, during Plan.
-6. **Flag risks and open questions** — anything that needs a decision before work starts
-7. **Confirm fields, labels, and priority** — fill the profile's `## Required fields`; add any
-   pre-merge review labels the profile defines (e.g. UXQA/VXQA) when the relevant surface changes;
+6. **Flag risks and open questions**: anything that needs a decision before work starts
+7. **Confirm fields, labels, and priority**: fill the profile's `## Required fields`; add any
+   pre-merge review labels the profile defines (e.g. visual / UX QA) when the relevant surface changes;
    revisit the initial priority set during triage if scope or risk understanding has shifted, using
    the profile's `## Priority guide`
-8. **Append Definition of Done** — invoke the `definition-of-done` skill for the appropriate subset
+8. **Append Definition of Done**: invoke the `definition-of-done` skill for the appropriate subset
 
 ## Output Format
 
@@ -91,7 +91,7 @@ Questions for refinement:
 
 Dependencies:
 * [other tickets, modules, services]
-* [people who need to weigh in — UX, VX, PM, BE, per the profile's team/review context]
+* [people who need to weigh in; UX, VX, PM, BE, per the profile's team/review context]
 
 Definition of Done:
 [Use @definition-of-done for the appropriate subset]
@@ -132,12 +132,12 @@ Definition of Done:
 Refinement advances a ticket through the project's lifecycle (see the profile's `## Workflow
 states`). Generically:
 
-- **Into estimation-ready** — the ticket needs the implementation surface area, full description,
+- **Into estimation-ready**: the ticket needs the implementation surface area, full description,
   acceptance criteria (task) or steps to reproduce (bug), links to related issues, and any required
   labels (e.g. the profile's pre-merge review labels). This is what refinement delivers.
-- **Estimation-ready → dev-ready** — needs LOE set by the estimating practice area/team (per the
+- **Estimation-ready → dev-ready**: needs LOE set by the estimating practice area/team (per the
   profile's `## Estimation` scale, if defined). Done in estimation, not refinement.
-- **Dev-ready → selected for development** — whoever the profile names (e.g. PM/practice area) sets
+- **Dev-ready → selected for development**: whoever the profile names (e.g. PM/practice area) sets
   the working priority and pulls it onto the board.
 
 Flag any ticket that lacks the fields/labels above before moving it forward.
@@ -151,7 +151,7 @@ Surface project-specific risks during refinement, drawn from the profile's `## E
   Drupal project).
 - Flag if the change touches **shared infrastructure / services** the profile calls out (e.g. Redis,
   Elasticsearch, SAML, migrations) so dependency review happens.
-- Note if **higher-environment validation** (stage / ACPT / etc.) is required before production.
+- Note if **higher-environment validation** (stage / pre-prod / etc.) is required before production.
 - Flag **security, accessibility, or compliance** implications (the profile's always-high
   categories) so they're caught before estimation.
 - If **UX or VX changes** are involved and the profile defines pre-merge review labels, add them and
@@ -168,9 +168,9 @@ Apply `.agents/style/voice.md` to context/background prose, technical notes, and
 
 Refined ticket bodies are published to the tracker and visible to the broader team.
 
-- **Redact PII** from any external content folded into the ticket — names, emails, account IDs
-- **No CUI** in ticket bodies — Controlled Unclassified Information must not be entered
-- **Reference, don't reproduce** — link to internal docs, support ticket IDs, or PR URLs rather than
+- **Redact PII** from any external content folded into the ticket: names, emails, account IDs
+- **No CUI** in ticket bodies; Controlled Unclassified Information must not be entered
+- **Reference, don't reproduce**: link to internal docs, support ticket IDs, or PR URLs rather than
   pasting their contents
 
 Run `security-check` before pasting external content (user reports, customer emails, support
@@ -179,7 +179,7 @@ tickets) into the refinement session.
 ## Attribution
 
 If the active profile defines an attribution marker (see its `## Attribution marker` section), end
-the **final assembled ticket** with that marker as its last line — one marker per ticket, at the
+the **final assembled ticket** with that marker as its last line; one marker per ticket, at the
 very bottom, covering everything above it. Skip it for personal-use output, or if the profile
 defines no marker (e.g. public OSS contributions). Tool-agnostic wording (see `security-check`).
 

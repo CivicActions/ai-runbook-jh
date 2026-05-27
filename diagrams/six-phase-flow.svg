@@ -5,9 +5,8 @@
 
   <!-- ============ HEADER ============ -->
   <text x="80" y="55" font-size="30" font-weight="700" fill="#1b1b1b">ai-runbook-jh <tspan font-size="20" font-weight="500" fill="#565c65">: AI-Assisted Ticket Workflow</tspan></text>
-  <text x="80" y="84" font-size="15" fill="#565c65">A 6-phase process with AI skills that codify each. Voice and security as keystones.</text>
+  <text x="80" y="84" font-size="15" fill="#565c65">Six phases. A skill for each move. Voice and security run through all of them.</text>
   <text x="1520" y="50" text-anchor="end" font-size="13" fill="#565c65">ai-runbook-jh</text>
-  <text x="1520" y="68" text-anchor="end" font-size="13" fill="#565c65">CivicActions</text>
   <text x="1520" y="86" text-anchor="end" font-size="13" fill="#71767a">Framework v1 / May 2026</text>
   <line x1="80" y1="108" x2="1520" y2="108" stroke="#e0e0e0" stroke-width="1"/>
 

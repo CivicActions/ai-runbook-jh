@@ -41,7 +41,7 @@ Apply `.agents/style/voice.md`. Keep feedback direct, name the problem plainly.
 ## Stack-specific checks
 Read the active project's `## Stack` section from `.agents/profile.md` and apply its conventions
 when judging complexity. The universal rules below hold regardless of stack; the framework name
-just fills in the specifics:
+fills in the specifics:
 - Check what the framework / standard library already provides before building a custom utility
   (e.g. for a Drupal/Symfony stack, `vendor/symfony` includes HttpFoundation, Console, Validator,
   and more).

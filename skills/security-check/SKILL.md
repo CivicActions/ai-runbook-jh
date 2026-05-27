@@ -11,11 +11,11 @@ The policy is simple: **never input sensitive or confidential information into A
 
 ## Project profile
 
-The CA-wide security posture below is generic. The **project-specific** seams — which AI clients are sanctioned for which work, which environments are off-limits, and the attribution-marker string — are read from `.agents/profile.md`:
+The CA-wide security posture below is generic. The **project-specific** seams (which AI clients are sanctioned for which work, which environments are off-limits, and the attribution-marker string) are read from `.agents/profile.md`:
 
-- **`## Sanctioned AI`** — which tools are approved for code vs. non-code work on this project, and which are banned. This is the key project-specific seam: the tool one project sanctions, another may ban. Never hardcode a tool list — read it here.
-- **`## Environments`** — the local env (safe to screenshot/share) vs. the higher envs (AI never accesses; redact before sharing).
-- **`## Attribution marker`** — the exact marker string and one-marker-per-artifact convention.
+- **`## Sanctioned AI`**: which tools are approved for code vs. non-code work on this project, and which are banned. This is the key project-specific seam: the tool one project sanctions, another may ban. Never hardcode a tool list; read it here.
+- **`## Environments`**: the local env (safe to screenshot/share) vs. the higher envs (AI never accesses; redact before sharing).
+- **`## Attribution marker`**: the exact marker string and one-marker-per-artifact convention.
 
 If no profile is present, keep the generic CA posture (never input sensitive/confidential data; AI never authenticates or accesses higher envs) and ask the user which AI tools are sanctioned for this project rather than assuming.
 

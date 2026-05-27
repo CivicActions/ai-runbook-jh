@@ -1,37 +1,50 @@
 # ai-runbook-jh
 
 > An AI-assisted ticket workflow: phase-based skills + per-project profiles. Built for and
-> battle-tested on front-end work, but the skills are discipline-agnostic — BE/DevOps profiles can
+> battle-tested on front-end work, but the skills are discipline-agnostic; BE/DevOps profiles can
 > follow. Runs on whatever AI client a project sanctions, or by hand on paper. The skills stay
-> **project-agnostic**; a per-project **profile** supplies every project
-> specific. Take what's useful, adapt the rest.
+> **project-agnostic**; a per-project **profile** supplies every project-specific detail.
+> Take what's useful, adapt the rest.
+
+---
+
+## How you use the skills
+
+There's no one right way to run this; freedom is the point. Three common modes:
+
+- **Autonomous chain.** An agent runs the phases end-to-end, invoking skills as their triggers fire. Minimal hand-driving.
+  *e.g. you paste the ticket body, "Triage this and bring it to ready-for-estimation" → `triage` → `ticket-refinement` → `definition-of-done` → refined ticket you paste back into the tracker.*
+- **One-off.** Pull a single skill when you want it. No chain, no agent in charge.
+  *e.g. "`@check-tone` on this commit message" → just `check-tone` runs, nothing before or after.*
+- **Mix.** Agent drives some phases; you take the wheel for others. Most common in practice.
+  *e.g. you write the plan by hand, then "Implement step 2 of `plans/NSF-13412-plan.md`" → agent runs Build, you steer commits.*
 
 ---
 
 ## How it works
 
-Each skill is a checklist for one phase. The checklists are generic — they describe *what* to do,
+Each skill is a checklist for one phase. The checklists are generic; they describe *what* to do,
 not *which tracker / stack / conventions* a given project uses. Those specifics live in one place: a
 project **profile** at `.agents/profile.md`. A skill reads the profile, then produces output in the
 project's tracker markup, with the project's fields, priority scheme, Definition of Done, and so on.
 
 This means the same skill works for a Drupal site tracked in Jira and a JavaScript component library
-tracked on GitHub — only the profile changes.
+tracked on GitHub; only the profile changes.
 
 ## The six phases
 
 **Pre-development**
-1. **Triage** — first touch. Keep/defer/decline, fill the minimum required fields, set an initial
+1. **Triage**: first touch. Keep/defer/decline, fill the minimum required fields, set an initial
    priority, tag as reviewed.
-2. **Refinement** — bring to ready-for-estimation: user story, acceptance criteria (or steps to
+2. **Refinement**: bring to ready-for-estimation: user story, acceptance criteria (or steps to
    reproduce), dependencies, Definition of Done.
 
 **Development**
-3. **Plan** — write the approach as a file before touching code.
-4. **Build** — implement with simplicity and pattern-alignment checks. Handoffs live here for
-   carrying state across sessions.
-5. **Validate** — browser, accessibility, responsiveness, performance, peer review.
-6. **Communicate** — clean commits, QA steps, closure notes, and a lessons-learned reflection.
+3. **Plan**: write the approach as a file before touching code.
+4. **Build**: implement with simplicity and pattern-alignment checks. Handoffs live here;
+   they carry state across sessions.
+5. **Validate**: browser, accessibility, responsiveness, performance, peer review.
+6. **Communicate**: clean commits, QA steps, closure notes, and a lessons-learned reflection.
 
 ## Profiles: how the skills stay generic
 
@@ -61,11 +74,11 @@ reference):
 | `## Attribution marker` | The AI-assisted-output marker, or none (e.g. public OSS) |
 
 ### Example profiles
-- **`profiles/uswds.md`** — a public open-source component library on GitHub (vanilla JS/Sass, no
+- **`profiles/uswds.md`**: a public open-source component library on GitHub (vanilla JS/Sass, no
   Drupal). A good reference for a non-Jira, non-Drupal project.
-- **`profiles/_template.md`** — a blank, annotated profile. Copy it to start a new one.
+- **`profiles/_template.md`**: a blank, annotated profile. Copy it to start a new one.
 - A client-specific profile (e.g. a federal Drupal project) is typically kept **out of version
-  control** — see `.gitignore`. Create your own locally from the template.
+  control**; see `.gitignore`. Create your own locally from the template.
 
 ### Adding a new project profile
 1. `cp profiles/_template.md profiles/<project>.md`
@@ -81,13 +94,12 @@ reference):
 | Triage | `triage` |
 | Refinement | `ticket-refinement`, `definition-of-done` |
 | Plan | `issue-plan`, `implementation-details` |
-| Build | `frontend-design`, `kiss`, `pattern-alignment`, `handoff-message` |
+| Build | `pattern-alignment`, `frontend-design`, `kiss`, `handoff-message`, `organize-commits`, `squash-commits`, `commit-message-writer` |
 | Validate | `browser-check`, `accessibility-audit`, `responsive-design`, `performance-frontend`, `frontend-peer-review`, `drupal-critic` |
-| Communicate | `organize-commits`, `squash-commits`, `commit-message-writer`, `summarize-commits`, `qa-steps`, `issue-closure-notes`, `lessons-learned` |
-| Cross-cutting | `check-tone` (+ the project's `.agents/style/voice.md`) |
-| Security | `security-check` |
+| Communicate | `summarize-commits`, `qa-steps`, `issue-closure-notes`, `lessons-learned` |
+| Cross-cutting | `check-tone` (+ the project's `.agents/style/voice.md`), `security-check` |
 
-`browser-check`, `check-tone`, `definition-of-done`, and `implementation-details` are foundation
+`browser-check`, `check-tone`, `definition-of-done`, `implementation-details`, and `security-check` are foundation
 skills, invoked by others more than used alone. `drupal-critic` applies only when the profile's
 stack is Drupal. `security-check` is the pre-flight gate when sensitive data is involved.
 
@@ -100,7 +112,7 @@ stack is Drupal. `security-check` is the pre-flight gate when sensitive data is 
 Override via env vars (see the comments in `sync.sh`): `PROJECT_ROOT`, `CUSTOM`, `PROFILE`.
 
 **Invocation differs by AI client.** Some clients auto-invoke skills by keyword; others require an
-explicit `@`-reference and never auto-run. The skill files are the same either way — only how they're
+explicit `@`-reference and never auto-run. The skill files are the same either way; only how they're
 invoked changes.
 
 ## Voice is the keystone
@@ -111,7 +123,7 @@ generating; `check-tone` is the gate to run drafts through.
 
 ## Security posture
 
-The skills are opinionated about what AI is and isn't allowed to do — they're built to line up with
+The skills are opinionated about what AI is and isn't allowed to do; they're built to line up with
 the [CivicActions AI Usage Policy](https://civicactions.atlassian.net/wiki/x/AwC3Ig) and the
 [NIST AI Risk Management Framework](https://www.nist.gov/itl/ai-risk-management-framework), so the
 guardrails below aren't optional extras, they're the point.
@@ -137,15 +149,15 @@ before ingestion; screenshots are PII-redacted before being saved anywhere persi
    (or start from `profiles/uswds.md` as a worked example).
 3. Author `.agents/style/voice.md` at the project root.
 4. Run `sync.sh` with the right `PROFILE` and `PROJECT_ROOT`.
-5. Try one skill on your next ticket — `qa-steps` is a good low-risk start.
+5. Try one skill on your next ticket; `qa-steps` is a good low-risk start.
 
 ## Notes
 
 - The methodology (six phases, voice keystone, security guardrails) works with any AI client or with
   paper checklists. The phases are durable; the skills are disposable.
-- Working artifacts (plans, handoffs, reviews, drafts) are personal/local and git-ignored — they may
+- Working artifacts (plans, handoffs, reviews, drafts) are personal/local and git-ignored; they may
   contain ticket details and shouldn't be committed.
 
 ## License
 
-MIT — see [LICENSE](LICENSE).
+MIT; see [LICENSE](LICENSE).

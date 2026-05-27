@@ -1,6 +1,6 @@
 ---
 name: frontend-peer-review
-description: "Peer reviews a frontend change — templates, styles, JavaScript, or component files — before merge. Use when the user says review this, peer review, look at my frontend change, is this ready to merge, or review this PR. Apply when the user shares frontend code and wants a second opinion even if they don't say 'peer review'."
+description: "Peer reviews a frontend change; templates, styles, JavaScript, or component files; before merge. Use when the user says review this, peer review, look at my frontend change, is this ready to merge, or review this PR. Apply when the user shares frontend code and wants a second opinion even if they don't say 'peer review'."
 ---
 
 # Frontend Peer Review
@@ -8,26 +8,26 @@ description: "Peer reviews a frontend change — templates, styles, JavaScript, 
 ## Project profile
 The stack conventions, visual-regression tooling, and team context are **project-specific**. Read
 them from `.agents/profile.md`:
-- **`## Stack`** — framework (Drupal/Twig or not), template/JS conventions, design-system styling
+- **`## Stack`**: framework (Drupal/Twig or not), template/JS conventions, design-system styling
   rules (tokens vs. hex, `!important`, BEM), library registration, and whether `drupal-critic`
   applies.
-- **`## Environments`** — visual-regression references (e.g. Backstop) and the CI surface.
-- **`## Team context`** — team size / review norms (sets how formal vs. lightweight the review is).
-- **`## Sanctioned AI` → Browser inspection MCP** — which browser tool `browser-check` uses.
+- **`## Environments`**: visual-regression references (e.g. Backstop) and the CI surface.
+- **`## Team context`**: team size / review norms (sets how formal vs. lightweight the review is).
+- **`## Sanctioned AI` → Browser inspection MCP**: which browser tool `browser-check` uses.
 
 If no profile is present, default to a small-team, direct-and-efficient review and ask about the
 stack conventions.
 
 ## When to Use
-Invoke for a peer review of a frontend change — templates, styles, JavaScript, component files, or
-config — before merge.
+Invoke for a peer review of a frontend change; templates, styles, JavaScript, component files, or
+config; before merge.
 
 Match the review weight to the profile's `## Team context`. Default (small team): direct and
-efficient — a second set of eyes that catches what the author missed, not a formal audit. Focus on
+efficient; a second set of eyes that catches what the author missed, not a formal audit. Focus on
 real issues that matter, not process overhead.
 
 ## Approach
-1. **Understand the change** — what was the intent, what files changed
+1. **Understand the change**: what was the intent, what files changed
 2. **Review styles** (per the profile's `## Stack` styling rules):
    - Design-system tokens only, no hex values
    - No `!important`
@@ -53,14 +53,14 @@ real issues that matter, not process overhead.
 6. **Check library registration** if the stack requires it (per the profile's `## Stack`)
 
 ## Output Format
-Keep it concise — match the profile's `## Team context`. On a small team, a long formal review
+Keep it concise; match the profile's `## Team context`. On a small team, a long formal review
 creates more friction than value.
 
 ### Overall Assessment
 One sentence on whether the branch is ready to merge, needs a fix, or needs a quick conversation.
 
 ### Must Fix
-Only real blockers — correctness, security, accessibility regressions, or things that will break in
+Only real blockers; correctness, security, accessibility regressions, or things that will break in
 production. Include a pasteable fix where possible.
 
 ### Worth Noting
@@ -88,6 +88,6 @@ defines no marker (e.g. public OSS). Don't name the specific AI tool (see `secur
 ## Related Skills
 - **Invokes:** `browser-check` (visual confirmation), `pattern-alignment` (checks against the
   project's canonical patterns), `kiss` (flags over-engineering)
-- **Sibling:** `drupal-critic` (BE counterpart for PHP/services/config review) — applies only when
+- **Sibling:** `drupal-critic` (BE counterpart for PHP/services/config review); applies only when
   the profile's stack is Drupal
 - **Downstream:** `qa-steps` (peer review findings often surface QA scenarios)

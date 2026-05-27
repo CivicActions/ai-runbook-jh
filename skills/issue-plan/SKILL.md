@@ -1,7 +1,7 @@
 ---
 name: issue-plan
 description: "Writes an implementation plan for a ticket/issue. Use when the user says plan this ticket, plan this issue, break this down, what's the approach, stub out this ticket, or I need to write up a ticket. Apply when the user wants to think through a ticket/issue before starting work."
-typicalNext: "After writing the plan file, open it in a fresh chat and start implementation — e.g. `implement <plan-path>` — so the implementer runs with the full plan in view. The plan is your working document for the Build phase."
+typicalNext: "After writing the plan file, open it in a fresh chat and start implementation (e.g. `implement <plan-path>`) so the implementer runs with the full plan in view. The plan is your working document for the Build phase."
 ---
 
 # Issue Plan
@@ -9,11 +9,11 @@ typicalNext: "After writing the plan file, open it in a fresh chat and start imp
 ## Project profile
 The plan-file path, branch convention, base branch, workflow gating, and project context are
 **project-specific**. Read them from `.agents/profile.md`:
-- **`## Branch / plan conventions`** — where to write the plan file, the branch-naming format, and
+- **`## Branch / plan conventions`**: where to write the plan file, the branch-naming format, and
   the base branch.
-- **`## Workflow states`** — the state at which a plan is appropriate (after triage/refinement, when
+- **`## Workflow states`**: the state at which a plan is appropriate (after triage/refinement, when
   the item is ready for development).
-- **`## Priority guide`, `## Environments`, `## Stack`** — for flagging risk, env steps, and
+- **`## Priority guide`, `## Environments`, `## Stack`**: for flagging risk, env steps, and
   compliance implications in project terms.
 
 If no profile is present, ask the user where plans live and what the branch convention is.
@@ -27,25 +27,25 @@ After writing the file, tell the user where the plan was saved and ask if they'd
 with implementation.
 
 ## When to Use
-Invoke to plan a ticket/issue before implementation — breaking the work into ordered steps,
+Invoke to plan a ticket/issue before implementation; breaking the work into ordered steps,
 identifying risks, and clarifying acceptance criteria.
 
 ## Approach
-1. **Understand the item** — the goal, what's in scope, what's explicitly out of scope
-2. **Identify dependencies** — other tickets, modules, environments, or people needed
-3. **Break down the work** — ordered, concrete, actionable implementation steps
-4. **Define acceptance criteria** — what does done look like, how will it be verified
-5. **Flag risks** — anything that could block progress or require a decision
-6. **Estimate complexity** — small / medium / large / spike
-7. **Generate task list** — use `implementation-details` to produce a concrete ordered task set
-8. **Include branch creation** — first implementation step creates a feature branch from the
+1. **Understand the item**: the goal, what's in scope, what's explicitly out of scope
+2. **Identify dependencies**: other tickets, modules, environments, or people needed
+3. **Break down the work**: ordered, concrete, actionable implementation steps
+4. **Define acceptance criteria**: what does done look like, how will it be verified
+5. **Flag risks**: anything that could block progress or require a decision
+6. **Estimate complexity**: small / medium / large / spike
+7. **Generate task list**: use `implementation-details` to produce a concrete ordered task set
+8. **Include branch creation**: first implementation step creates a feature branch from the
    profile's base branch, named per the profile's branch convention
 
 ## Project context
 Flag, in the project's terms (read from the profile):
-- Environment steps the change requires (e.g. config export) — see `## Environments`
-- Whether the change touches shared infrastructure or carries elevated risk — see `## Priority guide`
-- Whether higher-environment validation is required before production — see `## Environments`
+- Environment steps the change requires (e.g. config export); see `## Environments`
+- Whether the change touches shared infrastructure or carries elevated risk; see `## Priority guide`
+- Whether higher-environment validation is required before production; see `## Environments`
 - Security, accessibility, or compliance implications, classified per the profile's priority scheme
 
 ## Workflow gating
@@ -61,8 +61,8 @@ Apply `.agents/style/voice.md` to goal descriptions, risk notes, and open questi
 Plan files are personal artifacts that may end up team-visible (shareable on request for peer review
 or audit):
 - **No credentials, tokens, or auth URLs** in plan files
-- **No PII** — describe the change, not the user who reported it
-- **No CUI or client-confidential content** — link to internal docs by reference, don't paste them
+- **No PII**: describe the change, not the user who reported it
+- **No CUI or client-confidential content**: link to internal docs by reference, don't paste them
 
 ## Attribution
 If the active profile defines an attribution marker (see its `## Attribution marker` section), end a

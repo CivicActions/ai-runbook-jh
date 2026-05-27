@@ -8,12 +8,12 @@ description: "Writes a lessons-learned note after completing a ticket, sprint, o
 ## Project profile
 The reflection methodology below is generic. A few touchpoints are **project-specific** and read from
 `.agents/profile.md`:
-- **`## Tracker` → Issue ref format** — how to label the note (e.g. `PROJ-123`, `#NNNN`).
-- **`## Voice` → Config path** — the voice file to apply to generated prose.
-- **`## Attribution marker`** — whether to append a marker, and its exact wording (skip if the
+- **`## Tracker` → Issue ref format**: how to label the note (e.g. `PROJ-123`, `#NNNN`).
+- **`## Voice` → Config path**: the voice file to apply to generated prose.
+- **`## Attribution marker`**: whether to append a marker, and its exact wording (skip if the
   profile defines none).
 - Recurring-pattern hooks, where lessons get filed, and what a process change should propagate into
-  are project-specific too — see **Project Context** below.
+  are project-specific too; see **Project Context** below.
 
 If no profile is present, keep the generic behavior: label the note however the user refers to the
 work, apply whatever voice convention they have, and ask where the note should live.
@@ -58,11 +58,11 @@ Apply it to all generated prose, keep it direct and honest, not performative.
 ## Project Context
 - Note if a lesson applies to a recurring pattern in the codebase (the profile's `## Stack` and
   `## Environments` sections name the project's known gotchas, e.g. AJAX form state, Entity Browser,
-  container OOM on ARM64 — depends on the profile).
+  container OOM on ARM64, depending on the profile).
 - Flag if a lesson has implications for the testing strategy or CI/CD pipeline (see the profile's
   `## Environments` → CI for the pipeline in play).
 - Note if a process change should be documented where the project files durable knowledge (e.g.
-  a team wiki or the memory bank — depends on the profile) — see **Output goes where** under Related Skills.
+  a team wiki or the memory bank, depending on the profile). See **Output goes where** under Related Skills.
 
 ## Attribution
 
@@ -109,11 +109,11 @@ _AI-assisted draft, reviewed before submission._   <- only if the profile define
 
 ## Related Skills
 
-`lessons-learned` lives at the end of the Communicate phase. It runs at handoff time, alongside `issue-closure-notes`, while the work is still fresh, before the ticket leaves your hands for downstream review (e.g. UXQA/VXQA, Code Review, QA per the profile's `## Workflow states`).
+`lessons-learned` lives at the end of the Communicate phase. It runs at handoff time, alongside `issue-closure-notes`, while the work is still fresh, before the ticket leaves your hands for downstream review (e.g. visual/UX QA, code review, QA per the profile's `## Workflow states`).
 
 - **Phase placement:** end of Phase 6 (Communicate), not a separate phase. Reflection happens as you hand off, not after merge. By the time the ticket is Done, you're already on the next thing.
 - **Upstream:** all prior phase artifacts (plan, handoffs, closure notes) feed into the reflection
 - **Sibling:** `issue-closure-notes` (the comms artifact); this is the discipline artifact
 - **Output goes where:** `.agents/lessons/`, plus wherever the project files durable knowledge (the
-  profile names this — e.g. a team wiki or the memory bank). Lessons that change process should
+  profile names this: e.g. a team wiki or the memory bank). Lessons that change process should
   also propagate back into the skills themselves.

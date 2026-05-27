@@ -8,28 +8,28 @@ description: "Writes QA steps for a ticket or PR. Use when the user says write Q
 ## Project profile
 The output markup, review labels, and environment details are **project-specific**. Read them from
 `.agents/profile.md`:
-- **`## Tracker`** — heading/checkbox/monospace markup and how to wrap output.
-- **`## Workflow states`** — any review labels (e.g. UXQA/VXQA) that gate certain changes.
-- **`## Environments`** — local URL pattern, local-vs-CI differences, higher-env validation, a11y
+- **`## Tracker`**: heading/checkbox/monospace markup and how to wrap output.
+- **`## Workflow states`**: any review labels (e.g. visual / UX QA) that gate certain changes.
+- **`## Environments`**: local URL pattern, local-vs-CI differences, higher-env validation, a11y
   test commands, and any tooling caveats.
-- **`## Sanctioned AI` → Browser inspection MCP** — which browser tool `browser-check` uses.
+- **`## Sanctioned AI` → Browser inspection MCP**: which browser tool `browser-check` uses.
 
 If no profile is present, ask the user for the tracker markup and test environment.
 
 ## When to Use
-Invoke to write QA steps for a ticket or PR — clear instructions for a reviewer or QA engineer to
+Invoke to write QA steps for a ticket or PR: clear instructions for a reviewer or QA engineer to
 verify the change works correctly.
 
 ## Approach
-1. **Summarize what changed** — one paragraph on the scope of the change
-2. **Environment setup** — what environment to use, any setup steps (enable a module, create
+1. **Summarize what changed**: one paragraph on the scope of the change
+2. **Environment setup**: what environment to use, any setup steps (enable a module, create
    content, use a specific URL), per the profile's `## Environments`
-3. **Execute browser validation** — use `browser-check` (with the profile's browser MCP) to
+3. **Execute browser validation**: use `browser-check` (with the profile's browser MCP) to
    navigate the relevant pages, capture screenshots, check console for errors, and validate DOM
-4. **Test steps** — ordered, concrete steps to verify the change
-5. **Expected results** — what success looks like for each step
-6. **Regression check** — what adjacent functionality to spot-check
-7. **Success criteria** — the minimum bar for the change to be considered passing
+4. **Test steps**: ordered, concrete steps to verify the change
+5. **Expected results**: what success looks like for each step
+6. **Regression check**: what adjacent functionality to spot-check
+7. **Success criteria**: the minimum bar for the change to be considered passing
 
 ## Output Format
 Render using the profile's `## Tracker` markup. In the structure below, `[heading]` = the profile's
@@ -43,11 +43,11 @@ checkbox). Wrap the full output per the profile's output-wrapping convention.
 [heading] Setup
 [Any prerequisite steps, login state, content needed, environment]
 
-[heading] <Review label section, e.g. VXQA>
+[heading] <Review label section, e.g. Visual QA>
 [Include only if the profile defines such a label AND the change has the relevant surface]
 [step] Setup step
 [step] Navigation step
-[checkbox] Validation — what to verify
+[checkbox] Validation: what to verify
 
 [heading] Test Scenarios
 
@@ -88,7 +88,7 @@ doesn't drift across QA steps, refinement output, and closure notes.
 ## Attribution
 QA steps are appended to a ticket/PR. **This skill does not emit a marker.** If the active profile
 defines an attribution marker, ensure the **final assembled ticket/PR** ends with that marker as its
-last line whenever any section was AI-assisted — one marker per artifact, at the very bottom. Skip
+last line whenever any section was AI-assisted: one marker per artifact, at the very bottom. Skip
 it entirely if no section was AI-assisted, or if the profile defines no marker (e.g. public OSS).
 
 ## Related Skills

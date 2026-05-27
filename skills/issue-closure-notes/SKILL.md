@@ -8,12 +8,12 @@ description: "Writes closure notes for a completed ticket/issue. Use when the us
 ## Project profile
 The closure-note format and the values around it are **project-specific**. Read them from
 `.agents/profile.md`:
-- **`## Tracker`** — Issue ref format (e.g. `PROJ-123`, `#NNNN`), section heading markup, monospace
+- **`## Tracker`**: Issue ref format (e.g. `PROJ-123`, `#NNNN`), section heading markup, monospace
   markup, and output wrapping (whether to wrap copyable output in a code block).
-- **`## Workflow states`** — the transition to the "done" state on closure, and any pre-close
+- **`## Workflow states`**: the transition to the "done" state on closure, and any pre-close
   labels/pings still owed (e.g. UXQA/VXQA).
-- **`## Priority guide`** — how to flag the priority of any deferred follow-up work.
-- **`## Attribution marker`** — the trailing marker (if the project defines one).
+- **`## Priority guide`**: how to flag the priority of any deferred follow-up work.
+- **`## Attribution marker`**: the trailing marker (if the project defines one).
 
 If no profile is present, ask the user for the project's tracker conventions rather than inventing
 them. The profile is the single source of truth.
@@ -50,7 +50,7 @@ The structure below is generic. Substitute the profile's markup for `[heading]` 
 [Only include if there's real deferred work worth ticketing. Omit section entirely if nothing to note.]
 ```
 
-Always include links to the QA steps, PR, and plan file where they exist — these are the
+Always include links to the QA steps, PR, and plan file where they exist; these are the
 durable record's load-bearing references.
 
 Sections that are NOT included (handled elsewhere):
@@ -60,7 +60,7 @@ Sections that are NOT included (handled elsewhere):
 
 ## Definition of Done
 
-After the closure notes (outside any code block), append the relevant DoD checklist by invoking the `definition-of-done` skill with the ticket type (the profile defines which types exist — e.g. FE/BE/DevOps, or a single PR checklist). The assignee confirms the items before closing.
+After the closure notes (outside any code block), append the relevant DoD checklist by invoking the `definition-of-done` skill with the ticket type (the profile defines which types exist: e.g. FE/BE/DevOps, or a single PR checklist). The assignee confirms the items before closing.
 
 The DoD lives in one place, `definition-of-done`, so it doesn't drift across QA steps, refinement output, and closure notes.
 
@@ -75,7 +75,7 @@ One marker per ticket, at the very bottom, covering everything above it. Skip th
 if no section was AI-assisted, or if the profile defines no marker (e.g. public OSS contributions).
 The marker wording is a team convention, not policy text verbatim (see `security-check`).
 
-### Example (final ticket with closure notes as the last section — markup and marker from the profile)
+### Example (final ticket with closure notes as the last section; markup and marker from the profile)
 
 ```
 [ticket body...]
@@ -117,6 +117,6 @@ it to the "done" state per the profile's `## Workflow states`:
 - Any deferred work has a linked follow-up ticket or is noted for creation
 - Any pre-close labels/pings owed under the profile's `## Workflow states` are resolved
 - If the ticket was a bug, satisfy the project's bug-closure rule (see the profile's `## Definition
-  of Done` — e.g. an automated test added, or a debt ticket linked)
+  of Done`: e.g. an automated test added, or a debt ticket linked)
 - Required fields complete per the profile's `## Required fields` (e.g. implementation details,
   test cases attached, QA steps added)

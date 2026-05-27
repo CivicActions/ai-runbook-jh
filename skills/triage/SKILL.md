@@ -7,22 +7,22 @@ typicalNext: "After triaging, items marked 'Keep' move to `ticket-refinement` fo
 # Triage
 
 First-touch assessment of a ticket/issue. Decide whether it survives, fill in the minimum required
-fields, set an initial priority, and tag it as reviewed. Anything deeper — full acceptance
-criteria, implementation details, LOE-readiness — belongs in `ticket-refinement`.
+fields, set an initial priority, and tag it as reviewed. Anything deeper; full acceptance
+criteria, implementation details, LOE-readiness; belongs in `ticket-refinement`.
 
 ## Project profile
 The fields, tags, priority guide, and markup are **project-specific**. Read them from
 `.agents/profile.md`:
-- **`## Tracker`** — issue-ref format and checkbox/markup for output.
-- **`## Required fields`** — the minimum fields to fill (and the Purpose-statement format).
-- **`## Review markers / tags`** — the "reviewed" marker and any stakeholder-prioritization tag.
-- **`## Priority guide`** — bug priority levels + criteria, and always-high categories.
+- **`## Tracker`**: issue-ref format and checkbox/markup for output.
+- **`## Required fields`**: the minimum fields to fill (and the Purpose-statement format).
+- **`## Review markers / tags`**: the "reviewed" marker and any stakeholder-prioritization tag.
+- **`## Priority guide`**: bug priority levels + criteria, and always-high categories.
 
 If no profile is present, ask the user for the project's fields and priority scheme rather than
 inventing one.
 
 ## When to Use
-Invoke for an initial pass on a ticket/issue or batch — deciding whether each survives, filling the
+Invoke for an initial pass on a ticket/issue or batch; deciding whether each survives, filling the
 minimum fields, and setting an initial priority. This is the *first* pass, not the *final* pass. A
 triaged item should be ready to be picked up later for refinement before estimation. Applies to
 backlog reviews, new bug intake, and any "I just opened this and need to figure out what to do with
@@ -40,9 +40,9 @@ it" moment.
    - References a technology no longer in use? Likely decline.
    - Vague to the point of unactionable? Decline or send back to the author.
    - Err toward keep-with-low-priority over outright decline.
-2. **Fill in the minimum fields** for kept items — use the profile's `## Required fields` (including
+2. **Fill in the minimum fields** for kept items; use the profile's `## Required fields` (including
    the Purpose-statement format if the profile defines one).
-3. **Set initial priority** — propose a working priority for every kept item so it can be sorted and
+3. **Set initial priority**: propose a working priority for every kept item so it can be sorted and
    reported on, using the profile's `## Priority guide`:
    - Tech debt / engineering-owned: engineer sets the priority directly.
    - Customer-facing or stakeholder-owned: propose a priority based on visible impact, *and* apply
@@ -50,7 +50,7 @@ it" moment.
      review; the stakeholder can override.
    - Bugs: classify per the profile's bug priority levels.
    - Tasks/features: judgment based on user impact and dependencies.
-4. **Flag for deeper refinement** — note items that need a full refinement pass before estimation.
+4. **Flag for deeper refinement**: note items that need a full refinement pass before estimation.
    Use `ticket-refinement` for that work.
 
 ## Output Format
@@ -61,18 +61,18 @@ For each item (render using the profile's `## Tracker` markup and issue-ref form
 | [ref] | Keep / Defer / Decline | [priority] | [stakeholder tag if applicable] | list | Yes / No |
 
 Follow with:
-- **Decline list** — items and brief reasons
-- **Defer list** — items and conditions for revisiting
-- **Refinement queue** — kept items that need `ticket-refinement` before estimation
+- **Decline list**: items and brief reasons
+- **Defer list**: items and conditions for revisiting
+- **Refinement queue**: kept items that need `ticket-refinement` before estimation
 
 ## Voice
 Apply `.agents/style/voice.md` to decision rationales and any prose.
 
 ## Security
 When triage involves external content (user reports, support tickets, customer emails):
-- **Redact PII before ingestion** — names, emails, account IDs replaced with placeholders
-- **Strip CUI** — Controlled Unclassified Information must not enter AI prompts
-- **Describe the change, not the reporter** — purpose/summary text describes the impact, never the
+- **Redact PII before ingestion**: names, emails, account IDs replaced with placeholders
+- **Strip CUI**: Controlled Unclassified Information must not enter AI prompts
+- **Describe the change, not the reporter**: purpose/summary text describes the impact, never the
   person who reported it
 
 Run `security-check` before pasting external user reports or support content.

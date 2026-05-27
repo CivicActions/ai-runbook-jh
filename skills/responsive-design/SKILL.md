@@ -11,14 +11,14 @@ Invoke when the user wants to review or plan the responsive behavior of a compon
 ## Project profile
 Breakpoints, the grid system, styling rules, and the browser tooling are **project-specific**. Read
 them from `.agents/profile.md`:
-- **`## Stack`** — the design system's breakpoint tokens, grid utilities, and styling rules
+- **`## Stack`**: the design system's breakpoint tokens, grid utilities, and styling rules
   (mobile-first media queries, token-only colors, naming conventions). Use the design system's
   named breakpoint tokens rather than arbitrary pixel values.
-- **`## Environments`** — the visual-regression tooling (e.g. Backstop references) that must be
-  updated when responsive layout changes; the a11y tooling for verifying behavior.
-- **`## Sanctioned AI`** → Browser inspection MCP — the browser tool `browser-check` drives for
+- **`## Environments`**: the visual-regression tooling (e.g. Backstop references) that must be
+  updated when responsive layout changes: the a11y tooling for verifying behavior.
+- **`## Sanctioned AI`** → Browser inspection MCP: the browser tool `browser-check` drives for
   viewport simulation (e.g. chrome-devtools).
-- **`## Voice`** and **`## Attribution marker`** — for prose and the shared-artifact marker (below).
+- **`## Voice`** and **`## Attribution marker`**: for prose and the shared-artifact marker (below).
 
 If no profile is present, keep the generic methodology and ask the user for the project's breakpoints,
 grid system, and styling rules rather than assuming a specific design system.
@@ -78,7 +78,7 @@ this responsive review with the team (PR comment, chat message, posted to the tr
 inform a business decision, end the output with that marker as the last line.
 
 If the review is only for your own immediate use, or the profile defines no marker (e.g. public OSS
-contributions), skip it. Use the profile's exact marker wording — don't name the specific AI tool if
+contributions), skip it. Use the profile's exact marker wording; don't name the specific AI tool if
 the marker is intentionally tool-agnostic (see `security-check`).
 
 ### Examples

@@ -5,15 +5,15 @@ description: "Reviews written content for tone, clarity, and appropriateness. Us
 
 # Check Tone
 
-> **Voice vs. tone.** `voice.md` is the persistent style spec (how I write, always). `check-tone` is the situational register evaluator (does this specific piece of writing fit its context). This skill applies `voice.md` when suggesting rewrites — spec and evaluator, not duplicates.
+> **Voice vs. tone.** `voice.md` is the persistent style spec (how I write, always). `check-tone` is the situational register evaluator (does this specific piece of writing fit its context). This skill applies `voice.md` when suggesting rewrites; spec and evaluator, not duplicates.
 
 ## Project profile
 Read the active project's `.agents/profile.md` for context that shapes the register:
-- **`## Voice`** — the voice config path (default `.agents/style/voice.md`); apply it when writing rewrites.
-- **`## Tracker`** — the issue/comment system (e.g. Jira, GitHub) so tracker-comment register lands.
-- **`## Commit conventions`** — the project's commit subject format, so commit-message tone checks
+- **`## Voice`**: the voice config path (default `.agents/style/voice.md`); apply it when writing rewrites.
+- **`## Tracker`**: the issue/comment system (e.g. Jira, GitHub) so tracker-comment register lands.
+- **`## Commit conventions`**: the project's commit subject format, so commit-message tone checks
   match the real convention rather than a hardcoded one.
-- **`## Team context`** / audience norms — who reads this (engineers, PMs, public OSS community,
+- **`## Team context`** / audience norms; who reads this (engineers, PMs, public OSS community,
   government plain-language audiences) shapes how direct or formal to be.
 
 If no profile is present, fall back to generic plain-language, direct-and-collegial defaults.
@@ -27,8 +27,7 @@ Invoke when the user wants to review written content for tone, clarity, professi
 2. **Assess tone** against the appropriate register:
    - **Technical docs / PR descriptions**: clear, direct, factual, no filler, no hedging
    - **Tracker comments / handoff notes**: professional, collegial, actionable
-   - **User-facing copy**: plain language, accessible (apply any audience standard the profile names
-     — e.g. government plain-language for public-sector projects)
+   - **User-facing copy**: plain language, accessible (apply any audience standard the profile names: e.g. government plain-language for public-sector projects)
    - **Commit messages**: imperative mood, concise, no apology language
 3. **Flag issues**:
    - Passive voice where active is clearer
@@ -36,6 +35,7 @@ Invoke when the user wants to review written content for tone, clarity, professi
    - Overly apologetic or self-deprecating language
    - Jargon that won't land with the intended audience
    - Tone mismatches (too casual for docs, too stiff for a comment)
+   - Em-dashes (use colons or semicolons instead, or restructure the sentence)
 4. **Suggest rewrites** for flagged passages
 
 ## Output Format
@@ -54,7 +54,7 @@ when writing suggested rewrites.
 ## Register notes
 - If the profile names a user-facing audience standard (e.g. government plain language), hold
   user-facing copy to it.
-- PR descriptions and handoff notes are read by reviewers and stakeholders — be direct. Who exactly
+- PR descriptions and handoff notes are read by reviewers and stakeholders; be direct. Who exactly
   is in the audience comes from the profile's `## Team context`.
 - Avoid language that implies uncertainty about correctness ("I think this might work").
 - When checking a commit message, match the profile's `## Commit conventions` subject format rather

@@ -8,14 +8,14 @@ description: "Squashes WIP commits into clean commits before merge. Use when the
 ## Project profile
 The git mechanics here (interactive rebase, `merge --squash`) are project-agnostic. The
 commit-message *format* is project-specific. Read it from `.agents/profile.md`:
-- **`## Commit conventions`** — subject-line format, issue-ref prefix, wrap width, and what the body
+- **`## Commit conventions`**: subject-line format, issue-ref prefix, wrap width, and what the body
   should cover. If the profile has no `## Commit conventions` section, fall back to
   `## Tracker` → **Issue ref format** for the prefix and use a sensible default (imperative subject,
   72-char wrap, body explains the why).
-- **`## Branch / plan conventions`** — **Base branch** (the target you squash a feature branch into)
+- **`## Branch / plan conventions`**: **Base branch** (the target you squash a feature branch into)
   and the branch-name pattern.
-- **`## Voice`** — the voice config to apply to the squashed message (see Voice below).
-- **`## Attribution marker`** — whether the project defines one (see Attribution below).
+- **`## Voice`**: the voice config to apply to the squashed message (see Voice below).
+- **`## Attribution marker`**: whether the project defines one (see Attribution below).
 
 If no profile is present, ask the user for the commit-message convention rather than inventing one.
 

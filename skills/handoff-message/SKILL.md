@@ -8,15 +8,15 @@ description: "Writes a structured handoff note at the end of a work session. Use
 ## Project profile
 The handoff methodology below is generic, but a few values are **project-specific**. Read them from
 `.agents/profile.md`:
-- **`## Tracker` → Issue ref format** — how to name the issue in the handoff (e.g. `PROJ-123` for
+- **`## Tracker` → Issue ref format**: how to name the issue in the handoff (e.g. `PROJ-123` for
   Jira, `#NNNN` for GitHub).
-- **`## Branch / plan conventions`** — branch-name pattern and the plan-file path format used when
+- **`## Branch / plan conventions`**: branch-name pattern and the plan-file path format used when
   linking the plan (e.g. `.agents/plans/PROJ-[ticket]-plan.md`).
-- **`## Environments`** — the validation tooling whose skip/run status is worth noting (e.g.
+- **`## Environments`**: the validation tooling whose skip/run status is worth noting (e.g.
   Backstop/Pa11y/Cypress on one profile; lint/test/axe for another stack).
-- **`## Attribution marker`** — the shared-artifact marker, if the project defines one.
+- **`## Attribution marker`**: the shared-artifact marker, if the project defines one.
 
-Handoff storage stays at `.agents/handoffs/` regardless of profile — that's a deploy-path
+Handoff storage stays at `.agents/handoffs/` regardless of profile; that's a deploy-path
 convention shared across projects, not a project-specific value. If no profile is present, keep the
 generic behavior and ask the user for the issue-ref format and base branch.
 

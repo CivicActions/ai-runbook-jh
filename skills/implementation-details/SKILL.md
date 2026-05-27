@@ -1,6 +1,7 @@
 ---
 name: implementation-details
 description: "Writes the implementation details checklist for a ticket. Use when the user says write up the implementation details, add implementation details, or what would I do for this ticket. Produces a practical dev checklist of what to actually do, not a narrative of what was done. Reads project-specific values (tracker markup, stack, tooling) from the active project profile."
+invokedBy: "issue-plan"
 ---
 
 # Implementation Details
@@ -8,18 +9,18 @@ description: "Writes the implementation details checklist for a ticket. Use when
 ## Project profile
 The methodology here is generic, but the markup and the stack-specific steps are
 **project-specific**. Read them from `.agents/profile.md`:
-- **`## Tracker` → Checkbox markup** — how to render checklist items (e.g. `()` for Jira,
+- **`## Tracker` → Checkbox markup**: how to render checklist items (e.g. `()` for Jira,
   `- [ ]` for GitHub Markdown).
-- **`## Tracker` → Section heading markup** — used only when this checklist is embedded under a
+- **`## Tracker` → Section heading markup**: used only when this checklist is embedded under a
   heading in a larger artifact (e.g. `h3.` for Jira, `##` for Markdown).
-- **`## Stack`** — framework/templates/styling/tests, which decides whether template-specific,
+- **`## Stack`**: framework/templates/styling/tests, which decides whether template-specific,
   visual-regression, and test-framework steps apply (see Approach below).
-- **`## Environments`** — the test/visual-regression tooling and the higher environments to call
+- **`## Environments`**: the test/visual-regression tooling and the higher environments to call
   out for manual-only QA steps.
-- **`## Definition of Done`** — the gating checks (linters, automated tests, a11y tool) that the
-  implementation steps should anticipate; don't restate the full DoD here, just make sure the
+- **`## Definition of Done`**: the gating checks (linters, automated tests, a11y tool) that the
+  implementation steps should anticipate; don't restate the full DoD here, make sure the
   checklist sets up the work the DoD will verify.
-- **`## Attribution marker`** — whether the final artifact gets a marker (see Attribution below).
+- **`## Attribution marker`**: whether the final artifact gets a marker (see Attribution below).
 
 If no profile is present, ask the user for the tracker markup and stack rather than assuming Jira
 or a specific framework. The profile is the single source of truth.
@@ -35,16 +36,16 @@ Invoke when the user wants a practical checklist of implementation steps for a t
 4. **Keep each item short**, one line, action-oriented, no explanation unless genuinely needed
 
 ### Stack-conditional steps
-Tailor the test/template/styling steps to the profile's `## Stack` and `## Environments` — don't
+Tailor the test/template/styling steps to the profile's `## Stack` and `## Environments`; don't
 emit steps for tooling the project doesn't use:
-- **Template safety** (e.g. Twig `|e` / `#plain_text`, SDC variable docs) — only when the stack
+- **Template safety** (e.g. Twig `|e` / `#plain_text`, SDC variable docs); only when the stack
   uses that template system (e.g. Drupal/Twig). Skip for a vanilla component library.
-- **Visual regression** — name the project's tool (e.g. Backstop references, or the project's
+- **Visual regression**: name the project's tool (e.g. Backstop references, or the project's
   Storybook/snapshot tooling) from `## Environments`; skip if the project has none.
-- **Automated tests** — name the project's frameworks from `## Environments` (e.g. Cypress/PHPUnit,
+- **Automated tests**: name the project's frameworks from `## Environments` (e.g. Cypress/PHPUnit,
   or `npm test`/Jest). Don't reference Cypress/PHPUnit on a project that uses neither.
-- **Linters** — use the project's lint command(s) from `## Environments` / the DoD.
-- **Higher-environment manual QA** — call out the project's higher envs from `## Environments`
+- **Linters**: use the project's lint command(s) from `## Environments` / the DoD.
+- **Higher-environment manual QA**: call out the project's higher envs from `## Environments`
   (e.g. "on Stage…"); skip for a library with no hosted environment.
 
 ## Output Format
@@ -148,4 +149,4 @@ _AI-assisted draft, reviewed before submission._   <- only if the profile define
 
 - **Invoked by:** `ticket-refinement` (the IDs checklist is part of the refined ticket body), `issue-plan` (the plan includes a generated IDs checklist as Step 7)
 - **Invokes:** `definition-of-done` is the canonical source for the gating checks this checklist anticipates
-- **Standalone use:** also useful when a ticket already exists and just needs its IDs filled in without a full refinement pass
+- **Standalone use:** also useful when a ticket already exists and only needs its IDs filled in without a full refinement pass
