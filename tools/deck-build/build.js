@@ -160,7 +160,7 @@ function slideSubtitle(slide, text, x = 0.6, y = 1.25) {
     x: rightX, y: cardY, w: 0.1, h: cardH,
     fill: { color: C.primary }, line: { type: "none" },
   });
-  s.addText("And it's easy to overengineer when left alone.", {
+  s.addText("Left alone, it's easy to overengineer.", {
     x: rightX + 0.4, y: cardY + 0.3, w: rightW - 0.6, h: 0.6,
     fontSize: 18, fontFace: F.header, bold: true, color: C.textDark, margin: 0,
   });
@@ -213,12 +213,12 @@ function slideSubtitle(slide, text, x = 0.6, y = 1.25) {
   // Six phases. Phase 6 wider to hold its 7 skills.
   // Phase number badges sit centered above titles so titles aren't visually shifted.
   const phases = [
-    { num: 1, name: "Triage",        desc: "First touch",     x: 0.6,  w: 2.1,  isPreDev: true,  nameSize: 14 },
-    { num: 2, name: "Refinement",    desc: "Prep estimation", x: 2.8,  w: 2.1,  isPreDev: true,  nameSize: 14 },
-    { num: 3, name: "Plan",          desc: "Approach first",  x: 5.4,  w: 1.5,  nameSize: 14 },
-    { num: 4, name: "Build",         desc: "Implement",       x: 7.0,  w: 1.5,  nameSize: 14 },
-    { num: 5, name: "Validate",      desc: "Confirm",         x: 8.6,  w: 1.5,  nameSize: 14 },
-    { num: 6, name: "Communicate",   desc: "Hand off, reflect",x: 10.2, w: 2.7, nameSize: 14 },
+    { num: 1, icon: "🔍", name: "Triage",        desc: "First touch",     x: 0.6,  w: 2.1,  isPreDev: true,  nameSize: 14 },
+    { num: 2, icon: "📝", name: "Refinement",    desc: "Prep estimation", x: 2.8,  w: 2.1,  isPreDev: true,  nameSize: 14 },
+    { num: 3, icon: "🗺️", name: "Plan",          desc: "Approach first",  x: 5.4,  w: 1.5,  nameSize: 14 },
+    { num: 4, icon: "🔨", name: "Build",         desc: "Implement",       x: 7.0,  w: 1.5,  nameSize: 14 },
+    { num: 5, icon: "✅", name: "Validate",      desc: "Confirm",         x: 8.6,  w: 1.5,  nameSize: 14 },
+    { num: 6, icon: "📣", name: "Communicate",   desc: "Hand off, reflect",x: 10.2, w: 2.7, nameSize: 14 },
   ];
 
   phases.forEach(p => {
@@ -231,9 +231,12 @@ function slideSubtitle(slide, text, x = 0.6, y = 1.25) {
     // Small badge centered horizontally at top of card
     const badgeSize = 0.28;
     phaseBadge(s, p.x + (p.w - badgeSize) / 2, cardY + 0.1, p.num, C.primary, badgeSize);
-    s.addText(p.name, {
+    s.addText([
+      { text: p.icon + "  ", options: { fontFace: F.body } },
+      { text: p.name, options: { fontFace: F.header, bold: true } },
+    ], {
       x: p.x + 0.05, y: cardY + 0.5, w: p.w - 0.1, h: 0.45,
-      fontSize: p.nameSize, fontFace: F.header, bold: true,
+      fontSize: p.nameSize,
       color: C.textDark, align: "center", valign: "middle", margin: 0,
     });
     s.addText(p.desc, {
@@ -335,9 +338,12 @@ function slideSubtitle(slide, text, x = 0.6, y = 1.25) {
     fill: { color: C.preDevLight }, line: { color: C.primary, width: 1.5 },
   });
   phaseBadge(s, tx + 0.35, cardY + 0.35, 1);
-  s.addText("Triage", {
+  s.addText([
+    { text: "🔍  ", options: { fontFace: F.body } },
+    { text: "Triage", options: { fontFace: F.header, bold: true } },
+  ], {
     x: tx + 1.0, y: cardY + 0.3, w: tw - 1.2, h: 0.55,
-    fontSize: 26, fontFace: F.header, bold: true, color: C.textDark, margin: 0,
+    fontSize: 26, color: C.textDark, margin: 0,
   });
   s.addText("First touch", {
     x: tx + 1.0, y: cardY + 0.85, w: tw - 1.2, h: 0.35,
@@ -372,9 +378,12 @@ function slideSubtitle(slide, text, x = 0.6, y = 1.25) {
     fill: { color: C.preDevLight }, line: { color: C.primary, width: 1.5 },
   });
   phaseBadge(s, rx + 0.35, cardY + 0.35, 2);
-  s.addText("Refinement", {
+  s.addText([
+    { text: "📝  ", options: { fontFace: F.body } },
+    { text: "Refinement", options: { fontFace: F.header, bold: true } },
+  ], {
     x: rx + 1.0, y: cardY + 0.3, w: rw - 1.2, h: 0.55,
-    fontSize: 26, fontFace: F.header, bold: true, color: C.textDark, margin: 0,
+    fontSize: 26, color: C.textDark, margin: 0,
   });
   s.addText("Prep for Estimation", {
     x: rx + 1.0, y: cardY + 0.85, w: rw - 1.2, h: 0.35,
@@ -429,9 +438,12 @@ function slideSubtitle(slide, text, x = 0.6, y = 1.25) {
     fill: { color: C.primaryLight }, line: { color: C.primary, width: 1.5 },
   });
   phaseBadge(s, px + 0.35, cardY + 0.35, 3);
-  s.addText("Plan", {
+  s.addText([
+    { text: "🗺️  ", options: { fontFace: F.body } },
+    { text: "Plan", options: { fontFace: F.header, bold: true } },
+  ], {
     x: px + 1.0, y: cardY + 0.3, w: pw - 1.2, h: 0.55,
-    fontSize: 26, fontFace: F.header, bold: true, color: C.textDark, margin: 0,
+    fontSize: 26, color: C.textDark, margin: 0,
   });
   s.addText("File before code", {
     x: px + 1.0, y: cardY + 0.85, w: pw - 1.2, h: 0.35,
@@ -467,16 +479,19 @@ function slideSubtitle(slide, text, x = 0.6, y = 1.25) {
     fill: { color: C.primaryLight }, line: { color: C.primary, width: 1.5 },
   });
   phaseBadge(s, bx + 0.35, cardY + 0.35, 4);
-  s.addText("Build", {
+  s.addText([
+    { text: "🔨  ", options: { fontFace: F.body } },
+    { text: "Build", options: { fontFace: F.header, bold: true } },
+  ], {
     x: bx + 1.0, y: cardY + 0.3, w: bw - 1.2, h: 0.55,
-    fontSize: 26, fontFace: F.header, bold: true, color: C.textDark, margin: 0,
+    fontSize: 26, color: C.textDark, margin: 0,
   });
   s.addText("Implement the plan", {
     x: bx + 1.0, y: cardY + 0.85, w: bw - 1.2, h: 0.35,
     fontSize: 13, fontFace: F.body, italic: true, color: C.textMid, margin: 0,
   });
   s.addText([
-    { text: "Pattern alignment + simplicity (KISS) checks while writing", options: { bullet: true, breakLine: true, bold: true } },
+    { text: "Pattern-alignment and KISS checks while writing", options: { bullet: true, breakLine: true, bold: true } },
     { text: "Design check when introducing new components", options: { bullet: true, breakLine: true } },
     { text: "Mid-session handoffs carry state across chats", options: { bullet: true, breakLine: true, bold: true } },
     { text: "Clean commits before handoff (organize, squash, message)", options: { bullet: true } },
@@ -532,9 +547,12 @@ function slideSubtitle(slide, text, x = 0.6, y = 1.25) {
     fill: { color: C.primaryLight }, line: { color: C.primary, width: 1.5 },
   });
   phaseBadge(s, vx + 0.35, cardY + 0.35, 5);
-  s.addText("Validate", {
+  s.addText([
+    { text: "✅  ", options: { fontFace: F.body } },
+    { text: "Validate", options: { fontFace: F.header, bold: true } },
+  ], {
     x: vx + 1.0, y: cardY + 0.3, w: vw - 1.2, h: 0.55,
-    fontSize: 26, fontFace: F.header, bold: true, color: C.textDark, margin: 0,
+    fontSize: 26, color: C.textDark, margin: 0,
   });
   s.addText("Confirm it works (still In Progress)", {
     x: vx + 1.0, y: cardY + 0.85, w: vw - 1.2, h: 0.35,
@@ -582,9 +600,12 @@ function slideSubtitle(slide, text, x = 0.6, y = 1.25) {
     fill: { color: C.primaryLight }, line: { color: C.primary, width: 1.5 },
   });
   phaseBadge(s, cx + 0.35, cardY + 0.35, 6);
-  s.addText("Communicate", {
+  s.addText([
+    { text: "📣  ", options: { fontFace: F.body } },
+    { text: "Communicate", options: { fontFace: F.header, bold: true } },
+  ], {
     x: cx + 1.0, y: cardY + 0.3, w: cw - 1.2, h: 0.55,
-    fontSize: 26, fontFace: F.header, bold: true, color: C.textDark, margin: 0,
+    fontSize: 26, color: C.textDark, margin: 0,
   });
   s.addText("Hand off, reflect, move on", {
     x: cx + 1.0, y: cardY + 0.85, w: cw - 1.2, h: 0.35,
