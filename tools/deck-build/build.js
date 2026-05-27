@@ -1,11 +1,10 @@
-// Copyright (c) 2026 CivicActions. Licensed under the MIT License.
+// Copyright (c) 2026. Licensed under the MIT License.
 const pptxgen = require("pptxgenjs");
+const path = require("path");
 
 const pres = new pptxgen();
 pres.layout = "LAYOUT_WIDE"; // 13.333 x 7.5 inches
-pres.author = "CivicActions";
 pres.title = "ai-runbook-jh: AI-Assisted Ticket Workflow";
-pres.company = "CivicActions";
 
 // ============ DESIGN TOKENS ============
 const C = {
@@ -39,7 +38,7 @@ const F = {
 const TOTAL_SLIDES = 12;
 
 function footer(slide, num) {
-  slide.addText("ai-runbook-jh — AI-assisted ticket workflow", {
+  slide.addText("ai-runbook-jh: AI-assisted ticket workflow", {
     x: 0.6, y: 7.1, w: 8, h: 0.3,
     fontSize: 10, fontFace: F.body, color: C.textMuted, margin: 0,
   });
@@ -88,26 +87,20 @@ function slideSubtitle(slide, text, x = 0.6, y = 1.25) {
     fill: { color: C.gold }, line: { type: "none" },
   });
 
-  s.addText("CivicActions", {
-    x: 0.8, y: 1.8, w: 11.5, h: 0.4,
-    fontSize: 14, fontFace: F.body, charSpacing: 4,
-    color: C.gold, margin: 0,
-  });
-
   s.addText("ai-runbook-jh", {
-    x: 0.8, y: 2.3, w: 11.5, h: 1.2,
+    x: 0.8, y: 1.8, w: 11.5, h: 1.2,
     fontSize: 60, fontFace: F.header, bold: true,
     color: C.textOnDark, margin: 0,
   });
 
   s.addText("An AI-Assisted Ticket Workflow", {
-    x: 0.8, y: 3.55, w: 11.5, h: 0.7,
+    x: 0.8, y: 3.05, w: 11.5, h: 0.7,
     fontSize: 32, fontFace: F.header,
     color: C.textOnDarkMuted, margin: 0,
   });
 
-  s.addText("Six phases. AI skills that codify each. Voice and security as keystones.", {
-    x: 0.8, y: 4.6, w: 11.5, h: 0.5,
+  s.addText("Six phases. A skill for each move. Voice and security run through all of them.", {
+    x: 0.8, y: 4.1, w: 11.5, h: 0.5,
     fontSize: 17, fontFace: F.body, italic: true,
     color: C.textOnDarkSoft, margin: 0,
   });
@@ -183,7 +176,7 @@ function slideSubtitle(slide, text, x = 0.6, y = 1.25) {
     paraSpaceAfter: 6,
   });
 
-  s.addText("This system catches both. Small checklists, run at the moments that matter.", {
+  s.addText("Small checklists, run at the moments that matter.", {
     x: 0.6, y: 6.55, w: 12.1, h: 0.4,
     fontSize: 16, fontFace: F.body, italic: true, bold: true,
     color: C.primary, align: "center", margin: 0,
@@ -262,7 +255,7 @@ function slideSubtitle(slide, text, x = 0.6, y = 1.25) {
     { x: 5.4,  w: 1.5, text: "Selected : In Progress" },
     { x: 7.0,  w: 1.5, text: "In Progress" },
     { x: 8.6,  w: 1.5, text: "In Progress" },
-    { x: 10.2, w: 2.7, text: "→ UXQA/VXQA → Code Review → QA → Done" },
+    { x: 10.2, w: 2.7, text: "→ Visual/UX QA → Code Review → QA → Done" },
   ];
   // Use arrow glyph instead of colon for first two
   jiraCaptions[1].text = "Open  ▸  Ready for Est";
@@ -483,31 +476,40 @@ function slideSubtitle(slide, text, x = 0.6, y = 1.25) {
     fontSize: 13, fontFace: F.body, italic: true, color: C.textMid, margin: 0,
   });
   s.addText([
-    { text: "Pattern alignment + simplicity (KISS) checks", options: { bullet: true, breakLine: true, bold: true } },
-    { text: "Design check for new components", options: { bullet: true, breakLine: true } },
+    { text: "Pattern alignment + simplicity (KISS) checks while writing", options: { bullet: true, breakLine: true, bold: true } },
+    { text: "Design check when introducing new components", options: { bullet: true, breakLine: true } },
     { text: "Mid-session handoffs carry state across chats", options: { bullet: true, breakLine: true, bold: true } },
-    { text: "Handoffs are session-bracketed: one per session, not one per problem", options: { bullet: true } },
+    { text: "Clean commits before handoff (organize, squash, message)", options: { bullet: true } },
   ], {
     x: bx + 0.4, y: cardY + 1.55, w: bw - 0.6, h: 2,
     fontSize: 13, fontFace: F.body, color: C.textDark,
     paraSpaceAfter: 5,
   });
   s.addShape(pres.shapes.RECTANGLE, {
-    x: bx + 0.4, y: cardY + 3.6, w: bw - 0.8, h: 0.7,
+    x: bx + 0.4, y: cardY + 3.4, w: bw - 0.8, h: 0.95,
     fill: { color: C.white }, line: { color: C.primary, width: 1 },
   });
+  s.addText("SKILLS", {
+    x: bx + 0.55, y: cardY + 3.45, w: bw - 1.1, h: 0.25,
+    fontSize: 9, fontFace: F.body, bold: true, charSpacing: 2,
+    color: C.textMuted, margin: 0,
+  });
   s.addText([
-    { text: "SKILLS:  ", options: { fontFace: F.body, fontSize: 10, bold: true, color: C.textMuted } },
-    { text: "frontend-design", options: { fontFace: F.code, fontSize: 11, color: C.primary } },
-    { text: "  ", options: { fontFace: F.body, fontSize: 11, color: C.textMid } },
-    { text: "kiss", options: { fontFace: F.code, fontSize: 11, color: C.primary } },
-    { text: "  ", options: { fontFace: F.body, fontSize: 11, color: C.textMid } },
-    { text: "pattern-alignment", options: { fontFace: F.code, fontSize: 11, color: C.primary } },
-    { text: "  ", options: { fontFace: F.body, fontSize: 11, color: C.textMid } },
-    { text: "handoff-message", options: { fontFace: F.code, fontSize: 11, color: C.primary } },
+    { text: "pattern-alignment", options: { fontFace: F.code, fontSize: 10.5, color: C.primary } },
+    { text: "  ", options: { fontFace: F.body, fontSize: 10.5, color: C.textMid } },
+    { text: "frontend-design", options: { fontFace: F.code, fontSize: 10.5, color: C.primary } },
+    { text: "  ", options: { fontFace: F.body, fontSize: 10.5, color: C.textMid } },
+    { text: "kiss", options: { fontFace: F.code, fontSize: 10.5, color: C.primary } },
+    { text: "  ", options: { fontFace: F.body, fontSize: 10.5, color: C.textMid } },
+    { text: "handoff-message", options: { fontFace: F.code, fontSize: 10.5, color: C.primary, breakLine: true } },
+    { text: "organize-commits", options: { fontFace: F.code, fontSize: 10.5, color: C.primary } },
+    { text: "  ", options: { fontFace: F.body, fontSize: 10.5, color: C.textMid } },
+    { text: "squash-commits", options: { fontFace: F.code, fontSize: 10.5, color: C.primary } },
+    { text: "  ", options: { fontFace: F.body, fontSize: 10.5, color: C.textMid } },
+    { text: "commit-message-writer", options: { fontFace: F.code, fontSize: 10.5, color: C.primary } },
   ], {
-    x: bx + 0.55, y: cardY + 3.65, w: bw - 1.1, h: 0.6,
-    valign: "middle", margin: 0,
+    x: bx + 0.55, y: cardY + 3.7, w: bw - 1.1, h: 0.65,
+    valign: "top", margin: 0,
   });
 
   footer(s, 5);
@@ -589,10 +591,10 @@ function slideSubtitle(slide, text, x = 0.6, y = 1.25) {
     fontSize: 13, fontFace: F.body, italic: true, color: C.textMid, margin: 0,
   });
   s.addText([
-    { text: "Clean commits (organize or squash)", options: { bullet: true, breakLine: true, bold: true } },
-    { text: "Commit messages, PR description, QA steps", options: { bullet: true, breakLine: true } },
+    { text: "Summarize commits for the PR description", options: { bullet: true, breakLine: true, bold: true } },
+    { text: "QA steps for review handoff", options: { bullet: true, breakLine: true } },
     { text: "Closure notes (pre-review) and lessons captured", options: { bullet: true, breakLine: true, bold: true } },
-    { text: "Ticket moves to UXQA/VXQA, Code Review, QA, Done", options: { bullet: true } },
+    { text: "Ticket moves through visual/UX QA, code review, QA, done", options: { bullet: true } },
   ], {
     x: cx + 0.4, y: cardY + 1.55, w: cw - 0.6, h: 2,
     fontSize: 13, fontFace: F.body, color: C.textDark,
@@ -608,18 +610,13 @@ function slideSubtitle(slide, text, x = 0.6, y = 1.25) {
     color: C.textMuted, margin: 0,
   });
   s.addText([
-    { text: "organize-commits", options: { fontFace: F.code, fontSize: 10, color: C.primary } },
-    { text: "  ", options: { fontFace: F.body, fontSize: 10, color: C.textMid } },
-    { text: "squash-commits", options: { fontFace: F.code, fontSize: 10, color: C.primary } },
-    { text: "  ", options: { fontFace: F.body, fontSize: 10, color: C.textMid } },
-    { text: "commit-message-writer", options: { fontFace: F.code, fontSize: 10, color: C.primary, breakLine: true } },
-    { text: "summarize-commits", options: { fontFace: F.code, fontSize: 10, color: C.primary } },
-    { text: "  ", options: { fontFace: F.body, fontSize: 10, color: C.textMid } },
-    { text: "qa-steps", options: { fontFace: F.code, fontSize: 10, color: C.primary } },
-    { text: "  ", options: { fontFace: F.body, fontSize: 10, color: C.textMid } },
-    { text: "issue-closure-notes", options: { fontFace: F.code, fontSize: 10, color: C.primary } },
-    { text: "  ", options: { fontFace: F.body, fontSize: 10, color: C.textMid } },
-    { text: "lessons-learned", options: { fontFace: F.code, fontSize: 10, color: C.primary } },
+    { text: "summarize-commits", options: { fontFace: F.code, fontSize: 11, color: C.primary } },
+    { text: "  ", options: { fontFace: F.body, fontSize: 11, color: C.textMid } },
+    { text: "qa-steps", options: { fontFace: F.code, fontSize: 11, color: C.primary } },
+    { text: "  ", options: { fontFace: F.body, fontSize: 11, color: C.textMid } },
+    { text: "issue-closure-notes", options: { fontFace: F.code, fontSize: 11, color: C.primary } },
+    { text: "  ", options: { fontFace: F.body, fontSize: 11, color: C.textMid } },
+    { text: "lessons-learned", options: { fontFace: F.code, fontSize: 11, color: C.primary } },
   ], {
     x: cx + 0.55, y: cardY + 3.7, w: cw - 1.1, h: 0.65,
     valign: "top", margin: 0,
@@ -640,58 +637,63 @@ function slideSubtitle(slide, text, x = 0.6, y = 1.25) {
 
   slideTitle(s, "Voice: the keystone", 0.7);
 
-  s.addText("Every phase produces prose. Without a project voice config, the system reads like 23 different writers.", {
-    x: 0.7, y: 1.4, w: 12.1, h: 0.5,
-    fontSize: 16, fontFace: F.body, italic: true,
-    color: C.textMid, margin: 0,
+  s.addText("Every phase produces prose. Without a project voice config, output reads like a different writer each time.", {
+    x: 0.7, y: 1.4, w: 12.1, h: 0.8,
+    fontSize: 20, fontFace: F.body,
+    color: C.textDark, margin: 0,
   });
 
-  s.addText("23", {
-    x: 0.7, y: 2.2, w: 4, h: 2.5,
-    fontSize: 200, fontFace: F.header, bold: true,
-    color: C.voice, valign: "middle", margin: 0,
-  });
-  s.addText("skills, one voice", {
-    x: 0.7, y: 4.6, w: 4, h: 0.4,
-    fontSize: 18, fontFace: F.header,
-    color: C.voice, margin: 0,
-  });
+  // Three stacked sub-blocks across the slide
+  const blockY = 2.7, blockH = 3.4, blockW = 4.0, gap = 0.15;
+  const blockX0 = 0.7;
 
-  const rx = 5.2;
-  s.addText("The config", {
-    x: rx, y: 2.2, w: 7.5, h: 0.4,
-    fontSize: 16, fontFace: F.header, bold: true, charSpacing: 2,
-    color: C.voice, margin: 0,
-  });
-  s.addText([
-    { text: ".agents/style/voice.md", options: { bold: true, fontFace: F.code } },
-    { text: " at your project root defines tone, register, cadence, what to avoid. Every skill loads it before generating.", options: {} },
-  ], {
-    x: rx, y: 2.6, w: 7.5, h: 1.2,
-    fontSize: 14, fontFace: F.body, color: C.textDark, margin: 0,
-  });
+  const blocks = [
+    {
+      label: "THE CONFIG",
+      body: [
+        { text: ".agents/style/voice.md", options: { bold: true, fontFace: F.code, breakLine: true } },
+        { text: " ", options: { breakLine: true, fontSize: 6 } },
+        { text: "At your project root. Defines tone, register, cadence, what to avoid. Every skill loads it before generating.", options: {} },
+      ],
+    },
+    {
+      label: "THE GATE",
+      body: [
+        { text: "check-tone", options: { bold: true, fontFace: F.code, breakLine: true } },
+        { text: " ", options: { breakLine: true, fontSize: 6 } },
+        { text: "Runs any draft through the voice config before publishing. Flags passive voice, hedging, drift.", options: {} },
+      ],
+    },
+    {
+      label: "PER PROJECT",
+      body: [
+        { text: "No default ships.", options: { bold: true, breakLine: true } },
+        { text: " ", options: { breakLine: true, fontSize: 6 } },
+        { text: "You author voice.md per project so the system writes the way that project writes, not the framework default.", options: {} },
+      ],
+    },
+  ];
 
-  s.addText("The gate", {
-    x: rx, y: 4.0, w: 7.5, h: 0.4,
-    fontSize: 16, fontFace: F.header, bold: true, charSpacing: 2,
-    color: C.voice, margin: 0,
-  });
-  s.addText([
-    { text: "check-tone", options: { fontFace: F.code, bold: true } },
-    { text: " runs any draft through the voice config before publishing. Flags passive voice, hedging, vibe drift.", options: {} },
-  ], {
-    x: rx, y: 4.4, w: 7.5, h: 1.0,
-    fontSize: 14, fontFace: F.body, color: C.textDark, margin: 0,
-  });
-
-  s.addText("The keystone effect", {
-    x: rx, y: 5.5, w: 7.5, h: 0.4,
-    fontSize: 16, fontFace: F.header, bold: true, charSpacing: 2,
-    color: C.voice, margin: 0,
-  });
-  s.addText("Adapt the voice config to your project's tone. The framework ships without a default; you author it per project.", {
-    x: rx, y: 5.9, w: 7.5, h: 1.0,
-    fontSize: 14, fontFace: F.body, color: C.textDark, margin: 0,
+  blocks.forEach((b, i) => {
+    const x = blockX0 + i * (blockW + gap);
+    s.addShape(pres.shapes.RECTANGLE, {
+      x, y: blockY, w: blockW, h: blockH,
+      fill: { color: C.voiceLight }, line: { type: "none" },
+    });
+    s.addShape(pres.shapes.RECTANGLE, {
+      x, y: blockY, w: blockW, h: 0.08,
+      fill: { color: C.voice }, line: { type: "none" },
+    });
+    s.addText(b.label, {
+      x: x + 0.3, y: blockY + 0.25, w: blockW - 0.6, h: 0.4,
+      fontSize: 12, fontFace: F.body, bold: true, charSpacing: 3,
+      color: C.voice, margin: 0,
+    });
+    s.addText(b.body, {
+      x: x + 0.3, y: blockY + 0.75, w: blockW - 0.6, h: blockH - 1.0,
+      fontSize: 14, fontFace: F.body, color: C.textDark, margin: 0,
+      valign: "top",
+    });
   });
 
   footer(s, 7);
@@ -725,9 +727,9 @@ function slideSubtitle(slide, text, x = 0.6, y = 1.25) {
   });
   s.addText([
     { text: "Authenticate to any environment", options: { bullet: true, bold: true, breakLine: true } },
-    { text: "    no drush uli, no SSH keys, no SAML tokens", options: { italic: true, color: C.textMid, fontSize: 11, breakLine: true } },
+    { text: "    no one-time login URLs, no SSH keys, no SAML tokens", options: { italic: true, color: C.textMid, fontSize: 11, breakLine: true } },
     { text: " ", options: { breakLine: true, fontSize: 4 } },
-    { text: "Access higher environments (ACPT, stage, prod)", options: { bullet: true, bold: true, breakLine: true } },
+    { text: "Access higher environments (stage, prod, etc.)", options: { bullet: true, bold: true, breakLine: true } },
     { text: "    on your behalf. That's a human action.", options: { italic: true, color: C.textMid, fontSize: 11, breakLine: true } },
     { text: " ", options: { breakLine: true, fontSize: 4 } },
     { text: "Ingest PII, PHI, CUI, client proprietary, or CA confidential", options: { bullet: true, bold: true, breakLine: true } },
@@ -876,7 +878,7 @@ function slideSubtitle(slide, text, x = 0.6, y = 1.25) {
     fontSize: 16, fontFace: F.header, bold: true,
     color: C.textOnDark, margin: 0,
   });
-  s.addText("UXQA/VXQA, Code Review, or QA can return the ticket to In Progress. Re-enter Phase 4 or 5. The framework supports the bounce; you just re-run the relevant skills.", {
+  s.addText("Visual/UX QA, code review, or QA can return the ticket to In Progress. Re-enter Phase 4 or 5. The framework supports the bounce; you re-run the relevant skills.", {
     x: 0.9, y: y3 + 0.45, w: 11.8, h: 0.75,
     fontSize: 13, fontFace: F.body, color: C.textOnDarkSoft, margin: 0,
   });
@@ -887,7 +889,7 @@ function slideSubtitle(slide, text, x = 0.6, y = 1.25) {
     color: C.textOnDarkSoft, align: "center", margin: 0,
   });
 
-  s.addText("ai-runbook-jh — AI-assisted ticket workflow", {
+  s.addText("ai-runbook-jh: AI-assisted ticket workflow", {
     x: 0.6, y: 7.1, w: 8, h: 0.3,
     fontSize: 10, fontFace: F.body, color: C.textOnDarkMuted, margin: 0,
   });
@@ -903,8 +905,8 @@ function slideSubtitle(slide, text, x = 0.6, y = 1.25) {
   const s = pres.addSlide();
   s.background = { color: C.white };
 
-  slideTitle(s, "Where this fits — per-project profiles");
-  slideSubtitle(s, "The skills are project-agnostic. A profile supplies the specifics for each client.");
+  slideTitle(s, "Where this fits: per-project profiles");
+  slideSubtitle(s, "The skills are project-agnostic. One profile file per project supplies the specifics.");
 
   const lx = 0.6, ly = 2.0, lw = 6.0;
   s.addShape(pres.shapes.RECTANGLE, {
@@ -917,17 +919,17 @@ function slideSubtitle(slide, text, x = 0.6, y = 1.25) {
     color: C.primary, margin: 0,
   });
   s.addText([
-    { text: ".agents/rules/", options: { fontFace: F.code, bold: true, breakLine: true } },
-    { text: "Behavioral constraints, auto-loaded into every chat", options: { color: C.textMid, breakLine: true } },
+    { text: "skills/", options: { fontFace: F.code, bold: true, breakLine: true } },
+    { text: "24 phase-based skills, all project-agnostic", options: { color: C.textMid, breakLine: true } },
     { text: " ", options: { breakLine: true } },
-    { text: ".agents/skills/", options: { fontFace: F.code, bold: true, breakLine: true } },
-    { text: "The framework's phase-based skills", options: { color: C.textMid, breakLine: true } },
+    { text: "profiles/_template.md", options: { fontFace: F.code, bold: true, breakLine: true } },
+    { text: "Annotated starting point for a new profile", options: { color: C.textMid, breakLine: true } },
     { text: " ", options: { breakLine: true } },
-    { text: ".agents/prompts/", options: { fontFace: F.code, bold: true, breakLine: true } },
-    { text: "Reusable prompts shared across projects", options: { color: C.textMid, breakLine: true } },
+    { text: "profiles/uswds.md", options: { fontFace: F.code, bold: true, breakLine: true } },
+    { text: "Public worked example (open-source library on GitHub)", options: { color: C.textMid, breakLine: true } },
     { text: " ", options: { breakLine: true } },
-    { text: "cli-agents/", options: { fontFace: F.code, bold: true, breakLine: true } },
-    { text: "Expert personas (Drupal BE, QA, etc.)", options: { color: C.textMid } },
+    { text: "sync.sh", options: { fontFace: F.code, bold: true, breakLine: true } },
+    { text: "Wires the framework into a target project", options: { color: C.textMid } },
   ], {
     x: lx + 0.3, y: ly + 0.7, w: lw - 0.6, h: 3.7,
     fontSize: 11, fontFace: F.body, color: C.textDark,
@@ -939,33 +941,30 @@ function slideSubtitle(slide, text, x = 0.6, y = 1.25) {
     x: rx, y: ly, w: rw, h: 4.5,
     fill: { color: C.goldLight }, line: { color: C.gold, width: 1 },
   });
-  s.addText("PROFILE (per project)", {
+  s.addText("PROFILE (one file, per project)", {
     x: rx + 0.3, y: ly + 0.2, w: rw - 0.6, h: 0.4,
     fontSize: 12, fontFace: F.body, bold: true, charSpacing: 2,
     color: C.primary, margin: 0,
   });
   s.addText([
-    { text: ".agents/context/", options: { fontFace: F.code, bold: true, breakLine: true } },
-    { text: "Architectural context for the project", options: { color: C.textMid, breakLine: true } },
+    { text: ".agents/profile.md", options: { fontFace: F.code, bold: true, breakLine: true } },
+    { text: "One Markdown file. Skills reference its sections by name.", options: { color: C.textMid, breakLine: true } },
     { text: " ", options: { breakLine: true } },
-    { text: ".agents/style/voice.md", options: { fontFace: F.code, bold: true, breakLine: true } },
-    { text: "Project voice config every skill loads", options: { color: C.textMid, breakLine: true } },
+    { text: "## Tracker  ·  ## Required fields", options: { fontFace: F.code, bold: true, breakLine: true } },
+    { text: "Issue ref format, markup, minimum fields", options: { color: C.textMid, breakLine: true } },
     { text: " ", options: { breakLine: true } },
-    { text: "Sanctioned AI section", options: { fontFace: F.code, bold: true, breakLine: true } },
-    { text: "Which AI clients are approved for this client", options: { color: C.textMid, breakLine: true } },
+    { text: "## Workflow states  ·  ## Stack  ·  ## DoD", options: { fontFace: F.code, bold: true, breakLine: true } },
+    { text: "Board lifecycle, framework, definition of done", options: { color: C.textMid, breakLine: true } },
     { text: " ", options: { breakLine: true } },
-    { text: ".agents/plans/  ·  .agents/handoffs/", options: { fontFace: F.code, bold: true, breakLine: true } },
-    { text: "Per-ticket plan files and mid-session captures", options: { color: C.textMid, breakLine: true } },
-    { text: " ", options: { breakLine: true } },
-    { text: "Review marker, ticket fields, workflow states", options: { fontFace: F.code, bold: true, breakLine: true } },
-    { text: "The client-specific values skills plug into", options: { color: C.textMid } },
+    { text: "## Sanctioned AI  ·  ## Voice", options: { fontFace: F.code, bold: true, breakLine: true } },
+    { text: "Approved clients; path to the project's voice.md", options: { color: C.textMid } },
   ], {
     x: rx + 0.3, y: ly + 0.7, w: rw - 0.6, h: 3.7,
     fontSize: 11, fontFace: F.body, color: C.textDark,
     paraSpaceAfter: 0,
   });
 
-  s.addText("Adopt the shared skills once; add a profile per client. The profile supplies the specifics, the skills stay portable.", {
+  s.addText("Adopt the shared skills once; add a profile per project. The profile supplies the specifics, the skills stay portable.", {
     x: 0.6, y: 6.8, w: 12.1, h: 0.3,
     fontSize: 11, fontFace: F.body, italic: true,
     color: C.textMid, align: "center", margin: 0,
@@ -980,24 +979,24 @@ function slideSubtitle(slide, text, x = 0.6, y = 1.25) {
   s.background = { color: C.white };
 
   slideTitle(s, "Setup in 4 steps");
-  slideSubtitle(s, "About 10 minutes start to finish. Voice config is the most important step.");
+  slideSubtitle(s, "About 10 minutes start to finish. Voice config is the step that does the most work.");
 
   const steps = [
     {
       n: 1, title: "Clone ai-runbook-jh",
-      detail: "git clone the ai-runbook-jh repo into your projects directory",
+      detail: "Clone the repo somewhere alongside your project checkouts",
     },
     {
-      n: 2, title: "Write voice config",
+      n: 2, title: "Pick or create a profile",
+      detail: "Copy profiles/_template.md to profiles/<project>.md and fill it in (or start from profiles/uswds.md as a worked example)",
+    },
+    {
+      n: 3, title: "Author the voice config",
       detail: ".agents/style/voice.md at your project root describes how the system should write",
     },
     {
-      n: 3, title: "Symlink the skills",
-      detail: "Run sync.sh. Adds your skills alongside team-approved ones in .agents/skills/",
-    },
-    {
-      n: 4, title: "Try one skill",
-      detail: "qa-steps is a good low-risk start. @ it on your next ticket branch before sending to UXQA/VXQA/Code Review.",
+      n: 4, title: "Run sync.sh",
+      detail: "PROFILE=<name> PROJECT_ROOT=<path> ./sync.sh: symlinks the skills into .agents/skills/ and deploys the profile to .agents/profile.md",
     },
   ];
 
@@ -1019,8 +1018,8 @@ function slideSubtitle(slide, text, x = 0.6, y = 1.25) {
       color: C.textDark, margin: 0,
     });
     s.addText(step.detail, {
-      x: x + 0.2, y: cardY + 2.3, w: cardW - 0.4, h: 1.5,
-      fontSize: 12, fontFace: F.body, color: C.textMid, margin: 0,
+      x: x + 0.2, y: cardY + 2.3, w: cardW - 0.4, h: 1.6,
+      fontSize: 11, fontFace: F.body, color: C.textMid, margin: 0,
     });
   });
 
@@ -1028,7 +1027,7 @@ function slideSubtitle(slide, text, x = 0.6, y = 1.25) {
     x: 0.6, y: 6.25, w: 12.1, h: 0.55,
     fill: { color: C.goldLight }, line: { color: C.gold, width: 1.5 },
   });
-  s.addText("That's it. Adopt only the skills you actually reach for. The framework supports a partial set.", {
+  s.addText("Then try one skill on your next ticket; qa-steps is a good low-risk start. Adopt only the ones you actually reach for.", {
     x: 0.8, y: 6.27, w: 11.7, h: 0.5,
     fontSize: 13, fontFace: F.body, italic: true, bold: true,
     color: C.textDark, valign: "middle", margin: 0,
@@ -1069,7 +1068,7 @@ function slideSubtitle(slide, text, x = 0.6, y = 1.25) {
     { text: ".agents/style/voice.md ships empty", options: { bold: true, breakLine: true } },
     { text: "You author it per project. Without it, output stays generic.", options: { color: C.textOnDarkSoft, breakLine: true } },
     { text: " ", options: { breakLine: true } },
-    { text: "Manual @ invocation in Q", options: { bold: true, breakLine: true } },
+    { text: "Manual @ invocation", options: { bold: true, breakLine: true } },
     { text: "Skills are tools you reach for, not automations that fire.", options: { color: C.textOnDarkSoft } },
   ], {
     x: lx, y: ly + 0.5, w: lw, h: 5.0,
@@ -1109,6 +1108,6 @@ function slideSubtitle(slide, text, x = 0.6, y = 1.25) {
 }
 
 // ============ WRITE FILE ============
-pres.writeFile({ fileName: "ai-runbook-jh.pptx" })
+pres.writeFile({ fileName: path.join(__dirname, "..", "..", "decks", "ai-runbook-jh.pptx") })
   .then(fn => console.log("Wrote:", fn))
   .catch(err => { console.error(err); process.exit(1); });
