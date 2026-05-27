@@ -33,13 +33,10 @@ tracked on GitHub; only the profile changes.
 
 ## The six phases
 
-**Pre-development**
 1. **Triage**: first touch. Keep/defer/decline, fill the minimum required fields, set an initial
    priority, tag as reviewed.
 2. **Refinement**: bring to ready-for-estimation: user story, acceptance criteria (or steps to
    reproduce), dependencies, Definition of Done.
-
-**Development**
 3. **Plan**: write the approach as a file before touching code.
 4. **Build**: implement with simplicity and pattern-alignment checks. Handoffs live here;
    they carry state across sessions.
