@@ -43,13 +43,13 @@ const SKILL_META = {
 
 
 const PHASES = [
-  { id: "triage",        num: 1, name: "Triage",        desc: "First touch. Keep, defer, decline. Minimum required fields, initial priority, reviewed tag.", jira: "Open", section: "pre-dev" },
-  { id: "refinement",    num: 2, name: "Refinement",    desc: "Prep for Estimation. User story, acceptance criteria, dependencies, DoD.",                         jira: "Open  ▸  Ready for Est", section: "pre-dev" },
-  { id: "plan",          num: 3, name: "Plan",          desc: "Write the approach as a file before touching code. Generates the implementation-details checklist.", jira: "Selected  ▸  In Progress", section: "dev" },
-  { id: "build",         num: 4, name: "Build",         desc: "Implement against the plan. Pattern and simplicity checks. Handoffs carry state across chats. Clean commits before handoff.",     jira: "In Progress", section: "dev" },
-  { id: "validate",      num: 5, name: "Validate",      desc: "Confirm it works. Browser, accessibility, responsiveness, performance, peer review.",               jira: "In Progress", section: "dev" },
-  { id: "communicate",   num: 6, name: "Communicate",   desc: "Hand off and reflect. PR summary, QA steps, closure notes, lessons captured at handoff.",        jira: "→ Visual/UX QA → Code Review → QA → Done", section: "dev" },
-  { id: "cross-cutting", num: null, name: "Cross-cutting", desc: "Not tied to a phase. check-tone fires on anything written for an audience; security-check fires on anything touching secrets or sensitive data.", jira: "Always on", section: "cross" },
+  { id: "triage",        num: 1, icon: "🔍",  name: "Triage",        desc: "First touch. Keep, defer, decline. Minimum required fields, initial priority, reviewed tag.", jira: "Open", section: "pre-dev" },
+  { id: "refinement",    num: 2, icon: "📝",  name: "Refinement",    desc: "Prep for Estimation. User story, acceptance criteria, dependencies, DoD.",                         jira: "Open  ▸  Ready for Est", section: "pre-dev" },
+  { id: "plan",          num: 3, icon: "🗺️",  name: "Plan",          desc: "Write the approach as a file before touching code. Generates the implementation-details checklist.", jira: "Selected  ▸  In Progress", section: "dev" },
+  { id: "build",         num: 4, icon: "🔨",  name: "Build",         desc: "Implement against the plan. Pattern and simplicity checks. Handoffs carry state across chats. Clean commits before handoff.",     jira: "In Progress", section: "dev" },
+  { id: "validate",      num: 5, icon: "✅",  name: "Validate",      desc: "Confirm it works. Browser, accessibility, responsiveness, performance, peer review.",               jira: "In Progress", section: "dev" },
+  { id: "communicate",   num: 6, icon: "📣",  name: "Communicate",   desc: "Hand off and reflect. PR summary, QA steps, closure notes, lessons captured at handoff.",        jira: "→ Visual/UX QA → Code Review → QA → Done", section: "dev" },
+  { id: "cross-cutting", num: null, icon: "⚙️", name: "Cross-cutting", desc: "Not tied to a phase. check-tone fires on anything written for an audience; security-check fires on anything touching secrets or sensitive data.", jira: "Always on", section: "cross" },
 ];
 
 // ============ PARSE SKILL.md ============
@@ -432,6 +432,14 @@ const html = `<!DOCTYPE html>
       font-size: 22px;
       font-weight: 700;
       color: var(--text-dark);
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .phase-icon {
+      font-size: 24px;
+      line-height: 1;
+      flex-shrink: 0;
     }
     .phase-header p {
       margin: 4px 0 0;
@@ -1073,7 +1081,7 @@ const html = `<!DOCTYPE html>
           <div class="phase-header">
             <span class="phase-badge">\${badge}</span>
             <div class="phase-header-text">
-              <h2>\${phase.name}</h2>
+              <h2><span class="phase-icon" aria-hidden="true">\${phase.icon}</span><span>\${phase.name}</span></h2>
               <p>\${phase.desc}</p>
             </div>
             \${jiraPill}
