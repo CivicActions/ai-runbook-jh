@@ -1,19 +1,20 @@
 # ai-runbook-jh
 
-> An AI-assisted ticket workflow: a library of short, single-purpose **skills** (Markdown
-> checklists, one per phase of work: `triage`, `qa-steps`, `handoff-message`, and 21 more) plus a
-> per-project **profile** that names the specifics: your ticket tracker, stack, per-ticket
-> Definition of Done, approved AI clients. Battle-tested on front-end work, but the skills are
-> discipline-agnostic: the same `triage` skill fits a CSS bug, a backend API change, or an
-> infrastructure ticket; a backend or DevOps profile drops in the same way. Runs on whatever AI
-> client a project approves, but most useful with agentic chat in an IDE. The skills stay **project-agnostic**;
-> the **profile** supplies every project-specific detail. Take what's useful, adapt/remove the rest.
+> An AI-assisted personal ticket workflow: a library of short, single-purpose **skills** (Markdown
+> checklists, one per specific task you want done the same way every time: `triage`, `qa-steps`,
+> `handoff-message`, and 21 more) plus a per-project **profile** that names the specifics: your
+> ticket tracker, stack, per-ticket Definition of Done, approved AI clients. Battle-tested on
+> front-end work, but the skills are discipline-agnostic: the same `triage` skill fits a CSS bug,
+> a backend change, or an infrastructure ticket; extendable by adding more skills focused on specific
+> practice areas. Runs on whatever AI client a project approves, but most useful with agentic chat
+> in an IDE. The skills stay **project-agnostic**; the **profile** supplies every project-specific detail.
+> Take what's useful, adapt/remove the rest.
 
 ---
 
 ## How you use the skills
 
-There's no one right way to run this; freedom is the point. Three common modes:
+There's no one right way to run this. Three common modes:
 
 - **Autonomous chain.** An agent runs the phases end-to-end, invoking skills as their triggers fire. Minimal hand-driving.
   *e.g. you paste the ticket body and say "triage this and bring it to ready-for-estimation"; the agent runs `triage`, then `ticket-refinement`, then `definition-of-done`, and hands back a refined ticket you paste into the tracker.*
@@ -27,7 +28,7 @@ There's no one right way to run this; freedom is the point. Three common modes:
 ## How it works
 
 Each skill is a checklist for one phase. The checklists are generic; they describe *what* to do,
-not *which tracker / stack / conventions* a given project uses. Those specifics live in one place: a
+not *which ticket tracker / stack / conventions* a given project uses. Those specifics live in one place: a
 project **profile** at `.agents/profile.md`. A skill reads the profile, then produces output in the
 project's tracker markup, with the project's fields, priority scheme, Definition of Done, and so on.
 
@@ -35,7 +36,7 @@ This means the same skill works for a Drupal site tracked in Jira and a JavaScri
 tracked on GitHub; only the profile changes.
 
 > **Looks like:** you run `@triage` on a fresh Jira ticket. The skill reads `.agents/profile.md`,
-> sees the tracker is Jira and the priority scale runs Lowest to Highest, and returns output
+> sees the tracker is Jira, and the priority scale runs Lowest to Highest, and returns output
 > wrapped in Jira's `{code}` blocks using your project's priority levels and "reviewed" tag. The
 > same skill on the [USWDS](https://github.com/uswds/uswds) component library reads a different
 > profile and produces GitHub Markdown with USWDS labels (`Needs: Confirmation`, `Type: Bug`,
@@ -44,16 +45,16 @@ tracked on GitHub; only the profile changes.
 ## The six phases
 
 1. **Triage**: first touch. Keep/defer/decline, fill the minimum required fields, set an initial
-   priority, tag as reviewed.
-   *Example: a customer-support ticket lands. `@triage` returns "keep, P2-Medium, tagged for review" or "decline; duplicate of NSF-13301".*
+   priority, and tag as reviewed.
+   *Example: a customer-support ticket lands. `@triage` returns "keep, P2-Medium, tagged for review" or "decline; duplicate of ABC-13301".*
 2. **Refinement**: bring to ready-for-estimation: user story, acceptance criteria (or steps to
    reproduce), dependencies, Definition of Done.
    *Example: `@ticket-refinement` expands "navbar breaks on mobile" into a user story, three acceptance criteria, two open questions for the PM, and a DoD checklist tailored to your project.*
 3. **Plan**: write the approach as a file before touching code.
    *Example: `plans/NSF-13412-plan.md` holds the goal, dependencies (one Drupal SDC + one Sass partial), a numbered implementation-details checklist, branch name, and any open risks.*
 4. **Build**: implement with simplicity and pattern-alignment checks. Handoffs live here;
-   they carry state across sessions.
-   *Example: mid-task your AI session is getting long and drifting; you run `@handoff-message`, paste the resulting summary into a fresh chat, and resume with no context loss.*
+   they carry state across sessions, and you want to create new sessions often rather than have long chats.
+   *Example: mid-task, your AI session is getting long and drifting; you run `@handoff-message`, paste the resulting summary into a fresh chat, and resume with no context loss.*
 5. **Validate**: browser, accessibility, responsiveness, performance, peer review.
    *Example: `@browser-check` opens the page in your local environment, captures screenshots at three viewports, and eyeballs the result against the design.*
 6. **Communicate**: clean commits, QA steps, closure notes, and a lessons-learned reflection.
@@ -61,7 +62,7 @@ tracked on GitHub; only the profile changes.
 
 ## Profiles: how the skills stay generic
 
-A profile is a single Markdown file describing one project. Skills reference its sections by name.
+A profile is a single Markdown file describing one project. Skills reference their sections by name.
 The profile carries these sections (keep the set identical across profiles so skills resolve every
 reference):
 
@@ -207,8 +208,7 @@ before ingestion; screenshots are PII-redacted before being saved anywhere persi
 
 ## Notes
 
-- The methodology (six phases, voice keystone, security guardrails) works with any AI client or with
-  paper checklists. The phases are durable; the skills are disposable.
+- The methodology (six phases, voice keystone, security guardrails) works with any AI client, ideally within an IDE. The phases are durable; the skills are disposable.
 - Working artifacts (plans, handoffs, reviews, drafts) are personal/local and git-ignored; they may
   contain ticket details and shouldn't be committed.
 
