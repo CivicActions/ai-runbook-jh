@@ -658,6 +658,14 @@
       outline: 2px solid var(--primary);
       outline-offset: 2px;
     }
+    .modal-nav-sep {
+      display: inline-block;
+      width: 1px;
+      height: 14px;
+      background: var(--border);
+      margin: 0 6px;
+      align-self: center;
+    }
     .modal-body { padding: 20px 24px 32px; }
     .modal-section { margin-top: 20px; scroll-margin-top: 110px; }
     .modal-section:first-child { margin-top: 8px; }
@@ -731,6 +739,64 @@
       font-size: 13px;
       color: var(--primary);
       font-family: "Courier New", Consolas, monospace;
+    }
+
+    /* ===== modal tiers ===== */
+    .modal-section.tier-lead .example-block p { margin: 6px 0; }
+    .modal-section.tier-lead .example-block p:first-child { margin-top: 0; }
+    .modal-section.tier-lead .example-block p:last-child { margin-bottom: 0; }
+    .modal-section.tier-lead .example-block pre { margin: 8px 0 0; }
+
+    .modal-section.tier-graph .graph-row {
+      display: flex;
+      align-items: baseline;
+      gap: 10px;
+      padding: 6px 0;
+      border-bottom: 1px dashed var(--border);
+    }
+    .modal-section.tier-graph .graph-row:last-child { border-bottom: none; }
+    .modal-section.tier-graph .graph-label {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      flex: 0 0 96px;
+      padding-top: 2px;
+      white-space: nowrap;
+    }
+    .modal-section.tier-graph .chip-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 4px 6px;
+      flex: 1;
+    }
+    .modal-section.tier-graph .chip-row .graph-note {
+      font-size: 12.5px;
+      color: var(--text-mid);
+      font-style: italic;
+    }
+
+    .modal-footnotes {
+      margin-top: 24px;
+      padding-top: 16px;
+      border-top: 1px solid var(--border);
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 20px;
+    }
+    .modal-footnotes .modal-section { margin-top: 0; }
+    .modal-footnotes .modal-section h3 {
+      font-size: 11px;
+      letter-spacing: 1.5px;
+      color: var(--text-muted);
+    }
+    .modal-footnotes .modal-section p,
+    .modal-footnotes .modal-section li { font-size: 13px; }
+    @media (max-width: 600px) {
+      .modal-footnotes { grid-template-columns: 1fr; }
+      .modal-section.tier-graph .graph-row { flex-direction: column; gap: 4px; }
+      .modal-section.tier-graph .graph-label { flex: none; }
     }
 
     footer {
@@ -842,7 +908,8 @@
     "outputFormat": "Pick the format that matches the mode:\n- **Table** (default for batch mode): scan and sort many items at once.\n- **Per-item summary block**: read one item at a time, narratively; better when each item needs\n  context the table can't hold. Default for single-item mode.\n\nRender either format using the profile's `## Tracker` markup (issue-ref format, heading and\nemphasis markup, monospace for code/paths).\n\n### Table format\nFor each item:\n\n| Item | Decision | Priority (proposed) | Stakeholder Review? | Min Fields Filled | Needs Refinement |\n|------|----------|---------------------|---------------------|-------------------|------------------|\n| [ref] | Keep / Defer / Decline | [priority] | [stakeholder tag if applicable] | list | Yes / No |\n\n### Per-item summary block format\nOne compact block per item, separated by a horizontal rule. Use the profile's emphasis/heading\nmarkup; the field names below are generic, substitute the project's actual field names from\n`## Required fields`:\n\n```\n[ref] — [Title]\nDecision: Keep / Defer / Decline — [brief rationale]\n[Grouping field 1]: [value] | [Grouping field 2]: [value] | Priority: [value] | Review marker: [profile's marker]\nType: [bug/task/feature/debt/spike] | Scope: [small/medium/large/unknown] | Risk: [low/med/high] | Dependencies: [refs or none]\n```\n\n### Common follow-up sections (both formats)\nFollow the per-item output with:\n- **Blockers**: items that gate other work\n- **Quick wins**: small scope, low risk, high value\n- **Needs grooming**: items too vague to estimate, route to `ticket-refinement`\n- **Decline list**: items and brief reasons\n- **Defer list**: items and conditions for revisiting\n- **Refinement queue**: kept items that need `ticket-refinement` before estimation\n- **Parent / orphan cleanup** *(batch mode)*: parents to close or reassociate, orphans to re-tag or decline",
     "voice": "Apply `.agents/style/voice.md` to decision rationales and any prose. Run shared output through\n`check-tone` before publishing.",
     "security": "When triage involves external content (user reports, support tickets, customer emails):\n- **Redact PII before ingestion**: names, emails, account IDs replaced with placeholders\n- **Strip CUI**: Controlled Unclassified Information must not enter AI prompts\n- **Describe the change, not the reporter**: purpose/summary text describes the impact, never the\n  person who reported it\n\nRun `security-check` before pasting external user reports or support content.",
-    "related": "- **Next step:** `ticket-refinement` for kept items that need deeper refinement before estimation\n- **Reference:** `definition-of-done` (used during refinement, not triage)\n- **Downstream:** `check-tone` (run shared triage prose through tone check before publishing)",
+    "related": "- **Upstream gate:** `security-check` (run before pasting user reports, support tickets, or external-author content into the session)\n- **Next step:** `ticket-refinement` for kept items that need deeper refinement before estimation\n- **Reference:** `definition-of-done` (used during refinement, not triage)\n- **Downstream:** `check-tone` (run shared triage prose through tone check before publishing)",
+    "example": "**You ask:** `use the triage skill on PROJ-1234`\n\n**You get:**\n\n```\nPROJ-1234 — Facet deselect locks page scroll\nDecision: Keep — repro confirmed, recent regression\nComponent: Search | Functional area: Filters | Priority: High | Review marker: triaged\nType: bug | Scope: small | Risk: med | Dependencies: none\n```",
     "filePath": "skills/triage/SKILL.md"
   },
   {
@@ -858,7 +925,8 @@
     "outputFormat": "Wrap the output per the profile's `## Tracker` output-wrapping rule (e.g. a code block) so the user\ncan paste it directly into the tracker, and render headings/checkboxes/monospace using the profile's\nTracker markup. The structure below is generic; substitute the profile's markup for the labels and\ncheckboxes.\n\n### Task / Story Body\n\n```\nUser story:\nAs a [type of user], I want to [perform an action], so that I can [achieve a goal/benefit].\n\nAcceptance criteria:\n* [criterion]\n* [criterion]\n\nContext/background:\n[1–2 paragraphs setting the stage, what's the world look like now, why does this matter]\n\nTechnical notes:\n[Implementation hints, gotchas, file paths to look at, related modules]\n\nImplementation surface area:\n[High-level pointers, modules, services, files likely affected. Detailed checklist is generated during Plan via `issue-plan` + `implementation-details`.]\n\nQuestions for refinement:\n* [open question that needs a decision before estimation]\n\nDependencies:\n* [other tickets, modules, services]\n* [people who need to weigh in; UX, VX, PM, BE, per the profile's team/review context]\n\nDefinition of Done:\n[Use @definition-of-done for the appropriate subset]\n```\n\n### Bug Body\n\n```\nUser story:\nAs a [type of user], I want to [perform an action], so that I can [achieve a goal/benefit].\n\nWhat's wrong?\n[Current behavior, what users actually see]\n\nWhat should happen?\n[Expected behavior, what users should see]\n\nHow to reproduce:\n1. [step]\n2. [step]\n3. [observed result]\n\nTechnical notes:\n[Hypotheses, file paths, related areas of code]\n\nImplementation surface area:\n[High-level pointers, modules, services, files likely affected. Detailed checklist is generated during Plan via `issue-plan` + `implementation-details`.]\n\nQuestions for refinement:\n* [open question that needs a decision before estimation]\n\nDefinition of Done:\n[Use @definition-of-done for the appropriate subset]\n```",
     "voice": "Apply `.agents/style/voice.md` to context/background prose, technical notes, and open questions. Run the assembled ticket body through `check-tone` before pasting it into the tracker.",
     "security": "Refined ticket bodies are published to the tracker and visible to the broader team.\n\n- **Redact PII** from any external content folded into the ticket: names, emails, account IDs\n- **No CUI** in ticket bodies; Controlled Unclassified Information must not be entered\n- **Reference, don't reproduce**: link to internal docs, support ticket IDs, or PR URLs rather than\n  pasting their contents\n\nRun `security-check` before pasting external content (user reports, customer emails, support\ntickets) into the refinement session.",
-    "related": "- **Upstream:** `triage` (refinement only happens on tickets that survived triage)\n- **Invokes:** `definition-of-done` (generates DoD subset)\n- **Downstream:** `issue-plan` (once selected for development, writes the implementation plan from\n  refined ticket content), `check-tone` (run the assembled ticket body through tone check before publishing)",
+    "related": "- **Upstream gate:** `security-check` (run before pasting user reports, support tickets, or external-author content into the refinement session)\n- **Upstream:** `triage` (refinement only happens on tickets that survived triage)\n- **Invokes:** `definition-of-done` (generates DoD subset)\n- **Downstream:** `issue-plan` (once selected for development, writes the implementation plan from\n  refined ticket content), `check-tone` (run the assembled ticket body through tone check before publishing)",
+    "example": "**You ask:** `use the ticket-refinement skill on PROJ-1234`\n\n**You get:**\n\n```\nUser story:\nAs a search user, I want the page to stay scrollable after deselecting a facet, so I can keep browsing results.\n\nAcceptance criteria:\n- Deselecting any facet leaves the page scrollable\n- No regression on facet checkbox interactions\n- Verified on desktop, tablet, mobile\n\nContext/background:\nUsers report the page locks after deselect; introduced in the recent filter refactor.\n\nTechnical notes:\nSuspect overflow:hidden left on body by the ajaxSend handler.\n\nImplementation surface area:\nFilter button JS; facet AJAX lifecycle. Detailed checklist generated during Plan.\n\nQuestions for refinement:\n- Should the fix also cover the no-results branch?\n\nDependencies:\n- None\n\nDefinition of Done:\n[Use definition-of-done]\n```",
     "filePath": "skills/ticket-refinement/SKILL.md"
   },
   {
@@ -875,6 +943,7 @@
     "voice": "",
     "security": "",
     "related": "- **Invoked by:** `ticket-refinement` (appended during refinement), `qa-steps` (appended after QA\n  scenarios), `issue-closure-notes` (confirmed before closing)",
+    "example": "**You ask:** `use the definition-of-done skill on PROJ-1234 (frontend bug)`\n\n**You get:**\n\n```\n- [ ] Regression test added\n- [ ] Manual QA confirmed on desktop, tablet, mobile\n- [ ] Visual reference shot updated (or marked unchanged)\n- [ ] Linter passes\n- [ ] Reviewed by frontend peer\n- [ ] Acceptance criteria verified on the project's higher env\n```",
     "filePath": "skills/definition-of-done/SKILL.md"
   },
   {
@@ -891,6 +960,7 @@
     "voice": "Apply `.agents/style/voice.md` to goal descriptions, risk notes, and open questions. Run shared\nplan prose through `check-tone` before publishing.",
     "security": "Plan files are personal artifacts that may end up team-visible (shareable on request for peer review\nor audit):\n- **No credentials, tokens, or auth URLs** in plan files\n- **No PII**: describe the change, not the user who reported it\n- **No CUI or client-confidential content**: link to internal docs by reference, don't paste them",
     "related": "- **Upstream:** `triage` (first touch), `ticket-refinement` (deeper refinement, produces the AC and\n  IDs this plan elaborates)\n- **Invokes:** `implementation-details` (the plan includes a generated IDs checklist)\n- **Downstream:** `handoff-message` (the plan is linked from each session's handoff so the trail is\n  traceable), `check-tone` (run shared plan prose through tone check before publishing)",
+    "example": "**You ask:** `use the issue-plan skill on PROJ-1234`\n\n**You get:** a file at `.agents/plans/PROJ-1234-plan.md`:\n\n```\n# Plan: PROJ-1234 Facet deselect scroll lock\n\nGoal: clear overflow:hidden after facet deselect; add regression test.\nOut of scope: rework of facet UI; perf tuning.\n\nApproach\n  1. Reproduce in browser-check on local.\n  2. Trace overflow toggle paths in filter-button.js.\n  3. Clear overflow unconditionally in ajaxComplete.\n  4. Add regression test in the project's test framework.\n\nRisks: ajaxComplete may race with manual unlock.\nBranch: fix/PROJ-1234-facet-scroll  (base: develop)\n\nImplementation details: (generated checklist)\nWorkflow-state requirements: (per profile)\n```",
     "filePath": "skills/issue-plan/SKILL.md"
   },
   {
@@ -907,6 +977,7 @@
     "voice": "Terse. Imperative. No filler. Each item should read like a sticky note to yourself.",
     "security": "",
     "related": "- **Invoked by:** `ticket-refinement` (the IDs checklist is part of the refined ticket body), `issue-plan` (the plan includes a generated IDs checklist as Step 7)\n- **Invokes:** `definition-of-done` is the canonical source for the gating checks this checklist anticipates\n- **Standalone use:** also useful when a ticket already exists and only needs its IDs filled in without a full refinement pass",
+    "example": "**You ask:** `use the implementation-details skill on PROJ-1234`\n\n**You get:**\n\n```\n() Trace where overflow: hidden is set and clear it after facet deselect\n() Confirm fix on desktop, tablet, mobile\n() Add a regression test for the deselect case\n() Update visual reference shot if output changed\n() Run the linter\n```",
     "filePath": "skills/implementation-details/SKILL.md"
   },
   {
@@ -923,6 +994,7 @@
     "voice": "Apply the voice config named in the profile's `## Voice` section (e.g. `.agents/style/voice.md`).\nApply it to divergence descriptions and suggestions. Run shared alignment-check prose through `check-tone` before posting.",
     "security": "",
     "related": "- **Pairs with:** `kiss` (pattern-alignment catches under-aligned engineering; KISS catches over-engineering, both are Build-phase critics)\n- **Invoked by:** `frontend-peer-review`, `drupal-critic` (peer review applies pattern check as part of overall review)\n- **Downstream:** `check-tone` (run shared alignment-check prose through tone check before posting)",
+    "example": "**You ask:** `use the pattern-alignment skill on this patch`\n\n**You get:**\n\n```\nPattern Reference\n- Canonical example: src/state/FilterContext.jsx\n- Key conventions: shared context for filter state; hook-based consumers\n\nAlignment Check\n| Aspect           | Expected      | Actual         | Status |\n|------------------|---------------|----------------|--------|\n| State management | FilterContext | local useState | Fail   |\n| Handler naming   | handleClick   | handleClk      | Warn   |\n\nDivergences\n- State: replace local useState with FilterContext (see canonical example).\n- Naming: rename `handleClk` → `handleClick` per project convention.\n```",
     "filePath": "skills/pattern-alignment/SKILL.md"
   },
   {
@@ -939,6 +1011,7 @@
     "voice": "Apply the voice config from the profile's `## Voice` section (e.g. `.agents/style/voice.md`). Apply\nit to component overview prose and open questions. Run shared design proposals through `check-tone` before posting.",
     "security": "",
     "related": "- **Downstream:** `pattern-alignment` (once designed, verify implementation follows established patterns), `kiss` (verify the design isn't over-engineered), `check-tone` (run shared design proposals through tone check before posting)\n- **Upstream:** `ticket-refinement` (design thinking often surfaces during refinement, frontend-design can shape AC and IDs)",
+    "example": "**You ask:** `use the frontend-design skill on the new filter sidebar`\n\n**You get:**\n\n```\nComponent Overview\nName: filter-sidebar. Tier: organism. Purpose: faceted filtering for search results.\n\nTemplate Variables\n| Variable | Type  | Required | Description                  |\n|----------|-------|----------|------------------------------|\n| facets   | array | yes      | List of facet groups         |\n| selected | array | no       | Currently selected facet IDs |\n\nMarkup Sketch\n<aside class=\"filter-sidebar\"><h2/><ul class=\"filter-sidebar__group\">…</ul></aside>\n\nStates\nDefault, expanded, collapsed (mobile drawer), disabled.\n\nAccessibility Notes\naria-expanded on toggle; focus returns to toggle on close; 44px tap targets.\n\nOpen Questions\n- Should selected filters persist across page loads?\n```",
     "filePath": "skills/frontend-design/SKILL.md"
   },
   {
@@ -955,6 +1028,7 @@
     "voice": "Apply `.agents/style/voice.md`. Keep feedback direct, name the problem plainly. Run shared KISS-check prose through `check-tone` before posting.",
     "security": "",
     "related": "- **Pairs with:** `pattern-alignment` (KISS catches over-engineering; pattern-alignment catches under-aligned engineering, both are Build-phase critics)\n- **Invoked by:** `frontend-peer-review`, `drupal-critic` (peer review applies KISS check as part of overall review)\n- **Downstream:** `check-tone` (run shared KISS-check prose through tone check before posting)",
+    "example": "**You ask:** `use the kiss skill on this implementation`\n\n**You get:**\n\n```\nComplexity Assessment\nSignificantly over-engineered for the stated requirement.\n\nSignals Found\n- FilterContext + reducer + 3 hooks for what is a 4-line useState — adds indirection without reuse.\n- Custom debounce util duplicates lodash.debounce already in dependencies.\n- Three-layer Provider → Hook → Adapter chain for a single call site.\n\nRecommended Approach\nInline `useState` in the component; use `lodash.debounce` directly. ~120 LOC removed.\n```",
     "filePath": "skills/kiss/SKILL.md"
   },
   {
@@ -967,10 +1041,11 @@
     "invokedBy": "",
     "whenToUse": "Invoke at the end of a work session to write a structured handoff note, capturing enough context that another engineer (or the same engineer next session) can pick up without losing momentum.\n\nHandoffs are session-bracketed. **One per session, not one per problem.** If you're about to write a second handoff in the same session, the more useful action is usually to keep working, handoffs are for carrying state across chat boundaries, not for tracking sub-steps of a single in-flight effort. If the work has genuinely shifted scope mid-session (e.g. a new ticket pulled in, a different area of the codebase), then a second handoff is warranted, but mark the new one clearly so the trail stays readable.",
     "approach": "1. **Identify the ticket and branch**, the issue ref in the profile's `## Tracker` format, branch name (per the profile's `## Branch / plan conventions`), area of the codebase\n1a. **Reference the plan file**, check `.agents/plans/` for a plan file matching the ticket (use the profile's plan-file path format from `## Branch / plan conventions`, e.g. `[TICKET]-plan.md` or `[TICKET]-implementation-plan.md`); if one exists, link it in the handoff\n1b. **Reference prior handoffs**, check `.agents/handoffs/` for earlier handoff files matching the same ticket; if any exist, list each one individually under a \"Prior handoffs\" field so the reader can trace the full session history. Use the actual filenames, not a glob pattern.\n1c. **Include reference links**, if a PR has been opened, include the URL. If there's a tracker link (Jira, GitHub issue, etc.), include it. If there are related PRs or tickets, list them.\n2. **Summarize what was completed**, concrete deliverables, not effort\n3. **Capture current file state**, which files changed, what the notable lines are\n4. **Document decisions and rationale**, why choices were made, tradeoffs accepted\n5. **List what was validated**, environments tested, commands run, results observed\n6. **Identify known risks and open questions**, anything uncertain or deferred\n7. **Write next steps**, concrete, ordered, with commands where applicable",
-    "outputFormat": "Save to `.agents/handoffs/[TICKET]-[YYYY-MM-DD]-[HHMM]-handoff.md`\n\n```markdown",
+    "outputFormat": "Save to `.agents/handoffs/[TICKET]-[YYYY-MM-DD]-[HHMM]-handoff.md`\n\n```markdown\n# Handoff: [TICKET] [Brief Description]\n\n- Session timestamp: [YYYY-MM-DD HH:MM]\n- Branch: `[branch-name]`\n- Area: [brief description of codebase area]\n- Plan: `.agents/plans/[plan-file].md` _(if exists, otherwise omit this line)_\n- Prior handoffs: _(list each file individually; omit section if none)_\n  - `.agents/handoffs/[TICKET]-[date]-[time]-handoff.md`\n  - `.agents/handoffs/[TICKET]-[date]-[time]-handoff.md`\n\n## Context\n[1–2 sentences on what this work is and why it matters]\n\n## What was completed\n[Bullet list of concrete deliverables]\n\n## Why these choices\n[Key decisions and rationale]\n\n## Current file state\n[Notable files and line references]\n\n## Validation performed\n[What was tested, in which environment, with what result]\n\n## Known risks and open questions\n[Anything uncertain, deferred, or needing follow-up]\n\n## Next steps\n1. [First concrete step, include command if applicable]\n2. [Second step]\n3. [Third step]\n```",
     "voice": "Apply `.agents/style/voice.md`. Apply it to all generated text, handoff prose, next steps, risk notes. Run shared handoff prose through `check-tone` before publishing.",
     "security": "Handoffs live in your personal companion repo (not the official project repo). They're shareable on request for peer review or audit. Treat them as personal artifacts that may end up team-visible, nothing in a handoff should be sensitive.\n\n- **Never include**: credentials, auth tokens, one-time login URLs (e.g. `drush uli`), session IDs, `.env` contents, SSH keys\n- **Never include**: PII (user emails, names, addresses), PHI, CUI, client proprietary data\n- **Reference URLs and credentials by name, not by value**, `[local admin login URL]` not the actual URL\n- **Redact before writing**, if a handoff would naturally contain any of the above, redact before writing the file\n\nRun `security-check` before pasting external content into the handoff session.",
-    "related": "- **Phase placement:** Handoff is part of the Build phase. It's a mid-work pause/resume mechanic for carrying state across chat sessions. For end-of-work communication (after build is done), use `issue-closure-notes`. For lessons captured at handoff time, use `lessons-learned`.\n- **Often references:** `issue-plan` (the plan file is linked from the handoff), prior handoffs in `.agents/handoffs/`\n- **Downstream:** `check-tone` (run shared handoff prose through tone check before publishing)",
+    "related": "- **Upstream gate:** `security-check` (run before summarizing external content, user reports, or higher-env findings into the handoff)\n- **Phase placement:** Handoff is part of the Build phase. It's a mid-work pause/resume mechanic for carrying state across chat sessions. For end-of-work communication (after build is done), use `issue-closure-notes`. For lessons captured at handoff time, use `lessons-learned`.\n- **Often references:** `issue-plan` (the plan file is linked from the handoff), prior handoffs in `.agents/handoffs/`\n- **Downstream:** `check-tone` (run shared handoff prose through tone check before publishing)",
+    "example": "**You ask:** `use the handoff-message skill for PROJ-1234`\n\n**You get:** a file at `.agents/handoffs/PROJ-1234-2026-06-01-1430-handoff.md`:\n\n```\n# Handoff: PROJ-1234 Facet deselect scroll lock\n\n- Session timestamp: 2026-06-01 14:30\n- Branch: fix/PROJ-1234-facet-scroll\n- Area: search filters\n- Plan: .agents/plans/PROJ-1234-plan.md\n\n## Context\nPage locks after facet deselect; tracked to a stale overflow style.\n\n## What was completed\n- Reproduced in browser-check; isolated to overflow lock in filter-button.js\n\n## Why these choices\n- Cleared unconditionally in ajaxComplete to avoid the no-results branch gap\n\n## Current file state\n- filter-button.js: overflow clear added (~L120)\n\n## Validation performed\n- Local: deselect across desktop/tablet/mobile — passes\n\n## Known risks and open questions\n- ajaxComplete may race with manual unlock\n\n## Next steps\n1. Add regression test\n2. Update visual reference shot\n3. Verify on higher env\n```",
     "filePath": "skills/handoff-message/SKILL.md"
   },
   {
@@ -983,10 +1058,11 @@
     "invokedBy": "",
     "whenToUse": "Invoke when the user has unstaged or uncommitted changes and wants them organized into clean, logical commits before pushing.",
     "approach": "1. **Review the working tree**, run `git status` and `git diff` to understand what changed\n2. **Group by logical unit**, identify natural groupings: bug fix, feature, refactor, test, config, docs\n3. **Propose a commit sequence**, ordered list of commits, each scoped to one logical change\n4. **Write commit messages**, use `commit-message-writer` skill for each proposed commit\n5. **Provide the git commands**, exact `git add` / `git add -p` commands to stage each group, followed by the commit",
-    "outputFormat": "Use the profile's issue-ref format and commit-message format below in place of the `<ISSUE-REF>`\nplaceholder shown here.\n\n### Proposed Commit Sequence\n```\n1. <ISSUE-REF> Subject, files / hunks included\n2. <ISSUE-REF> Subject, files / hunks included\n```\n\n### Commands\n```bash",
+    "outputFormat": "Use the profile's issue-ref format and commit-message format below in place of the `<ISSUE-REF>`\nplaceholder shown here.\n\n### Proposed Commit Sequence\n```\n1. <ISSUE-REF> Subject, files / hunks included\n2. <ISSUE-REF> Subject, files / hunks included\n```\n\n### Commands\n```bash\n# Commit 1\ngit add path/to/file path/to/other\ngit commit -m \"<ISSUE-REF> Subject\"\n\n# Commit 2\ngit add -p path/to/file   # select relevant hunks only\ngit commit -m \"<ISSUE-REF> Subject\"\n```\n\n### Notes\nFlag anything that needs a decision before committing, e.g. unrelated changes that belong in a separate ticket, or hunks that mix concerns and need `git add -p`.",
     "voice": "",
     "security": "",
     "related": "- **Invokes:** `commit-message-writer` (writes a message for each proposed commit, which in turn invokes `check-tone`)\n- **Sibling skills:** `squash-commits` (use when squashing existing commits rather than organizing working-tree changes), `summarize-commits` (use to write the PR description after commits are organized)",
+    "example": "**You ask:** `use the organize-commits skill on my last 6 commits`\n\n**You get:**\n\n```\nProposed Commit Sequence\n1. PROJ-1234 Clear overflow lock after facet deselect — filter-button.js\n2. PROJ-1234 Add regression test for deselect — tests/e2e/facets.spec.js\n3. chore: update visual reference shot — backstop_data/\n\nCommands\ngit add src/components/filter-button.js\ngit commit -m \"PROJ-1234 Clear overflow lock after facet deselect\"\n\ngit add tests/e2e/facets.spec.js\ngit commit -m \"PROJ-1234 Add regression test for facet deselect\"\n\ngit add backstop_data/\ngit commit -m \"chore: update visual reference shot\"\n\nNotes\n- Ref-shot update is unrelated to the fix; keep it separate so it can be reverted independently.\n```",
     "filePath": "skills/organize-commits/SKILL.md"
   },
   {
@@ -999,10 +1075,11 @@
     "invokedBy": "",
     "whenToUse": "Invoke when the user wants to squash multiple WIP or incremental commits into one clean commit (or a small number of logical commits) before merging.",
     "approach": "1. **Review the commits to squash**, `git log --oneline` to see the range\n2. **Identify the logical groupings**, should this be one commit or a few?\n3. **Write the squashed commit message(s)**, following the profile's commit conventions and voice profile\n4. **Provide the git commands**, interactive rebase or `git merge --squash`",
-    "outputFormat": "### Proposed Squashed Message\nFormat the subject line per the profile's `## Commit conventions` (issue-ref prefix from\n`## Tracker` → Issue ref format, imperative description, profile wrap width):\n```\n[<issue-ref>] Brief imperative description\n\nOptional body explaining what changed and why. Wrap per the profile (default 72 characters).\n```\n\n### Commands\nUse the profile's **Base branch** wherever a target branch is referenced:\n```bash",
+    "outputFormat": "### Proposed Squashed Message\nFormat the subject line per the profile's `## Commit conventions` (issue-ref prefix from\n`## Tracker` → Issue ref format, imperative description, profile wrap width):\n```\n[<issue-ref>] Brief imperative description\n\nOptional body explaining what changed and why. Wrap per the profile (default 72 characters).\n```\n\n### Commands\nUse the profile's **Base branch** wherever a target branch is referenced:\n```bash\n# Squash last N commits interactively\ngit rebase -i HEAD~N\n\n# Or squash a branch into one commit from the base branch (see profile Base branch)\ngit merge --squash <feature-branch>\ngit commit\n```\n\n### Notes\nFlag if any commits in the range should be kept separate rather than squashed.",
     "voice": "Apply the voice config from the profile's `## Voice` section (e.g. `.agents/style/voice.md`) to the\nsquashed commit message.",
     "security": "",
     "related": "- **Invokes:** `commit-message-writer` (writes the squashed commit message)\n- **Sibling:** `organize-commits` (use when staging working-tree changes from scratch rather than collapsing existing commits)\n- **Downstream:** `summarize-commits` (write the PR description after squashing)",
+    "example": "**You ask:** `use the squash-commits skill on these 4 commits`\n\n**You get:**\n\n```\nProposed Squashed Message\nPROJ-1234 Clear overflow lock after facet deselect\n\nAdds a regression test covering the deselect path. Lock was leaking from\nthe no-results branch of ajaxComplete.\n\nCommands\ngit rebase -i HEAD~4\n# mark commits 2–4 as `squash`\n\nNotes\n- WIP commits collapse cleanly; no commit in the range warrants staying separate.\n```",
     "filePath": "skills/squash-commits/SKILL.md"
   },
   {
@@ -1019,6 +1096,7 @@
     "voice": "Apply the voice config from the profile's `## Voice` section (e.g. `.agents/style/voice.md`). Apply\nit to the subject line, body, and any alternatives generated.",
     "security": "",
     "related": "- **Invokes:** `check-tone` (validates tone before finalizing any message)\n- **Invoked by:** `organize-commits` (writes a message for each proposed commit), `squash-commits` (writes the squashed message)",
+    "example": "**You ask:** `use the commit-message-writer skill on this diff`\n\n**You get:**\n\n```\nPROJ-1234: Clear overflow lock after facet deselect.\n\nAlternatives:\n  PROJ-1234: Remove stale overflow:hidden after ajaxComplete.\n  PROJ-1234: Fix page scroll lock on filter deselect.\n```",
     "filePath": "skills/commit-message-writer/SKILL.md"
   },
   {
@@ -1034,7 +1112,8 @@
     "outputFormat": "### Environment\n- URL and environment name\n- Browser and viewport\n\n### What Was Checked\n- List of pages/flows validated\n\n### Results\n- ✅ Pass / ❌ Fail / ⚠️ Warning for each check\n- Console errors (if any)\n- Network failures (if any)\n- Screenshots saved to `.agents/reviews/` (if applicable)\n\n### Open Questions\n- Anything that could not be validated (access denied, environment unavailable, etc.)",
     "voice": "Apply the voice file named in the profile's `## Voice` section (e.g. `.agents/style/voice.md`) to all\ngenerated text: results summaries, open questions, environment notes.",
     "security": "`browser-check` operates against the **profile's local environment only by default**\n(`## Environments` → Local). Higher-environment access (`## Environments` → Higher) is a human\naction, not an AI action.\n\n- **Never paste session-token URLs into AI prompts** (e.g. a Drupal `drush uli` URL); they grant\n  authenticated access\n- **Never authenticate to higher environments via AI**: AI is a thinking partner, not an auth agent\n- **Screenshots may contain PII**, review and redact author emails, user accounts, and content drafts before saving anywhere persistent\n- **Higher-env validation**, if a check needs a higher environment, a human runs the check and pastes findings (not raw page state) into the AI session\n- **Where screenshots live**, `.agents/reviews/` is in your personal companion repo, not the project repo. Treat screenshots as personal artifacts that may be shared with the team on request; redact PII regardless\n\nRun `security-check` before any session that will involve screenshots or higher-env context.",
-    "related": "`browser-check` is a foundation skill that other Validate-phase skills build on:\n\n- **Invoked by:** `qa-steps` (live validation during QA writing), `accessibility-audit` (DOM inspection for a11y), `responsive-design` (viewport testing), `performance-frontend` (network and asset audit), `frontend-peer-review` (visual confirmation pre-merge)\n- **Independent use:** also useful standalone for any \"check this in the browser\" moment",
+    "related": "`browser-check` is a foundation skill that other Validate-phase skills build on:\n\n- **Upstream gate:** `security-check` (run before inspecting any environment higher than local, or capturing screenshots that may contain PII / authenticated content)\n- **Invoked by:** `qa-steps` (live validation during QA writing), `accessibility-audit` (DOM inspection for a11y), `responsive-design` (viewport testing), `performance-frontend` (network and asset audit), `frontend-peer-review` (visual confirmation pre-merge)\n- **Independent use:** also useful standalone for any \"check this in the browser\" moment",
+    "example": "**You ask:** `use the browser-check skill on /search to verify the facet deselect flow on local`\n\n**You get:**\n\n```\nEnvironment\n- URL: http://local.example.test/search\n- Browser: Chromium, viewport 1280×800\n\nWhat Was Checked\n- Facet select/deselect flow\n- Console errors, network failures\n\nResults\n- Pass: Page loads, 200 OK\n- Pass: Facet select refreshes results (47 → 12)\n- Fail: Deselect leaves page locked at overflow:hidden\n- Pass: No JS errors; ajaxComplete fired\n\nScreenshot: .agents/reviews/PROJ-1234-deselect.png\n\nOpen Questions\n- None\n```",
     "filePath": "skills/browser-check/SKILL.md"
   },
   {
@@ -1050,7 +1129,8 @@
     "outputFormat": "Return a flat list of findings. For each:\n- **Issue**: short description\n- **Location**: file path or selector\n- **WCAG criterion**: e.g. 1.1.1, 2.4.6\n- **Impact level**: per the profile's impact typology\n- **Priority**: per the profile's priority scheme\n- **Fix**: concrete corrective action\n\nEnd with a summary count by priority and the profile's a11y validation commands to verify the fix.",
     "voice": "Apply `.agents/style/voice.md` to finding descriptions and fix suggestions. Run shared audit prose through `check-tone` before posting.",
     "security": "Audit against the profile's **local environment by default**. If a higher-environment audit is\nneeded:\n- A human runs the audit and pastes findings (selectors, contrast ratios, screen reader output)\n  into the AI session, never raw page state\n- Screenshots saved to `.agents/reviews/` are PII-redacted before commit (author emails, user\n  content, draft content)\n- Tooling output (Pa11y, cypress-axe, etc.) is reviewed for PII before sharing",
-    "related": "- **Invokes:** `browser-check` (live page inspection before static analysis)\n- **Sibling Validate-phase skills:** `responsive-design`, `performance-frontend`,\n  `frontend-peer-review`, `drupal-critic` (the last only when the profile's stack is Drupal); these\n  may all run on the same change\n- **Downstream:** `qa-steps` (a11y findings often produce QA verification steps), `check-tone` (run shared audit prose through tone check before posting)",
+    "related": "- **Upstream gate:** `security-check` (run before auditing any environment higher than local, or pasting screenshots / tooling output that may contain PII or authored content)\n- **Invokes:** `browser-check` (live page inspection before static analysis)\n- **Sibling Validate-phase skills:** `responsive-design`, `performance-frontend`,\n  `frontend-peer-review`, `drupal-critic` (the last only when the profile's stack is Drupal); these\n  may all run on the same change\n- **Downstream:** `qa-steps` (a11y findings often produce QA verification steps), `check-tone` (run shared audit prose through tone check before posting)",
+    "example": "**You ask:** `use the accessibility-audit skill on the new filter sidebar`\n\n**You get:**\n\n```\n- Issue: Filter checkbox missing label association\n  Location: src/components/Filter.jsx:23\n  WCAG: 1.3.1, 4.1.2 | Impact: serious | Priority: High\n  Fix: wrap input in <label> or add htmlFor\n\n- Issue: Sidebar toggle button has no aria-expanded\n  Location: src/components/Sidebar.jsx:11\n  WCAG: 4.1.2 | Impact: serious | Priority: High\n  Fix: add aria-expanded reflecting open state\n\nSummary: 2 serious findings. Verify with the project's a11y command.\n```",
     "filePath": "skills/accessibility-audit/SKILL.md"
   },
   {
@@ -1066,7 +1146,8 @@
     "outputFormat": "### Breakpoint Behavior\n| Breakpoint | Expected Layout | Status |\n|------------|----------------|--------|\n| Mobile (375px) | [description] | ✅ / ⚠️ / ❌ |\n| Tablet (768px) | [description] | ✅ / ⚠️ / ❌ |\n| Desktop (1280px) | [description] | ✅ / ⚠️ / ❌ |\n\n### Issues Found\nFor each ⚠️ / ❌:\n- Description of the problem\n- Viewport where it occurs\n- Suggested fix (in the project's styling conventions from profile `## Stack`)\n\n### Accessibility Notes\n- Touch target sizes\n- Focus visibility at each breakpoint\n- Any content reordering that affects reading order",
     "voice": "Apply the voice config from profile `## Voice`. Apply it to issue descriptions and fix suggestions. Run shared review prose through `check-tone` before posting.",
     "security": "",
-    "related": "- **Invokes:** `browser-check` (viewport simulation via the profile's browser inspection MCP)\n- **Sibling Validate-phase skills:** `accessibility-audit`, `performance-frontend`, `frontend-peer-review`\n- **Downstream:** `qa-steps` (responsive checks often produce specific QA viewport scenarios), `check-tone` (run shared review prose through tone check before posting)",
+    "related": "- **Upstream gate:** `security-check` (run before inspecting any environment higher than local, or capturing viewport screenshots that may contain PII or authored content)\n- **Invokes:** `browser-check` (viewport simulation via the profile's browser inspection MCP)\n- **Sibling Validate-phase skills:** `accessibility-audit`, `performance-frontend`, `frontend-peer-review`\n- **Downstream:** `qa-steps` (responsive checks often produce specific QA viewport scenarios), `check-tone` (run shared review prose through tone check before posting)",
+    "example": "**You ask:** `use the responsive-design skill on the filter sidebar`\n\n**You get:**\n\n```\nBreakpoint Behavior\n| Breakpoint       | Expected Layout              | Status |\n|------------------|------------------------------|--------|\n| Mobile (375px)   | Filter drawer, off-canvas    | Fail   |\n| Tablet (768px)   | Inline filters above results | Warn   |\n| Desktop (1280px) | Sticky sidebar, left column  | Pass   |\n\nIssues Found\n- Mobile: drawer overlaps content (z-index too low); raise to design-system overlay token.\n- Tablet: filter buttons render at 38px height; bump to 44px per touch-target rule.\n\nAccessibility Notes\n- Focus visible at all breakpoints.\n- Filter order matches visual order; no reflow surprises.\n```",
     "filePath": "skills/responsive-design/SKILL.md"
   },
   {
@@ -1082,7 +1163,8 @@
     "outputFormat": "For each finding:\n- **Issue**: Short description\n- **Location**: File, selector, or page area\n- **Impact**: LCP / CLS / INP / load time / cache hit rate\n- **Priority**: per the profile's `## Priority guide` (e.g. Highest / High / Medium / Low). See the\n  performance lens below.\n- **Fix**: Concrete corrective action\n\nEnd with a summary of the highest-impact fixes to tackle first.",
     "voice": "Load the profile's voice config (`## Voice` → config path) before writing finding descriptions and\nfix suggestions, and apply it to the prose. Run shared audit prose through `check-tone` before posting.",
     "security": "Performance audits run against the **profile's local env by default** (see `## Environments`). AI\nnever accesses higher environments. If higher-environment perf data is needed:\n- A human runs the audit and pastes summarized findings (tooling scores, asset sizes, Core Web Vitals), never raw network traces or HAR files\n- Network requests may contain authenticated session data, redact tokens and cookies before sharing\n- Production logs may contain PII, never paste raw log lines into AI",
-    "related": "- **Invokes:** `browser-check` (live network/asset/console audit)\n- **Sibling Validate-phase skills:** `accessibility-audit`, `responsive-design`, `frontend-peer-review`, `drupal-critic` (Drupal stack only)\n- **Downstream:** `qa-steps` (perf findings often produce specific QA verification steps), `check-tone` (run shared audit prose through tone check before posting)",
+    "related": "- **Upstream gate:** `security-check` (run before auditing any environment higher than local, or pasting HAR / network traces / production logs that may contain tokens, cookies, or PII)\n- **Invokes:** `browser-check` (live network/asset/console audit)\n- **Sibling Validate-phase skills:** `accessibility-audit`, `responsive-design`, `frontend-peer-review`, `drupal-critic` (Drupal stack only)\n- **Downstream:** `qa-steps` (perf findings often produce specific QA verification steps), `check-tone` (run shared audit prose through tone check before posting)",
+    "example": "**You ask:** `use the performance-frontend skill on /search (local)`\n\n**You get:**\n\n```\n- Issue: LCP at 3.2s on /search\n  Location: hero region, /search\n  Impact: LCP\n  Priority: High\n  Fix: defer chart library load until below-LCP region renders\n\n- Issue: 14 unoptimized images on results grid\n  Location: src/components/ResultCard\n  Impact: load time, CLS\n  Priority: Medium\n  Fix: add width/height and loading=\"lazy\"; convert to WebP\n\nTop fixes first: chart-library defer, then image optimization.\n```",
     "filePath": "skills/performance-frontend/SKILL.md"
   },
   {
@@ -1099,6 +1181,7 @@
     "voice": "Apply `.agents/style/voice.md` to the overall assessment, must-fix descriptions, and open questions.\nWrite like you're talking to a colleague, not filing a report. Run shared review prose through `check-tone` before posting.",
     "security": "",
     "related": "- **Invokes:** `browser-check` (visual confirmation), `pattern-alignment` (checks against the\n  project's canonical patterns), `kiss` (flags over-engineering)\n- **Sibling:** `drupal-critic` (BE counterpart for PHP/services/config review); applies only when\n  the profile's stack is Drupal\n- **Downstream:** `qa-steps` (peer review findings often surface QA scenarios), `check-tone` (run shared review prose through tone check before posting)",
+    "example": "**You ask:** `use the frontend-peer-review skill on this PR`\n\n**You get:**\n\n```\nOverall Assessment\nRequest changes — two small must-fixes; regression coverage is solid.\n\nMust Fix\n- src/components/Facet.jsx:42 — local useState diverges from FilterContext pattern; switch to the shared context.\n- src/utils/scroll.js — duplicates existing useScrollLock hook; delete and import.\n\nWorth Noting\n- Filter handlers could share a single keydown helper, but not blocking.\n\nGood Calls\n- Regression test for the deselect case is exactly the right coverage.\n\nOpen Questions\n- None.\n```",
     "filePath": "skills/frontend-peer-review/SKILL.md"
   },
   {
@@ -1115,6 +1198,7 @@
     "voice": "Load the voice config from the profile's `## Voice` section (e.g. `.agents/style/voice.md`) and apply it to all finding descriptions and suggested fixes. Run shared critique prose through `check-tone` before posting.",
     "security": "",
     "related": "- **Sibling:** `frontend-peer-review` (FE counterpart, apply both on full-stack changes)\n- **Pairs with:** `pattern-alignment` (project pattern conformance), `kiss` (over-engineering check)\n- **Downstream:** `qa-steps` (findings often surface QA verification steps), `check-tone` (run shared critique prose through tone check before posting)",
+    "example": "**You ask:** `use the drupal-critic skill on this hook implementation`\n\n**You get:**\n\n```\nHigh\n- mymodule.module:23 — direct `\\Drupal::service()` call inside hook.\n  Fix: move logic to a service class with dependency injection.\n\nMedium\n- mymodule.module:47 — user-facing string lacks `t()` translation wrapper.\n  Fix: wrap with `t('...')`.\n\nLow\n- mymodule.module:12 — static $form_ids array inline.\n  Fix: extract to a module constant.\n\nGood Calls\n- Hook signature and return value are correct.\n- Cache tags set on the render array.\n```",
     "filePath": "skills/drupal-critic/SKILL.md"
   },
   {
@@ -1127,10 +1211,11 @@
     "invokedBy": "",
     "whenToUse": "Invoke when the user wants a plain-language summary of what changed across a set of commits, for a PR description, release note, sprint summary, or changelog entry.",
     "approach": "1. **Get the commit range**, ask for `git log --oneline [range]` output or a list of commits\n2. **Group by theme**, bug fixes, features, refactors, tests, config, docs\n3. **Write in plain language**, what changed and why it matters, not just what files were touched\n4. **Calibrate detail level**, PR description needs more detail than a changelog entry",
-    "outputFormat": "### For a PR Description\n\nKeep the body to **1–4 sentences total** (excluding the marker and \"how\" line). PR descriptions exist to be skimmed, the diff carries the detail. If the profile defines an attribution marker and any commit being summarized was AI-assisted, end the PR description with that marker as the very last block, followed (or preceded) by a one-sentence \"how\" line that honestly describes what AI did. Wrap and mark up the output per the profile's Tracker section.\n\n```\n[1–4 sentences total. State what the PR fixes/adds and any one or two facts a reviewer needs to know. Link the issue (profile Tracker issue-ref format) if not auto-linked.]\n\n[attribution marker, if the profile defines one and a commit was AI-assisted]\n[Honest \"how\" line, see Attribution section for the full menu of variants.]\n```\n\nSee `## Attribution` below for full rules.\n\n### For a Changelog / Release Note\n```",
+    "outputFormat": "### For a PR Description\n\nKeep the body to **1–4 sentences total** (excluding the marker and \"how\" line). PR descriptions exist to be skimmed, the diff carries the detail. If the profile defines an attribution marker and any commit being summarized was AI-assisted, end the PR description with that marker as the very last block, followed (or preceded) by a one-sentence \"how\" line that honestly describes what AI did. Wrap and mark up the output per the profile's Tracker section.\n\n```\n[1–4 sentences total. State what the PR fixes/adds and any one or two facts a reviewer needs to know. Link the issue (profile Tracker issue-ref format) if not auto-linked.]\n\n[attribution marker, if the profile defines one and a commit was AI-assisted]\n[Honest \"how\" line, see Attribution section for the full menu of variants.]\n```\n\nSee `## Attribution` below for full rules.\n\n### For a Changelog / Release Note\n```\n## [Version or Sprint], [Date]\n\n### Fixed\n- [Bug description]\n\n### Added\n- [Feature description]\n\n### Changed\n- [Refactor or improvement]\n```\n\n### For a Sprint Summary\nPlain prose grouped by ticket, 1–2 sentences per ticket.",
     "voice": "Apply the voice config from the profile's `## Voice` section (e.g. `.agents/style/voice.md`) to all\ngenerated prose. Run the result through `check-tone` before publishing.",
     "security": "",
     "related": "- **Upstream:** `organize-commits` or `squash-commits` (summary is easier when commits are clean)\n- **Sibling:** `issue-closure-notes` (closure notes are ticket-scoped; summarize-commits is range-scoped, for PR descriptions, sprint summaries, release notes)\n- **Downstream:** `check-tone` (run summary prose through tone check before publishing)",
+    "example": "**You ask:** `use the summarize-commits skill on branch fix/PROJ-1234-facet-scroll`\n\n**You get:**\n\n```\nPROJ-1234: Clear overflow lock after facet deselect; add regression test.\n\nFixes the page-scroll lock that persisted after deselecting any facet.\nRoot cause: overflow:hidden set on body during ajaxSend was not cleared in the\nno-results branch of ajaxComplete. Cleared unconditionally; regression added.\n\n[attribution marker, per profile]\nAI co-authored the patch and test scaffold; human-edited and reviewed line by line.\n```",
     "filePath": "skills/summarize-commits/SKILL.md"
   },
   {
@@ -1147,6 +1232,7 @@
     "voice": "Apply `.agents/style/voice.md` to the \"What Changed\" summary and any explanatory prose.",
     "security": "",
     "related": "- **Invokes:** `browser-check` (live page validation), `definition-of-done` (appends the DoD)\n- **Often invoked by:** `issue-closure-notes` (closure notes link to QA steps), `ticket-refinement`\n  (QA steps may be written ahead of time during refinement)\n- **Downstream:** `check-tone` (run the \"What Changed\" summary and explanatory prose through tone check before posting)",
+    "example": "**You ask:** `use the qa-steps skill on PROJ-1234`\n\n**You get:**\n\n```\n## What Changed\nPage now stays scrollable after deselecting any facet on /search.\n\n## Setup\n- Use local environment at the project's local URL.\n- No special content or login required.\n\n## Test Scenarios\n\n### Scenario 1: Reproduce and verify fix\n- Go to /search\n- Select any facet (e.g. \"Funding > Grants\")\n- Wait for results to refresh\n- Deselect the facet\n- [ ] Expected: page scrolls; before fix it was locked\n\n### Scenario 2: Cross-viewport\n- Repeat Scenario 1 at 768px and 375px\n- [ ] Expected: scrolls at all viewports\n- [ ] Expected: no console errors\n\n## Caveats\n- None.\n```",
     "filePath": "skills/qa-steps/SKILL.md"
   },
   {
@@ -1163,6 +1249,7 @@
     "voice": "Apply the project's voice config (see the profile's `## Voice` section, e.g. `.agents/style/voice.md`).\nApply it to all generated prose, problem summaries, problems encountered, and follow-up notes. Run the closure notes through `check-tone` before posting to the tracker.",
     "security": "",
     "related": "- **Upstream:** `qa-steps` (closure notes reference the QA steps written earlier), `handoff-message` (closure notes summarize what the handoffs documented)\n- **Invokes:** `definition-of-done` (appends the DoD checklist)\n- **Downstream:** `check-tone` (run closure-note prose through tone check before posting)\n- **Phase placement:** Closure notes are pre-review communication. They live in Phase 6 (Communicate) alongside `lessons-learned`, both running at handoff time.",
+    "example": "**You ask:** `use the issue-closure-notes skill on PROJ-1234`\n\n**You get:**\n\n```\n## Problem & Approach\nPage locked after facet deselect; cleared the stale `overflow:hidden` in the ajaxComplete handler so the no-results branch no longer leaks the lock.\n\n## Changes\n- `a1b2c3d` — clear overflow lock unconditionally in ajaxComplete\n- `e4f5g6h` — add regression test for the deselect path\n- `9112301` — update visual reference shot\n\n## Summary\nPR delivers a focused fix; page stays scrollable after deselect across desktop, tablet, and mobile.\n\n## Follow-up\n- None.\n```",
     "filePath": "skills/issue-closure-notes/SKILL.md"
   },
   {
@@ -1175,10 +1262,11 @@
     "invokedBy": "",
     "whenToUse": "Invoke after completing a ticket, sprint, or project phase when the user wants to capture what went well, what didn't, and what to carry forward.",
     "approach": "1. **Identify the scope**, single ticket, sprint, or larger effort\n2. **What went well**, approaches, tools, or decisions that paid off\n3. **What didn't go well**, blockers, missteps, or things that cost time\n4. **Root causes**, for each thing that didn't go well, what was the underlying reason\n5. **What to do differently**, concrete changes to process, tooling, or approach\n6. **What to carry forward**, patterns or decisions worth repeating",
-    "outputFormat": "Label the note with the work's issue reference using the profile's `## Tracker` → Issue ref format\n(e.g. `PROJ-123`, `#NNNN`).\n\n```",
+    "outputFormat": "Label the note with the work's issue reference using the profile's `## Tracker` → Issue ref format\n(e.g. `PROJ-123`, `#NNNN`).\n\n```\n## Lessons Learned: [Ticket / Sprint / Feature]\n\n### What Went Well\n- [item]\n\n### What Didn't Go Well\n- [item], root cause: [brief explanation]\n\n### What to Do Differently\n- [Concrete change to process, tooling, or approach]\n\n### Carry Forward\n- [Pattern or decision worth repeating on future work]\n```",
     "voice": "Apply the voice config named in the profile's `## Voice` section (e.g. `.agents/style/voice.md`).\nApply it to all generated prose, keep it direct and honest, not performative. Run shared lessons-learned notes through `check-tone` before publishing.",
     "security": "",
     "related": "`lessons-learned` lives at the end of the Communicate phase. It runs at handoff time, alongside `issue-closure-notes`, while the work is still fresh, before the ticket leaves your hands for downstream review (e.g. visual/UX QA, code review, QA per the profile's `## Workflow states`).\n\n- **Phase placement:** end of Phase 6 (Communicate), not a separate phase. Reflection happens as you hand off, not after merge. By the time the ticket is Done, you're already on the next thing.\n- **Upstream:** all prior phase artifacts (plan, handoffs, closure notes) feed into the reflection\n- **Sibling:** `issue-closure-notes` (the comms artifact); this is the discipline artifact\n- **Downstream:** `check-tone` (run shared lessons through tone check before publishing)\n- **Output goes where:** `.agents/lessons/`, plus wherever the project files durable knowledge (the\n  profile names this: e.g. a team wiki or the memory bank). Lessons that change process should\n  also propagate back into the skills themselves.",
+    "example": "**You ask:** `use the lessons-learned skill on PROJ-1234`\n\n**You get:** a file at `.agents/lessons/PROJ-1234-lessons.md`:\n\n```\n## Lessons Learned: PROJ-1234 facet deselect scroll lock\n\n### What Went Well\n- Reproducing in browser-check first surfaced the ajaxComplete race quickly.\n\n### What Didn't Go Well\n- First fix attempt (mousedown handler) only treated the symptom.\n  Root cause: didn't audit all overflow-toggling paths before patching.\n\n### What to Do Differently\n- For scroll-lock bugs, enumerate every overflow toggle path before choosing a patch site.\n\n### Carry Forward\n- The \"reproduce in browser-check first\" habit is paying off; keep doing it for AJAX-state bugs.\n```",
     "filePath": "skills/lessons-learned/SKILL.md"
   },
   {
@@ -1195,6 +1283,7 @@
     "voice": "Apply the voice config named in the profile's `## Voice` section (default `.agents/style/voice.md`)\nwhen writing suggested rewrites.",
     "security": "",
     "related": "`check-tone` is the cross-cutting voice gate for the system. Any skill that produces prose can route its output through here.\n\n- **Invoked by:** `commit-message-writer` (validates tone before finalizing), and recommended for any handoff, closure, refinement, or peer-review output before publishing\n- **Pairs with:** `.agents/style/voice.md` (the per-project voice config that defines what \"on-tone\" means)",
+    "example": "**You ask:** `use the check-tone skill on this PR description`\n\n**You get:**\n\n```\n- Original: \"We've basically just gone ahead and fixed the scroll bug\"\n  Issue: filler words (\"basically\", \"just\", \"gone ahead and\")\n  Suggested rewrite: \"Fixes the scroll bug on facet deselect.\"\n\n- Original: \"sorry it took so long!\"\n  Issue: apologetic tone inappropriate for a PR description\n  Suggested rewrite: (remove)\n\n- Original: \"Hopefully this works.\"\n  Issue: hedge implies uncertainty about correctness\n  Suggested rewrite: \"Regression test added.\"\n\nOverall: Needs rewrite.\n```",
     "filePath": "skills/check-tone/SKILL.md"
   },
   {
@@ -1211,6 +1300,7 @@
     "voice": "",
     "security": "",
     "related": "This skill is the gate that runs *before* other skills when they're about to ingest sensitive data or operate against higher environments.\n\n- **Runs before:** `browser-check` (especially higher envs), `handoff-message` (when summarizing external content), `triage` and `ticket-refinement` (when summarizing user reports or support tickets), any skill that ingests external data\n- **References:** [CivicActions AI Usage Policy](https://civicactions.atlassian.net/wiki/x/AwC3Ig), [NIST AI Risk Management Framework](https://www.nist.gov/itl/ai-risk-management-framework)",
+    "example": "**You ask:** `use the security-check skill on this support ticket before I paste it`\n\n**You get:**\n\n```\nContent type:         user data (support ticket)\nClassification:       Sensitive (contains PII)\nAI client appropriate: only the sanctioned non-code tool per profile\nEnvironment scope:    N/A (ticket content)\nDecision:             Redact first\n\nRedaction list:\n  - Reporter name + email\n  - 3 user account IDs in the repro steps\n  - Screenshot showing logged-in admin user\n\nReasoning: ticket contains identifiable user data; safe to share after redaction.\n```",
     "filePath": "skills/security-check/SKILL.md"
   }
 ];
@@ -1581,7 +1671,7 @@
           }
         }
         closeTo(-1);
-        if (raw.startsWith("<") || raw.startsWith("@@FENCE")) {
+        if (raw.startsWith("@@FENCE") || /^<(pre|table|div|h[1-6]|ul|ol|li|blockquote)\b/i.test(raw)) {
           out.push(raw);
         } else {
           out.push(`<p>${raw}</p>`);
@@ -1609,16 +1699,20 @@
 
       const sections = [];
 
-      // Description
+      // ===== Tier 1: Lead =====
       if (skill.description) {
         sections.push(`
-          <div class="modal-section" data-section="description">
+          <div class="modal-section tier-lead" data-section="description">
             <h3>Description</h3>
             <p class="description">${escapeHtml(skill.description)}</p>
           </div>
         `);
       }
+      if (skill.example) {
+        sections.push(`<div class="modal-section tier-lead" data-section="example"><h3>Example</h3><div class="example-block">${mdToHtmlInline(skill.example)}</div></div>`);
+      }
 
+      // ===== Tier 2: Reference =====
       if (skill.whenToUse) {
         sections.push(`<div class="modal-section" data-section="when"><h3>When to Use</h3>${mdToHtmlInline(skill.whenToUse)}</div>`);
       }
@@ -1626,28 +1720,62 @@
         sections.push(`<div class="modal-section" data-section="approach"><h3>Approach</h3>${mdToHtmlInline(skill.approach)}</div>`);
       }
       if (skill.outputFormat) {
-        sections.push(`<div class="modal-section" data-section="output"><h3>Output Format</h3>${mdToHtmlInline(skill.outputFormat)}</div>`);
+        const tpl = skill.outputFormat.trim();
+        const outer = tpl.match(/^```[a-z]*\n([\s\S]*?)```\s*$/);
+        const body = outer
+          ? `<pre><code>${escapeHtml(outer[1])}</code></pre>`
+          : mdToHtmlInline(tpl);
+        sections.push(`<div class="modal-section" data-section="output"><h3>Output template</h3>${body}</div>`);
       }
-      if (skill.invokedBy) {
-        const callers = skill.invokedBy.split(",").map(s => s.trim()).filter(s => KNOWN_SKILLS.has(s));
-        if (callers.length) {
-          const chips = callers.map(s =>
-            `<button type="button" class="next-chip" data-skill="${s}" aria-label="Open skill: ${s}">${s}</button>`
-          ).join("");
-          sections.push(`<div class="modal-section" data-section="called-by"><h3>Called by</h3><p>Typically invoked by other skills, not directly: ${chips}</p></div>`);
+
+      // ===== Tier 3: Skill graph (merged Called by + Typical Next + Related) =====
+      const graphRows = [];
+      // Called by (frontmatter invokedBy)
+      const callers = (skill.invokedBy || "")
+        .split(",").map(s => s.trim()).filter(s => KNOWN_SKILLS.has(s) && s !== skill.name);
+      if (callers.length) {
+        const chips = callers.map(s => `<button type="button" class="next-chip" data-skill="${s}">${s}</button>`).join("");
+        graphRows.push(`<div class="graph-row"><span class="graph-label">Called by</span><span class="chip-row">${chips}</span></div>`);
+      }
+      // Typical next (frontmatter typicalNext)
+      const nextSlugs = extractNextSlugs(skill.typicalNext, 5).filter(s => s !== skill.name);
+      if (nextSlugs.length) {
+        const chips = nextSlugs.map(s => `<button type="button" class="next-chip" data-skill="${s}">${s}</button>`).join("");
+        graphRows.push(`<div class="graph-row"><span class="graph-label">Next</span><span class="chip-row">${chips}</span></div>`);
+      }
+      // Related (skills referenced anywhere in the ## Related Skills section, minus the two above)
+      if (skill.related) {
+        const dedupe = new Set([skill.name, ...callers, ...nextSlugs]);
+        const relatedSlugs = [];
+        const seen = new Set();
+        const re = /`([a-z][a-z0-9-]*)`/g;
+        let m;
+        while ((m = re.exec(skill.related)) !== null) {
+          const slug = m[1];
+          if (KNOWN_SKILLS.has(slug) && !dedupe.has(slug) && !seen.has(slug)) {
+            seen.add(slug);
+            relatedSlugs.push(slug);
+          }
+        }
+        if (relatedSlugs.length) {
+          const chips = relatedSlugs.map(s => `<button type="button" class="next-chip" data-skill="${s}">${s}</button>`).join("");
+          graphRows.push(`<div class="graph-row"><span class="graph-label">Related</span><span class="chip-row">${chips}</span></div>`);
         }
       }
-      if (skill.typicalNext) {
-        sections.push(`<div class="modal-section" data-section="next"><h3>Typical Next</h3>${mdToHtmlInline(linkifyNextRefs(skill.typicalNext))}</div>`);
+      if (graphRows.length) {
+        sections.push(`<div class="modal-section tier-graph" data-section="graph"><h3>Skill graph</h3>${graphRows.join("")}</div>`);
+      }
+
+      // ===== Tier 4: Footnotes (Voice + Security) =====
+      const foot = [];
+      if (skill.voice) {
+        foot.push(`<div class="modal-section tier-foot" data-section="voice"><h3>Voice</h3>${mdToHtmlInline(skill.voice)}</div>`);
       }
       if (skill.security) {
-        sections.push(`<div class="modal-section" data-section="security"><h3>Security</h3>${mdToHtmlInline(skill.security)}</div>`);
+        foot.push(`<div class="modal-section tier-foot" data-section="security"><h3>Security</h3>${mdToHtmlInline(skill.security)}</div>`);
       }
-      if (skill.related) {
-        sections.push(`<div class="modal-section" data-section="related"><h3>Related Skills</h3>${mdToHtmlInline(skill.related)}</div>`);
-      }
-      if (skill.voice) {
-        sections.push(`<div class="modal-section" data-section="voice"><h3>Voice</h3>${mdToHtmlInline(skill.voice)}</div>`);
+      if (foot.length) {
+        sections.push(`<div class="modal-footnotes">${foot.join("")}</div>`);
       }
 
       sections.push(`<a class="modal-footer-link" href="../${skill.filePath}">View SKILL.md →</a>`);
@@ -1669,10 +1797,17 @@
       if (!body || !nav) return;
       const sections = body.querySelectorAll(".modal-section[data-section]");
       if (sections.length < 2) { nav.innerHTML = ""; nav.hidden = true; return; }
-      const labels = { description:"Description", when:"When", approach:"Approach", output:"Output", "called-by":"Called by", next:"Next", security:"Security", related:"Related", voice:"Voice" };
+      const labels = { description:"Description", example:"Example", when:"When", approach:"Approach", output:"Output template", graph:"Graph", voice:"Voice", security:"Security" };
+      const footnoteSlugs = new Set(["voice", "security"]);
+      let sepInserted = false;
       const pills = Array.from(sections).map(sec => {
         const slug = sec.dataset.section;
-        return `<a class="modal-nav-pill" href="#" data-target="${slug}">${labels[slug] || slug}</a>`;
+        let prefix = "";
+        if (!sepInserted && footnoteSlugs.has(slug)) {
+          prefix = '<span class="modal-nav-sep" aria-hidden="true"></span>';
+          sepInserted = true;
+        }
+        return `${prefix}<a class="modal-nav-pill" href="#" data-target="${slug}">${labels[slug] || slug}</a>`;
       }).join("");
       nav.innerHTML = pills;
       nav.hidden = false;

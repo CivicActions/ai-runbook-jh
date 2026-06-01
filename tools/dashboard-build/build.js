@@ -69,9 +69,15 @@ function extractSection(body, headerRegex) {
   const lines = body.split("\n");
   let inSection = false;
   let depth = 0;
+  let inFence = false;
   const out = [];
   for (const line of lines) {
-    const headerMatch = line.match(/^(#+)\s+(.+)$/);
+    if (/^```/.test(line)) {
+      inFence = !inFence;
+      if (inSection) out.push(line);
+      continue;
+    }
+    const headerMatch = !inFence && line.match(/^(#+)\s+(.+)$/);
     if (headerMatch) {
       const lineDepth = headerMatch[1].length;
       if (headerRegex.test(headerMatch[2])) {
@@ -161,6 +167,7 @@ const skills = dirs.map(name => {
     voice: extractSection(body, /^Voice$/i),
     security: extractSection(body, /^Security$/i),
     related: extractSection(body, /^Related Skills$/i),
+    example: extractSection(body, /^Example$/i),
     filePath: `skills/${name}/SKILL.md`,
   };
 });
@@ -829,6 +836,14 @@ const html = `<!DOCTYPE html>
       outline: 2px solid var(--primary);
       outline-offset: 2px;
     }
+    .modal-nav-sep {
+      display: inline-block;
+      width: 1px;
+      height: 14px;
+      background: var(--border);
+      margin: 0 6px;
+      align-self: center;
+    }
     .modal-body { padding: 20px 24px 32px; }
     .modal-section { margin-top: 20px; scroll-margin-top: 110px; }
     .modal-section:first-child { margin-top: 8px; }
@@ -902,6 +917,64 @@ const html = `<!DOCTYPE html>
       font-size: 13px;
       color: var(--primary);
       font-family: "Courier New", Consolas, monospace;
+    }
+
+    /* ===== modal tiers ===== */
+    .modal-section.tier-lead .example-block p { margin: 6px 0; }
+    .modal-section.tier-lead .example-block p:first-child { margin-top: 0; }
+    .modal-section.tier-lead .example-block p:last-child { margin-bottom: 0; }
+    .modal-section.tier-lead .example-block pre { margin: 8px 0 0; }
+
+    .modal-section.tier-graph .graph-row {
+      display: flex;
+      align-items: baseline;
+      gap: 10px;
+      padding: 6px 0;
+      border-bottom: 1px dashed var(--border);
+    }
+    .modal-section.tier-graph .graph-row:last-child { border-bottom: none; }
+    .modal-section.tier-graph .graph-label {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      flex: 0 0 96px;
+      padding-top: 2px;
+      white-space: nowrap;
+    }
+    .modal-section.tier-graph .chip-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 4px 6px;
+      flex: 1;
+    }
+    .modal-section.tier-graph .chip-row .graph-note {
+      font-size: 12.5px;
+      color: var(--text-mid);
+      font-style: italic;
+    }
+
+    .modal-footnotes {
+      margin-top: 24px;
+      padding-top: 16px;
+      border-top: 1px solid var(--border);
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 20px;
+    }
+    .modal-footnotes .modal-section { margin-top: 0; }
+    .modal-footnotes .modal-section h3 {
+      font-size: 11px;
+      letter-spacing: 1.5px;
+      color: var(--text-muted);
+    }
+    .modal-footnotes .modal-section p,
+    .modal-footnotes .modal-section li { font-size: 13px; }
+    @media (max-width: 600px) {
+      .modal-footnotes { grid-template-columns: 1fr; }
+      .modal-section.tier-graph .graph-row { flex-direction: column; gap: 4px; }
+      .modal-section.tier-graph .graph-label { flex: none; }
     }
 
     footer {
@@ -1303,7 +1376,7 @@ const html = `<!DOCTYPE html>
           }
         }
         closeTo(-1);
-        if (raw.startsWith("<") || raw.startsWith("@@FENCE")) {
+        if (raw.startsWith("@@FENCE") || /^<(pre|table|div|h[1-6]|ul|ol|li|blockquote)\\b/i.test(raw)) {
           out.push(raw);
         } else {
           out.push(\`<p>\${raw}</p>\`);
@@ -1331,16 +1404,20 @@ const html = `<!DOCTYPE html>
 
       const sections = [];
 
-      // Description
+      // ===== Tier 1: Lead =====
       if (skill.description) {
         sections.push(\`
-          <div class="modal-section" data-section="description">
+          <div class="modal-section tier-lead" data-section="description">
             <h3>Description</h3>
             <p class="description">\${escapeHtml(skill.description)}</p>
           </div>
         \`);
       }
+      if (skill.example) {
+        sections.push(\`<div class="modal-section tier-lead" data-section="example"><h3>Example</h3><div class="example-block">\${mdToHtmlInline(skill.example)}</div></div>\`);
+      }
 
+      // ===== Tier 2: Reference =====
       if (skill.whenToUse) {
         sections.push(\`<div class="modal-section" data-section="when"><h3>When to Use</h3>\${mdToHtmlInline(skill.whenToUse)}</div>\`);
       }
@@ -1348,28 +1425,62 @@ const html = `<!DOCTYPE html>
         sections.push(\`<div class="modal-section" data-section="approach"><h3>Approach</h3>\${mdToHtmlInline(skill.approach)}</div>\`);
       }
       if (skill.outputFormat) {
-        sections.push(\`<div class="modal-section" data-section="output"><h3>Output Format</h3>\${mdToHtmlInline(skill.outputFormat)}</div>\`);
+        const tpl = skill.outputFormat.trim();
+        const outer = tpl.match(/^\`\`\`[a-z]*\\n([\\s\\S]*?)\`\`\`\\s*$/);
+        const body = outer
+          ? \`<pre><code>\${escapeHtml(outer[1])}</code></pre>\`
+          : mdToHtmlInline(tpl);
+        sections.push(\`<div class="modal-section" data-section="output"><h3>Output template</h3>\${body}</div>\`);
       }
-      if (skill.invokedBy) {
-        const callers = skill.invokedBy.split(",").map(s => s.trim()).filter(s => KNOWN_SKILLS.has(s));
-        if (callers.length) {
-          const chips = callers.map(s =>
-            \`<button type="button" class="next-chip" data-skill="\${s}" aria-label="Open skill: \${s}">\${s}</button>\`
-          ).join("");
-          sections.push(\`<div class="modal-section" data-section="called-by"><h3>Called by</h3><p>Typically invoked by other skills, not directly: \${chips}</p></div>\`);
+
+      // ===== Tier 3: Skill graph (merged Called by + Typical Next + Related) =====
+      const graphRows = [];
+      // Called by (frontmatter invokedBy)
+      const callers = (skill.invokedBy || "")
+        .split(",").map(s => s.trim()).filter(s => KNOWN_SKILLS.has(s) && s !== skill.name);
+      if (callers.length) {
+        const chips = callers.map(s => \`<button type="button" class="next-chip" data-skill="\${s}">\${s}</button>\`).join("");
+        graphRows.push(\`<div class="graph-row"><span class="graph-label">Called by</span><span class="chip-row">\${chips}</span></div>\`);
+      }
+      // Typical next (frontmatter typicalNext)
+      const nextSlugs = extractNextSlugs(skill.typicalNext, 5).filter(s => s !== skill.name);
+      if (nextSlugs.length) {
+        const chips = nextSlugs.map(s => \`<button type="button" class="next-chip" data-skill="\${s}">\${s}</button>\`).join("");
+        graphRows.push(\`<div class="graph-row"><span class="graph-label">Next</span><span class="chip-row">\${chips}</span></div>\`);
+      }
+      // Related (skills referenced anywhere in the ## Related Skills section, minus the two above)
+      if (skill.related) {
+        const dedupe = new Set([skill.name, ...callers, ...nextSlugs]);
+        const relatedSlugs = [];
+        const seen = new Set();
+        const re = /\`([a-z][a-z0-9-]*)\`/g;
+        let m;
+        while ((m = re.exec(skill.related)) !== null) {
+          const slug = m[1];
+          if (KNOWN_SKILLS.has(slug) && !dedupe.has(slug) && !seen.has(slug)) {
+            seen.add(slug);
+            relatedSlugs.push(slug);
+          }
+        }
+        if (relatedSlugs.length) {
+          const chips = relatedSlugs.map(s => \`<button type="button" class="next-chip" data-skill="\${s}">\${s}</button>\`).join("");
+          graphRows.push(\`<div class="graph-row"><span class="graph-label">Related</span><span class="chip-row">\${chips}</span></div>\`);
         }
       }
-      if (skill.typicalNext) {
-        sections.push(\`<div class="modal-section" data-section="next"><h3>Typical Next</h3>\${mdToHtmlInline(linkifyNextRefs(skill.typicalNext))}</div>\`);
+      if (graphRows.length) {
+        sections.push(\`<div class="modal-section tier-graph" data-section="graph"><h3>Skill graph</h3>\${graphRows.join("")}</div>\`);
+      }
+
+      // ===== Tier 4: Footnotes (Voice + Security) =====
+      const foot = [];
+      if (skill.voice) {
+        foot.push(\`<div class="modal-section tier-foot" data-section="voice"><h3>Voice</h3>\${mdToHtmlInline(skill.voice)}</div>\`);
       }
       if (skill.security) {
-        sections.push(\`<div class="modal-section" data-section="security"><h3>Security</h3>\${mdToHtmlInline(skill.security)}</div>\`);
+        foot.push(\`<div class="modal-section tier-foot" data-section="security"><h3>Security</h3>\${mdToHtmlInline(skill.security)}</div>\`);
       }
-      if (skill.related) {
-        sections.push(\`<div class="modal-section" data-section="related"><h3>Related Skills</h3>\${mdToHtmlInline(skill.related)}</div>\`);
-      }
-      if (skill.voice) {
-        sections.push(\`<div class="modal-section" data-section="voice"><h3>Voice</h3>\${mdToHtmlInline(skill.voice)}</div>\`);
+      if (foot.length) {
+        sections.push(\`<div class="modal-footnotes">\${foot.join("")}</div>\`);
       }
 
       sections.push(\`<a class="modal-footer-link" href="../\${skill.filePath}">View SKILL.md →</a>\`);
@@ -1391,10 +1502,17 @@ const html = `<!DOCTYPE html>
       if (!body || !nav) return;
       const sections = body.querySelectorAll(".modal-section[data-section]");
       if (sections.length < 2) { nav.innerHTML = ""; nav.hidden = true; return; }
-      const labels = { description:"Description", when:"When", approach:"Approach", output:"Output", "called-by":"Called by", next:"Next", security:"Security", related:"Related", voice:"Voice" };
+      const labels = { description:"Description", example:"Example", when:"When", approach:"Approach", output:"Output template", graph:"Graph", voice:"Voice", security:"Security" };
+      const footnoteSlugs = new Set(["voice", "security"]);
+      let sepInserted = false;
       const pills = Array.from(sections).map(sec => {
         const slug = sec.dataset.section;
-        return \`<a class="modal-nav-pill" href="#" data-target="\${slug}">\${labels[slug] || slug}</a>\`;
+        let prefix = "";
+        if (!sepInserted && footnoteSlugs.has(slug)) {
+          prefix = '<span class="modal-nav-sep" aria-hidden="true"></span>';
+          sepInserted = true;
+        }
+        return \`\${prefix}<a class="modal-nav-pill" href="#" data-target="\${slug}">\${labels[slug] || slug}</a>\`;
       }).join("");
       nav.innerHTML = pills;
       nav.hidden = false;
