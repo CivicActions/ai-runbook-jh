@@ -174,6 +174,7 @@ Type: bug | Scope: small | Risk: med | Dependencies: none
 ```
 
 ## Related Skills
+- **Upstream gate:** `security-check` (run before pasting user reports, support tickets, or external-author content into the session)
 - **Next step:** `ticket-refinement` for kept items that need deeper refinement before estimation
 - **Reference:** `definition-of-done` (used during refinement, not triage)
 - **Downstream:** `check-tone` (run shared triage prose through tone check before publishing)

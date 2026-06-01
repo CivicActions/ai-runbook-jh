@@ -134,6 +134,7 @@ Accessibility Notes
 
 ## Related Skills
 
+- **Upstream gate:** `security-check` (run before inspecting any environment higher than local, or capturing viewport screenshots that may contain PII or authored content)
 - **Invokes:** `browser-check` (viewport simulation via the profile's browser inspection MCP)
 - **Sibling Validate-phase skills:** `accessibility-audit`, `performance-frontend`, `frontend-peer-review`
 - **Downstream:** `qa-steps` (responsive checks often produce specific QA viewport scenarios), `check-tone` (run shared review prose through tone check before posting)

@@ -83,6 +83,7 @@ Summary: 2 serious findings. Verify with the project's a11y command.
 ```
 
 ## Related Skills
+- **Upstream gate:** `security-check` (run before auditing any environment higher than local, or pasting screenshots / tooling output that may contain PII or authored content)
 - **Invokes:** `browser-check` (live page inspection before static analysis)
 - **Sibling Validate-phase skills:** `responsive-design`, `performance-frontend`,
   `frontend-peer-review`, `drupal-critic` (the last only when the profile's stack is Drupal); these

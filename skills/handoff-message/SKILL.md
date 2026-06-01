@@ -181,6 +181,7 @@ Page locks after facet deselect; tracked to a stale overflow style.
 
 ## Related Skills
 
+- **Upstream gate:** `security-check` (run before summarizing external content, user reports, or higher-env findings into the handoff)
 - **Phase placement:** Handoff is part of the Build phase. It's a mid-work pause/resume mechanic for carrying state across chat sessions. For end-of-work communication (after build is done), use `issue-closure-notes`. For lessons captured at handoff time, use `lessons-learned`.
 - **Often references:** `issue-plan` (the plan file is linked from the handoff), prior handoffs in `.agents/handoffs/`
 - **Downstream:** `check-tone` (run shared handoff prose through tone check before publishing)

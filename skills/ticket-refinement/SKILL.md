@@ -242,6 +242,7 @@ Definition of Done:
 
 ## Related Skills
 
+- **Upstream gate:** `security-check` (run before pasting user reports, support tickets, or external-author content into the refinement session)
 - **Upstream:** `triage` (refinement only happens on tickets that survived triage)
 - **Invokes:** `definition-of-done` (generates DoD subset)
 - **Downstream:** `issue-plan` (once selected for development, writes the implementation plan from

@@ -118,5 +118,6 @@ Open Questions
 
 `browser-check` is a foundation skill that other Validate-phase skills build on:
 
+- **Upstream gate:** `security-check` (run before inspecting any environment higher than local, or capturing screenshots that may contain PII / authenticated content)
 - **Invoked by:** `qa-steps` (live validation during QA writing), `accessibility-audit` (DOM inspection for a11y), `responsive-design` (viewport testing), `performance-frontend` (network and asset audit), `frontend-peer-review` (visual confirmation pre-merge)
 - **Independent use:** also useful standalone for any "check this in the browser" moment
