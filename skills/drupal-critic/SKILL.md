@@ -66,7 +66,7 @@ Always include a **Good Calls** section.
 - Styling must use the project's design-system tokens (see profile `## Stack`), never hardcoded hex values.
 
 ## Voice
-Load the voice config from the profile's `## Voice` section (e.g. `.agents/style/voice.md`) and apply it to all finding descriptions and suggested fixes.
+Load the voice config from the profile's `## Voice` section (e.g. `.agents/style/voice.md`) and apply it to all finding descriptions and suggested fixes. Run shared critique prose through `check-tone` before posting.
 
 ## Attribution
 
@@ -106,4 +106,4 @@ If the critique is only for your own immediate use, skip the marker. Skip it ent
 
 - **Sibling:** `frontend-peer-review` (FE counterpart, apply both on full-stack changes)
 - **Pairs with:** `pattern-alignment` (project pattern conformance), `kiss` (over-engineering check)
-- **Downstream:** `qa-steps` (findings often surface QA verification steps)
+- **Downstream:** `qa-steps` (findings often surface QA verification steps), `check-tone` (run shared critique prose through tone check before posting)

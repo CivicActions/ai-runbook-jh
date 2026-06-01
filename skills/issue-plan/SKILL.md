@@ -54,8 +54,26 @@ refinement have already produced the AC, implementation details, LOE, and priori
 implementer's working document, not a refinement artifact. If the item isn't there yet, the right
 skill is `triage` (first touch) or `ticket-refinement` (deeper refinement), not this one.
 
+## Workflow-state field requirements
+End the plan with a checklist of the remaining workflow states ahead of the work and the fields
+that must be filled to enter each one. Read both the state sequence and the per-state required
+fields from the profile (`## Workflow states` and `## Required fields`); don't hardcode them here.
+
+Generic shape (substitute the profile's actual states and fields):
+
+```
+- [State A] → needs: [field, field, field]
+- [State B] → needs: [field, field], plus [tag] if [condition]
+- [State C] → needs: [field set by which role]
+- [State D] → needs: [field set by which role]
+```
+
+The implementer ticks each off as the work progresses, so the item moves through the workflow
+without stalling on missing required fields.
+
 ## Voice
-Apply `.agents/style/voice.md` to goal descriptions, risk notes, and open questions.
+Apply `.agents/style/voice.md` to goal descriptions, risk notes, and open questions. Run shared
+plan prose through `check-tone` before publishing.
 
 ## Security
 Plan files are personal artifacts that may end up team-visible (shareable on request for peer review
@@ -74,4 +92,4 @@ defines no marker. Don't name the specific AI tool (see `security-check`).
   IDs this plan elaborates)
 - **Invokes:** `implementation-details` (the plan includes a generated IDs checklist)
 - **Downstream:** `handoff-message` (the plan is linked from each session's handoff so the trail is
-  traceable)
+  traceable), `check-tone` (run shared plan prose through tone check before publishing)

@@ -55,7 +55,7 @@ Return a flat list of findings. For each:
 End with a summary count by priority and the profile's a11y validation commands to verify the fix.
 
 ## Voice
-Apply `.agents/style/voice.md` to finding descriptions and fix suggestions.
+Apply `.agents/style/voice.md` to finding descriptions and fix suggestions. Run shared audit prose through `check-tone` before posting.
 
 ## Attribution
 If the active profile defines an attribution marker (see its `## Attribution marker` section), end
@@ -67,7 +67,7 @@ profile defines no marker. Don't name the specific AI tool (see `security-check`
 - **Sibling Validate-phase skills:** `responsive-design`, `performance-frontend`,
   `frontend-peer-review`, `drupal-critic` (the last only when the profile's stack is Drupal); these
   may all run on the same change
-- **Downstream:** `qa-steps` (a11y findings often produce QA verification steps)
+- **Downstream:** `qa-steps` (a11y findings often produce QA verification steps), `check-tone` (run shared audit prose through tone check before posting)
 
 ## Security
 Audit against the profile's **local environment by default**. If a higher-environment audit is

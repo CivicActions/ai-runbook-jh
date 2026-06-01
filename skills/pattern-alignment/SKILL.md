@@ -59,7 +59,7 @@ For each ❌ or ⚠️:
 
 ## Voice
 Apply the voice config named in the profile's `## Voice` section (e.g. `.agents/style/voice.md`).
-Apply it to divergence descriptions and suggestions.
+Apply it to divergence descriptions and suggestions. Run shared alignment-check prose through `check-tone` before posting.
 
 ## Patterns to Check
 What to check depends on the project's stack; read the profile's `## Stack` section and apply only
@@ -125,3 +125,4 @@ tool), and the wording is a team convention, not policy text verbatim (see `secu
 
 - **Pairs with:** `kiss` (pattern-alignment catches under-aligned engineering; KISS catches over-engineering, both are Build-phase critics)
 - **Invoked by:** `frontend-peer-review`, `drupal-critic` (peer review applies pattern check as part of overall review)
+- **Downstream:** `check-tone` (run shared alignment-check prose through tone check before posting)

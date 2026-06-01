@@ -78,7 +78,7 @@ Anything that needs a quick message or a short conversation before merge.
 
 ## Voice
 Apply `.agents/style/voice.md` to the overall assessment, must-fix descriptions, and open questions.
-Write like you're talking to a colleague, not filing a report.
+Write like you're talking to a colleague, not filing a report. Run shared review prose through `check-tone` before posting.
 
 ## Attribution
 If the active profile defines an attribution marker (see its `## Attribution marker` section), end a
@@ -90,4 +90,4 @@ defines no marker (e.g. public OSS). Don't name the specific AI tool (see `secur
   project's canonical patterns), `kiss` (flags over-engineering)
 - **Sibling:** `drupal-critic` (BE counterpart for PHP/services/config review); applies only when
   the profile's stack is Drupal
-- **Downstream:** `qa-steps` (peer review findings often surface QA scenarios)
+- **Downstream:** `qa-steps` (peer review findings often surface QA scenarios), `check-tone` (run shared review prose through tone check before posting)

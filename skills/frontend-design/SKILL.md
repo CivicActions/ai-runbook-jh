@@ -76,7 +76,7 @@ Simplified HTML/template markup showing structure and key classes
 
 ## Voice
 Apply the voice config from the profile's `## Voice` section (e.g. `.agents/style/voice.md`). Apply
-it to component overview prose and open questions.
+it to component overview prose and open questions. Run shared design proposals through `check-tone` before posting.
 
 ## Design-system standards
 Pull the hard constraints from the profile's `## Stack` → Styling section and apply them as
@@ -132,5 +132,5 @@ Name: filter-chip. Tier: molecule. Purpose: [...]
 
 ## Related Skills
 
-- **Downstream:** `pattern-alignment` (once designed, verify implementation follows established patterns), `kiss` (verify the design isn't over-engineered)
+- **Downstream:** `pattern-alignment` (once designed, verify implementation follows established patterns), `kiss` (verify the design isn't over-engineered), `check-tone` (run shared design proposals through tone check before posting)
 - **Upstream:** `ticket-refinement` (design thinking often surfaces during refinement, frontend-design can shape AC and IDs)

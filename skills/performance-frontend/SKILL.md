@@ -76,7 +76,7 @@ Map findings to the profile's `## Priority guide`. As a guide:
 
 ## Voice
 Load the profile's voice config (`## Voice` → config path) before writing finding descriptions and
-fix suggestions, and apply it to the prose.
+fix suggestions, and apply it to the prose. Run shared audit prose through `check-tone` before posting.
 
 ## Performance targets
 Read targets from the profile's `## Performance budgets` (if defined): page-load / TTI thresholds,
@@ -123,7 +123,7 @@ _AI-assisted draft, reviewed before submission._
 
 - **Invokes:** `browser-check` (live network/asset/console audit)
 - **Sibling Validate-phase skills:** `accessibility-audit`, `responsive-design`, `frontend-peer-review`, `drupal-critic` (Drupal stack only)
-- **Downstream:** `qa-steps` (perf findings often produce specific QA verification steps)
+- **Downstream:** `qa-steps` (perf findings often produce specific QA verification steps), `check-tone` (run shared audit prose through tone check before posting)
 
 ## Security
 

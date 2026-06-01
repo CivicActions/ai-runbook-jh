@@ -36,7 +36,7 @@ For each complexity signal:
 The simplest implementation that correctly solves the stated requirement.
 
 ## Voice
-Apply `.agents/style/voice.md`. Keep feedback direct, name the problem plainly.
+Apply `.agents/style/voice.md`. Keep feedback direct, name the problem plainly. Run shared KISS-check prose through `check-tone` before posting.
 
 ## Stack-specific checks
 Read the active project's `## Stack` section from `.agents/profile.md` and apply its conventions
@@ -58,3 +58,4 @@ detail.
 
 - **Pairs with:** `pattern-alignment` (KISS catches over-engineering; pattern-alignment catches under-aligned engineering, both are Build-phase critics)
 - **Invoked by:** `frontend-peer-review`, `drupal-critic` (peer review applies KISS check as part of overall review)
+- **Downstream:** `check-tone` (run shared KISS-check prose through tone check before posting)

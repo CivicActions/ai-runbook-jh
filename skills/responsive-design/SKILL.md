@@ -60,7 +60,7 @@ For each ⚠️ / ❌:
 - Any content reordering that affects reading order
 
 ## Voice
-Apply the voice config from profile `## Voice`. Apply it to issue descriptions and fix suggestions.
+Apply the voice config from profile `## Voice`. Apply it to issue descriptions and fix suggestions. Run shared review prose through `check-tone` before posting.
 
 ## Styling Standards
 Pull these from profile `## Stack` (and `## Environments` for visual regression). Typical rules:
@@ -113,4 +113,4 @@ the marker is intentionally tool-agnostic (see `security-check`).
 
 - **Invokes:** `browser-check` (viewport simulation via the profile's browser inspection MCP)
 - **Sibling Validate-phase skills:** `accessibility-audit`, `performance-frontend`, `frontend-peer-review`
-- **Downstream:** `qa-steps` (responsive checks often produce specific QA viewport scenarios)
+- **Downstream:** `qa-steps` (responsive checks often produce specific QA viewport scenarios), `check-tone` (run shared review prose through tone check before posting)

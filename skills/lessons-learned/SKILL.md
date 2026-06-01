@@ -53,7 +53,7 @@ Label the note with the work's issue reference using the profile's `## Tracker` 
 
 ## Voice
 Apply the voice config named in the profile's `## Voice` section (e.g. `.agents/style/voice.md`).
-Apply it to all generated prose, keep it direct and honest, not performative.
+Apply it to all generated prose, keep it direct and honest, not performative. Run shared lessons-learned notes through `check-tone` before publishing.
 
 ## Project Context
 - Note if a lesson applies to a recurring pattern in the codebase (the profile's `## Stack` and
@@ -114,6 +114,7 @@ _AI-assisted draft, reviewed before submission._   <- only if the profile define
 - **Phase placement:** end of Phase 6 (Communicate), not a separate phase. Reflection happens as you hand off, not after merge. By the time the ticket is Done, you're already on the next thing.
 - **Upstream:** all prior phase artifacts (plan, handoffs, closure notes) feed into the reflection
 - **Sibling:** `issue-closure-notes` (the comms artifact); this is the discipline artifact
+- **Downstream:** `check-tone` (run shared lessons through tone check before publishing)
 - **Output goes where:** `.agents/lessons/`, plus wherever the project files durable knowledge (the
   profile names this: e.g. a team wiki or the memory bank). Lessons that change process should
   also propagate back into the skills themselves.

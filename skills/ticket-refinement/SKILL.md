@@ -162,7 +162,7 @@ profile rather than assuming a default set.)
 
 ## Voice
 
-Apply `.agents/style/voice.md` to context/background prose, technical notes, and open questions.
+Apply `.agents/style/voice.md` to context/background prose, technical notes, and open questions. Run the assembled ticket body through `check-tone` before pasting it into the tracker.
 
 ## Security
 
@@ -211,4 +211,4 @@ _AI-assisted draft, reviewed before submission._   <- only if the profile define
 - **Upstream:** `triage` (refinement only happens on tickets that survived triage)
 - **Invokes:** `definition-of-done` (generates DoD subset)
 - **Downstream:** `issue-plan` (once selected for development, writes the implementation plan from
-  refined ticket content)
+  refined ticket content), `check-tone` (run the assembled ticket body through tone check before publishing)
