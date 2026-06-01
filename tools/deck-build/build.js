@@ -258,7 +258,7 @@ function slideSubtitle(slide, text, x = 0.6, y = 1.25) {
     { x: 5.4,  w: 1.5, text: "Selected : In Progress" },
     { x: 7.0,  w: 1.5, text: "In Progress" },
     { x: 8.6,  w: 1.5, text: "In Progress" },
-    { x: 10.2, w: 2.7, text: "→ Visual/UX QA → Code Review → QA → Done" },
+    { x: 10.2, w: 2.7, text: "Visual/UX QA  ▸  Code Review  ▸  QA  ▸  Done" },
   ];
   // Use arrow glyph instead of colon for first two
   jiraCaptions[1].text = "Open  ▸  Ready for Est";
