@@ -66,6 +66,27 @@ that hold across projects:
 - Body explains the why, not the how
 - Never squash commits already pushed to a shared branch without coordinating with the team
 
+## Example
+
+**You ask:** `use the squash-commits skill on these 4 commits`
+
+**You get:**
+
+```
+Proposed Squashed Message
+PROJ-1234 Clear overflow lock after facet deselect
+
+Adds a regression test covering the deselect path. Lock was leaking from
+the no-results branch of ajaxComplete.
+
+Commands
+git rebase -i HEAD~4
+# mark commits 2–4 as `squash`
+
+Notes
+- WIP commits collapse cleanly; no commit in the range warrants staying separate.
+```
+
 ## Related Skills
 
 - **Invokes:** `commit-message-writer` (writes the squashed commit message)

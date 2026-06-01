@@ -72,6 +72,21 @@ public OSS contributions).
 _AI-assisted draft, reviewed before submission._   <- only if the profile defines a marker
 ```
 
+## Example
+
+**You ask:** `use the definition-of-done skill on PROJ-1234 (frontend bug)`
+
+**You get:**
+
+```
+- [ ] Regression test added
+- [ ] Manual QA confirmed on desktop, tablet, mobile
+- [ ] Visual reference shot updated (or marked unchanged)
+- [ ] Linter passes
+- [ ] Reviewed by frontend peer
+- [ ] Acceptance criteria verified on the project's higher env
+```
+
 ## Related Skills
 - **Invoked by:** `ticket-refinement` (appended during refinement), `qa-steps` (appended after QA
   scenarios), `issue-closure-notes` (confirmed before closing)

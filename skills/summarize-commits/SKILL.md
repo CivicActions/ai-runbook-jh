@@ -115,6 +115,23 @@ _AI-assisted draft, reviewed before submission._
 AI co-authored the code (filter-button.js + regression test); human-edited and reviewed line by line.
 ```
 
+## Example
+
+**You ask:** `use the summarize-commits skill on branch fix/PROJ-1234-facet-scroll`
+
+**You get:**
+
+```
+PROJ-1234: Clear overflow lock after facet deselect; add regression test.
+
+Fixes the page-scroll lock that persisted after deselecting any facet.
+Root cause: overflow:hidden set on body during ajaxSend was not cleared in the
+no-results branch of ajaxComplete. Cleared unconditionally; regression added.
+
+[attribution marker, per profile]
+AI co-authored the patch and test scaffold; human-edited and reviewed line by line.
+```
+
 ## Related Skills
 
 - **Upstream:** `organize-commits` or `squash-commits` (summary is easier when commits are clean)

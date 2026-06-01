@@ -93,6 +93,28 @@ PR delivers a clean fix; page stays scrollable after deselect across viewports.
 [attribution marker]   <- only if the profile defines a marker
 ```
 
+## Example
+
+**You ask:** `use the issue-closure-notes skill on PROJ-1234`
+
+**You get:**
+
+```
+## Problem & Approach
+Page locked after facet deselect; cleared the stale `overflow:hidden` in the ajaxComplete handler so the no-results branch no longer leaks the lock.
+
+## Changes
+- `a1b2c3d` — clear overflow lock unconditionally in ajaxComplete
+- `e4f5g6h` — add regression test for the deselect path
+- `9112301` — update visual reference shot
+
+## Summary
+PR delivers a focused fix; page stays scrollable after deselect across desktop, tablet, and mobile.
+
+## Follow-up
+- None.
+```
+
 ## Related Skills
 
 - **Upstream:** `qa-steps` (closure notes reference the QA steps written earlier), `handoff-message` (closure notes summarize what the handoffs documented)

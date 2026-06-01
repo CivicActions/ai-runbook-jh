@@ -55,6 +55,20 @@ These hold regardless of project:
 - Never include "WIP" in a commit intended for merge
 - Separate unrelated changes into separate commits
 
+## Example
+
+**You ask:** `use the commit-message-writer skill on this diff`
+
+**You get:**
+
+```
+PROJ-1234: Clear overflow lock after facet deselect.
+
+Alternatives:
+  PROJ-1234: Remove stale overflow:hidden after ajaxComplete.
+  PROJ-1234: Fix page scroll lock on filter deselect.
+```
+
 ## Related Skills
 
 - **Invokes:** `check-tone` (validates tone before finalizing any message)

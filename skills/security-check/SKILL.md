@@ -147,6 +147,27 @@ Fixes [issue ref] by [...]. [1–4 sentences total.]
 AI co-authored the code ([files/scope]); human-edited and reviewed line by line.
 ```
 
+## Example
+
+**You ask:** `use the security-check skill on this support ticket before I paste it`
+
+**You get:**
+
+```
+Content type:         user data (support ticket)
+Classification:       Sensitive (contains PII)
+AI client appropriate: only the sanctioned non-code tool per profile
+Environment scope:    N/A (ticket content)
+Decision:             Redact first
+
+Redaction list:
+  - Reporter name + email
+  - 3 user account IDs in the repro steps
+  - Screenshot showing logged-in admin user
+
+Reasoning: ticket contains identifiable user data; safe to share after redaction.
+```
+
 ## Related Skills
 
 This skill is the gate that runs *before* other skills when they're about to ingest sensitive data or operate against higher environments.

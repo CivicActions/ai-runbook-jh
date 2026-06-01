@@ -145,6 +145,20 @@ h3. Implementation Details
 _AI-assisted draft, reviewed before submission._   <- only if the profile defines a marker
 ```
 
+## Example
+
+**You ask:** `use the implementation-details skill on PROJ-1234`
+
+**You get:**
+
+```
+() Trace where overflow: hidden is set and clear it after facet deselect
+() Confirm fix on desktop, tablet, mobile
+() Add a regression test for the deselect case
+() Update visual reference shot if output changed
+() Run the linter
+```
+
 ## Related Skills
 
 - **Invoked by:** `ticket-refinement` (the IDs checklist is part of the refined ticket body), `issue-plan` (the plan includes a generated IDs checklist as Step 7)

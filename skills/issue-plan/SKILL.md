@@ -87,6 +87,31 @@ If the active profile defines an attribution marker (see its `## Attribution mar
 shared plan with that marker as the last line. Skip it for a personal-only plan, or if the profile
 defines no marker. Don't name the specific AI tool (see `security-check`).
 
+## Example
+
+**You ask:** `use the issue-plan skill on PROJ-1234`
+
+**You get:** a file at `.agents/plans/PROJ-1234-plan.md`:
+
+```
+# Plan: PROJ-1234 Facet deselect scroll lock
+
+Goal: clear overflow:hidden after facet deselect; add regression test.
+Out of scope: rework of facet UI; perf tuning.
+
+Approach
+  1. Reproduce in browser-check on local.
+  2. Trace overflow toggle paths in filter-button.js.
+  3. Clear overflow unconditionally in ajaxComplete.
+  4. Add regression test in the project's test framework.
+
+Risks: ajaxComplete may race with manual unlock.
+Branch: fix/PROJ-1234-facet-scroll  (base: develop)
+
+Implementation details: (generated checklist)
+Workflow-state requirements: (per profile)
+```
+
 ## Related Skills
 - **Upstream:** `triage` (first touch), `ticket-refinement` (deeper refinement, produces the AC and
   IDs this plan elaborates)

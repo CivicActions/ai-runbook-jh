@@ -109,6 +109,29 @@ the marker is intentionally tool-agnostic (see `security-check`).
 | [...]
 ```
 
+## Example
+
+**You ask:** `use the responsive-design skill on the filter sidebar`
+
+**You get:**
+
+```
+Breakpoint Behavior
+| Breakpoint       | Expected Layout              | Status |
+|------------------|------------------------------|--------|
+| Mobile (375px)   | Filter drawer, off-canvas    | Fail   |
+| Tablet (768px)   | Inline filters above results | Warn   |
+| Desktop (1280px) | Sticky sidebar, left column  | Pass   |
+
+Issues Found
+- Mobile: drawer overlaps content (z-index too low); raise to design-system overlay token.
+- Tablet: filter buttons render at 38px height; bump to 44px per touch-target rule.
+
+Accessibility Notes
+- Focus visible at all breakpoints.
+- Filter order matches visual order; no reflow surprises.
+```
+
 ## Related Skills
 
 - **Invokes:** `browser-check` (viewport simulation via the profile's browser inspection MCP)

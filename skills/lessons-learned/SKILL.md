@@ -107,6 +107,29 @@ _AI-assisted draft, reviewed before submission._   <- only if the profile define
 - [...]
 ```
 
+## Example
+
+**You ask:** `use the lessons-learned skill on PROJ-1234`
+
+**You get:** a file at `.agents/lessons/PROJ-1234-lessons.md`:
+
+```
+## Lessons Learned: PROJ-1234 facet deselect scroll lock
+
+### What Went Well
+- Reproducing in browser-check first surfaced the ajaxComplete race quickly.
+
+### What Didn't Go Well
+- First fix attempt (mousedown handler) only treated the symptom.
+  Root cause: didn't audit all overflow-toggling paths before patching.
+
+### What to Do Differently
+- For scroll-lock bugs, enumerate every overflow toggle path before choosing a patch site.
+
+### Carry Forward
+- The "reproduce in browser-check first" habit is paying off; keep doing it for AJAX-state bugs.
+```
+
 ## Related Skills
 
 `lessons-learned` lives at the end of the Communicate phase. It runs at handoff time, alongside `issue-closure-notes`, while the work is still fresh, before the ticket leaves your hands for downstream review (e.g. visual/UX QA, code review, QA per the profile's `## Workflow states`).

@@ -160,6 +160,19 @@ If the active profile defines an attribution marker (see its `## Attribution mar
 shared output with that marker as the last line. Skip it for personal-use output, or if the profile
 defines no marker. Tool-agnostic wording (see `security-check`).
 
+## Example
+
+**You ask:** `use the triage skill on PROJ-1234`
+
+**You get:**
+
+```
+PROJ-1234 — Facet deselect locks page scroll
+Decision: Keep — repro confirmed, recent regression
+Component: Search | Functional area: Filters | Priority: High | Review marker: triaged
+Type: bug | Scope: small | Risk: med | Dependencies: none
+```
+
 ## Related Skills
 - **Next step:** `ticket-refinement` for kept items that need deeper refinement before estimation
 - **Reference:** `definition-of-done` (used during refinement, not triage)

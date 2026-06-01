@@ -62,6 +62,26 @@ If the active profile defines an attribution marker (see its `## Attribution mar
 shared findings with that marker as the last line. Skip it for personal-use output, or if the
 profile defines no marker. Don't name the specific AI tool (see `security-check`).
 
+## Example
+
+**You ask:** `use the accessibility-audit skill on the new filter sidebar`
+
+**You get:**
+
+```
+- Issue: Filter checkbox missing label association
+  Location: src/components/Filter.jsx:23
+  WCAG: 1.3.1, 4.1.2 | Impact: serious | Priority: High
+  Fix: wrap input in <label> or add htmlFor
+
+- Issue: Sidebar toggle button has no aria-expanded
+  Location: src/components/Sidebar.jsx:11
+  WCAG: 4.1.2 | Impact: serious | Priority: High
+  Fix: add aria-expanded reflecting open state
+
+Summary: 2 serious findings. Verify with the project's a11y command.
+```
+
 ## Related Skills
 - **Invokes:** `browser-check` (live page inspection before static analysis)
 - **Sibling Validate-phase skills:** `responsive-design`, `performance-frontend`,

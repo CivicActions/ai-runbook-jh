@@ -206,6 +206,40 @@ Definition of Done:
 _AI-assisted draft, reviewed before submission._   <- only if the profile defines a marker
 ```
 
+## Example
+
+**You ask:** `use the ticket-refinement skill on PROJ-1234`
+
+**You get:**
+
+```
+User story:
+As a search user, I want the page to stay scrollable after deselecting a facet, so I can keep browsing results.
+
+Acceptance criteria:
+- Deselecting any facet leaves the page scrollable
+- No regression on facet checkbox interactions
+- Verified on desktop, tablet, mobile
+
+Context/background:
+Users report the page locks after deselect; introduced in the recent filter refactor.
+
+Technical notes:
+Suspect overflow:hidden left on body by the ajaxSend handler.
+
+Implementation surface area:
+Filter button JS; facet AJAX lifecycle. Detailed checklist generated during Plan.
+
+Questions for refinement:
+- Should the fix also cover the no-results branch?
+
+Dependencies:
+- None
+
+Definition of Done:
+[Use definition-of-done]
+```
+
 ## Related Skills
 
 - **Upstream:** `triage` (refinement only happens on tickets that survived triage)

@@ -56,6 +56,32 @@ git commit -m "<ISSUE-REF> Subject"
 ### Notes
 Flag anything that needs a decision before committing, e.g. unrelated changes that belong in a separate ticket, or hunks that mix concerns and need `git add -p`.
 
+## Example
+
+**You ask:** `use the organize-commits skill on my last 6 commits`
+
+**You get:**
+
+```
+Proposed Commit Sequence
+1. PROJ-1234 Clear overflow lock after facet deselect — filter-button.js
+2. PROJ-1234 Add regression test for deselect — tests/e2e/facets.spec.js
+3. chore: update visual reference shot — backstop_data/
+
+Commands
+git add src/components/filter-button.js
+git commit -m "PROJ-1234 Clear overflow lock after facet deselect"
+
+git add tests/e2e/facets.spec.js
+git commit -m "PROJ-1234 Add regression test for facet deselect"
+
+git add backstop_data/
+git commit -m "chore: update visual reference shot"
+
+Notes
+- Ref-shot update is unrelated to the fix; keep it separate so it can be reverted independently.
+```
+
 ## Related Skills
 
 - **Invokes:** `commit-message-writer` (writes a message for each proposed commit, which in turn invokes `check-tone`)

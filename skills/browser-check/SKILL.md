@@ -87,6 +87,33 @@ action, not an AI action.
 
 Run `security-check` before any session that will involve screenshots or higher-env context.
 
+## Example
+
+**You ask:** `use the browser-check skill on /search to verify the facet deselect flow on local`
+
+**You get:**
+
+```
+Environment
+- URL: http://local.example.test/search
+- Browser: Chromium, viewport 1280×800
+
+What Was Checked
+- Facet select/deselect flow
+- Console errors, network failures
+
+Results
+- Pass: Page loads, 200 OK
+- Pass: Facet select refreshes results (47 → 12)
+- Fail: Deselect leaves page locked at overflow:hidden
+- Pass: No JS errors; ajaxComplete fired
+
+Screenshot: .agents/reviews/PROJ-1234-deselect.png
+
+Open Questions
+- None
+```
+
 ## Related Skills
 
 `browser-check` is a foundation skill that other Validate-phase skills build on:

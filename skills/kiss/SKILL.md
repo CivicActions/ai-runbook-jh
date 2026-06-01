@@ -54,6 +54,25 @@ fills in the specifics:
 If the profile defines no `## Stack`, apply the universal signals above without the stack-specific
 detail.
 
+## Example
+
+**You ask:** `use the kiss skill on this implementation`
+
+**You get:**
+
+```
+Complexity Assessment
+Significantly over-engineered for the stated requirement.
+
+Signals Found
+- FilterContext + reducer + 3 hooks for what is a 4-line useState — adds indirection without reuse.
+- Custom debounce util duplicates lodash.debounce already in dependencies.
+- Three-layer Provider → Hook → Adapter chain for a single call site.
+
+Recommended Approach
+Inline `useState` in the component; use `lodash.debounce` directly. ~120 LOC removed.
+```
+
 ## Related Skills
 
 - **Pairs with:** `pattern-alignment` (KISS catches over-engineering; pattern-alignment catches under-aligned engineering, both are Build-phase critics)

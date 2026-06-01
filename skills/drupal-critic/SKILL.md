@@ -102,6 +102,30 @@ If the critique is only for your own immediate use, skip the marker. Skip it ent
 - [...]
 ```
 
+## Example
+
+**You ask:** `use the drupal-critic skill on this hook implementation`
+
+**You get:**
+
+```
+High
+- mymodule.module:23 — direct `\Drupal::service()` call inside hook.
+  Fix: move logic to a service class with dependency injection.
+
+Medium
+- mymodule.module:47 — user-facing string lacks `t()` translation wrapper.
+  Fix: wrap with `t('...')`.
+
+Low
+- mymodule.module:12 — static $form_ids array inline.
+  Fix: extract to a module constant.
+
+Good Calls
+- Hook signature and return value are correct.
+- Cache tags set on the render array.
+```
+
 ## Related Skills
 
 - **Sibling:** `frontend-peer-review` (FE counterpart, apply both on full-stack changes)

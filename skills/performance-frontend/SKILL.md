@@ -119,6 +119,28 @@ _AI-assisted draft, reviewed before submission._
 - [...]
 ```
 
+## Example
+
+**You ask:** `use the performance-frontend skill on /search (local)`
+
+**You get:**
+
+```
+- Issue: LCP at 3.2s on /search
+  Location: hero region, /search
+  Impact: LCP
+  Priority: High
+  Fix: defer chart library load until below-LCP region renders
+
+- Issue: 14 unoptimized images on results grid
+  Location: src/components/ResultCard
+  Impact: load time, CLS
+  Priority: Medium
+  Fix: add width/height and loading="lazy"; convert to WebP
+
+Top fixes first: chart-library defer, then image optimization.
+```
+
 ## Related Skills
 
 - **Invokes:** `browser-check` (live network/asset/console audit)

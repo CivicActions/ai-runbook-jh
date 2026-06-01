@@ -141,6 +141,44 @@ verbatim (see `security-check`).
 [...]
 ```
 
+## Example
+
+**You ask:** `use the handoff-message skill for PROJ-1234`
+
+**You get:** a file at `.agents/handoffs/PROJ-1234-2026-06-01-1430-handoff.md`:
+
+```
+# Handoff: PROJ-1234 Facet deselect scroll lock
+
+- Session timestamp: 2026-06-01 14:30
+- Branch: fix/PROJ-1234-facet-scroll
+- Area: search filters
+- Plan: .agents/plans/PROJ-1234-plan.md
+
+## Context
+Page locks after facet deselect; tracked to a stale overflow style.
+
+## What was completed
+- Reproduced in browser-check; isolated to overflow lock in filter-button.js
+
+## Why these choices
+- Cleared unconditionally in ajaxComplete to avoid the no-results branch gap
+
+## Current file state
+- filter-button.js: overflow clear added (~L120)
+
+## Validation performed
+- Local: deselect across desktop/tablet/mobile — passes
+
+## Known risks and open questions
+- ajaxComplete may race with manual unlock
+
+## Next steps
+1. Add regression test
+2. Update visual reference shot
+3. Verify on higher env
+```
+
 ## Related Skills
 
 - **Phase placement:** Handoff is part of the Build phase. It's a mid-work pause/resume mechanic for carrying state across chat sessions. For end-of-work communication (after build is done), use `issue-closure-notes`. For lessons captured at handoff time, use `lessons-learned`.

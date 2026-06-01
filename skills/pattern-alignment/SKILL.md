@@ -121,6 +121,28 @@ tool), and the wording is a team convention, not policy text verbatim (see `secu
 - [...]
 ```
 
+## Example
+
+**You ask:** `use the pattern-alignment skill on this patch`
+
+**You get:**
+
+```
+Pattern Reference
+- Canonical example: src/state/FilterContext.jsx
+- Key conventions: shared context for filter state; hook-based consumers
+
+Alignment Check
+| Aspect           | Expected      | Actual         | Status |
+|------------------|---------------|----------------|--------|
+| State management | FilterContext | local useState | Fail   |
+| Handler naming   | handleClick   | handleClk      | Warn   |
+
+Divergences
+- State: replace local useState with FilterContext (see canonical example).
+- Naming: rename `handleClk` → `handleClick` per project convention.
+```
+
 ## Related Skills
 
 - **Pairs with:** `kiss` (pattern-alignment catches under-aligned engineering; KISS catches over-engineering, both are Build-phase critics)

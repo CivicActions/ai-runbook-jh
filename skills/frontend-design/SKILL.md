@@ -130,6 +130,35 @@ Name: filter-chip. Tier: molecule. Purpose: [...]
 | [...]
 ```
 
+## Example
+
+**You ask:** `use the frontend-design skill on the new filter sidebar`
+
+**You get:**
+
+```
+Component Overview
+Name: filter-sidebar. Tier: organism. Purpose: faceted filtering for search results.
+
+Template Variables
+| Variable | Type  | Required | Description                  |
+|----------|-------|----------|------------------------------|
+| facets   | array | yes      | List of facet groups         |
+| selected | array | no       | Currently selected facet IDs |
+
+Markup Sketch
+<aside class="filter-sidebar"><h2/><ul class="filter-sidebar__group">…</ul></aside>
+
+States
+Default, expanded, collapsed (mobile drawer), disabled.
+
+Accessibility Notes
+aria-expanded on toggle; focus returns to toggle on close; 44px tap targets.
+
+Open Questions
+- Should selected filters persist across page loads?
+```
+
 ## Related Skills
 
 - **Downstream:** `pattern-alignment` (once designed, verify implementation follows established patterns), `kiss` (verify the design isn't over-engineered), `check-tone` (run shared design proposals through tone check before posting)

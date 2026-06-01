@@ -60,6 +60,28 @@ when writing suggested rewrites.
 - When checking a commit message, match the profile's `## Commit conventions` subject format rather
   than assuming one.
 
+## Example
+
+**You ask:** `use the check-tone skill on this PR description`
+
+**You get:**
+
+```
+- Original: "We've basically just gone ahead and fixed the scroll bug"
+  Issue: filler words ("basically", "just", "gone ahead and")
+  Suggested rewrite: "Fixes the scroll bug on facet deselect."
+
+- Original: "sorry it took so long!"
+  Issue: apologetic tone inappropriate for a PR description
+  Suggested rewrite: (remove)
+
+- Original: "Hopefully this works."
+  Issue: hedge implies uncertainty about correctness
+  Suggested rewrite: "Regression test added."
+
+Overall: Needs rewrite.
+```
+
 ## Related Skills
 
 `check-tone` is the cross-cutting voice gate for the system. Any skill that produces prose can route its output through here.

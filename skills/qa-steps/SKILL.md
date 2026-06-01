@@ -91,6 +91,38 @@ defines an attribution marker, ensure the **final assembled ticket/PR** ends wit
 last line whenever any section was AI-assisted: one marker per artifact, at the very bottom. Skip
 it entirely if no section was AI-assisted, or if the profile defines no marker (e.g. public OSS).
 
+## Example
+
+**You ask:** `use the qa-steps skill on PROJ-1234`
+
+**You get:**
+
+```
+## What Changed
+Page now stays scrollable after deselecting any facet on /search.
+
+## Setup
+- Use local environment at the project's local URL.
+- No special content or login required.
+
+## Test Scenarios
+
+### Scenario 1: Reproduce and verify fix
+- Go to /search
+- Select any facet (e.g. "Funding > Grants")
+- Wait for results to refresh
+- Deselect the facet
+- [ ] Expected: page scrolls; before fix it was locked
+
+### Scenario 2: Cross-viewport
+- Repeat Scenario 1 at 768px and 375px
+- [ ] Expected: scrolls at all viewports
+- [ ] Expected: no console errors
+
+## Caveats
+- None.
+```
+
 ## Related Skills
 - **Invokes:** `browser-check` (live page validation), `definition-of-done` (appends the DoD)
 - **Often invoked by:** `issue-closure-notes` (closure notes link to QA steps), `ticket-refinement`

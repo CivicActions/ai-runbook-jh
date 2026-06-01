@@ -85,6 +85,30 @@ If the active profile defines an attribution marker (see its `## Attribution mar
 shared review with that marker as the last line. Skip it for personal-use output, or if the profile
 defines no marker (e.g. public OSS). Don't name the specific AI tool (see `security-check`).
 
+## Example
+
+**You ask:** `use the frontend-peer-review skill on this PR`
+
+**You get:**
+
+```
+Overall Assessment
+Request changes — two small must-fixes; regression coverage is solid.
+
+Must Fix
+- src/components/Facet.jsx:42 — local useState diverges from FilterContext pattern; switch to the shared context.
+- src/utils/scroll.js — duplicates existing useScrollLock hook; delete and import.
+
+Worth Noting
+- Filter handlers could share a single keydown helper, but not blocking.
+
+Good Calls
+- Regression test for the deselect case is exactly the right coverage.
+
+Open Questions
+- None.
+```
+
 ## Related Skills
 - **Invokes:** `browser-check` (visual confirmation), `pattern-alignment` (checks against the
   project's canonical patterns), `kiss` (flags over-engineering)
