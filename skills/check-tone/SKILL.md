@@ -9,7 +9,7 @@ description: "Reviews written content for tone, clarity, and appropriateness. Us
 
 ## Project profile
 Read the active project's `.agents/profile.md` for context that shapes the register:
-- **`## Voice`**: the voice config path (default `.agents/style/voice.md`); apply it when writing rewrites.
+- **`## Voice`**: the voice config path (default `.agents/style/voice.md`); apply it when writing rewrites. If a sibling `.agents/style/voice.personal.md` exists (per-engineer overlay, typically gitignored), load it too and let it supplant the shared profile where they overlap (e.g. permitted words, transition style, hedging). Don't double-flag something the personal overlay explicitly allows.
 - **`## Tracker`**: the issue/comment system (e.g. Jira, GitHub) so tracker-comment register lands.
 - **`## Commit conventions`**: the project's commit subject format, so commit-message tone checks
   match the real convention rather than a hardcoded one.
@@ -49,7 +49,10 @@ End with an overall tone assessment: ✅ Good / ⚠️ Needs minor adjustment / 
 
 ## Voice
 Apply the voice config named in the profile's `## Voice` section (default `.agents/style/voice.md`)
-when writing suggested rewrites.
+when writing suggested rewrites. If `.agents/style/voice.personal.md` is also present, layer it
+on top: personal overrides win where they overlap with the shared profile. Common overlay
+concerns: permitted filler words (e.g. a measured "basically" when actually simplifying),
+transition vocabulary, hedging style.
 
 ## Register notes
 - If the profile names a user-facing audience standard (e.g. government plain language), hold
