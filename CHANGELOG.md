@@ -7,7 +7,25 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 ## [Unreleased]
 
 ### Added
-- Hosted Skills Explorer at https://civicactions.github.io/ai-runbook-jh/dashboard/ (GitHub Pages); README links to it from the intro and Skills catalog sections
+- Hosted Skills Explorer at https://civicactions.github.io/ai-runbook-jh/dashboard/ (GitHub Pages); README links from intro and Skills catalog sections
+- AI Usage Policy surfaced in `README.md` and `CONTRIBUTING.md`
+- Voice template split into humanizing baseline (`templates/voice/voice.md`) and personal overlay (`templates/voice/voice.personal.template.md`); `check-tone` layers `voice.personal.md` over `voice.md` when present
+- `security-check` wired as upstream gate for skills that ingest external content
+- `Example` section added to skills, showing template-aligned sample output
+- Batch/backlog triage mode for `triage`; workflow-state requirements for plan skills; broader `check-tone` wiring
+- Dashboard: phase icons on phase headers; usage modes, accent legend, called-by modal; redesigned skill modal into tiered layout with example block; fixed modal Markdown rendering
+- Deck: phase icons and Batch A/B copy polish
+- README: worked examples and inline definitions for jargon; ad-hoc browser-chat use called out alongside IDE/CLI
+
+### Changed
+- README tightened (~40% shorter lede); removed `Pre-development` section; general clarity/consistency pass
+- Em-dashes and arrow glyphs purged across skills, profiles, README, and deck per voice rules
+
+### Fixed
+- Stale `jiraCaptions` entry in deck no longer uses arrow glyphs
+
+### Chore
+- `lessons/` directory gitignored
 
 ## [1.0.0] - 2026-05-24
 
