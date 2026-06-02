@@ -38,6 +38,10 @@ decks/
 # and profiles/_template.md. Create your own client profile locally from the template.
 profiles/nsf.md
 
+# Personal voice overlay — individual, not shared.
+# The repo ships templates/voice/voice.personal.template.md as a starter scaffold.
+templates/voice/voice.personal.md
+
 # Secrets / env
 .env
 .env.*

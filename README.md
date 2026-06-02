@@ -80,7 +80,12 @@ cross-cutting gates.
 1. Clone `ai-runbook-jh`.
 2. Copy `profiles/_template.md` to `profiles/<project>.md` and fill it in (or start from
    `profiles/uswds.md` as a worked example).
-3. Author `.agents/style/voice.md` at the project root.
+3. Author `.agents/style/voice.md` at the project root. Start from
+   [`templates/voice/voice.md`](templates/voice/voice.md) (a baseline for humanizing AI-generated
+   prose). Optionally copy
+   [`templates/voice/voice.personal.template.md`](templates/voice/voice.personal.template.md) to
+   `.agents/style/voice.personal.md` as a personal overlay; entries there win over the shared
+   profile and the file is typically gitignored.
 4. Deploy with `sync.sh`: `PROFILE=<project> PROJECT_ROOT=/path/to/project ./sync.sh` symlinks the
    skills into the project's `.agents/skills/` and copies the profile to `.agents/profile.md`.
    Override paths via `PROJECT_ROOT`, `CUSTOM`, or `PROFILE` env vars (see `sync.sh` comments;

@@ -1,6 +1,10 @@
 # Voice & Writing Profile
 
-Guidelines for AI-assisted technical communication: Jira tickets, PR descriptions, code review comments, commit messages, and documentation.
+Baseline for humanizing AI-generated prose so it reads like a person thinking, not a model performing. Applies across Jira tickets, PR descriptions, code review comments, commit messages, and documentation.
+
+## Layering
+
+This is the shared baseline. A sibling `voice.personal.md` may overlay it with personal preferences: tone quirks, permitted filler words, transition vocabulary, hedging style. Personal entries win where they overlap with this profile; otherwise this profile holds.
 
 ## Core Principles
 
@@ -71,6 +75,15 @@ Use third-person or impersonal framing: "this approach," "the change," "the impl
 - Academic connectors: "Furthermore," "Moreover," "Subsequently"
 - Restating what's already clear; padding with summaries or sign-offs
 - Commit messages or PR descriptions that could apply to any change
+
+### Common LLM tells
+
+- Hedge stacking: "it's generally considered to be somewhat..."
+- Throat-clearing: "It's worth noting that," "Importantly," "In essence"
+- Symmetrical three-item lists where two would do, or where the third is filler
+- Over-explaining what the code or context already shows
+- Recapping the prompt back at the reader before answering
+- Closing summaries that restate the message just delivered
 
 ## The Gut Check
 
