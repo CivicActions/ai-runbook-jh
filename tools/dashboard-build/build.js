@@ -12,14 +12,14 @@ const OUTPUT = path.join(REPO_ROOT, "dashboard", "index.html");
 
 // ============ PHASE MAP ============
 // Maps each skill to its phase + classification.
-// foundation = invoked by other skills more than used alone
+// foundation = called by 2+ other skills (true reuse), not a workflow step run standalone
 // crossCutting = voice / security keystone
 const SKILL_META = {
   triage:                   { phase: "triage" },
   "ticket-refinement":      { phase: "refinement" },
   "definition-of-done":     { phase: "refinement", foundation: true },
   "issue-plan":             { phase: "plan" },
-  "implementation-details": { phase: "plan", foundation: true },
+  "implementation-details": { phase: "plan" },
   "pattern-alignment":      { phase: "build" },
   "frontend-design":        { phase: "build" },
   kiss:                     { phase: "build" },
