@@ -43,7 +43,7 @@ paraphrase or reorder them.
 
 ## Pruning Guidance
 For bug tickets, the DoD may be smaller than for stories/features. Common prunes:
-- Drop review-label lines (e.g. UXQA/VXQA) if the change has no relevant surface
+- Drop visual / UX review-label lines if the change has no relevant surface
 - Drop component-specific lines unless the change touches that component
 - Drop environment-comparison lines if the change isn't environment-dependent
 

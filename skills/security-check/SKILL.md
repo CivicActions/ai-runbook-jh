@@ -39,7 +39,7 @@ The distinction is *sanctioned vs. sensitive*, not *public vs. private*. A proje
    - **PII**, names, emails, addresses, phone numbers, SSN, user account details
    - **PHI**, Personal Health Information
    - **CUI**, Controlled Unclassified Information (federal)
-   - **Client proprietary**, content the client has explicitly NOT sanctioned for AI use (e.g. client research/grant data, business operations data, anything marked proprietary or restricted, *not* the sanctioned codebase or team Confluence)
+   - **Client proprietary**, content the client has explicitly NOT sanctioned for AI use (e.g. client research/grant data, business operations data, anything marked proprietary or restricted, *not* the sanctioned codebase or team wiki)
    - **CA confidential**, legal, financial, contractual, HR
 
 2. **Verify AI client tier** against the profile's `## Sanctioned AI` section:
@@ -80,7 +80,7 @@ Per the CA AI Usage Policy:
 - **PII**, Personally Identifiable Information
 - **PHI**, Personal Health Information
 - **CUI**, Controlled Unclassified Information (federal classification)
-- **Client proprietary**, content the client has explicitly NOT sanctioned for AI use (client research/grant data, business operations data, anything marked proprietary or restricted; *not* the sanctioned codebase or accessible team Confluence/Jira)
+- **Client proprietary**, content the client has explicitly NOT sanctioned for AI use (client research/grant data, business operations data, anything marked proprietary or restricted; *not* the sanctioned codebase or accessible team wiki/tracker)
 - **CivicActions confidential**, legal, financial, contractual, HR
 
 ## Project context

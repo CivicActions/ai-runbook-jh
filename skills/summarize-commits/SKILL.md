@@ -89,7 +89,7 @@ When the output is used as a **PR description**, the marker is mandatory wheneve
 - **"How" line:** include a one-sentence "how" line accompanying the marker. Disclosure asks for "if/how," not just "if." Be honest about what AI actually did, no boilerplate.
 - **Don't name the AI tool**: the marker is intentionally tool-agnostic.
 
-When the output is a **changelog, release note, or sprint summary**, the marker is conditional: apply it if the artifact gets shared (Slack, Confluence, customer-facing notes); skip it if it's for your own review.
+When the output is a **changelog, release note, or sprint summary**, the marker is conditional: apply it if the artifact gets shared (chat, team wiki, customer-facing notes); skip it if it's for your own review.
 
 ### "How" line, pick the one that matches reality
 
