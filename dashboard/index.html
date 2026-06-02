@@ -275,7 +275,7 @@
       font-size: 14px;
       color: var(--text-mid);
     }
-    .phase-header .jira-pill {
+    .phase-header .state-pill {
       display: inline-block;
       padding: 4px 10px;
       font-size: 11px;
@@ -1295,7 +1295,7 @@
     "typicalNext": "",
     "invokedBy": "",
     "whenToUse": "Invoke at the start of any AI session that will involve pasting:\n\n- User data, support tickets, or any content authored by external parties\n- Screenshots from any environment higher than local\n- Production logs, error traces, or database dumps\n- Configuration files, `.env` contents, or auth URLs\n- Any artifact that might contain PII, PHI, CUI, client proprietary, or CA confidential data\n\nSkip when the context is code from the project's sanctioned codebase, wiki/ticket content you have legitimate access to, internal team documentation, or general technical questions with no embedded sensitive data.\n\nThe distinction is *sanctioned vs. sensitive*, not *public vs. private*. A project codebase may be private but client-approved for AI use; you don't need to run this check on every code question. Run it when content from outside that sanctioned envelope is about to enter the session, user reports, support tickets, production logs, screenshots from higher environments, anything authored by external parties.",
-    "approach": "1. **Classify the content** against the CA policy's Sensitive Information categories:\n   - **PII**, names, emails, addresses, phone numbers, SSN, user account details\n   - **PHI**, Personal Health Information\n   - **CUI**, Controlled Unclassified Information (federal)\n   - **Client proprietary**, content the client has explicitly NOT sanctioned for AI use (e.g. client research/grant data, business operations data, anything marked proprietary or restricted, *not* the sanctioned codebase or team Confluence)\n   - **CA confidential**, legal, financial, contractual, HR\n\n2. **Verify AI client tier** against the profile's `## Sanctioned AI` section:\n   - **Code work**: only the tool(s) the profile sanctions for code generation\n   - **Non-code work**: only the tool(s) the profile sanctions for non-code (refinement, QA prose, summarization)\n   - **Never**: any tool the profile lists as banned, personal-license versions, or anything not named in the profile. The banned/sanctioned split inverts between projects, so always read the profile rather than relying on memory.\n\n3. **Verify environment scope** against the profile's `## Environments` section:\n   - **Local env**, generally ok to share screenshots, console output, network details\n   - **Higher environments** (per the profile), redact before sharing; never paste auth/one-time-login URLs; never share session tokens. AI never accesses higher envs.\n   - **Production logs**, redact line-by-line; user accounts and content authors are PII\n\n4. **Decision**:\n   - **Go**, content is safe to share as-is\n   - **Redact first**, specific items must be removed or anonymized before sharing\n   - **No-go**, content is sensitive enough that it should not be in an AI prompt at all",
+    "approach": "1. **Classify the content** against the CA policy's Sensitive Information categories:\n   - **PII**, names, emails, addresses, phone numbers, SSN, user account details\n   - **PHI**, Personal Health Information\n   - **CUI**, Controlled Unclassified Information (federal)\n   - **Client proprietary**, content the client has explicitly NOT sanctioned for AI use (e.g. client research/grant data, business operations data, anything marked proprietary or restricted, *not* the sanctioned codebase or team wiki)\n   - **CA confidential**, legal, financial, contractual, HR\n\n2. **Verify AI client tier** against the profile's `## Sanctioned AI` section:\n   - **Code work**: only the tool(s) the profile sanctions for code generation\n   - **Non-code work**: only the tool(s) the profile sanctions for non-code (refinement, QA prose, summarization)\n   - **Never**: any tool the profile lists as banned, personal-license versions, or anything not named in the profile. The banned/sanctioned split inverts between projects, so always read the profile rather than relying on memory.\n\n3. **Verify environment scope** against the profile's `## Environments` section:\n   - **Local env**, generally ok to share screenshots, console output, network details\n   - **Higher environments** (per the profile), redact before sharing; never paste auth/one-time-login URLs; never share session tokens. AI never accesses higher envs.\n   - **Production logs**, redact line-by-line; user accounts and content authors are PII\n\n4. **Decision**:\n   - **Go**, content is safe to share as-is\n   - **Redact first**, specific items must be removed or anonymized before sharing\n   - **No-go**, content is sensitive enough that it should not be in an AI prompt at all",
     "outputFormat": "```\nContent type: [code / documentation / user data / screenshot / log / config / other]\nClassification: [Public / Internal / Confidential / Sensitive]\nAI client appropriate: [Yes / No, reason]\nEnvironment scope: [Local / Higher env, note]\nDecision: [Go / Redact first / No-go]\n\nRedaction list (if applicable):\n- [What to remove or anonymize]\n\nReasoning:\n[1-2 sentences on the classification call]\n```",
     "voice": "",
     "security": "",
@@ -1311,7 +1311,7 @@
     "icon": "🔍",
     "name": "Triage",
     "desc": "First touch. Keep, defer, decline. Minimum required fields, initial priority, reviewed tag.",
-    "jira": "Open",
+    "state": "New",
     "section": "pre-dev"
   },
   {
@@ -1320,7 +1320,7 @@
     "icon": "📝",
     "name": "Refinement",
     "desc": "Prep for Estimation. User story, acceptance criteria, dependencies, DoD.",
-    "jira": "Open  ▸  Ready for Est",
+    "state": "Refined  ▸  Ready for Estimate",
     "section": "pre-dev"
   },
   {
@@ -1329,7 +1329,7 @@
     "icon": "🗺️",
     "name": "Plan",
     "desc": "Write the approach as a file before touching code. Generates the implementation-details checklist.",
-    "jira": "Selected  ▸  In Progress",
+    "state": "Selected  ▸  Building",
     "section": "dev"
   },
   {
@@ -1338,7 +1338,7 @@
     "icon": "🔨",
     "name": "Build",
     "desc": "Implement against the plan. Pattern and simplicity checks. Handoffs carry state across chats. Clean commits before handoff.",
-    "jira": "In Progress",
+    "state": "Building",
     "section": "dev"
   },
   {
@@ -1347,7 +1347,7 @@
     "icon": "✅",
     "name": "Validate",
     "desc": "Confirm it works. Browser, accessibility, responsiveness, performance, peer review.",
-    "jira": "In Progress",
+    "state": "Building",
     "section": "dev"
   },
   {
@@ -1356,7 +1356,7 @@
     "icon": "📣",
     "name": "Communicate",
     "desc": "Hand off and reflect. PR summary, QA steps, closure notes, lessons captured at handoff.",
-    "jira": "→ Visual/UX QA → Code Review → QA → Done",
+    "state": "Review  ▸  QA  ▸  Done",
     "section": "dev"
   },
   {
@@ -1365,7 +1365,7 @@
     "icon": "⚙️",
     "name": "Cross-cutting",
     "desc": "Not tied to a phase. check-tone fires on anything written for an audience; security-check fires on anything touching secrets or sensitive data.",
-    "jira": "Always on",
+    "state": "Always on",
     "section": "cross"
   }
 ];
@@ -1443,7 +1443,7 @@
     function renderPhaseSection(phase, skillsInPhase) {
       if (skillsInPhase.length === 0) return "";
       const badge = phase.num ? phase.num : "✦";
-      const jiraPill = phase.id === "cross-cutting" ? "" : `<span class="jira-pill">Jira: ${phase.jira}</span>`;
+      const statePill = phase.id === "cross-cutting" ? "" : `<span class="state-pill">${phase.state}</span>`;
       return `
         <section class="phase-section" data-phase="${phase.id}" data-section="${phase.section}">
           <div class="phase-header">
@@ -1452,7 +1452,7 @@
               <h2><span class="phase-icon" aria-hidden="true">${phase.icon}</span><span>${phase.name}</span></h2>
               <p>${phase.desc}</p>
             </div>
-            ${jiraPill}
+            ${statePill}
           </div>
           <div class="skills-grid">
             ${skillsInPhase.map(renderSkillCard).join("")}

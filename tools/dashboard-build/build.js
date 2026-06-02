@@ -43,13 +43,13 @@ const SKILL_META = {
 
 
 const PHASES = [
-  { id: "triage",        num: 1, icon: "🔍",  name: "Triage",        desc: "First touch. Keep, defer, decline. Minimum required fields, initial priority, reviewed tag.", jira: "Open", section: "pre-dev" },
-  { id: "refinement",    num: 2, icon: "📝",  name: "Refinement",    desc: "Prep for Estimation. User story, acceptance criteria, dependencies, DoD.",                         jira: "Open  ▸  Ready for Est", section: "pre-dev" },
-  { id: "plan",          num: 3, icon: "🗺️",  name: "Plan",          desc: "Write the approach as a file before touching code. Generates the implementation-details checklist.", jira: "Selected  ▸  In Progress", section: "dev" },
-  { id: "build",         num: 4, icon: "🔨",  name: "Build",         desc: "Implement against the plan. Pattern and simplicity checks. Handoffs carry state across chats. Clean commits before handoff.",     jira: "In Progress", section: "dev" },
-  { id: "validate",      num: 5, icon: "✅",  name: "Validate",      desc: "Confirm it works. Browser, accessibility, responsiveness, performance, peer review.",               jira: "In Progress", section: "dev" },
-  { id: "communicate",   num: 6, icon: "📣",  name: "Communicate",   desc: "Hand off and reflect. PR summary, QA steps, closure notes, lessons captured at handoff.",        jira: "→ Visual/UX QA → Code Review → QA → Done", section: "dev" },
-  { id: "cross-cutting", num: null, icon: "⚙️", name: "Cross-cutting", desc: "Not tied to a phase. check-tone fires on anything written for an audience; security-check fires on anything touching secrets or sensitive data.", jira: "Always on", section: "cross" },
+  { id: "triage",        num: 1, icon: "🔍",  name: "Triage",        desc: "First touch. Keep, defer, decline. Minimum required fields, initial priority, reviewed tag.", state: "New", section: "pre-dev" },
+  { id: "refinement",    num: 2, icon: "📝",  name: "Refinement",    desc: "Prep for Estimation. User story, acceptance criteria, dependencies, DoD.",                         state: "Refined  ▸  Ready for Estimate", section: "pre-dev" },
+  { id: "plan",          num: 3, icon: "🗺️",  name: "Plan",          desc: "Write the approach as a file before touching code. Generates the implementation-details checklist.", state: "Selected  ▸  Building", section: "dev" },
+  { id: "build",         num: 4, icon: "🔨",  name: "Build",         desc: "Implement against the plan. Pattern and simplicity checks. Handoffs carry state across chats. Clean commits before handoff.",     state: "Building", section: "dev" },
+  { id: "validate",      num: 5, icon: "✅",  name: "Validate",      desc: "Confirm it works. Browser, accessibility, responsiveness, performance, peer review.",               state: "Building", section: "dev" },
+  { id: "communicate",   num: 6, icon: "📣",  name: "Communicate",   desc: "Hand off and reflect. PR summary, QA steps, closure notes, lessons captured at handoff.",        state: "Review  ▸  QA  ▸  Done", section: "dev" },
+  { id: "cross-cutting", num: null, icon: "⚙️", name: "Cross-cutting", desc: "Not tied to a phase. check-tone fires on anything written for an audience; security-check fires on anything touching secrets or sensitive data.", state: "Always on", section: "cross" },
 ];
 
 // ============ PARSE SKILL.md ============
@@ -453,7 +453,7 @@ const html = `<!DOCTYPE html>
       font-size: 14px;
       color: var(--text-mid);
     }
-    .phase-header .jira-pill {
+    .phase-header .state-pill {
       display: inline-block;
       padding: 4px 10px;
       font-size: 11px;
@@ -1148,7 +1148,7 @@ const html = `<!DOCTYPE html>
     function renderPhaseSection(phase, skillsInPhase) {
       if (skillsInPhase.length === 0) return "";
       const badge = phase.num ? phase.num : "✦";
-      const jiraPill = phase.id === "cross-cutting" ? "" : \`<span class="jira-pill">Jira: \${phase.jira}</span>\`;
+      const statePill = phase.id === "cross-cutting" ? "" : \`<span class="state-pill">\${phase.state}</span>\`;
       return \`
         <section class="phase-section" data-phase="\${phase.id}" data-section="\${phase.section}">
           <div class="phase-header">
@@ -1157,7 +1157,7 @@ const html = `<!DOCTYPE html>
               <h2><span class="phase-icon" aria-hidden="true">\${phase.icon}</span><span>\${phase.name}</span></h2>
               <p>\${phase.desc}</p>
             </div>
-            \${jiraPill}
+            \${statePill}
           </div>
           <div class="skills-grid">
             \${skillsInPhase.map(renderSkillCard).join("")}

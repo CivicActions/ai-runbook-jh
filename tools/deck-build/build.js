@@ -144,7 +144,7 @@ function slideSubtitle(slide, text, x = 0.6, y = 1.25) {
     { text: "Adjacent viewports after a viewport-specific fix.", options: { bullet: true, breakLine: true } },
     { text: "Stakeholder-readable Purpose field.", options: { bullet: true, breakLine: true } },
     { text: "Cypress for the regression case, not just the happy path.", options: { bullet: true, breakLine: true } },
-    { text: "Linking the PR in the Jira ticket.", options: { bullet: true } },
+    { text: "Linking the PR in the tracker ticket.", options: { bullet: true } },
   ], {
     x: leftX + 0.4, y: cardY + 1.1, w: leftW - 0.6, h: cardH - 1.4,
     fontSize: 14, fontFace: F.body, color: C.textMid,
@@ -246,24 +246,21 @@ function slideSubtitle(slide, text, x = 0.6, y = 1.25) {
     });
   });
 
-  // Jira status caption row
-  s.addText("JIRA", {
-    x: 0.1, y: 4.25, w: 0.5, h: 0.3,
+  // Workflow state caption row
+  s.addText("WORKFLOW STATE", {
+    x: 0.1, y: 4.25, w: 1.4, h: 0.3,
     fontSize: 9, fontFace: F.body, bold: true, charSpacing: 2,
     color: C.textMuted, margin: 0,
   });
-  const jiraCaptions = [
-    { x: 0.6,  w: 2.1, text: "Open" },
-    { x: 2.8,  w: 2.1, text: "Open : Ready for Est" },
-    { x: 5.4,  w: 1.5, text: "Selected : In Progress" },
-    { x: 7.0,  w: 1.5, text: "In Progress" },
-    { x: 8.6,  w: 1.5, text: "In Progress" },
-    { x: 10.2, w: 2.7, text: "Visual/UX QA  ▸  Code Review  ▸  QA  ▸  Done" },
+  const stateCaptions = [
+    { x: 0.6,  w: 2.1, text: "New" },
+    { x: 2.8,  w: 2.1, text: "Refined  ▸  Ready for Estimate" },
+    { x: 5.4,  w: 1.5, text: "Selected  ▸  Building" },
+    { x: 7.0,  w: 1.5, text: "Building" },
+    { x: 8.6,  w: 1.5, text: "Building" },
+    { x: 10.2, w: 2.7, text: "Review  ▸  QA  ▸  Done" },
   ];
-  // Use arrow glyph instead of colon for first two
-  jiraCaptions[1].text = "Open  ▸  Ready for Est";
-  jiraCaptions[2].text = "Selected  ▸  In Progress";
-  jiraCaptions.forEach(j => {
+  stateCaptions.forEach(j => {
     s.addText(j.text, {
       x: j.x, y: 4.25, w: j.w, h: 0.3,
       fontSize: 10, fontFace: F.body, italic: true,
@@ -554,7 +551,7 @@ function slideSubtitle(slide, text, x = 0.6, y = 1.25) {
     x: vx + 1.0, y: cardY + 0.3, w: vw - 1.2, h: 0.55,
     fontSize: 26, color: C.textDark, margin: 0,
   });
-  s.addText("Confirm it works (still In Progress)", {
+  s.addText("Confirm it works (still Building)", {
     x: vx + 1.0, y: cardY + 0.85, w: vw - 1.2, h: 0.35,
     fontSize: 13, fontFace: F.body, italic: true, color: C.textMid, margin: 0,
   });
@@ -562,7 +559,7 @@ function slideSubtitle(slide, text, x = 0.6, y = 1.25) {
     { text: "browser-check is the foundation", options: { bullet: true, breakLine: true, bold: true } },
     { text: "Then a11y, responsive, performance", options: { bullet: true, breakLine: true } },
     { text: "Then peer review (FE and BE)", options: { bullet: true, breakLine: true } },
-    { text: "All engineer-side. Ticket stays In Progress.", options: { bullet: true } },
+    { text: "All engineer-side. Ticket stays in Building.", options: { bullet: true } },
   ], {
     x: vx + 0.4, y: cardY + 1.55, w: vw - 0.6, h: 2,
     fontSize: 13, fontFace: F.body, color: C.textDark,
@@ -615,7 +612,7 @@ function slideSubtitle(slide, text, x = 0.6, y = 1.25) {
     { text: "Summarize commits for the PR description", options: { bullet: true, breakLine: true, bold: true } },
     { text: "QA steps for review handoff", options: { bullet: true, breakLine: true } },
     { text: "Closure notes (pre-review) and lessons captured", options: { bullet: true, breakLine: true, bold: true } },
-    { text: "Ticket moves through visual/UX QA, code review, QA, done", options: { bullet: true } },
+    { text: "Ticket moves through review, QA, done", options: { bullet: true } },
   ], {
     x: cx + 0.4, y: cardY + 1.55, w: cw - 0.6, h: 2,
     fontSize: 13, fontFace: F.body, color: C.textDark,
@@ -782,7 +779,7 @@ function slideSubtitle(slide, text, x = 0.6, y = 1.25) {
   });
   s.addText([
     { text: "The project codebase", options: { breakLine: true } },
-    { text: "Confluence + Jira", options: { breakLine: true } },
+    { text: "Team docs + tracker", options: { breakLine: true } },
     { text: "Internal team docs", options: { breakLine: true } },
     { text: "Public refs and libraries", options: {} },
   ], {
@@ -899,7 +896,7 @@ function slideSubtitle(slide, text, x = 0.6, y = 1.25) {
     fontSize: 16, fontFace: F.header, bold: true,
     color: C.textOnDark, margin: 0,
   });
-  s.addText("Visual/UX QA, code review, or QA can return the ticket to In Progress. Re-enter Phase 4 or 5. The framework supports the bounce; you re-run the relevant skills.", {
+  s.addText("Review or QA can return the ticket to Building. Re-enter Phase 4 or 5. The framework supports the bounce; you re-run the relevant skills.", {
     x: 0.9, y: y3 + 0.45, w: 11.8, h: 0.75,
     fontSize: 13, fontFace: F.body, color: C.textOnDarkSoft, margin: 0,
   });

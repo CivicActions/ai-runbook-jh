@@ -16,8 +16,8 @@
 
   <!-- ============ TRANSITION LABEL + DIVIDER ============ -->
   <g>
-    <text x="562" y="146" text-anchor="middle" font-size="10" fill="#565c65">Tracker handoff (Jira example): Ready for Est → Ready for Dev →</text>
-    <text x="562" y="161" text-anchor="middle" font-size="10" font-weight="700" fill="#1a4480">"Selected for Development"</text>
+    <text x="562" y="146" text-anchor="middle" font-size="10" fill="#565c65">Tracker handoff: Refined → Ready for Estimate →</text>
+    <text x="562" y="161" text-anchor="middle" font-size="10" font-weight="700" fill="#1a4480">Selected for Development</text>
     <line x1="562" y1="170" x2="562" y2="490" stroke="#71767a" stroke-width="1.5" stroke-dasharray="6 4"/>
   </g>
 
@@ -136,18 +136,18 @@
     <polygon points="1284,330 1296,335 1284,340"/>
   </g>
 
-  <!-- ============ JIRA STATUS CAPTIONS ============ -->
-  <text x="80" y="500" font-size="9" font-weight="700" fill="#71767a" letter-spacing="2">JIRA</text>
-  <text x="80" y="513" font-size="9" font-style="italic" fill="#71767a">(example tracker)</text>
+  <!-- ============ WORKFLOW STATE CAPTIONS ============ -->
+  <text x="80" y="500" font-size="9" font-weight="700" fill="#71767a" letter-spacing="2">WORKFLOW STATE</text>
+  <text x="80" y="513" font-size="9" font-style="italic" fill="#71767a">(per project profile)</text>
   <g font-style="italic" font-size="10" fill="#565c65" text-anchor="middle">
-    <text x="188" y="513">Open</text>
-    <text x="424" y="513">Open → Ready for Est</text>
-    <text x="700" y="513">Selected → In Progress</text>
-    <text x="936" y="513">In Progress</text>
-    <text x="1172" y="513">In Progress</text>
-    <text x="1408" y="513">UXQA/VXQA → Code Review → QA → Done</text>
+    <text x="188" y="513">New</text>
+    <text x="424" y="513">Refined → Ready for Estimate</text>
+    <text x="700" y="513">Selected → Building</text>
+    <text x="936" y="513">Building</text>
+    <text x="1172" y="513">Building</text>
+    <text x="1408" y="513">Review → QA → Done</text>
   </g>
-  <text x="1516" y="540" text-anchor="end" font-size="9" font-style="italic" fill="#71767a">Kickbacks from UXQA/VXQA, Code Review, or QA may return ticket to In Progress.</text>
+  <text x="1516" y="540" text-anchor="end" font-size="9" font-style="italic" fill="#71767a">Review or QA may return the ticket to Building.</text>
 
   <!-- ============ CROSS-CUTTING SECTION ============ -->
   <text x="80" y="555" font-size="11" font-weight="700" fill="#71767a" letter-spacing="3">CROSS-CUTTING CONCERNS</text>
