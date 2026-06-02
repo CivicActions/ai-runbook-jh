@@ -6,6 +6,9 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ## [Unreleased]
 
+### Added
+- Hosted Skills Explorer at https://civicactions.github.io/ai-runbook-jh/dashboard/ (GitHub Pages); README links to it from the intro and Skills catalog sections
+
 ## [1.0.0] - 2026-05-24
 
 ### Added
