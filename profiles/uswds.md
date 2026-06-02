@@ -29,6 +29,7 @@ of a confirming comment:
 - Contributors don't set labels; maintainers do. The contributor equivalent of "reviewed" is
   **posting a confirming comment** (with repro) on a `Needs: Confirmation` issue, or a **PR
   review**. No project-wide reviewed tag.
+- **Pre-merge review labels:** none (maintainers handle gating via the GitHub review flow).
 
 ## Priority guide
 USWDS triages by three considerations (from CONTRIBUTING.md): **Size** (fits a sprint?),
@@ -48,6 +49,14 @@ GitHub lifecycle: **open/confirm issue → maintainer triage (Size/Severity/Prio
 - Contributor lanes (no special access needed): confirm issues, review/test PRs, join Discussions,
   test releases, submit PRs.
 - The original issue creator ushers an issue through its lifecycle.
+
+**Phase → state map** (mapped to GitHub issue / PR state, since there's no board)
+- Triage: open issue (awaiting `Needs: Confirmation` → maintainer triage)
+- Refinement: triaged, Size/Severity/Priority set
+- Plan: assigned / branch open (pre-PR)
+- Build: PR open, draft or work-in-progress
+- Validate: PR ready for review
+- Communicate: PR in maintainer review ▸ merged
 
 ## Estimation
 - Not contributor-owned. USWDS maintainers triage by Size / Severity / Priority (see

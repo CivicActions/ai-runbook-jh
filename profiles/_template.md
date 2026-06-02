@@ -20,6 +20,7 @@
 ## Review markers / tags
 - **Reviewed marker:** <tag/label, or "n/a; maintainers triage">
 - **Stakeholder/prioritization tag:** <if any>
+- **Pre-merge review labels:** <labels that gate certain changes; e.g. visual QA, UX QA, accessibility-review; or "none">
 
 ## Priority guide
 - <bug priority levels + criteria, or the project's triage considerations>
@@ -32,6 +33,13 @@
 
 ## Workflow states
 - <lifecycle / board columns; any review labels and when they apply>
+- **Phase → state map** (the tracker state each of the six framework phases corresponds to):
+  - Triage: <state>
+  - Refinement: <state>
+  - Plan: <state>
+  - Build: <state>
+  - Validate: <state>
+  - Communicate: <state(s)>
 
 ## Team context
 - <team size and review norms; sets how formal vs. lightweight peer review should be>
