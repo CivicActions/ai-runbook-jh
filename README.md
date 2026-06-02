@@ -2,7 +2,7 @@
 
 > A runbook for taking a ticket from inbox to closure with AI assistance (triage, refinement, plan,
 > build, validate, communicate) without the AI going off-voice, leaking project specifics, or
-> freelancing on what "done" means.
+> deciding on what "done" means.
 >
 > Developed against front-end work, but the skills are discipline-agnostic: the same `triage` skill
 > works for any kind of ticket. Extend it by adding new specialized skills for any area.
@@ -10,9 +10,12 @@
 > 24 single-purpose **skills** (Markdown checklists, one per task you want done the same way every
 > time: `triage`, `qa-steps`, `handoff-message`, and 21 more) plus a per-project **profile** that
 > names ticket tracker, stack, per-ticket Definition of Done, voice config, and approved AI
-> clients. Skills stay generic; the profile supplies every project-specific detail. Runs with
-> whatever AI is approved for a project; most useful with agentic chat in an IDE. Take what's
-> useful, adapt the rest.
+> clients. Skills stay generic; the profile supplies every project-specific detail.
+>
+> Runs with whatever AI is approved for a project. Most useful with agentic chat in an IDE or CLI
+> where the AI can read files directly. Also works ad-hoc: paste a skill's Markdown into a browser
+> chat (Gemini, ChatGPT, Claude) and the model will follow it, asking you for any inputs it can't
+> see (profile values, ticket body, diff). Take what's useful, adapt the rest.
 
 ---
 
@@ -23,7 +26,7 @@ There's no one right way to run this. Three common ways to do it:
 - **Skills work with each other in a chain.** An agent runs the phases end-to-end, invoking skills as their triggers fire. Minimal hand-driving.
   *e.g. you paste the ticket body and say "triage this and bring it to ready-for-estimation"; the agent runs `triage`, then `ticket-refinement`, then `definition-of-done`, and hands back a refined ticket you paste into the tracker.*
 - **One-off skills.** Pull a single skill when you want it. No chain, no agent in charge.
-  *e.g. "`@check-tone` on this commit message"; only `check-tone` runs, nothing before or after.*
+  *e.g. "`@check-tone` on this commit message"; only `check-tone` runs, nothing before or after. Or paste the skill's Markdown into a browser chat with no repo access; the model will ask for the inputs it needs.*
 - **Mixed approach.** Agent drives some phases; you take the wheel for others. Most common in practice when iterating.
   *e.g. you write the plan by hand, then say "implement step 2 of `plans/NSF-13412-plan.md`"; the agent runs Build while you steer commits.*
 
@@ -86,7 +89,9 @@ cross-cutting gates.
 5. Try one skill on your next ticket; `qa-steps` is a good low-risk start.
 
 **Invocation differs by AI client.** Some clients auto-invoke skills by keyword; others require an
-explicit `@`-reference. The skill files are the same either way; only how they're invoked changes.
+explicit `@`-reference. For one-off use without a local install, paste the skill's Markdown
+directly into the chat; the model will ask for any inputs it can't read. The skill files are the
+same either way; only how they're invoked changes.
 
 ## Voice is the keystone
 
