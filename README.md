@@ -116,9 +116,16 @@ drafts through. Without a project-level voice config, output reads like many dif
 
 ## Security posture
 
-The skills line up with the
-[CivicActions AI Usage Policy](https://civicactions.atlassian.net/wiki/x/AwC3Ig) and the
+Built for use within CivicActions; usage must follow the
+[CivicActions AI Usage Policy](https://civicactions.atlassian.net/wiki/x/AwC3Ig). External
+adopters are welcome but should align with their own organization's equivalent policy. The skills
+also line up with the
 [NIST AI Risk Management Framework](https://www.nist.gov/itl/ai-risk-management-framework).
+
+The core rule: **never paste sensitive or confidential content into an AI prompt** (PII, PHI, CUI,
+client-proprietary, or CivicActions-confidential data). Run `security-check` at the start of any
+session that will ingest user data, screenshots from higher environments, production logs, or
+auth-adjacent artifacts.
 
 **What AI does *not* do:**
 

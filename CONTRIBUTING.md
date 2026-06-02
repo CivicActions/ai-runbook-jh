@@ -21,6 +21,10 @@ Thank you for your interest in contributing to ai-runbook-jh!
 - Keep skills discipline-agnostic; project specifics belong in profiles.
 - Follow the voice and formatting conventions in existing skills.
 - Do not include PII, client ticket data, credentials, or internal URLs.
+- CivicActions contributors: follow the
+  [CivicActions AI Usage Policy](https://civicactions.atlassian.net/wiki/x/AwC3Ig) when using AI
+  assistance on contributions. External contributors are encouraged to follow an equivalent
+  policy from their own organization.
 - Update `CHANGELOG.md` under `[Unreleased]` for any user-visible change.
 
 ## Code of Conduct
