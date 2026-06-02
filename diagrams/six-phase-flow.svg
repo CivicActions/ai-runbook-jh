@@ -82,7 +82,7 @@
     <text x="936" y="292" text-anchor="middle" font-size="10" fill="#565c65">session to carry state.</text>
     <line x1="853" y1="310" x2="1019" y2="310" stroke="#7eb0db" stroke-width="1"/>
     <text x="936" y="332" text-anchor="middle" font-size="9" font-weight="700" fill="#71767a" letter-spacing="2">SKILLS</text>
-    <text x="936" y="356" text-anchor="middle" font-size="10" fill="#1a4480" font-family="ui-monospace, 'SF Mono', monospace">frontend-design</text>
+    <text x="936" y="356" text-anchor="middle" font-size="10" fill="#1a4480" font-family="ui-monospace, 'SF Mono', monospace">component-design</text>
     <text x="936" y="373" text-anchor="middle" font-size="10" fill="#1a4480" font-family="ui-monospace, 'SF Mono', monospace">kiss</text>
     <text x="936" y="390" text-anchor="middle" font-size="10" fill="#1a4480" font-family="ui-monospace, 'SF Mono', monospace">pattern-alignment</text>
     <text x="936" y="407" text-anchor="middle" font-size="10" fill="#1a4480" font-family="ui-monospace, 'SF Mono', monospace">handoff-message</text>

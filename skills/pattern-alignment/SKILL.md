@@ -30,7 +30,7 @@ patterns in the codebase, before or after writing code.
 **Scope boundary:** `pattern-alignment` covers code conventions: how things are written in this
 project (services, hooks, styling architecture, tests, commits). For questions about whether a
 component's structure or markup matches the project's design system or design spec, use
-`frontend-design` instead.
+`component-design` instead.
 
 ## Approach
 

@@ -21,7 +21,7 @@ const SKILL_META = {
   "issue-plan":             { phase: "plan" },
   "implementation-details": { phase: "plan" },
   "pattern-alignment":      { phase: "build" },
-  "frontend-design":        { phase: "build" },
+  "component-design":       { phase: "build" },
   kiss:                     { phase: "build" },
   "handoff-message":        { phase: "build" },
   "organize-commits":       { phase: "build" },

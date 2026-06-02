@@ -1,10 +1,10 @@
 ---
-name: frontend-design
-description: "Designs or reviews a frontend component or layout against the active project's design system and theme conventions. Use when the user says design this component, how should this look, plan this UI, sketch this out, what component should I use, or review this design. Apply before or during implementation when the user wants to think through a frontend pattern."
+name: component-design
+description: "Produces a structured component design spec against the active project's design system and theme conventions. Use when the user says implement this component, how should this look, plan this UI, sketch this out, what component should I use, or review this design. Output is a proposal: variables, markup sketch, states, a11y notes, open questions; to align before implementation. This skill defers to the project profile and does not invent aesthetic direction; for greenfield UI generation with no design system, use a different skill."
 typicalNext: "After confirming the component structure, move to `pattern-alignment` to review your CSS/SCSS architecture and JavaScript behavior for codebase consistency. If you're writing the CSS/JS, use `pattern-alignment` before committing."
 ---
 
-# Frontend Design
+# Component Design
 
 ## Project profile
 The design-system rules, framework, and component conventions are **project-specific**. Read them
@@ -132,7 +132,7 @@ Name: filter-chip. Tier: molecule. Purpose: [...]
 
 ## Example
 
-**You ask:** `use the frontend-design skill on the new filter sidebar`
+**You ask:** `use the component-design skill on the new filter sidebar`
 
 **You get:**
 
@@ -162,4 +162,4 @@ Open Questions
 ## Related Skills
 
 - **Downstream:** `pattern-alignment` (once designed, verify implementation follows established patterns), `kiss` (verify the design isn't over-engineered), `check-tone` (run shared design proposals through tone check before posting)
-- **Upstream:** `ticket-refinement` (design thinking often surfaces during refinement, frontend-design can shape AC and IDs)
+- **Upstream:** `ticket-refinement` (design thinking often surfaces during refinement, component-design can shape AC and IDs)

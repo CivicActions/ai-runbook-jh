@@ -512,7 +512,7 @@ function slideSubtitle(slide, text, x = 0.6, y = 1.25) {
   s.addText([
     { text: "pattern-alignment", options: { fontFace: F.code, fontSize: 10.5, color: C.primary } },
     { text: "  ", options: { fontFace: F.body, fontSize: 10.5, color: C.textMid } },
-    { text: "frontend-design", options: { fontFace: F.code, fontSize: 10.5, color: C.primary } },
+    { text: "component-design", options: { fontFace: F.code, fontSize: 10.5, color: C.primary } },
     { text: "  ", options: { fontFace: F.body, fontSize: 10.5, color: C.textMid } },
     { text: "kiss", options: { fontFace: F.code, fontSize: 10.5, color: C.primary } },
     { text: "  ", options: { fontFace: F.body, fontSize: 10.5, color: C.textMid } },
