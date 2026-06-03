@@ -17,7 +17,7 @@
 > chat (Gemini, ChatGPT, Claude) and the model will follow it, asking you for any inputs it can't
 > see (profile values, ticket body, diff). Take what's useful, adapt the rest.
 
-Browse the hosted **[Skills Explorer](https://civicactions.github.io/ai-runbook-jh/dashboard/)** for a visual catalog of every skill.
+Browse the hosted **[skills catalog](https://civicactions.github.io/ai-runbook-jh/dashboard/)** for a visual catalog of every skill.
 
 ---
 
@@ -72,11 +72,15 @@ profiles so skills resolve every reference.
 
 ## Skills catalog
 
-Browse the hosted **[Skills Explorer](https://civicactions.github.io/ai-runbook-jh/dashboard/)**, or
+Browse the hosted **[skills catalog](https://civicactions.github.io/ai-runbook-jh/dashboard/)**, or
 open [`dashboard/index.html`](dashboard/index.html) locally for the full catalog: one card per
 skill, grouped by phase, with when-to-use, output template, and the skill-call graph.
 `drupal-critic` applies only when the profile's stack is Drupal; `check-tone` and `security-check`
 are the cross-cutting gates.
+
+See [`DESIGN.md`](DESIGN.md) for the visual rationale and
+[`dashboard/styleguide.html`](dashboard/styleguide.html) for the living styleguide that renders
+every token and component from a single source.
 
 ## Setup
 
