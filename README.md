@@ -129,10 +129,7 @@ adopters are welcome but should align with their own organization's equivalent p
 also line up with the
 [NIST AI Risk Management Framework](https://www.nist.gov/itl/ai-risk-management-framework).
 
-The core rule: **never paste sensitive or confidential content into an AI prompt** (PII, PHI, CUI,
-client-proprietary, or CivicActions-confidential data). Run `security-check` at the start of any
-session that will ingest user data, screenshots from higher environments, production logs, or
-auth-adjacent artifacts.
+The core rule: don't paste sensitive content: PII, PHI, CUI, client-proprietary, or company-confidential (legal/financial/HR), into an AI prompt. Content you're authorized to access, like a normal project ticket, is fine; it's the sensitive data that might be inside it you redact first. Run `security-check` at the start of any session that will ingest user data, screenshots from higher environments, production logs, or auth-adjacent artifacts.
 
 **What AI does *not* do:**
 
