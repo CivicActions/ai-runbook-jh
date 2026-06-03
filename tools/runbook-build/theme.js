@@ -5,50 +5,55 @@
 module.exports = {
   name: "ai-runbook-jh",
   description:
-    "A warm, organic, universally-legible aesthetic. Recycled-paper canvas, soft charcoal ink, terracotta as the single human signal, with quiet moss and slate-blue threads to differentiate the six phases.",
+    "A digital-woodworking aesthetic. The job is to whittle AI output into something proper and minimal: planed-pine canvas, graphite mark as the single signal, walnut/oak/ash phase threads, and one rare pencil-red accent on the title underline and colophon signature.",
 
   colors: {
-    // Surfaces
-    paper:        { value: "#FBF7F0", role: "Default page canvas. Warm recycled-paper off-white." },
-    "paper-soft": { value: "#F5EFE3", role: "Recessed surface. Phase headers, expanded card backs." },
-    "paper-deep": { value: "#EDE5D2", role: "Deeper recess. Hover wash, mini-map ground." },
+    // Surfaces: planed pine, three values
+    paper:        { value: "#F6EFDD", role: "Default page canvas. Warm planed-pine off-white." },
+    "paper-soft": { value: "#ECE2C9", role: "Recessed surface. Phase headers, modal nav, expanded cards." },
+    "paper-deep": { value: "#DFD2B3", role: "Deeper recess. Card hover wash, code inline background." },
 
-    // Ink
-    ink:          { value: "#2A2A28", role: "Primary text. Soft charcoal — easier on eyes than pure black." },
-    bark:         { value: "#6E5B47", role: "Secondary text. Muted, warm brown — never grey." },
-    hairline:     { value: "#E5DCC9", role: "1px dividers and quiet borders." },
+    // Ink: graphite values
+    ink:          { value: "#1F1E1B", role: "Primary text. Graphite: darker than charcoal, reads like a sharp pencil on raw wood." },
+    bark:         { value: "#6B5A41", role: "Secondary text. Walnut tone: warm but quiet, never grey." },
+    hairline:     { value: "#D9CDB1", role: "Kerf line: 1px dividers, quiet borders, dashed legends." },
 
-    // Signal
-    terracotta:        { value: "#C65D3E", role: "The single primary signal. Active state, hover underline, JH mark, one stroke per phase header. Never decorative fill on large surfaces." },
-    "terracotta-soft": { value: "#F2D9CE", role: "Terracotta wash. Active-pill background, focus ring fill." },
+    // Primary signal: graphite mark (interactive states)
+    graphite:        { value: "#2B2A26", role: "The single primary signal. JH mark, active pill fill, focus ring, hover-underline bar. The carpenter's mark on the wood." },
+    "graphite-soft": { value: "#E3DCC8", role: "Graphite wash. Foundation-tag background, active-pill hover halo." },
+    "on-graphite":   { value: "#F6EFDD", role: "Text on graphite fill. AA contrast against the new ink." },
 
-    // Phase threads (quiet differentiation — always reinforced by name + number, never color-alone)
-    moss:        { value: "#5B7553", role: "Phase thread A — Refinement, Validate. Earthy, calm." },
-    "moss-soft": { value: "#DCE4D6", role: "Moss wash for collapsed phase headers." },
-    slate:       { value: "#5C7A99", role: "Phase thread B — Plan, Communicate. Cool but warm-leaning." },
-    "slate-soft":{ value: "#D7E0EA", role: "Slate wash for collapsed phase headers." },
+    // Sharp accent: used twice site-wide
+    "pencil-red": { value: "#B8412A", role: "Pencil-red accent. The hand-drawn title underline, the colophon signature, the link mark. Never on fills or focus." },
+
+    // Phase threads: three wood values (dark/medium/cool-grey), reinforced by name + number
+    walnut:        { value: "#6B4A2B", role: "Phase thread A: Refinement, Validate. Deep wood: the longest grain." },
+    "walnut-soft": { value: "#E6D9C0", role: "Walnut wash for collapsed phase headers and tags." },
+    oak:           { value: "#8A6A3A", role: "Phase thread B: Plan, Communicate. Medium wood: ringed and even." },
+    "oak-soft":    { value: "#ECDFC4", role: "Oak wash for collapsed phase headers and tags." },
+    ash:           { value: "#5C5A52", role: "Phase thread C: Triage, Build. Cool grey-tan; deliberately quietest so it does not compete with the graphite signal." },
+    "ash-soft":    { value: "#DDD6C5", role: "Ash wash for collapsed phase headers and tags." },
 
     // Semantic
-    "focus-ring":{ value: "#C65D3E", role: "Keyboard focus outline. Same as terracotta — visible against paper." },
-    "on-terracotta": { value: "#FBF7F0", role: "Text on terracotta fill. AA contrast 6.1:1." },
+    "focus-ring": { value: "#2B2A26", role: "Keyboard focus outline. Same as graphite: sharp against planed-pine." },
   },
 
   typography: {
     display: {
       fontFamily: '"Fraunces", Georgia, "Times New Roman", serif',
       fontSize: "48px",
-      fontWeight: 500,
+      fontWeight: 600,
       lineHeight: 1.1,
-      letterSpacing: "-0.01em",
-      role: "Page title. Fraunces — friendly serif with character. Used once per page.",
+      letterSpacing: "-0.015em",
+      role: "Page title. Fraunces 600: letterpress weight, used once per page.",
     },
     "display-sm": {
       fontFamily: '"Fraunces", Georgia, serif',
       fontSize: "28px",
-      fontWeight: 500,
+      fontWeight: 600,
       lineHeight: 1.2,
       letterSpacing: "-0.005em",
-      role: "Phase headers, modal titles.",
+      role: "Phase headers, modal titles. Fraunces 600.",
     },
     "body-lg": {
       fontFamily: '"Source Serif 4", "Source Serif Pro", Georgia, serif',
@@ -75,38 +80,38 @@ module.exports = {
       role: "Card descriptions, modal helper text.",
     },
     mono: {
-      fontFamily: '"IBM Plex Mono", "JetBrains Mono", Consolas, monospace',
+      fontFamily: '"Monaspace Xenon", "JetBrains Mono", "IBM Plex Mono", Consolas, monospace',
       fontSize: "14px",
       fontWeight: 500,
       lineHeight: 1.5,
       letterSpacing: "0",
-      role: "Skill names, code, technical labels. Humanist mono.",
+      role: "Skill names, code, technical labels. Slab-serif mono: brackets and serifs read like joinery.",
     },
     "mono-sm": {
-      fontFamily: '"IBM Plex Mono", Consolas, monospace',
+      fontFamily: '"Monaspace Xenon", "JetBrains Mono", "IBM Plex Mono", Consolas, monospace',
       fontSize: "11px",
       fontWeight: 500,
       lineHeight: 1.4,
-      letterSpacing: "0.04em",
-      role: "Phase numbers, tags, eyebrow labels. Slightly tracked.",
+      letterSpacing: "0.08em",
+      role: "Phase numbers, tags, eyebrow labels. Drafted-label tracking.",
     },
     hand: {
-      fontFamily: '"Caveat", "Bradley Hand", cursive',
-      fontSize: "20px",
-      fontWeight: 500,
+      fontFamily: '"Architects Daughter", "Bradley Hand", cursive',
+      fontSize: "22px",
+      fontWeight: 400,
       lineHeight: 1.3,
       letterSpacing: "0",
-      role: "Colophon only. The 'kept by jh' moment in the footer. Used once.",
+      role: "Colophon only. The 'kept by jh' drafting-pencil signature in the footer.",
     },
   },
 
   rounded: {
     none: "0",
-    sm:   "3px",
-    md:   "6px",
-    lg:   "12px",
+    sm:   "2px",
+    md:   "4px",
+    lg:   "8px",
     pill: "999px",
-    note: "2px 18px 4px 14px",  // hand-cut paper corners — irregular radius
+    note: "2px 18px 4px 14px",  // hand-cut paper corners: irregular radius
   },
 
   spacing: {
@@ -121,14 +126,14 @@ module.exports = {
   },
 
   // Phase threads: which quiet color marks each phase.
-  // Always supplemented by phase name + number — never color-alone.
+  // Always supplemented by phase name + number: never color-alone.
   phaseThreads: {
-    triage:        "terracotta",
-    refinement:    "moss",
-    plan:          "slate",
-    build:         "terracotta",
-    validate:      "moss",
-    communicate:   "slate",
+    triage:        "ash",
+    refinement:    "walnut",
+    plan:          "oak",
+    build:         "ash",
+    validate:      "walnut",
+    communicate:   "oak",
     "cross-cutting": "bark",
   },
 
@@ -146,12 +151,12 @@ module.exports = {
   // Component recipes. Each maps to CSS in css.js and a live render in the styleguide.
   components: {
     "btn-primary": {
-      backgroundColor: "{colors.terracotta}",
-      textColor:       "{colors.on-terracotta}",
+      backgroundColor: "{colors.graphite}",
+      textColor:       "{colors.on-graphite}",
       typography:      "{typography.mono-sm}",
       rounded:         "{rounded.md}",
       padding:         "10px 18px",
-      role: "Primary action. Used sparingly — one per region.",
+      role: "Primary action. Graphite fill: used sparingly, one per region.",
     },
     "btn-quiet": {
       backgroundColor: "transparent",
@@ -181,15 +186,15 @@ module.exports = {
       typography:      "{typography.mono-sm}",
       rounded:         "{rounded.pill}",
       padding:         "6px 14px",
-      role: "Phase mini-map tab, modal nav pill. Active state fills with terracotta.",
+      role: "Phase mini-map tab, modal nav pill. Active state fills with graphite.",
     },
     "pill-active": {
-      backgroundColor: "{colors.terracotta}",
-      textColor:       "{colors.on-terracotta}",
+      backgroundColor: "{colors.graphite}",
+      textColor:       "{colors.on-graphite}",
       typography:      "{typography.mono-sm}",
       rounded:         "{rounded.pill}",
       padding:         "6px 14px",
-      role: "Active pill. Terracotta fill, paper text.",
+      role: "Active pill. Graphite fill, planed-pine text.",
     },
     chip: {
       backgroundColor: "{colors.paper-soft}",
@@ -200,28 +205,28 @@ module.exports = {
       role: "typicalNext chip. Renders as a small clickable token.",
     },
     "tag-foundation": {
-      backgroundColor: "{colors.terracotta-soft}",
-      textColor:       "{colors.terracotta}",
+      backgroundColor: "{colors.graphite-soft}",
+      textColor:       "{colors.graphite}",
       typography:      "{typography.mono-sm}",
       rounded:         "{rounded.sm}",
       padding:         "3px 8px",
-      role: "Foundation tag — skill is called by other skills more than used directly.",
+      role: "Foundation tag: skill is called by other skills more than used directly. Wears the graphite signal.",
     },
     "tag-voice": {
-      backgroundColor: "{colors.moss-soft}",
-      textColor:       "{colors.moss}",
+      backgroundColor: "{colors.walnut-soft}",
+      textColor:       "{colors.walnut}",
       typography:      "{typography.mono-sm}",
       rounded:         "{rounded.sm}",
       padding:         "3px 8px",
-      role: "Voice cross-cutting tag.",
+      role: "Voice cross-cutting tag. Walnut thread.",
     },
     "tag-security": {
-      backgroundColor: "{colors.slate-soft}",
-      textColor:       "{colors.slate}",
+      backgroundColor: "{colors.oak-soft}",
+      textColor:       "{colors.oak}",
       typography:      "{typography.mono-sm}",
       rounded:         "{rounded.sm}",
       padding:         "3px 8px",
-      role: "Security cross-cutting tag.",
+      role: "Security cross-cutting tag. Oak thread.",
     },
     "gloss-block": {
       backgroundColor: "transparent",
@@ -230,32 +235,32 @@ module.exports = {
       role: "Plain-language gloss under each phase title. Italic, slightly indented.",
     },
     "hand-underline": {
-      role: "Irregular hand-drawn SVG underline. Animates in on page load under the title and on skill-card name hover. Single decorative motif, used sparingly.",
+      role: "Hand-drawn pencil-red underline. Animates in on page load under the title; reused as the hover bar under skill-card names. The one warm decorative motif.",
     },
-    "leaf-bullet": {
-      role: "Small leaf-shaped SVG bullet. Replaces disc in phase-section title rows. Tinted with the phase thread color.",
+    "dovetail-notch": {
+      role: "Small dovetail-tail SVG glyph (trapezoid wider at top). Replaces a generic bullet in phase-section title rows. Tinted with the phase thread color (walnut, oak, or ash).",
     },
-    "wave-divider": {
-      role: "Wavy SVG divider between major sections. Hairline weight, paper-deep color.",
+    "kerf-line": {
+      role: "Hairline + three short ticks as a section divider. Reads like a kerf cut on the bench.",
     },
     colophon: {
       typography: "{typography.hand}",
-      textColor:  "{colors.bark}",
-      role: "Footer signature: 'kept by jh'. Caveat script, used once.",
+      textColor:  "{colors.pencil-red}",
+      role: "Footer signature: 'kept by jh'. Architects Daughter pencil hand in pencil-red, the rarest mark on the page.",
     },
     "skip-link": {
-      backgroundColor: "{colors.ink}",
+      backgroundColor: "{colors.graphite}",
       textColor:       "{colors.paper}",
       rounded:         "{rounded.sm}",
       role: "Hidden until keyboard focus jumps it on; sends focus to the #phases main landmark.",
     },
     "newcomer-note": {
       backgroundColor: "{colors.paper-soft}",
-      borderLeft:      "3px solid {colors.moss}",
+      borderLeft:      "3px solid {colors.walnut}",
       typography:      "{typography.body-sm}",
       rounded:         "0 {rounded.md} {rounded.md} 0",
       padding:         "{spacing.base} {spacing.lg}",
-      role: "Hero aside that orients newcomers. Moss thread (supportive context), not terracotta (signal).",
+      role: "Hero aside that orients newcomers. Walnut thread (supportive context), not graphite (signal).",
     },
     "phaseflow-node": {
       backgroundColor: "{colors.paper}",
@@ -291,9 +296,9 @@ module.exports = {
 
   // Things this system explicitly does NOT do.
   knownGaps: [
-    "Dark mode — one canvas mode only.",
-    "Animation timings beyond the page-load reveal and underline hover.",
-    "Print stylesheet — out of scope for v1.",
-    "Color-only signals — every color cue is reinforced by a label, number, or shape.",
+    "Dark mode: tracked in issue #1 (after-hours oiled-walnut workshop).",
+    "Animation timings beyond the page-load reveal, underline hover, and 150ms pill/card transitions.",
+    "Print stylesheet: out of scope for v1.",
+    "Color-only signals: every color cue is reinforced by a label, number, or shape.",
   ],
 };

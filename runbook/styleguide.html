@@ -3,27 +3,33 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>ai-runbook-jh — styleguide</title>
+  <title>ai-runbook-jh: styleguide</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=Source+Serif+4:opsz,wght@8..60,400;8..60,500;8..60,600&family=IBM+Plex+Mono:wght@400;500;600&family=Caveat:wght@500;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=Source+Serif+4:opsz,wght@8..60,400;8..60,500;8..60,600&family=Architects+Daughter&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fontsource/monaspace-xenon@5/400.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fontsource/monaspace-xenon@5/500.css">
   <style>
     
     :root {
-      --c-paper: #FBF7F0;
-      --c-paper-soft: #F5EFE3;
-      --c-paper-deep: #EDE5D2;
-      --c-ink: #2A2A28;
-      --c-bark: #6E5B47;
-      --c-hairline: #E5DCC9;
-      --c-terracotta: #C65D3E;
-      --c-terracotta-soft: #F2D9CE;
-      --c-moss: #5B7553;
-      --c-moss-soft: #DCE4D6;
-      --c-slate: #5C7A99;
-      --c-slate-soft: #D7E0EA;
-      --c-focus-ring: #C65D3E;
-      --c-on-terracotta: #FBF7F0;
+      --c-paper: #F6EFDD;
+      --c-paper-soft: #ECE2C9;
+      --c-paper-deep: #DFD2B3;
+      --c-ink: #1F1E1B;
+      --c-bark: #6B5A41;
+      --c-hairline: #D9CDB1;
+      --c-graphite: #2B2A26;
+      --c-graphite-soft: #E3DCC8;
+      --c-on-graphite: #F6EFDD;
+      --c-pencil-red: #B8412A;
+      --c-walnut: #6B4A2B;
+      --c-walnut-soft: #E6D9C0;
+      --c-oak: #8A6A3A;
+      --c-oak-soft: #ECDFC4;
+      --c-ash: #5C5A52;
+      --c-ash-soft: #DDD6C5;
+      --c-focus-ring: #2B2A26;
       --s-xs: 4px;
       --s-sm: 8px;
       --s-md: 12px;
@@ -33,9 +39,9 @@
       --s-xxl: 64px;
       --s-section: 96px;
       --r-none: 0;
-      --r-sm: 3px;
-      --r-md: 6px;
-      --r-lg: 12px;
+      --r-sm: 2px;
+      --r-md: 4px;
+      --r-lg: 8px;
       --r-pill: 999px;
       --r-note: 2px 18px 4px 14px;
       --grain: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='220' height='220'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 0.16  0 0 0 0 0.16  0 0 0 0 0.15  0 0 0 0.06 0'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>");
@@ -58,7 +64,7 @@
       -webkit-font-smoothing: antialiased;
     }
 
-    a { color: var(--c-terracotta); text-decoration-thickness: 1px; text-underline-offset: 3px; }
+    a { color: var(--c-pencil-red); text-decoration-thickness: 1px; text-underline-offset: 3px; }
     a:hover { text-decoration-thickness: 2px; }
 
     .container { max-width: var(--content-w); margin: 0 auto; padding: 0 var(--s-lg); }
@@ -78,21 +84,21 @@
     .skip-link:focus { top: var(--s-sm); }
 
     /* ============ Typography ============ */
-    h1.display { font-family: "Fraunces", Georgia, "Times New Roman", serif; font-size: 48px; font-weight: 500; line-height: 1.1; letter-spacing: -0.01em; margin: 0 0 var(--s-sm); color: var(--c-ink); }
-    h2.display-sm { font-family: "Fraunces", Georgia, serif; font-size: 28px; font-weight: 500; line-height: 1.2; letter-spacing: -0.005em; margin: 0 0 var(--s-sm); color: var(--c-ink); }
+    h1.display { font-family: "Fraunces", Georgia, "Times New Roman", serif; font-size: 48px; font-weight: 600; line-height: 1.1; letter-spacing: -0.015em; margin: 0 0 var(--s-sm); color: var(--c-ink); }
+    h2.display-sm { font-family: "Fraunces", Georgia, serif; font-size: 28px; font-weight: 600; line-height: 1.2; letter-spacing: -0.005em; margin: 0 0 var(--s-sm); color: var(--c-ink); }
     .body-lg { font-family: "Source Serif 4", "Source Serif Pro", Georgia, serif; font-size: 18px; font-weight: 400; line-height: 1.65; letter-spacing: 0; }
     .body { font-family: "Source Serif 4", "Source Serif Pro", Georgia, serif; font-size: 16px; font-weight: 400; line-height: 1.7; letter-spacing: 0; }
     .body-sm { font-family: "Source Serif 4", Georgia, serif; font-size: 14px; font-weight: 400; line-height: 1.6; letter-spacing: 0; color: var(--c-bark); }
-    .mono { font-family: "IBM Plex Mono", "JetBrains Mono", Consolas, monospace; font-size: 14px; font-weight: 500; line-height: 1.5; letter-spacing: 0; }
-    .mono-sm { font-family: "IBM Plex Mono", Consolas, monospace; font-size: 11px; font-weight: 500; line-height: 1.4; letter-spacing: 0.04em; }
-    .hand { font-family: "Caveat", "Bradley Hand", cursive; font-size: 20px; font-weight: 500; line-height: 1.3; letter-spacing: 0; }
+    .mono { font-family: "Monaspace Xenon", "JetBrains Mono", "IBM Plex Mono", Consolas, monospace; font-size: 14px; font-weight: 500; line-height: 1.5; letter-spacing: 0; }
+    .mono-sm { font-family: "Monaspace Xenon", "JetBrains Mono", "IBM Plex Mono", Consolas, monospace; font-size: 11px; font-weight: 500; line-height: 1.4; letter-spacing: 0.08em; }
+    .hand { font-family: "Architects Daughter", "Bradley Hand", cursive; font-size: 22px; font-weight: 400; line-height: 1.3; letter-spacing: 0; }
 
     /* ============ Page header ============ */
     .page-header {
       padding: var(--s-lg) var(--s-lg);
     }
     .page-header .eyebrow {
-      font-family: "IBM Plex Mono", Consolas, monospace; font-size: 11px; font-weight: 500; line-height: 1.4; letter-spacing: 0.04em;
+      font-family: "Monaspace Xenon", "JetBrains Mono", "IBM Plex Mono", Consolas, monospace; font-size: 11px; font-weight: 500; line-height: 1.4; letter-spacing: 0.08em;
       color: var(--c-bark);
       text-transform: uppercase;
       margin-bottom: var(--s-sm);
@@ -104,7 +110,7 @@
       padding-bottom: 10px;
     }
     .page-header .title-wrap h1 {
-      font-family: "Fraunces", Georgia, serif; font-size: 28px; font-weight: 500; line-height: 1.2; letter-spacing: -0.005em;
+      font-family: "Fraunces", Georgia, serif; font-size: 28px; font-weight: 600; line-height: 1.2; letter-spacing: -0.005em;
       font-size: clamp(22px, 3.6vw, 30px);
       line-height: 1.15;
       margin: 0;
@@ -116,11 +122,12 @@
       left: 0;
       bottom: 0;
       width: 100%;
-      height: 8px;
-      color: var(--c-terracotta);
+      height: 10px;
+      color: var(--c-pencil-red);
       stroke-dasharray: 600;
       stroke-dashoffset: 600;
       animation: drawUnderline 900ms cubic-bezier(.4,0,.2,1) 200ms forwards;
+      transition: opacity 200ms ease-out;
     }
     @keyframes drawUnderline { to { stroke-dashoffset: 0; } }
     @media (prefers-reduced-motion: reduce) {
@@ -142,7 +149,7 @@
       text-wrap: balance;
     }
     .page-header .tagline-sub code {
-      font-family: "IBM Plex Mono", Consolas, monospace; font-size: 11px; font-weight: 500; line-height: 1.4; letter-spacing: 0.04em;
+      font-family: "Monaspace Xenon", "JetBrains Mono", "IBM Plex Mono", Consolas, monospace; font-size: 11px; font-weight: 500; line-height: 1.4; letter-spacing: 0.08em;
       background: var(--c-paper-deep);
       padding: 1px 6px;
       border-radius: var(--r-sm);
@@ -153,7 +160,7 @@
       margin: var(--s-lg) 0 0;
       padding: var(--s-base) var(--s-lg);
       background: var(--c-paper-soft);
-      border-left: 3px solid var(--c-moss);
+      border-left: 3px solid var(--c-walnut);
       border-radius: 0 var(--r-md) var(--r-md) 0;
       max-width: var(--prose-w);
     }
@@ -193,15 +200,15 @@
       }
       .rail-stat:first-child { border-top: none; padding-top: 0; }
       .rail-stat__num {
-        font-family: "Fraunces", Georgia, serif; font-size: 28px; font-weight: 500; line-height: 1.2; letter-spacing: -0.005em;
+        font-family: "Fraunces", Georgia, serif; font-size: 28px; font-weight: 600; line-height: 1.2; letter-spacing: -0.005em;
         display: block;
-        color: var(--c-terracotta);
+        color: var(--c-graphite);
         font-size: 28px;
         line-height: 1;
         margin-bottom: 4px;
       }
       .rail-stat__label {
-        font-family: "IBM Plex Mono", Consolas, monospace; font-size: 11px; font-weight: 500; line-height: 1.4; letter-spacing: 0.04em;
+        font-family: "Monaspace Xenon", "JetBrains Mono", "IBM Plex Mono", Consolas, monospace; font-size: 11px; font-weight: 500; line-height: 1.4; letter-spacing: 0.08em;
         color: var(--c-bark);
         text-transform: uppercase;
         letter-spacing: 0.08em;
@@ -236,7 +243,7 @@
       margin: var(--s-lg) 0;
     }
     .disclosure > summary {
-      font-family: "IBM Plex Mono", Consolas, monospace; font-size: 11px; font-weight: 500; line-height: 1.4; letter-spacing: 0.04em;
+      font-family: "Monaspace Xenon", "JetBrains Mono", "IBM Plex Mono", Consolas, monospace; font-size: 11px; font-weight: 500; line-height: 1.4; letter-spacing: 0.08em;
       color: var(--c-bark);
       list-style: none;
       cursor: pointer;
@@ -249,8 +256,8 @@
     .disclosure > summary::-webkit-details-marker { display: none; }
     .disclosure > summary::before {
       content: "+";
-      font-family: "IBM Plex Mono", "JetBrains Mono", Consolas, monospace; font-size: 14px; font-weight: 500; line-height: 1.5; letter-spacing: 0;
-      color: var(--c-terracotta);
+      font-family: "Monaspace Xenon", "JetBrains Mono", "IBM Plex Mono", Consolas, monospace; font-size: 14px; font-weight: 500; line-height: 1.5; letter-spacing: 0;
+      color: var(--c-graphite);
       width: 16px;
       display: inline-block;
       transition: transform 200ms ease;
@@ -277,7 +284,7 @@
       padding: var(--s-base) 0 var(--s-lg);
     }
     .minimap .pill {
-      font-family: "IBM Plex Mono", Consolas, monospace; font-size: 11px; font-weight: 500; line-height: 1.4; letter-spacing: 0.04em;
+      font-family: "Monaspace Xenon", "JetBrains Mono", "IBM Plex Mono", Consolas, monospace; font-size: 11px; font-weight: 500; line-height: 1.4; letter-spacing: 0.08em;
       background: transparent;
       color: var(--c-bark);
       border: 1px solid var(--c-hairline);
@@ -288,21 +295,22 @@
       align-items: center;
       gap: 8px;
       text-transform: uppercase;
+      transition: background 150ms ease-out, border-color 150ms ease-out, color 150ms ease-out;
     }
     .minimap .pill .num {
-      color: var(--c-terracotta);
+      color: var(--c-graphite);
       font-weight: 600;
     }
     .minimap .pill:hover {
-      border-color: var(--c-terracotta);
+      border-color: var(--c-graphite);
       color: var(--c-ink);
     }
     .minimap .pill.active {
-      background: var(--c-terracotta);
-      border-color: var(--c-terracotta);
-      color: var(--c-on-terracotta);
+      background: var(--c-graphite);
+      border-color: var(--c-graphite);
+      color: var(--c-on-graphite);
     }
-    .minimap .pill.active .num { color: var(--c-on-terracotta); }
+    .minimap .pill.active .num { color: var(--c-on-graphite); }
     .minimap .pill:focus-visible {
       outline: 2px solid var(--c-focus-ring);
       outline-offset: 3px;
@@ -318,7 +326,7 @@
       position: relative;
     }
     .phaseflow-caption {
-      font-family: "IBM Plex Mono", Consolas, monospace; font-size: 11px; font-weight: 500; line-height: 1.4; letter-spacing: 0.04em;
+      font-family: "Monaspace Xenon", "JetBrains Mono", "IBM Plex Mono", Consolas, monospace; font-size: 11px; font-weight: 500; line-height: 1.4; letter-spacing: 0.08em;
       color: var(--c-bark);
       text-transform: uppercase;
       letter-spacing: 0.08em;
@@ -331,7 +339,7 @@
       gap: 6px;
     }
     .phaseflow-caption .num { color: var(--c-ink); font-weight: 600; }
-    .phaseflow-caption .arrow { color: var(--c-terracotta); }
+    .phaseflow-caption .arrow { color: var(--c-graphite); }
     .phaseflow-row {
       display: grid;
       grid-template-columns: 1fr;
@@ -359,21 +367,21 @@
       top: 50%;
       width: 8px;
       height: 8px;
-      border-top: 1.5px solid var(--c-terracotta);
-      border-right: 1.5px solid var(--c-terracotta);
+      border-top: 1.5px solid var(--c-graphite);
+      border-right: 1.5px solid var(--c-graphite);
       transform: translateY(-50%) rotate(45deg);
       z-index: 1;
       display: none;
       pointer-events: none;
     }
     .phaseflow-node .num {
-      font-family: "IBM Plex Mono", Consolas, monospace; font-size: 11px; font-weight: 500; line-height: 1.4; letter-spacing: 0.04em;
+      font-family: "Monaspace Xenon", "JetBrains Mono", "IBM Plex Mono", Consolas, monospace; font-size: 11px; font-weight: 500; line-height: 1.4; letter-spacing: 0.08em;
       color: var(--c-ink);
       letter-spacing: 0.08em;
       font-weight: 600;
     }
     .phaseflow-node .name {
-      font-family: "Fraunces", Georgia, serif; font-size: 28px; font-weight: 500; line-height: 1.2; letter-spacing: -0.005em;
+      font-family: "Fraunces", Georgia, serif; font-size: 28px; font-weight: 600; line-height: 1.2; letter-spacing: -0.005em;
       font-size: 18px;
       color: var(--c-ink);
       line-height: 1.2;
@@ -386,7 +394,7 @@
       margin-top: 4px;
     }
     .phaseflow-node:hover {
-      border-color: var(--c-terracotta);
+      border-color: var(--c-graphite);
       background: var(--c-paper-deep);
     }
     .phaseflow-node:focus-visible {
@@ -399,16 +407,16 @@
       background: var(--c-paper);
       border: 1px dashed var(--c-hairline);
       border-radius: var(--r-md);
-      font-family: "IBM Plex Mono", Consolas, monospace; font-size: 11px; font-weight: 500; line-height: 1.4; letter-spacing: 0.04em;
+      font-family: "Monaspace Xenon", "JetBrains Mono", "IBM Plex Mono", Consolas, monospace; font-size: 11px; font-weight: 500; line-height: 1.4; letter-spacing: 0.08em;
       color: var(--c-bark);
       text-transform: uppercase;
       letter-spacing: 0.08em;
       text-align: center;
     }
     .phaseflow-band a {
-      color: var(--c-terracotta);
+      color: var(--c-graphite);
       text-decoration: none;
-      border-bottom: 1px dotted var(--c-terracotta);
+      border-bottom: 1px dotted var(--c-graphite);
       padding-bottom: 1px;
     }
     .phaseflow-band a:hover { color: var(--c-ink); border-color: var(--c-ink); }
@@ -426,8 +434,8 @@
       text-align: left;
     }
     .phaseflow-band-profiles .band-label {
-      font-family: "IBM Plex Mono", Consolas, monospace; font-size: 11px; font-weight: 500; line-height: 1.4; letter-spacing: 0.04em;
-      color: var(--c-terracotta);
+      font-family: "Monaspace Xenon", "JetBrains Mono", "IBM Plex Mono", Consolas, monospace; font-size: 11px; font-weight: 500; line-height: 1.4; letter-spacing: 0.08em;
+      color: var(--c-graphite);
       text-transform: uppercase;
       letter-spacing: 0.08em;
     }
@@ -448,7 +456,7 @@
       padding: 0;
     }
     .phaseflow-band-profiles .band-chips code {
-      font-family: "IBM Plex Mono", Consolas, monospace; font-size: 11px; font-weight: 500; line-height: 1.4; letter-spacing: 0.04em;
+      font-family: "Monaspace Xenon", "JetBrains Mono", "IBM Plex Mono", Consolas, monospace; font-size: 11px; font-weight: 500; line-height: 1.4; letter-spacing: 0.08em;
       background: var(--c-paper-deep);
       color: var(--c-ink);
       padding: 3px 9px;
@@ -458,8 +466,8 @@
       letter-spacing: 0;
     }
     .phaseflow-band-profiles .band-chips a:hover code {
-      border-color: var(--c-terracotta);
-      color: var(--c-terracotta);
+      border-color: var(--c-graphite);
+      color: var(--c-graphite);
     }
 
     /* Mobile-first: stack → 2-up → 3-up → 6-up. Arrows appear once nodes are in rows. */
@@ -487,7 +495,7 @@
       border-radius: var(--r-lg);
     }
     .usage-modes-title {
-      font-family: "Fraunces", Georgia, serif; font-size: 28px; font-weight: 500; line-height: 1.2; letter-spacing: -0.005em;
+      font-family: "Fraunces", Georgia, serif; font-size: 28px; font-weight: 600; line-height: 1.2; letter-spacing: -0.005em;
       font-size: 22px;
       color: var(--c-ink);
       margin: 0 0 var(--s-xs);
@@ -521,7 +529,7 @@
       text-wrap: pretty;
     }
     .usage-mode-head strong {
-      font-family: "Fraunces", Georgia, serif; font-size: 28px; font-weight: 500; line-height: 1.2; letter-spacing: -0.005em;
+      font-family: "Fraunces", Georgia, serif; font-size: 28px; font-weight: 600; line-height: 1.2; letter-spacing: -0.005em;
       font-size: 18px;
       color: var(--c-ink);
       display: block;
@@ -539,16 +547,16 @@
     }
     .usage-mode-row { display: flex; gap: var(--s-sm); align-items: baseline; }
     .usage-mode-who {
-      font-family: "IBM Plex Mono", Consolas, monospace; font-size: 11px; font-weight: 500; line-height: 1.4; letter-spacing: 0.04em;
+      font-family: "Monaspace Xenon", "JetBrains Mono", "IBM Plex Mono", Consolas, monospace; font-size: 11px; font-weight: 500; line-height: 1.4; letter-spacing: 0.08em;
       text-transform: uppercase;
       letter-spacing: 0.08em;
       color: var(--c-bark);
       flex: 0 0 44px;
     }
-    .usage-mode-row[data-who="you"] .usage-mode-who { color: var(--c-terracotta); }
+    .usage-mode-row[data-who="you"] .usage-mode-who { color: var(--c-graphite); }
     .usage-mode-msg { color: var(--c-ink); flex: 1; }
     .usage-mode-msg code {
-      font-family: "IBM Plex Mono", Consolas, monospace; font-size: 11px; font-weight: 500; line-height: 1.4; letter-spacing: 0.04em;
+      font-family: "Monaspace Xenon", "JetBrains Mono", "IBM Plex Mono", Consolas, monospace; font-size: 11px; font-weight: 500; line-height: 1.4; letter-spacing: 0.08em;
       background: var(--c-paper-deep);
       padding: 1px 5px;
       border-radius: var(--r-sm);
@@ -584,7 +592,7 @@
     }
     .accent-legend strong { color: var(--c-ink); font-weight: 600; }
     .accent-legend code {
-      font-family: "IBM Plex Mono", Consolas, monospace; font-size: 11px; font-weight: 500; line-height: 1.4; letter-spacing: 0.04em;
+      font-family: "Monaspace Xenon", "JetBrains Mono", "IBM Plex Mono", Consolas, monospace; font-size: 11px; font-weight: 500; line-height: 1.4; letter-spacing: 0.08em;
       background: var(--c-paper-deep);
       padding: 1px 5px;
       border-radius: var(--r-sm);
@@ -612,13 +620,13 @@
       border-radius: 2px;
     }
     .phase .num {
-      font-family: "IBM Plex Mono", Consolas, monospace; font-size: 11px; font-weight: 500; line-height: 1.4; letter-spacing: 0.04em;
-      color: var(--c-terracotta);
+      font-family: "Monaspace Xenon", "JetBrains Mono", "IBM Plex Mono", Consolas, monospace; font-size: 11px; font-weight: 500; line-height: 1.4; letter-spacing: 0.08em;
+      color: var(--c-graphite);
       flex-shrink: 0;
       align-self: center;
     }
     .phase .name {
-      font-family: "Fraunces", Georgia, serif; font-size: 28px; font-weight: 500; line-height: 1.2; letter-spacing: -0.005em;
+      font-family: "Fraunces", Georgia, serif; font-size: 28px; font-weight: 600; line-height: 1.2; letter-spacing: -0.005em;
       color: var(--c-ink);
       flex-shrink: 0;
       margin: 0;
@@ -644,10 +652,12 @@
       flex-shrink: 0;
       align-self: center;
     }
-    .phase[data-thread="moss"] .num,
-    .phase[data-thread="moss"] .leaf { color: var(--c-moss); }
-    .phase[data-thread="slate"] .num,
-    .phase[data-thread="slate"] .leaf { color: var(--c-slate); }
+    .phase[data-thread="walnut"] .num,
+    .phase[data-thread="walnut"] .leaf { color: var(--c-walnut); }
+    .phase[data-thread="oak"] .num,
+    .phase[data-thread="oak"] .leaf { color: var(--c-oak); }
+    .phase[data-thread="ash"] .num,
+    .phase[data-thread="ash"] .leaf { color: var(--c-ash); }
     .phase[data-thread="bark"] .num,
     .phase[data-thread="bark"] .leaf { color: var(--c-bark); }
 
@@ -695,13 +705,13 @@
       flex-direction: column;
       gap: var(--s-sm);
       position: relative;
-      transition: border-color 180ms ease, background 180ms ease;
+      transition: border-color 150ms ease-out, background 150ms ease-out;
       -webkit-appearance: none;
       appearance: none;
       width: 100%;
     }
     .skill-card:hover {
-      border-color: var(--c-terracotta);
+      border-color: var(--c-graphite);
       background: var(--c-paper-soft);
     }
     .skill-card:focus-visible {
@@ -709,7 +719,7 @@
       outline-offset: 3px;
     }
     .skill-card .name {
-      font-family: "IBM Plex Mono", "JetBrains Mono", Consolas, monospace; font-size: 14px; font-weight: 500; line-height: 1.5; letter-spacing: 0;
+      font-family: "Monaspace Xenon", "JetBrains Mono", "IBM Plex Mono", Consolas, monospace; font-size: 14px; font-weight: 500; line-height: 1.5; letter-spacing: 0;
       color: var(--c-ink);
       display: inline-block;
       position: relative;
@@ -720,7 +730,7 @@
       position: absolute;
       left: 0; right: 0; bottom: -3px;
       height: 2px;
-      background: var(--c-terracotta);
+      background: var(--c-graphite);
       transform: scaleX(0);
       transform-origin: left center;
       transition: transform 250ms cubic-bezier(.4,0,.2,1);
@@ -739,7 +749,7 @@
       margin-top: 2px;
     }
     .skill-card .open-hint {
-      font-family: "IBM Plex Mono", Consolas, monospace; font-size: 11px; font-weight: 500; line-height: 1.4; letter-spacing: 0.04em;
+      font-family: "Monaspace Xenon", "JetBrains Mono", "IBM Plex Mono", Consolas, monospace; font-size: 11px; font-weight: 500; line-height: 1.4; letter-spacing: 0.08em;
       color: var(--c-bark);
       text-transform: uppercase;
       margin-top: auto;
@@ -749,19 +759,19 @@
       gap: var(--s-xs);
       align-items: center;
     }
-    .skill-card .open-hint::after { content: "→"; color: var(--c-terracotta); }
+    .skill-card .open-hint::after { content: "→"; color: var(--c-graphite); }
 
     /* Tags */
     .tag {
-      font-family: "IBM Plex Mono", Consolas, monospace; font-size: 11px; font-weight: 500; line-height: 1.4; letter-spacing: 0.04em;
+      font-family: "Monaspace Xenon", "JetBrains Mono", "IBM Plex Mono", Consolas, monospace; font-size: 11px; font-weight: 500; line-height: 1.4; letter-spacing: 0.08em;
       text-transform: uppercase;
       padding: 3px 8px;
       border-radius: var(--r-sm);
       display: inline-block;
     }
-    .tag-foundation { background: var(--c-terracotta-soft); color: var(--c-terracotta); }
-    .tag-voice      { background: var(--c-moss-soft);       color: var(--c-moss); }
-    .tag-security   { background: var(--c-slate-soft);      color: var(--c-slate); }
+    .tag-foundation { background: var(--c-graphite-soft); color: var(--c-graphite); }
+    .tag-voice      { background: var(--c-walnut-soft);       color: var(--c-walnut); }
+    .tag-security   { background: var(--c-oak-soft);      color: var(--c-oak); }
 
     /* Next chips */
     .next-row {
@@ -771,13 +781,13 @@
       align-items: center;
     }
     .next-row .label {
-      font-family: "IBM Plex Mono", Consolas, monospace; font-size: 11px; font-weight: 500; line-height: 1.4; letter-spacing: 0.04em;
+      font-family: "Monaspace Xenon", "JetBrains Mono", "IBM Plex Mono", Consolas, monospace; font-size: 11px; font-weight: 500; line-height: 1.4; letter-spacing: 0.08em;
       color: var(--c-bark);
       text-transform: uppercase;
       margin-right: 4px;
     }
     .next-chip {
-      font-family: "IBM Plex Mono", Consolas, monospace; font-size: 11px; font-weight: 500; line-height: 1.4; letter-spacing: 0.04em;
+      font-family: "Monaspace Xenon", "JetBrains Mono", "IBM Plex Mono", Consolas, monospace; font-size: 11px; font-weight: 500; line-height: 1.4; letter-spacing: 0.08em;
       background: var(--c-paper-soft);
       color: var(--c-ink);
       border: 1px solid var(--c-hairline);
@@ -785,12 +795,12 @@
       padding: 3px 9px;
       cursor: pointer;
       font: inherit;
-      font-family: "IBM Plex Mono", Consolas, monospace; font-size: 11px; font-weight: 500; line-height: 1.4; letter-spacing: 0.04em;
+      font-family: "Monaspace Xenon", "JetBrains Mono", "IBM Plex Mono", Consolas, monospace; font-size: 11px; font-weight: 500; line-height: 1.4; letter-spacing: 0.08em;
     }
     .next-chip:hover,
     .next-chip:focus-visible {
-      border-color: var(--c-terracotta);
-      color: var(--c-terracotta);
+      border-color: var(--c-graphite);
+      color: var(--c-graphite);
       outline: none;
     }
     .next-chip.is-static {
@@ -815,7 +825,7 @@
       overflow: hidden;
     }
     .modal-dialog::backdrop {
-      background: rgba(42, 42, 40, 0.45);
+      background: rgba(31, 30, 27, 0.45);
     }
     .modal-inner {
       display: flex;
@@ -831,7 +841,7 @@
         max-height: calc(100vh - var(--s-xl));
         margin: var(--s-lg) auto;
         border-radius: var(--r-lg);
-        box-shadow: 0 12px 40px rgba(42, 42, 40, 0.18);
+        box-shadow: 0 12px 40px rgba(31, 30, 27, 0.18);
       }
     }
     .modal-header {
@@ -846,10 +856,10 @@
       .modal-header { padding: var(--s-lg) var(--s-lg) var(--s-base); }
     }
     .modal-header h2 {
-      font-family: "Fraunces", Georgia, serif; font-size: 28px; font-weight: 500; line-height: 1.2; letter-spacing: -0.005em;
-      font-family: "IBM Plex Mono", "JetBrains Mono", Consolas, monospace; font-size: 14px; font-weight: 500; line-height: 1.5; letter-spacing: 0;
+      font-family: "Fraunces", Georgia, serif; font-size: 28px; font-weight: 600; line-height: 1.2; letter-spacing: -0.005em;
+      font-family: "Monaspace Xenon", "JetBrains Mono", "IBM Plex Mono", Consolas, monospace; font-size: 14px; font-weight: 500; line-height: 1.5; letter-spacing: 0;
       font-size: 22px;
-      color: var(--c-terracotta);
+      color: var(--c-graphite);
       margin: 0;
       flex: 1;
     }
@@ -860,10 +870,10 @@
       color: var(--c-bark);
       cursor: pointer;
       font: inherit;
-      font-family: "IBM Plex Mono", Consolas, monospace; font-size: 11px; font-weight: 500; line-height: 1.4; letter-spacing: 0.04em;
+      font-family: "Monaspace Xenon", "JetBrains Mono", "IBM Plex Mono", Consolas, monospace; font-size: 11px; font-weight: 500; line-height: 1.4; letter-spacing: 0.08em;
       padding: 4px 12px;
     }
-    .modal-close:hover { border-color: var(--c-terracotta); color: var(--c-terracotta); }
+    .modal-close:hover { border-color: var(--c-graphite); color: var(--c-graphite); }
     .modal-nav {
       padding: var(--s-sm) var(--s-base);
       border-bottom: 1px solid var(--c-hairline);
@@ -876,7 +886,7 @@
       .modal-nav { padding: var(--s-sm) var(--s-lg); }
     }
     .modal-nav-pill {
-      font-family: "IBM Plex Mono", Consolas, monospace; font-size: 11px; font-weight: 500; line-height: 1.4; letter-spacing: 0.04em;
+      font-family: "Monaspace Xenon", "JetBrains Mono", "IBM Plex Mono", Consolas, monospace; font-size: 11px; font-weight: 500; line-height: 1.4; letter-spacing: 0.08em;
       background: transparent;
       color: var(--c-bark);
       border: 1px solid transparent;
@@ -888,9 +898,9 @@
     }
     .modal-nav-pill:hover { color: var(--c-ink); border-color: var(--c-hairline); }
     .modal-nav-pill.active {
-      background: var(--c-terracotta);
-      color: var(--c-on-terracotta);
-      border-color: var(--c-terracotta);
+      background: var(--c-graphite);
+      color: var(--c-on-graphite);
+      border-color: var(--c-graphite);
     }
     .modal-nav-sep {
       display: inline-block;
@@ -913,7 +923,7 @@
     .modal-section { margin-top: var(--s-lg); scroll-margin-top: 80px; }
     .modal-section:first-child { margin-top: 0; }
     .modal-section h3 {
-      font-family: "IBM Plex Mono", Consolas, monospace; font-size: 11px; font-weight: 500; line-height: 1.4; letter-spacing: 0.04em;
+      font-family: "Monaspace Xenon", "JetBrains Mono", "IBM Plex Mono", Consolas, monospace; font-size: 11px; font-weight: 500; line-height: 1.4; letter-spacing: 0.08em;
       text-transform: uppercase;
       color: var(--c-bark);
       margin: 0 0 var(--s-sm);
@@ -925,7 +935,7 @@
       font-style: italic;
       padding: var(--s-base) var(--s-lg);
       background: var(--c-paper-soft);
-      border-left: 3px solid var(--c-terracotta);
+      border-left: 3px solid var(--c-graphite);
       border-radius: 0 var(--r-md) var(--r-md) 0;
       margin: 0;
     }
@@ -933,7 +943,7 @@
     .modal-body ul, .modal-body ol { padding-left: 22px; margin: var(--s-sm) 0; }
     .modal-body li { margin-bottom: 4px; }
     .modal-body code {
-      font-family: "IBM Plex Mono", Consolas, monospace; font-size: 11px; font-weight: 500; line-height: 1.4; letter-spacing: 0.04em;
+      font-family: "Monaspace Xenon", "JetBrains Mono", "IBM Plex Mono", Consolas, monospace; font-size: 11px; font-weight: 500; line-height: 1.4; letter-spacing: 0.08em;
       background: var(--c-paper-deep);
       padding: 1px 5px;
       border-radius: var(--r-sm);
@@ -944,14 +954,14 @@
       border-radius: var(--r-md);
       padding: var(--s-base) var(--s-lg);
       overflow-x: auto;
-      font-family: "IBM Plex Mono", Consolas, monospace; font-size: 11px; font-weight: 500; line-height: 1.4; letter-spacing: 0.04em;
+      font-family: "Monaspace Xenon", "JetBrains Mono", "IBM Plex Mono", Consolas, monospace; font-size: 11px; font-weight: 500; line-height: 1.4; letter-spacing: 0.08em;
     }
     .modal-body pre code { background: none; padding: 0; }
     .modal-body .md-table {
       border-collapse: collapse;
       width: 100%;
       margin: var(--s-sm) 0 var(--s-base);
-      font-family: "IBM Plex Mono", Consolas, monospace; font-size: 11px; font-weight: 500; line-height: 1.4; letter-spacing: 0.04em;
+      font-family: "Monaspace Xenon", "JetBrains Mono", "IBM Plex Mono", Consolas, monospace; font-size: 11px; font-weight: 500; line-height: 1.4; letter-spacing: 0.08em;
       background: var(--c-paper);
       border: 1px solid var(--c-hairline);
     }
@@ -966,8 +976,8 @@
     .modal-footer-link {
       display: inline-block;
       margin-top: var(--s-lg);
-      font-family: "IBM Plex Mono", Consolas, monospace; font-size: 11px; font-weight: 500; line-height: 1.4; letter-spacing: 0.04em;
-      color: var(--c-terracotta);
+      font-family: "Monaspace Xenon", "JetBrains Mono", "IBM Plex Mono", Consolas, monospace; font-size: 11px; font-weight: 500; line-height: 1.4; letter-spacing: 0.08em;
+      color: var(--c-graphite);
       text-transform: uppercase;
     }
 
@@ -988,7 +998,7 @@
       .chat-turn { grid-template-columns: 44px 1fr; }
     }
     .chat-avatar {
-      font-family: "IBM Plex Mono", Consolas, monospace; font-size: 11px; font-weight: 500; line-height: 1.4; letter-spacing: 0.04em;
+      font-family: "Monaspace Xenon", "JetBrains Mono", "IBM Plex Mono", Consolas, monospace; font-size: 11px; font-weight: 500; line-height: 1.4; letter-spacing: 0.08em;
       text-transform: uppercase;
       letter-spacing: 0.08em;
       width: 36px;
@@ -1005,9 +1015,9 @@
       .chat-avatar { width: 44px; font-size: 11px; padding: 6px 0; }
     }
     .chat-ask .chat-avatar {
-      color: var(--c-terracotta);
-      border-color: var(--c-terracotta);
-      background: var(--c-terracotta-soft);
+      color: var(--c-graphite);
+      border-color: var(--c-graphite);
+      background: var(--c-graphite-soft);
     }
     .chat-get .chat-avatar {
       color: var(--c-bark);
@@ -1025,11 +1035,11 @@
     }
     .chat-ask .chat-bubble {
       background: var(--c-paper);
-      border-color: var(--c-terracotta);
+      border-color: var(--c-graphite);
       border-left-width: 3px;
     }
     .chat-ask .chat-bubble code {
-      background: var(--c-terracotta-soft);
+      background: var(--c-graphite-soft);
       color: var(--c-ink);
     }
     .chat-bubble > *:first-child { margin-top: 0; }
@@ -1053,7 +1063,7 @@
       padding: var(--s-sm) var(--s-base) !important;
       max-height: 320px;
       overflow: auto;
-      font-family: "IBM Plex Mono", Consolas, monospace; font-size: 11px; font-weight: 500; line-height: 1.4; letter-spacing: 0.04em;
+      font-family: "Monaspace Xenon", "JetBrains Mono", "IBM Plex Mono", Consolas, monospace; font-size: 11px; font-weight: 500; line-height: 1.4; letter-spacing: 0.08em;
       color: var(--c-ink);
     }
     .chat-output {
@@ -1069,7 +1079,7 @@
       font-size: 15px;
     }
     .chat-output.is-code {
-      font-family: "IBM Plex Mono", Consolas, monospace; font-size: 11px; font-weight: 500; line-height: 1.4; letter-spacing: 0.04em;
+      font-family: "Monaspace Xenon", "JetBrains Mono", "IBM Plex Mono", Consolas, monospace; font-size: 11px; font-weight: 500; line-height: 1.4; letter-spacing: 0.08em;
       background: var(--c-paper);
       border: 1px dashed var(--c-hairline);
       border-radius: var(--r-md);
@@ -1093,7 +1103,7 @@
     }
     .modal-section.tier-graph .graph-row:last-child { border-bottom: none; }
     .modal-section.tier-graph .graph-label {
-      font-family: "IBM Plex Mono", Consolas, monospace; font-size: 11px; font-weight: 500; line-height: 1.4; letter-spacing: 0.04em;
+      font-family: "Monaspace Xenon", "JetBrains Mono", "IBM Plex Mono", Consolas, monospace; font-size: 11px; font-weight: 500; line-height: 1.4; letter-spacing: 0.08em;
       color: var(--c-bark);
       text-transform: uppercase;
       flex: 0 0 90px;
@@ -1119,17 +1129,17 @@
       text-align: center;
     }
     .colophon .sig {
-      font-family: "Caveat", "Bradley Hand", cursive; font-size: 20px; font-weight: 500; line-height: 1.3; letter-spacing: 0;
-      color: var(--c-terracotta);
+      font-family: "Architects Daughter", "Bradley Hand", cursive; font-size: 22px; font-weight: 400; line-height: 1.3; letter-spacing: 0;
+      color: var(--c-pencil-red);
       margin: 0 0 var(--s-sm);
     }
     .colophon .meta {
-      font-family: "IBM Plex Mono", Consolas, monospace; font-size: 11px; font-weight: 500; line-height: 1.4; letter-spacing: 0.04em;
+      font-family: "Monaspace Xenon", "JetBrains Mono", "IBM Plex Mono", Consolas, monospace; font-size: 11px; font-weight: 500; line-height: 1.4; letter-spacing: 0.08em;
       color: var(--c-bark);
       text-transform: uppercase;
     }
     .colophon .meta a { color: var(--c-bark); margin: 0 var(--s-sm); }
-    .colophon .meta a:hover { color: var(--c-terracotta); }
+    .colophon .meta a:hover { color: var(--c-pencil-red); }
 
     /* ============ Accessibility helpers ============ */
     .sr-only {
@@ -1166,7 +1176,7 @@
       gap: var(--s-sm);
     }
     .sg-toc a {
-      font-family: "IBM Plex Mono", Consolas, monospace; font-size: 11px; font-weight: 500; line-height: 1.4; letter-spacing: 0.04em;
+      font-family: "Monaspace Xenon", "JetBrains Mono", "IBM Plex Mono", Consolas, monospace; font-size: 11px; font-weight: 500; line-height: 1.4; letter-spacing: 0.08em;
       color: var(--c-bark);
       text-transform: uppercase;
       text-decoration: none;
@@ -1174,7 +1184,7 @@
       border-radius: var(--r-pill);
       border: 1px solid var(--c-hairline);
     }
-    .sg-toc a:hover { color: var(--c-terracotta); border-color: var(--c-terracotta); }
+    .sg-toc a:hover { color: var(--c-graphite); border-color: var(--c-graphite); }
 
     .sg-section {
       padding: var(--s-xl) 0 var(--s-lg);
@@ -1182,7 +1192,7 @@
     }
     .sg-section:first-of-type { border-top: none; }
     .sg-section h2 {
-      font-family: "Fraunces", Georgia, serif; font-size: 28px; font-weight: 500; line-height: 1.2; letter-spacing: -0.005em;
+      font-family: "Fraunces", Georgia, serif; font-size: 28px; font-weight: 600; line-height: 1.2; letter-spacing: -0.005em;
       margin: 0 0 var(--s-sm);
       color: var(--c-ink);
     }
@@ -1242,7 +1252,7 @@
       padding: 8px 0;
       border-bottom: 1px dashed var(--c-hairline);
     }
-    .sg-space-bar { height: 14px; background: var(--c-terracotta-soft); border-left: 2px solid var(--c-terracotta); }
+    .sg-space-bar { height: 14px; background: var(--c-graphite-soft); border-left: 2px solid var(--c-graphite); }
     .sg-round-box { width: 60px; height: 60px; background: var(--c-paper-soft); border: 1px solid var(--c-hairline); }
 
     /* Components */
@@ -1255,7 +1265,7 @@
       flex-direction: column;
       gap: var(--s-base);
     }
-    .sg-component-head h3 { margin: 0; color: var(--c-terracotta); font-size: 16px; }
+    .sg-component-head h3 { margin: 0; color: var(--c-graphite); font-size: 16px; }
     .sg-component-head p { margin: 4px 0 0; color: var(--c-bark); }
     .sg-component-live {
       padding: var(--s-lg);
@@ -1275,14 +1285,14 @@
       gap: 4px var(--s-base);
       margin: 0;
     }
-    .sg-dl dt { font-family: "IBM Plex Mono", Consolas, monospace; font-size: 11px; font-weight: 500; line-height: 1.4; letter-spacing: 0.04em; color: var(--c-bark); text-transform: uppercase; }
-    .sg-dl dd { margin: 0; font-family: "IBM Plex Mono", Consolas, monospace; font-size: 11px; font-weight: 500; line-height: 1.4; letter-spacing: 0.04em; color: var(--c-ink); }
+    .sg-dl dt { font-family: "Monaspace Xenon", "JetBrains Mono", "IBM Plex Mono", Consolas, monospace; font-size: 11px; font-weight: 500; line-height: 1.4; letter-spacing: 0.08em; color: var(--c-bark); text-transform: uppercase; }
+    .sg-dl dd { margin: 0; font-family: "Monaspace Xenon", "JetBrains Mono", "IBM Plex Mono", Consolas, monospace; font-size: 11px; font-weight: 500; line-height: 1.4; letter-spacing: 0.08em; color: var(--c-ink); }
 
     /* Demo buttons in styleguide only */
     .sg-demo-btn-primary {
-      background: var(--c-terracotta);
-      color: var(--c-on-terracotta);
-      font-family: "IBM Plex Mono", Consolas, monospace; font-size: 11px; font-weight: 500; line-height: 1.4; letter-spacing: 0.04em;
+      background: var(--c-graphite);
+      color: var(--c-on-graphite);
+      font-family: "Monaspace Xenon", "JetBrains Mono", "IBM Plex Mono", Consolas, monospace; font-size: 11px; font-weight: 500; line-height: 1.4; letter-spacing: 0.08em;
       text-transform: uppercase;
       border: none;
       border-radius: var(--r-md);
@@ -1293,14 +1303,14 @@
     .sg-demo-btn-quiet {
       background: transparent;
       color: var(--c-ink);
-      font-family: "IBM Plex Mono", Consolas, monospace; font-size: 11px; font-weight: 500; line-height: 1.4; letter-spacing: 0.04em;
+      font-family: "Monaspace Xenon", "JetBrains Mono", "IBM Plex Mono", Consolas, monospace; font-size: 11px; font-weight: 500; line-height: 1.4; letter-spacing: 0.08em;
       text-transform: uppercase;
       border: 1px solid var(--c-hairline);
       border-radius: var(--r-md);
       padding: 10px 14px;
       cursor: pointer;
     }
-    .sg-demo-btn-quiet:hover { border-color: var(--c-terracotta); color: var(--c-terracotta); }
+    .sg-demo-btn-quiet:hover { border-color: var(--c-graphite); color: var(--c-graphite); }
 
     .sg-phases {
       display: grid;
@@ -1317,9 +1327,9 @@
     <div class="eyebrow">ai-runbook-jh · living styleguide</div>
     <div class="title-wrap">
       <h1>Styleguide: the system, in use.</h1>
-      <svg class="underline" viewBox="0 0 300 12" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" aria-hidden="true" preserveAspectRatio="none"><path d="M2 7 Q 30 3, 60 6 T 120 7 T 180 5 T 240 7 T 298 6" pathLength="600"/></svg>
+      <svg class="underline" viewBox="0 0 300 12" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" preserveAspectRatio="none"><path d="M2 7 Q 30 3, 60 6 T 120 7 T 180 5 T 240 7 T 298 6" pathLength="600"/></svg>
     </div>
-    <p class="tagline">Every token and component renders here from the same source the AI runbook uses. If something looks wrong, fix it in <code>tools/runbook-build/theme.js</code> and rebuild - both pages update together.</p>
+    <p class="tagline">Every token and component renders here from the same source the AI runbook uses. If something looks wrong, fix it in <code>tools/runbook-build/theme.js</code> and rebuild; both pages update together.</p>
   </header>
 
   <div class="sg-toc">
@@ -1339,119 +1349,143 @@
   <main class="container">
     <section class="sg-section" id="colors">
       <h2>Colors</h2>
-      <p class="sg-lede">Warm paper canvas. Soft charcoal ink. Terracotta as the single primary signal. Moss and slate as quiet phase threads — never used alone to convey meaning.</p>
+      <p class="sg-lede">Planed-pine canvas. Graphite ink, walnut for secondary text. Graphite as the single interactive signal. Pencil-red as the one warm accent: title underline and colophon only. Walnut, oak, and ash as quiet phase threads, never used alone to convey meaning.</p>
       <div class="sg-grid">
         
     <div class="sg-swatch">
-      <div class="sg-swatch-chip" style="background: #FBF7F0"></div>
+      <div class="sg-swatch-chip" style="background: #F6EFDD"></div>
       <div class="sg-swatch-meta">
         <code class="mono-sm">{colors.paper}</code>
-        <code class="mono-sm sg-value">#FBF7F0</code>
-        <p class="body-sm">Default page canvas. Warm recycled-paper off-white.</p>
+        <code class="mono-sm sg-value">#F6EFDD</code>
+        <p class="body-sm">Default page canvas. Warm planed-pine off-white.</p>
       </div>
     </div>
     <div class="sg-swatch">
-      <div class="sg-swatch-chip" style="background: #F5EFE3"></div>
+      <div class="sg-swatch-chip" style="background: #ECE2C9"></div>
       <div class="sg-swatch-meta">
         <code class="mono-sm">{colors.paper-soft}</code>
-        <code class="mono-sm sg-value">#F5EFE3</code>
-        <p class="body-sm">Recessed surface. Phase headers, expanded card backs.</p>
+        <code class="mono-sm sg-value">#ECE2C9</code>
+        <p class="body-sm">Recessed surface. Phase headers, modal nav, expanded cards.</p>
       </div>
     </div>
     <div class="sg-swatch">
-      <div class="sg-swatch-chip" style="background: #EDE5D2"></div>
+      <div class="sg-swatch-chip" style="background: #DFD2B3"></div>
       <div class="sg-swatch-meta">
         <code class="mono-sm">{colors.paper-deep}</code>
-        <code class="mono-sm sg-value">#EDE5D2</code>
-        <p class="body-sm">Deeper recess. Hover wash, mini-map ground.</p>
+        <code class="mono-sm sg-value">#DFD2B3</code>
+        <p class="body-sm">Deeper recess. Card hover wash, code inline background.</p>
       </div>
     </div>
     <div class="sg-swatch">
-      <div class="sg-swatch-chip" style="background: #2A2A28"></div>
+      <div class="sg-swatch-chip" style="background: #1F1E1B"></div>
       <div class="sg-swatch-meta">
         <code class="mono-sm">{colors.ink}</code>
-        <code class="mono-sm sg-value">#2A2A28</code>
-        <p class="body-sm">Primary text. Soft charcoal — easier on eyes than pure black.</p>
+        <code class="mono-sm sg-value">#1F1E1B</code>
+        <p class="body-sm">Primary text. Graphite: darker than charcoal, reads like a sharp pencil on raw wood.</p>
       </div>
     </div>
     <div class="sg-swatch">
-      <div class="sg-swatch-chip" style="background: #6E5B47"></div>
+      <div class="sg-swatch-chip" style="background: #6B5A41"></div>
       <div class="sg-swatch-meta">
         <code class="mono-sm">{colors.bark}</code>
-        <code class="mono-sm sg-value">#6E5B47</code>
-        <p class="body-sm">Secondary text. Muted, warm brown — never grey.</p>
+        <code class="mono-sm sg-value">#6B5A41</code>
+        <p class="body-sm">Secondary text. Walnut tone: warm but quiet, never grey.</p>
       </div>
     </div>
     <div class="sg-swatch">
-      <div class="sg-swatch-chip" style="background: #E5DCC9"></div>
+      <div class="sg-swatch-chip" style="background: #D9CDB1"></div>
       <div class="sg-swatch-meta">
         <code class="mono-sm">{colors.hairline}</code>
-        <code class="mono-sm sg-value">#E5DCC9</code>
-        <p class="body-sm">1px dividers and quiet borders.</p>
+        <code class="mono-sm sg-value">#D9CDB1</code>
+        <p class="body-sm">Kerf line: 1px dividers, quiet borders, dashed legends.</p>
       </div>
     </div>
     <div class="sg-swatch">
-      <div class="sg-swatch-chip" style="background: #C65D3E"></div>
+      <div class="sg-swatch-chip" style="background: #2B2A26"></div>
       <div class="sg-swatch-meta">
-        <code class="mono-sm">{colors.terracotta}</code>
-        <code class="mono-sm sg-value">#C65D3E</code>
-        <p class="body-sm">The single primary signal. Active state, hover underline, JH mark, one stroke per phase header. Never decorative fill on large surfaces.</p>
+        <code class="mono-sm">{colors.graphite}</code>
+        <code class="mono-sm sg-value">#2B2A26</code>
+        <p class="body-sm">The single primary signal. JH mark, active pill fill, focus ring, hover-underline bar. The carpenter's mark on the wood.</p>
       </div>
     </div>
     <div class="sg-swatch">
-      <div class="sg-swatch-chip" style="background: #F2D9CE"></div>
+      <div class="sg-swatch-chip" style="background: #E3DCC8"></div>
       <div class="sg-swatch-meta">
-        <code class="mono-sm">{colors.terracotta-soft}</code>
-        <code class="mono-sm sg-value">#F2D9CE</code>
-        <p class="body-sm">Terracotta wash. Active-pill background, focus ring fill.</p>
+        <code class="mono-sm">{colors.graphite-soft}</code>
+        <code class="mono-sm sg-value">#E3DCC8</code>
+        <p class="body-sm">Graphite wash. Foundation-tag background, active-pill hover halo.</p>
       </div>
     </div>
     <div class="sg-swatch">
-      <div class="sg-swatch-chip" style="background: #5B7553"></div>
+      <div class="sg-swatch-chip" style="background: #F6EFDD"></div>
       <div class="sg-swatch-meta">
-        <code class="mono-sm">{colors.moss}</code>
-        <code class="mono-sm sg-value">#5B7553</code>
-        <p class="body-sm">Phase thread A — Refinement, Validate. Earthy, calm.</p>
+        <code class="mono-sm">{colors.on-graphite}</code>
+        <code class="mono-sm sg-value">#F6EFDD</code>
+        <p class="body-sm">Text on graphite fill. AA contrast against the new ink.</p>
       </div>
     </div>
     <div class="sg-swatch">
-      <div class="sg-swatch-chip" style="background: #DCE4D6"></div>
+      <div class="sg-swatch-chip" style="background: #B8412A"></div>
       <div class="sg-swatch-meta">
-        <code class="mono-sm">{colors.moss-soft}</code>
-        <code class="mono-sm sg-value">#DCE4D6</code>
-        <p class="body-sm">Moss wash for collapsed phase headers.</p>
+        <code class="mono-sm">{colors.pencil-red}</code>
+        <code class="mono-sm sg-value">#B8412A</code>
+        <p class="body-sm">Pencil-red accent. The hand-drawn title underline, the colophon signature, the link mark. Never on fills or focus.</p>
       </div>
     </div>
     <div class="sg-swatch">
-      <div class="sg-swatch-chip" style="background: #5C7A99"></div>
+      <div class="sg-swatch-chip" style="background: #6B4A2B"></div>
       <div class="sg-swatch-meta">
-        <code class="mono-sm">{colors.slate}</code>
-        <code class="mono-sm sg-value">#5C7A99</code>
-        <p class="body-sm">Phase thread B — Plan, Communicate. Cool but warm-leaning.</p>
+        <code class="mono-sm">{colors.walnut}</code>
+        <code class="mono-sm sg-value">#6B4A2B</code>
+        <p class="body-sm">Phase thread A: Refinement, Validate. Deep wood: the longest grain.</p>
       </div>
     </div>
     <div class="sg-swatch">
-      <div class="sg-swatch-chip" style="background: #D7E0EA"></div>
+      <div class="sg-swatch-chip" style="background: #E6D9C0"></div>
       <div class="sg-swatch-meta">
-        <code class="mono-sm">{colors.slate-soft}</code>
-        <code class="mono-sm sg-value">#D7E0EA</code>
-        <p class="body-sm">Slate wash for collapsed phase headers.</p>
+        <code class="mono-sm">{colors.walnut-soft}</code>
+        <code class="mono-sm sg-value">#E6D9C0</code>
+        <p class="body-sm">Walnut wash for collapsed phase headers and tags.</p>
       </div>
     </div>
     <div class="sg-swatch">
-      <div class="sg-swatch-chip" style="background: #C65D3E"></div>
+      <div class="sg-swatch-chip" style="background: #8A6A3A"></div>
+      <div class="sg-swatch-meta">
+        <code class="mono-sm">{colors.oak}</code>
+        <code class="mono-sm sg-value">#8A6A3A</code>
+        <p class="body-sm">Phase thread B: Plan, Communicate. Medium wood: ringed and even.</p>
+      </div>
+    </div>
+    <div class="sg-swatch">
+      <div class="sg-swatch-chip" style="background: #ECDFC4"></div>
+      <div class="sg-swatch-meta">
+        <code class="mono-sm">{colors.oak-soft}</code>
+        <code class="mono-sm sg-value">#ECDFC4</code>
+        <p class="body-sm">Oak wash for collapsed phase headers and tags.</p>
+      </div>
+    </div>
+    <div class="sg-swatch">
+      <div class="sg-swatch-chip" style="background: #5C5A52"></div>
+      <div class="sg-swatch-meta">
+        <code class="mono-sm">{colors.ash}</code>
+        <code class="mono-sm sg-value">#5C5A52</code>
+        <p class="body-sm">Phase thread C: Triage, Build. Cool grey-tan; deliberately quietest so it does not compete with the graphite signal.</p>
+      </div>
+    </div>
+    <div class="sg-swatch">
+      <div class="sg-swatch-chip" style="background: #DDD6C5"></div>
+      <div class="sg-swatch-meta">
+        <code class="mono-sm">{colors.ash-soft}</code>
+        <code class="mono-sm sg-value">#DDD6C5</code>
+        <p class="body-sm">Ash wash for collapsed phase headers and tags.</p>
+      </div>
+    </div>
+    <div class="sg-swatch">
+      <div class="sg-swatch-chip" style="background: #2B2A26"></div>
       <div class="sg-swatch-meta">
         <code class="mono-sm">{colors.focus-ring}</code>
-        <code class="mono-sm sg-value">#C65D3E</code>
-        <p class="body-sm">Keyboard focus outline. Same as terracotta — visible against paper.</p>
-      </div>
-    </div>
-    <div class="sg-swatch">
-      <div class="sg-swatch-chip" style="background: #FBF7F0"></div>
-      <div class="sg-swatch-meta">
-        <code class="mono-sm">{colors.on-terracotta}</code>
-        <code class="mono-sm sg-value">#FBF7F0</code>
-        <p class="body-sm">Text on terracotta fill. AA contrast 6.1:1.</p>
+        <code class="mono-sm sg-value">#2B2A26</code>
+        <p class="body-sm">Keyboard focus outline. Same as graphite: sharp against planed-pine.</p>
       </div>
     </div>
       </div>
@@ -1459,23 +1493,23 @@
 
     <section class="sg-section" id="typography">
       <h2>Typography</h2>
-      <p class="sg-lede">Fraunces for display, Source Serif 4 for body, IBM Plex Mono for technical labels, Caveat for one moment of human warmth in the footer.</p>
+      <p class="sg-lede">Fraunces for display, Source Serif 4 for body, Monaspace Xenon for technical labels (slab-serif mono reads like joinery), Architects Daughter for one moment of human warmth in the footer.</p>
       
     <div class="sg-type-row">
       <div class="sg-type-meta">
         <code class="mono-sm">{typography.display}</code>
-        <p class="body-sm">Page title. Fraunces — friendly serif with character. Used once per page.</p>
-        <p class="mono-sm sg-value">48px · 500 · lh 1.1</p>
+        <p class="body-sm">Page title. Fraunces 600: letterpress weight, used once per page.</p>
+        <p class="mono-sm sg-value">48px · 600 · lh 1.1</p>
       </div>
-      <div class="sg-type-sample" style="font-family: "Fraunces", Georgia, "Times New Roman", serif; font-size: 48px; font-weight: 500; line-height: 1.1; letter-spacing: -0.01em;">The quick brown fox jumps over the lazy dog.</div>
+      <div class="sg-type-sample" style="font-family: "Fraunces", Georgia, "Times New Roman", serif; font-size: 48px; font-weight: 600; line-height: 1.1; letter-spacing: -0.015em;">The quick brown fox jumps over the lazy dog.</div>
     </div>
     <div class="sg-type-row">
       <div class="sg-type-meta">
         <code class="mono-sm">{typography.display-sm}</code>
-        <p class="body-sm">Phase headers, modal titles.</p>
-        <p class="mono-sm sg-value">28px · 500 · lh 1.2</p>
+        <p class="body-sm">Phase headers, modal titles. Fraunces 600.</p>
+        <p class="mono-sm sg-value">28px · 600 · lh 1.2</p>
       </div>
-      <div class="sg-type-sample" style="font-family: "Fraunces", Georgia, serif; font-size: 28px; font-weight: 500; line-height: 1.2; letter-spacing: -0.005em;">The quick brown fox jumps over the lazy dog.</div>
+      <div class="sg-type-sample" style="font-family: "Fraunces", Georgia, serif; font-size: 28px; font-weight: 600; line-height: 1.2; letter-spacing: -0.005em;">The quick brown fox jumps over the lazy dog.</div>
     </div>
     <div class="sg-type-row">
       <div class="sg-type-meta">
@@ -1504,26 +1538,26 @@
     <div class="sg-type-row">
       <div class="sg-type-meta">
         <code class="mono-sm">{typography.mono}</code>
-        <p class="body-sm">Skill names, code, technical labels. Humanist mono.</p>
+        <p class="body-sm">Skill names, code, technical labels. Slab-serif mono: brackets and serifs read like joinery.</p>
         <p class="mono-sm sg-value">14px · 500 · lh 1.5</p>
       </div>
-      <div class="sg-type-sample" style="font-family: "IBM Plex Mono", "JetBrains Mono", Consolas, monospace; font-size: 14px; font-weight: 500; line-height: 1.5; letter-spacing: 0;">skill-name-here</div>
+      <div class="sg-type-sample" style="font-family: "Monaspace Xenon", "JetBrains Mono", "IBM Plex Mono", Consolas, monospace; font-size: 14px; font-weight: 500; line-height: 1.5; letter-spacing: 0;">skill-name-here</div>
     </div>
     <div class="sg-type-row">
       <div class="sg-type-meta">
         <code class="mono-sm">{typography.mono-sm}</code>
-        <p class="body-sm">Phase numbers, tags, eyebrow labels. Slightly tracked.</p>
+        <p class="body-sm">Phase numbers, tags, eyebrow labels. Drafted-label tracking.</p>
         <p class="mono-sm sg-value">11px · 500 · lh 1.4</p>
       </div>
-      <div class="sg-type-sample" style="font-family: "IBM Plex Mono", Consolas, monospace; font-size: 11px; font-weight: 500; line-height: 1.4; letter-spacing: 0.04em;">skill-name-here</div>
+      <div class="sg-type-sample" style="font-family: "Monaspace Xenon", "JetBrains Mono", "IBM Plex Mono", Consolas, monospace; font-size: 11px; font-weight: 500; line-height: 1.4; letter-spacing: 0.08em;">skill-name-here</div>
     </div>
     <div class="sg-type-row">
       <div class="sg-type-meta">
         <code class="mono-sm">{typography.hand}</code>
-        <p class="body-sm">Colophon only. The 'kept by jh' moment in the footer. Used once.</p>
-        <p class="mono-sm sg-value">20px · 500 · lh 1.3</p>
+        <p class="body-sm">Colophon only. The 'kept by jh' drafting-pencil signature in the footer.</p>
+        <p class="mono-sm sg-value">22px · 400 · lh 1.3</p>
       </div>
-      <div class="sg-type-sample" style="font-family: "Caveat", "Bradley Hand", cursive; font-size: 20px; font-weight: 500; line-height: 1.3; letter-spacing: 0;">kept by jh</div>
+      <div class="sg-type-sample" style="font-family: "Architects Daughter", "Bradley Hand", cursive; font-size: 22px; font-weight: 400; line-height: 1.3; letter-spacing: 0;">kept by jh</div>
     </div>
     </section>
 
@@ -1575,7 +1609,7 @@
 
     <section class="sg-section" id="rounded">
       <h2>Radii</h2>
-      <p class="sg-lede">Soft, not pillowy. <code>note</code> is intentionally irregular — used on rare hand-cut elements only.</p>
+      <p class="sg-lede">Soft, not pillowy. <code>note</code> is intentionally irregular: used on rare hand-cut elements only.</p>
       
     <div class="sg-round-row">
       <code class="mono-sm">{rounded.none}</code>
@@ -1584,18 +1618,18 @@
     </div>
     <div class="sg-round-row">
       <code class="mono-sm">{rounded.sm}</code>
-      <code class="mono-sm sg-value">3px</code>
-      <div class="sg-round-box" style="border-radius: 3px"></div>
+      <code class="mono-sm sg-value">2px</code>
+      <div class="sg-round-box" style="border-radius: 2px"></div>
     </div>
     <div class="sg-round-row">
       <code class="mono-sm">{rounded.md}</code>
-      <code class="mono-sm sg-value">6px</code>
-      <div class="sg-round-box" style="border-radius: 6px"></div>
+      <code class="mono-sm sg-value">4px</code>
+      <div class="sg-round-box" style="border-radius: 4px"></div>
     </div>
     <div class="sg-round-row">
       <code class="mono-sm">{rounded.lg}</code>
-      <code class="mono-sm sg-value">12px</code>
-      <div class="sg-round-box" style="border-radius: 12px"></div>
+      <code class="mono-sm sg-value">8px</code>
+      <div class="sg-round-box" style="border-radius: 8px"></div>
     </div>
     <div class="sg-round-row">
       <code class="mono-sm">{rounded.pill}</code>
@@ -1615,30 +1649,30 @@
       <div class="sg-phases">
         <div>
           <h3 class="mono-sm" style="color:var(--c-bark); text-transform:uppercase">Threads</h3>
-          <ul><li><code class="mono-sm">triage</code> &rarr; <code class="mono-sm">{colors.terracotta}</code></li><li><code class="mono-sm">refinement</code> &rarr; <code class="mono-sm">{colors.moss}</code></li><li><code class="mono-sm">plan</code> &rarr; <code class="mono-sm">{colors.slate}</code></li><li><code class="mono-sm">build</code> &rarr; <code class="mono-sm">{colors.terracotta}</code></li><li><code class="mono-sm">validate</code> &rarr; <code class="mono-sm">{colors.moss}</code></li><li><code class="mono-sm">communicate</code> &rarr; <code class="mono-sm">{colors.slate}</code></li><li><code class="mono-sm">cross-cutting</code> &rarr; <code class="mono-sm">{colors.bark}</code></li></ul>
+          <ul><li><code class="mono-sm">triage</code> &rarr; <code class="mono-sm">{colors.ash}</code></li><li><code class="mono-sm">refinement</code> &rarr; <code class="mono-sm">{colors.walnut}</code></li><li><code class="mono-sm">plan</code> &rarr; <code class="mono-sm">{colors.oak}</code></li><li><code class="mono-sm">build</code> &rarr; <code class="mono-sm">{colors.ash}</code></li><li><code class="mono-sm">validate</code> &rarr; <code class="mono-sm">{colors.walnut}</code></li><li><code class="mono-sm">communicate</code> &rarr; <code class="mono-sm">{colors.oak}</code></li><li><code class="mono-sm">cross-cutting</code> &rarr; <code class="mono-sm">{colors.bark}</code></li></ul>
         </div>
         <div>
           <h3 class="mono-sm" style="color:var(--c-bark); text-transform:uppercase">Plain-language glosses</h3>
-          <ul><li><strong>triage</strong> — <em>Deciding which tickets are worth working on right now.</em></li><li><strong>refinement</strong> — <em>Filling in the gaps so the team can estimate and start the work.</em></li><li><strong>plan</strong> — <em>Writing down the approach in a file before opening the editor.</em></li><li><strong>build</strong> — <em>Doing the work, and keeping the commits clean as you go.</em></li><li><strong>validate</strong> — <em>Checking it actually works: for keyboards, screens, and real browsers.</em></li><li><strong>communicate</strong> — <em>Wrapping it up so the next person, including future you, isn't lost.</em></li><li><strong>cross-cutting</strong> — <em>Two habits that run alongside everything: watch your tone, watch what you share.</em></li></ul>
+          <ul><li><strong>triage</strong>: <em>Deciding which tickets are worth working on right now.</em></li><li><strong>refinement</strong>: <em>Filling in the gaps so the team can estimate and start the work.</em></li><li><strong>plan</strong>: <em>Writing down the approach in a file before opening the editor.</em></li><li><strong>build</strong>: <em>Doing the work, and keeping the commits clean as you go.</em></li><li><strong>validate</strong>: <em>Checking it actually works: for keyboards, screens, and real browsers.</em></li><li><strong>communicate</strong>: <em>Wrapping it up so the next person, including future you, isn't lost.</em></li><li><strong>cross-cutting</strong>: <em>Two habits that run alongside everything: watch your tone, watch what you share.</em></li></ul>
         </div>
       </div>
     </section>
 
     <section class="sg-section" id="components">
       <h2>Components</h2>
-      <p class="sg-lede">Every component used in the AI runbook renders below, live. Each carries its token recipe as a disclosure — open it to see exactly which tokens compose it.</p>
+      <p class="sg-lede">Every component used in the AI runbook renders below, live. Each carries its token recipe as a disclosure: open it to see exactly which tokens compose it.</p>
       <div class="sg-grid" style="grid-template-columns: repeat(auto-fill, minmax(320px, 1fr))">
         
     <article class="sg-component">
       <header class="sg-component-head">
         <h3 class="mono">btn-primary</h3>
-        <p class="body-sm">Primary action. Used sparingly — one per region.</p>
+        <p class="body-sm">Primary action. Graphite fill: used sparingly, one per region.</p>
       </header>
       <div class="sg-component-live"><button class="sg-demo-btn-primary">Primary action</button></div>
       <details class="disclosure sg-tokens">
         <summary>Token recipe</summary>
         <div class="disclosure-body">
-          <dl class="sg-dl"><dt>backgroundColor</dt><dd>{colors.terracotta}</dd><dt>textColor</dt><dd>{colors.on-terracotta}</dd><dt>typography</dt><dd>{typography.mono-sm}</dd><dt>rounded</dt><dd>{rounded.md}</dd><dt>padding</dt><dd>10px 18px</dd></dl>
+          <dl class="sg-dl"><dt>backgroundColor</dt><dd>{colors.graphite}</dd><dt>textColor</dt><dd>{colors.on-graphite}</dd><dt>typography</dt><dd>{typography.mono-sm}</dd><dt>rounded</dt><dd>{rounded.md}</dd><dt>padding</dt><dd>10px 18px</dd></dl>
         </div>
       </details>
     </article>
@@ -1679,9 +1713,9 @@
         <p class="body-sm">Skill card, expanded inline. Soft-paper back signals open state.</p>
       </header>
       <div class="sg-component-live">
-        <div class="skill-card" style="max-width:320px; background: var(--c-paper-soft); border-color: var(--c-terracotta)">
+        <div class="skill-card" style="max-width:320px; background: var(--c-paper-soft); border-color: var(--c-graphite)">
           <span class="name">example-skill</span>
-          <span class="desc">Expanded state. Hairline shifts to terracotta; back lifts to paper-soft.</span>
+          <span class="desc">Expanded state. Hairline shifts to graphite; back lifts to paper-soft.</span>
           <div class="meta"><span class="tag tag-foundation">Foundation</span></div>
           <div class="next-row"><span class="label">Next</span><button class="next-chip">next-skill</button></div>
           <span class="open-hint">open full skill</span>
@@ -1696,7 +1730,7 @@
     <article class="sg-component">
       <header class="sg-component-head">
         <h3 class="mono">pill</h3>
-        <p class="body-sm">Phase mini-map tab, modal nav pill. Active state fills with terracotta.</p>
+        <p class="body-sm">Phase mini-map tab, modal nav pill. Active state fills with graphite.</p>
       </header>
       <div class="sg-component-live"><a class="pill" href="#">01 Triage</a></div>
       <details class="disclosure sg-tokens">
@@ -1709,13 +1743,13 @@
     <article class="sg-component">
       <header class="sg-component-head">
         <h3 class="mono">pill-active</h3>
-        <p class="body-sm">Active pill. Terracotta fill, paper text.</p>
+        <p class="body-sm">Active pill. Graphite fill, planed-pine text.</p>
       </header>
       <div class="sg-component-live"><a class="pill active" href="#">01 Triage</a></div>
       <details class="disclosure sg-tokens">
         <summary>Token recipe</summary>
         <div class="disclosure-body">
-          <dl class="sg-dl"><dt>backgroundColor</dt><dd>{colors.terracotta}</dd><dt>textColor</dt><dd>{colors.on-terracotta}</dd><dt>typography</dt><dd>{typography.mono-sm}</dd><dt>rounded</dt><dd>{rounded.pill}</dd><dt>padding</dt><dd>6px 14px</dd></dl>
+          <dl class="sg-dl"><dt>backgroundColor</dt><dd>{colors.graphite}</dd><dt>textColor</dt><dd>{colors.on-graphite}</dd><dt>typography</dt><dd>{typography.mono-sm}</dd><dt>rounded</dt><dd>{rounded.pill}</dd><dt>padding</dt><dd>6px 14px</dd></dl>
         </div>
       </details>
     </article>
@@ -1735,39 +1769,39 @@
     <article class="sg-component">
       <header class="sg-component-head">
         <h3 class="mono">tag-foundation</h3>
-        <p class="body-sm">Foundation tag — skill is called by other skills more than used directly.</p>
+        <p class="body-sm">Foundation tag: skill is called by other skills more than used directly. Wears the graphite signal.</p>
       </header>
       <div class="sg-component-live"><span class="tag tag-foundation">Foundation</span></div>
       <details class="disclosure sg-tokens">
         <summary>Token recipe</summary>
         <div class="disclosure-body">
-          <dl class="sg-dl"><dt>backgroundColor</dt><dd>{colors.terracotta-soft}</dd><dt>textColor</dt><dd>{colors.terracotta}</dd><dt>typography</dt><dd>{typography.mono-sm}</dd><dt>rounded</dt><dd>{rounded.sm}</dd><dt>padding</dt><dd>3px 8px</dd></dl>
+          <dl class="sg-dl"><dt>backgroundColor</dt><dd>{colors.graphite-soft}</dd><dt>textColor</dt><dd>{colors.graphite}</dd><dt>typography</dt><dd>{typography.mono-sm}</dd><dt>rounded</dt><dd>{rounded.sm}</dd><dt>padding</dt><dd>3px 8px</dd></dl>
         </div>
       </details>
     </article>
     <article class="sg-component">
       <header class="sg-component-head">
         <h3 class="mono">tag-voice</h3>
-        <p class="body-sm">Voice cross-cutting tag.</p>
+        <p class="body-sm">Voice cross-cutting tag. Walnut thread.</p>
       </header>
       <div class="sg-component-live"><span class="tag tag-voice">Voice</span></div>
       <details class="disclosure sg-tokens">
         <summary>Token recipe</summary>
         <div class="disclosure-body">
-          <dl class="sg-dl"><dt>backgroundColor</dt><dd>{colors.moss-soft}</dd><dt>textColor</dt><dd>{colors.moss}</dd><dt>typography</dt><dd>{typography.mono-sm}</dd><dt>rounded</dt><dd>{rounded.sm}</dd><dt>padding</dt><dd>3px 8px</dd></dl>
+          <dl class="sg-dl"><dt>backgroundColor</dt><dd>{colors.walnut-soft}</dd><dt>textColor</dt><dd>{colors.walnut}</dd><dt>typography</dt><dd>{typography.mono-sm}</dd><dt>rounded</dt><dd>{rounded.sm}</dd><dt>padding</dt><dd>3px 8px</dd></dl>
         </div>
       </details>
     </article>
     <article class="sg-component">
       <header class="sg-component-head">
         <h3 class="mono">tag-security</h3>
-        <p class="body-sm">Security cross-cutting tag.</p>
+        <p class="body-sm">Security cross-cutting tag. Oak thread.</p>
       </header>
       <div class="sg-component-live"><span class="tag tag-security">Security</span></div>
       <details class="disclosure sg-tokens">
         <summary>Token recipe</summary>
         <div class="disclosure-body">
-          <dl class="sg-dl"><dt>backgroundColor</dt><dd>{colors.slate-soft}</dd><dt>textColor</dt><dd>{colors.slate}</dd><dt>typography</dt><dd>{typography.mono-sm}</dd><dt>rounded</dt><dd>{rounded.sm}</dd><dt>padding</dt><dd>3px 8px</dd></dl>
+          <dl class="sg-dl"><dt>backgroundColor</dt><dd>{colors.oak-soft}</dd><dt>textColor</dt><dd>{colors.oak}</dd><dt>typography</dt><dd>{typography.mono-sm}</dd><dt>rounded</dt><dd>{rounded.sm}</dd><dt>padding</dt><dd>3px 8px</dd></dl>
         </div>
       </details>
     </article>
@@ -1787,9 +1821,9 @@
     <article class="sg-component">
       <header class="sg-component-head">
         <h3 class="mono">hand-underline</h3>
-        <p class="body-sm">Irregular hand-drawn SVG underline. Animates in on page load under the title and on skill-card name hover. Single decorative motif, used sparingly.</p>
+        <p class="body-sm">Hand-drawn pencil-red underline. Animates in on page load under the title; reused as the hover bar under skill-card names. The one warm decorative motif.</p>
       </header>
-      <div class="sg-component-live"><div style="position:relative; display:inline-block; padding-bottom:14px"><span style="font-family: "Fraunces", Georgia, serif; font-size: 28px; font-weight: 500; line-height: 1.2; letter-spacing: -0.005em;">Underlined title</span><svg class="underline" viewBox="0 0 300 12" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" aria-hidden="true" preserveAspectRatio="none"><path d="M2 7 Q 30 3, 60 6 T 120 7 T 180 5 T 240 7 T 298 6" pathLength="600"/></svg></div></div>
+      <div class="sg-component-live"><div style="position:relative; display:inline-block; padding-bottom:14px"><span style="font-family: "Fraunces", Georgia, serif; font-size: 28px; font-weight: 600; line-height: 1.2; letter-spacing: -0.005em;">Underlined title</span><svg class="underline" viewBox="0 0 300 12" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" preserveAspectRatio="none"><path d="M2 7 Q 30 3, 60 6 T 120 7 T 180 5 T 240 7 T 298 6" pathLength="600"/></svg></div></div>
       <details class="disclosure sg-tokens">
         <summary>Token recipe</summary>
         <div class="disclosure-body">
@@ -1799,10 +1833,10 @@
     </article>
     <article class="sg-component">
       <header class="sg-component-head">
-        <h3 class="mono">leaf-bullet</h3>
-        <p class="body-sm">Small leaf-shaped SVG bullet. Replaces disc in phase-section title rows. Tinted with the phase thread color.</p>
+        <h3 class="mono">dovetail-notch</h3>
+        <p class="body-sm">Small dovetail-tail SVG glyph (trapezoid wider at top). Replaces a generic bullet in phase-section title rows. Tinted with the phase thread color (walnut, oak, or ash).</p>
       </header>
-      <div class="sg-component-live"><span style="color: var(--c-moss); display:inline-flex; align-items:center; gap:8px"><svg class="leaf" viewBox="0 0 14 14" fill="currentColor" aria-hidden="true"><path d="M7 1 C 11 3, 13 7, 7 13 C 1 7, 3 3, 7 1 Z" opacity="0.85"/></svg><code class="mono-sm">moss thread</code></span> &nbsp;<span style="color: var(--c-slate); display:inline-flex; align-items:center; gap:8px"><svg class="leaf" viewBox="0 0 14 14" fill="currentColor" aria-hidden="true"><path d="M7 1 C 11 3, 13 7, 7 13 C 1 7, 3 3, 7 1 Z" opacity="0.85"/></svg><code class="mono-sm">slate thread</code></span> &nbsp;<span style="color: var(--c-terracotta); display:inline-flex; align-items:center; gap:8px"><svg class="leaf" viewBox="0 0 14 14" fill="currentColor" aria-hidden="true"><path d="M7 1 C 11 3, 13 7, 7 13 C 1 7, 3 3, 7 1 Z" opacity="0.85"/></svg><code class="mono-sm">terracotta thread</code></span></div>
+      <div class="sg-component-live"><span style="color: var(--c-walnut); display:inline-flex; align-items:center; gap:8px"><svg class="leaf" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 4 L11 4 L9 11 L5 11 Z" opacity="0.9"/></svg><code class="mono-sm">walnut thread</code></span> &nbsp;<span style="color: var(--c-oak); display:inline-flex; align-items:center; gap:8px"><svg class="leaf" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 4 L11 4 L9 11 L5 11 Z" opacity="0.9"/></svg><code class="mono-sm">oak thread</code></span> &nbsp;<span style="color: var(--c-ash); display:inline-flex; align-items:center; gap:8px"><svg class="leaf" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 4 L11 4 L9 11 L5 11 Z" opacity="0.9"/></svg><code class="mono-sm">ash thread</code></span></div>
       <details class="disclosure sg-tokens">
         <summary>Token recipe</summary>
         <div class="disclosure-body">
@@ -1812,10 +1846,10 @@
     </article>
     <article class="sg-component">
       <header class="sg-component-head">
-        <h3 class="mono">wave-divider</h3>
-        <p class="body-sm">Wavy SVG divider between major sections. Hairline weight, paper-deep color.</p>
+        <h3 class="mono">kerf-line</h3>
+        <p class="body-sm">Hairline + three short ticks as a section divider. Reads like a kerf cut on the bench.</p>
       </header>
-      <div class="sg-component-live"><svg class="wave-divider" viewBox="0 0 1200 18" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" aria-hidden="true" preserveAspectRatio="none"><path d="M0 9 Q 60 1 120 9 T 240 9 T 360 9 T 480 9 T 600 9 T 720 9 T 840 9 T 960 9 T 1080 9 T 1200 9"/></svg></div>
+      <div class="sg-component-live"><svg class="wave-divider" viewBox="0 0 1200 18" fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="round" aria-hidden="true" preserveAspectRatio="none"><line x1="0" y1="9" x2="1200" y2="9"/><line x1="300" y1="3" x2="300" y2="15"/><line x1="600" y1="3" x2="600" y2="15"/><line x1="900" y1="3" x2="900" y2="15"/></svg></div>
       <details class="disclosure sg-tokens">
         <summary>Token recipe</summary>
         <div class="disclosure-body">
@@ -1826,13 +1860,13 @@
     <article class="sg-component">
       <header class="sg-component-head">
         <h3 class="mono">colophon</h3>
-        <p class="body-sm">Footer signature: 'kept by jh'. Caveat script, used once.</p>
+        <p class="body-sm">Footer signature: 'kept by jh'. Architects Daughter pencil hand in pencil-red, the rarest mark on the page.</p>
       </header>
-      <div class="sg-component-live"><div style="text-align:center"><p class="hand" style="color:var(--c-terracotta); margin:0 0 8px">kept by jh</p><p class="mono-sm" style="color:var(--c-bark); text-transform:uppercase">canon · design · skills</p></div></div>
+      <div class="sg-component-live"><div style="text-align:center"><p class="hand" style="color:var(--c-pencil-red); margin:0 0 8px">kept by jh</p><p class="mono-sm" style="color:var(--c-bark); text-transform:uppercase">canon · design · skills</p></div></div>
       <details class="disclosure sg-tokens">
         <summary>Token recipe</summary>
         <div class="disclosure-body">
-          <dl class="sg-dl"><dt>typography</dt><dd>{typography.hand}</dd><dt>textColor</dt><dd>{colors.bark}</dd></dl>
+          <dl class="sg-dl"><dt>typography</dt><dd>{typography.hand}</dd><dt>textColor</dt><dd>{colors.pencil-red}</dd></dl>
         </div>
       </details>
     </article>
@@ -1845,20 +1879,20 @@
       <details class="disclosure sg-tokens">
         <summary>Token recipe</summary>
         <div class="disclosure-body">
-          <dl class="sg-dl"><dt>backgroundColor</dt><dd>{colors.ink}</dd><dt>textColor</dt><dd>{colors.paper}</dd><dt>rounded</dt><dd>{rounded.sm}</dd></dl>
+          <dl class="sg-dl"><dt>backgroundColor</dt><dd>{colors.graphite}</dd><dt>textColor</dt><dd>{colors.paper}</dd><dt>rounded</dt><dd>{rounded.sm}</dd></dl>
         </div>
       </details>
     </article>
     <article class="sg-component">
       <header class="sg-component-head">
         <h3 class="mono">newcomer-note</h3>
-        <p class="body-sm">Hero aside that orients newcomers. Moss thread (supportive context), not terracotta (signal).</p>
+        <p class="body-sm">Hero aside that orients newcomers. Walnut thread (supportive context), not graphite (signal).</p>
       </header>
       <div class="sg-component-live"><aside class="newcomer-note" style="margin:0; max-width:520px"><p><strong>New to AI skills?</strong> A "skill" is a short Markdown file that tells an AI how to do one specific job, like a checklist a coworker would follow.</p></aside></div>
       <details class="disclosure sg-tokens">
         <summary>Token recipe</summary>
         <div class="disclosure-body">
-          <dl class="sg-dl"><dt>backgroundColor</dt><dd>{colors.paper-soft}</dd><dt>borderLeft</dt><dd>3px solid {colors.moss}</dd><dt>typography</dt><dd>{typography.body-sm}</dd><dt>rounded</dt><dd>0 {rounded.md} {rounded.md} 0</dd><dt>padding</dt><dd>{spacing.base} {spacing.lg}</dd></dl>
+          <dl class="sg-dl"><dt>backgroundColor</dt><dd>{colors.paper-soft}</dd><dt>borderLeft</dt><dd>3px solid {colors.walnut}</dd><dt>typography</dt><dd>{typography.body-sm}</dd><dt>rounded</dt><dd>0 {rounded.md} {rounded.md} 0</dd><dt>padding</dt><dd>{spacing.base} {spacing.lg}</dd></dl>
         </div>
       </details>
     </article>
@@ -1920,7 +1954,7 @@
     <section class="sg-section" id="gaps">
       <h2>Known gaps</h2>
       <p class="sg-lede">What this system explicitly does not cover. Honest limits keep the contract clear.</p>
-      <ul><li>Dark mode — one canvas mode only.</li><li>Animation timings beyond the page-load reveal and underline hover.</li><li>Print stylesheet — out of scope for v1.</li><li>Color-only signals — every color cue is reinforced by a label, number, or shape.</li></ul>
+      <ul><li>Dark mode: tracked in issue #1 (after-hours oiled-walnut workshop).</li><li>Animation timings beyond the page-load reveal, underline hover, and 150ms pill/card transitions.</li><li>Print stylesheet: out of scope for v1.</li><li>Color-only signals: every color cue is reinforced by a label, number, or shape.</li></ul>
     </section>
   </main>
 

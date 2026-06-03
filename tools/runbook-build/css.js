@@ -31,8 +31,11 @@ function typeVar(name) {
 const PAPER_GRAIN = `url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='220' height='220'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 0.16  0 0 0 0 0.16  0 0 0 0 0.15  0 0 0 0.06 0'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>")`;
 
 const FONTS_LINK = `<link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=Source+Serif+4:opsz,wght@8..60,400;8..60,500;8..60,600&family=IBM+Plex+Mono:wght@400;500;600&family=Caveat:wght@500;600&display=swap" rel="stylesheet">`;
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=Source+Serif+4:opsz,wght@8..60,400;8..60,500;8..60,600&family=Architects+Daughter&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fontsource/monaspace-xenon@5/400.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fontsource/monaspace-xenon@5/500.css">`;
 
 function baseCss() {
   return `
@@ -60,7 +63,7 @@ ${roundedVars()}
       -webkit-font-smoothing: antialiased;
     }
 
-    a { color: var(--c-terracotta); text-decoration-thickness: 1px; text-underline-offset: 3px; }
+    a { color: var(--c-pencil-red); text-decoration-thickness: 1px; text-underline-offset: 3px; }
     a:hover { text-decoration-thickness: 2px; }
 
     .container { max-width: var(--content-w); margin: 0 auto; padding: 0 var(--s-lg); }
@@ -118,11 +121,12 @@ ${roundedVars()}
       left: 0;
       bottom: 0;
       width: 100%;
-      height: 8px;
-      color: var(--c-terracotta);
+      height: 10px;
+      color: var(--c-pencil-red);
       stroke-dasharray: 600;
       stroke-dashoffset: 600;
       animation: drawUnderline 900ms cubic-bezier(.4,0,.2,1) 200ms forwards;
+      transition: opacity 200ms ease-out;
     }
     @keyframes drawUnderline { to { stroke-dashoffset: 0; } }
     @media (prefers-reduced-motion: reduce) {
@@ -155,7 +159,7 @@ ${roundedVars()}
       margin: var(--s-lg) 0 0;
       padding: var(--s-base) var(--s-lg);
       background: var(--c-paper-soft);
-      border-left: 3px solid var(--c-moss);
+      border-left: 3px solid var(--c-walnut);
       border-radius: 0 var(--r-md) var(--r-md) 0;
       max-width: var(--prose-w);
     }
@@ -197,7 +201,7 @@ ${roundedVars()}
       .rail-stat__num {
         ${typeVar("display-sm")}
         display: block;
-        color: var(--c-terracotta);
+        color: var(--c-graphite);
         font-size: 28px;
         line-height: 1;
         margin-bottom: 4px;
@@ -252,7 +256,7 @@ ${roundedVars()}
     .disclosure > summary::before {
       content: "+";
       ${typeVar("mono")}
-      color: var(--c-terracotta);
+      color: var(--c-graphite);
       width: 16px;
       display: inline-block;
       transition: transform 200ms ease;
@@ -290,21 +294,22 @@ ${roundedVars()}
       align-items: center;
       gap: 8px;
       text-transform: uppercase;
+      transition: background 150ms ease-out, border-color 150ms ease-out, color 150ms ease-out;
     }
     .minimap .pill .num {
-      color: var(--c-terracotta);
+      color: var(--c-graphite);
       font-weight: 600;
     }
     .minimap .pill:hover {
-      border-color: var(--c-terracotta);
+      border-color: var(--c-graphite);
       color: var(--c-ink);
     }
     .minimap .pill.active {
-      background: var(--c-terracotta);
-      border-color: var(--c-terracotta);
-      color: var(--c-on-terracotta);
+      background: var(--c-graphite);
+      border-color: var(--c-graphite);
+      color: var(--c-on-graphite);
     }
-    .minimap .pill.active .num { color: var(--c-on-terracotta); }
+    .minimap .pill.active .num { color: var(--c-on-graphite); }
     .minimap .pill:focus-visible {
       outline: 2px solid var(--c-focus-ring);
       outline-offset: 3px;
@@ -333,7 +338,7 @@ ${roundedVars()}
       gap: 6px;
     }
     .phaseflow-caption .num { color: var(--c-ink); font-weight: 600; }
-    .phaseflow-caption .arrow { color: var(--c-terracotta); }
+    .phaseflow-caption .arrow { color: var(--c-graphite); }
     .phaseflow-row {
       display: grid;
       grid-template-columns: 1fr;
@@ -361,8 +366,8 @@ ${roundedVars()}
       top: 50%;
       width: 8px;
       height: 8px;
-      border-top: 1.5px solid var(--c-terracotta);
-      border-right: 1.5px solid var(--c-terracotta);
+      border-top: 1.5px solid var(--c-graphite);
+      border-right: 1.5px solid var(--c-graphite);
       transform: translateY(-50%) rotate(45deg);
       z-index: 1;
       display: none;
@@ -388,7 +393,7 @@ ${roundedVars()}
       margin-top: 4px;
     }
     .phaseflow-node:hover {
-      border-color: var(--c-terracotta);
+      border-color: var(--c-graphite);
       background: var(--c-paper-deep);
     }
     .phaseflow-node:focus-visible {
@@ -408,9 +413,9 @@ ${roundedVars()}
       text-align: center;
     }
     .phaseflow-band a {
-      color: var(--c-terracotta);
+      color: var(--c-graphite);
       text-decoration: none;
-      border-bottom: 1px dotted var(--c-terracotta);
+      border-bottom: 1px dotted var(--c-graphite);
       padding-bottom: 1px;
     }
     .phaseflow-band a:hover { color: var(--c-ink); border-color: var(--c-ink); }
@@ -429,7 +434,7 @@ ${roundedVars()}
     }
     .phaseflow-band-profiles .band-label {
       ${typeVar("mono-sm")}
-      color: var(--c-terracotta);
+      color: var(--c-graphite);
       text-transform: uppercase;
       letter-spacing: 0.08em;
     }
@@ -460,8 +465,8 @@ ${roundedVars()}
       letter-spacing: 0;
     }
     .phaseflow-band-profiles .band-chips a:hover code {
-      border-color: var(--c-terracotta);
-      color: var(--c-terracotta);
+      border-color: var(--c-graphite);
+      color: var(--c-graphite);
     }
 
     /* Mobile-first: stack → 2-up → 3-up → 6-up. Arrows appear once nodes are in rows. */
@@ -547,7 +552,7 @@ ${roundedVars()}
       color: var(--c-bark);
       flex: 0 0 44px;
     }
-    .usage-mode-row[data-who="you"] .usage-mode-who { color: var(--c-terracotta); }
+    .usage-mode-row[data-who="you"] .usage-mode-who { color: var(--c-graphite); }
     .usage-mode-msg { color: var(--c-ink); flex: 1; }
     .usage-mode-msg code {
       ${typeVar("mono-sm")}
@@ -615,9 +620,10 @@ ${roundedVars()}
     }
     .phase .num {
       ${typeVar("mono-sm")}
-      color: var(--c-terracotta);
+      color: var(--c-graphite);
       flex-shrink: 0;
-      align-self: center;
+      align-self: flex-start;
+      padding-top: 10px;
     }
     .phase .name {
       ${typeVar("display-sm")}
@@ -644,12 +650,15 @@ ${roundedVars()}
       width: 14px;
       height: 14px;
       flex-shrink: 0;
-      align-self: center;
+      align-self: flex-start;
+      margin-top: 8px;
     }
-    .phase[data-thread="moss"] .num,
-    .phase[data-thread="moss"] .leaf { color: var(--c-moss); }
-    .phase[data-thread="slate"] .num,
-    .phase[data-thread="slate"] .leaf { color: var(--c-slate); }
+    .phase[data-thread="walnut"] .num,
+    .phase[data-thread="walnut"] .leaf { color: var(--c-walnut); }
+    .phase[data-thread="oak"] .num,
+    .phase[data-thread="oak"] .leaf { color: var(--c-oak); }
+    .phase[data-thread="ash"] .num,
+    .phase[data-thread="ash"] .leaf { color: var(--c-ash); }
     .phase[data-thread="bark"] .num,
     .phase[data-thread="bark"] .leaf { color: var(--c-bark); }
 
@@ -697,13 +706,13 @@ ${roundedVars()}
       flex-direction: column;
       gap: var(--s-sm);
       position: relative;
-      transition: border-color 180ms ease, background 180ms ease;
+      transition: border-color 150ms ease-out, background 150ms ease-out;
       -webkit-appearance: none;
       appearance: none;
       width: 100%;
     }
     .skill-card:hover {
-      border-color: var(--c-terracotta);
+      border-color: var(--c-graphite);
       background: var(--c-paper-soft);
     }
     .skill-card:focus-visible {
@@ -722,7 +731,7 @@ ${roundedVars()}
       position: absolute;
       left: 0; right: 0; bottom: -3px;
       height: 2px;
-      background: var(--c-terracotta);
+      background: var(--c-graphite);
       transform: scaleX(0);
       transform-origin: left center;
       transition: transform 250ms cubic-bezier(.4,0,.2,1);
@@ -751,7 +760,7 @@ ${roundedVars()}
       gap: var(--s-xs);
       align-items: center;
     }
-    .skill-card .open-hint::after { content: "→"; color: var(--c-terracotta); }
+    .skill-card .open-hint::after { content: "→"; color: var(--c-graphite); }
 
     /* Tags */
     .tag {
@@ -761,9 +770,9 @@ ${roundedVars()}
       border-radius: var(--r-sm);
       display: inline-block;
     }
-    .tag-foundation { background: var(--c-terracotta-soft); color: var(--c-terracotta); }
-    .tag-voice      { background: var(--c-moss-soft);       color: var(--c-moss); }
-    .tag-security   { background: var(--c-slate-soft);      color: var(--c-slate); }
+    .tag-foundation { background: var(--c-graphite-soft); color: var(--c-graphite); }
+    .tag-voice      { background: var(--c-walnut-soft);       color: var(--c-walnut); }
+    .tag-security   { background: var(--c-oak-soft);      color: var(--c-oak); }
 
     /* Next chips */
     .next-row {
@@ -791,8 +800,8 @@ ${roundedVars()}
     }
     .next-chip:hover,
     .next-chip:focus-visible {
-      border-color: var(--c-terracotta);
-      color: var(--c-terracotta);
+      border-color: var(--c-graphite);
+      color: var(--c-graphite);
       outline: none;
     }
     .next-chip.is-static {
@@ -817,7 +826,7 @@ ${roundedVars()}
       overflow: hidden;
     }
     .modal-dialog::backdrop {
-      background: rgba(42, 42, 40, 0.45);
+      background: rgba(31, 30, 27, 0.45);
     }
     .modal-inner {
       display: flex;
@@ -833,7 +842,7 @@ ${roundedVars()}
         max-height: calc(100vh - var(--s-xl));
         margin: var(--s-lg) auto;
         border-radius: var(--r-lg);
-        box-shadow: 0 12px 40px rgba(42, 42, 40, 0.18);
+        box-shadow: 0 12px 40px rgba(31, 30, 27, 0.18);
       }
     }
     .modal-header {
@@ -851,7 +860,7 @@ ${roundedVars()}
       ${typeVar("display-sm")}
       ${typeVar("mono")}
       font-size: 22px;
-      color: var(--c-terracotta);
+      color: var(--c-graphite);
       margin: 0;
       flex: 1;
     }
@@ -865,7 +874,7 @@ ${roundedVars()}
       ${typeVar("mono-sm")}
       padding: 4px 12px;
     }
-    .modal-close:hover { border-color: var(--c-terracotta); color: var(--c-terracotta); }
+    .modal-close:hover { border-color: var(--c-graphite); color: var(--c-graphite); }
     .modal-nav {
       padding: var(--s-sm) var(--s-base);
       border-bottom: 1px solid var(--c-hairline);
@@ -890,9 +899,9 @@ ${roundedVars()}
     }
     .modal-nav-pill:hover { color: var(--c-ink); border-color: var(--c-hairline); }
     .modal-nav-pill.active {
-      background: var(--c-terracotta);
-      color: var(--c-on-terracotta);
-      border-color: var(--c-terracotta);
+      background: var(--c-graphite);
+      color: var(--c-on-graphite);
+      border-color: var(--c-graphite);
     }
     .modal-nav-sep {
       display: inline-block;
@@ -927,7 +936,7 @@ ${roundedVars()}
       font-style: italic;
       padding: var(--s-base) var(--s-lg);
       background: var(--c-paper-soft);
-      border-left: 3px solid var(--c-terracotta);
+      border-left: 3px solid var(--c-graphite);
       border-radius: 0 var(--r-md) var(--r-md) 0;
       margin: 0;
     }
@@ -969,7 +978,7 @@ ${roundedVars()}
       display: inline-block;
       margin-top: var(--s-lg);
       ${typeVar("mono-sm")}
-      color: var(--c-terracotta);
+      color: var(--c-graphite);
       text-transform: uppercase;
     }
 
@@ -1007,9 +1016,9 @@ ${roundedVars()}
       .chat-avatar { width: 44px; font-size: 11px; padding: 6px 0; }
     }
     .chat-ask .chat-avatar {
-      color: var(--c-terracotta);
-      border-color: var(--c-terracotta);
-      background: var(--c-terracotta-soft);
+      color: var(--c-graphite);
+      border-color: var(--c-graphite);
+      background: var(--c-graphite-soft);
     }
     .chat-get .chat-avatar {
       color: var(--c-bark);
@@ -1027,11 +1036,11 @@ ${roundedVars()}
     }
     .chat-ask .chat-bubble {
       background: var(--c-paper);
-      border-color: var(--c-terracotta);
+      border-color: var(--c-graphite);
       border-left-width: 3px;
     }
     .chat-ask .chat-bubble code {
-      background: var(--c-terracotta-soft);
+      background: var(--c-graphite-soft);
       color: var(--c-ink);
     }
     .chat-bubble > *:first-child { margin-top: 0; }
@@ -1122,7 +1131,7 @@ ${roundedVars()}
     }
     .colophon .sig {
       ${typeVar("hand")}
-      color: var(--c-terracotta);
+      color: var(--c-pencil-red);
       margin: 0 0 var(--s-sm);
     }
     .colophon .meta {
@@ -1131,7 +1140,7 @@ ${roundedVars()}
       text-transform: uppercase;
     }
     .colophon .meta a { color: var(--c-bark); margin: 0 var(--s-sm); }
-    .colophon .meta a:hover { color: var(--c-terracotta); }
+    .colophon .meta a:hover { color: var(--c-pencil-red); }
 
     /* ============ Accessibility helpers ============ */
     .sr-only {
@@ -1155,13 +1164,15 @@ ${roundedVars()}
 
 // Inline SVGs reused across pages
 const SVG = {
-  // Irregular hand-drawn underline path. Scaled by CSS.
+  // Hand-drawn pencil-red underline. Scaled by CSS. Thicker stroke to read as pencil, not ink.
   underline:
-    `<svg class="underline" viewBox="0 0 300 12" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" aria-hidden="true" preserveAspectRatio="none"><path d="M2 7 Q 30 3, 60 6 T 120 7 T 180 5 T 240 7 T 298 6" pathLength="600"/></svg>`,
+    `<svg class="underline" viewBox="0 0 300 12" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" preserveAspectRatio="none"><path d="M2 7 Q 30 3, 60 6 T 120 7 T 180 5 T 240 7 T 298 6" pathLength="600"/></svg>`,
+  // Dovetail notch: trapezoid wider at top, narrower at bottom — the classic dovetail tail shape.
   leaf:
-    `<svg class="leaf" viewBox="0 0 14 14" fill="currentColor" aria-hidden="true"><path d="M7 1 C 11 3, 13 7, 7 13 C 1 7, 3 3, 7 1 Z" opacity="0.85"/></svg>`,
+    `<svg class="leaf" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 4 L11 4 L9 11 L5 11 Z" opacity="0.9"/></svg>`,
+  // Kerf line: hairline + three short tick marks. Reads as a measurement on the bench.
   wave:
-    `<svg class="wave-divider" viewBox="0 0 1200 18" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" aria-hidden="true" preserveAspectRatio="none"><path d="M0 9 Q 60 1 120 9 T 240 9 T 360 9 T 480 9 T 600 9 T 720 9 T 840 9 T 960 9 T 1080 9 T 1200 9"/></svg>`,
+    `<svg class="wave-divider" viewBox="0 0 1200 18" fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="round" aria-hidden="true" preserveAspectRatio="none"><line x1="0" y1="9" x2="1200" y2="9"/><line x1="300" y1="3" x2="300" y2="15"/><line x1="600" y1="3" x2="600" y2="15"/><line x1="900" y1="3" x2="900" y2="15"/></svg>`,
 };
 
 module.exports = { baseCss, FONTS_LINK, SVG, theme };

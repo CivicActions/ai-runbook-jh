@@ -3,7 +3,7 @@
 // Reads tokens from theme.js and renders every color, type style, spacing
 // step, radius, and component live, side by side with its token reference.
 // If the runbook and the styleguide ever diverge, this file is the source
-// of truth — change tokens here, both pages update on the next build.
+// of truth: change tokens here, both pages update on the next build.
 
 const fs = require("fs");
 const path = require("path");
@@ -100,9 +100,9 @@ function renderLive(name) {
         </div>`;
     case "card-expanded":
       return `
-        <div class="skill-card" style="max-width:320px; background: var(--c-paper-soft); border-color: var(--c-terracotta)">
+        <div class="skill-card" style="max-width:320px; background: var(--c-paper-soft); border-color: var(--c-graphite)">
           <span class="name">example-skill</span>
-          <span class="desc">Expanded state. Hairline shifts to terracotta; back lifts to paper-soft.</span>
+          <span class="desc">Expanded state. Hairline shifts to graphite; back lifts to paper-soft.</span>
           <div class="meta"><span class="tag tag-foundation">Foundation</span></div>
           <div class="next-row"><span class="label">Next</span><button class="next-chip">next-skill</button></div>
           <span class="open-hint">open full skill</span>
@@ -123,12 +123,12 @@ function renderLive(name) {
       return `<p class="gloss" style="font-style:italic; color:var(--c-bark); max-width:520px; ${typeInline("body-lg")}">Deciding which tickets are worth working on right now.</p>`;
     case "hand-underline":
       return `<div style="position:relative; display:inline-block; padding-bottom:14px"><span style="${typeInline("display-sm")}">Underlined title</span>${SVG.underline}</div>`;
-    case "leaf-bullet":
-      return `<span style="color: var(--c-moss); display:inline-flex; align-items:center; gap:8px">${SVG.leaf}<code class="mono-sm">moss thread</code></span> &nbsp;<span style="color: var(--c-slate); display:inline-flex; align-items:center; gap:8px">${SVG.leaf}<code class="mono-sm">slate thread</code></span> &nbsp;<span style="color: var(--c-terracotta); display:inline-flex; align-items:center; gap:8px">${SVG.leaf}<code class="mono-sm">terracotta thread</code></span>`;
-    case "wave-divider":
+    case "dovetail-notch":
+      return `<span style="color: var(--c-walnut); display:inline-flex; align-items:center; gap:8px">${SVG.leaf}<code class="mono-sm">walnut thread</code></span> &nbsp;<span style="color: var(--c-oak); display:inline-flex; align-items:center; gap:8px">${SVG.leaf}<code class="mono-sm">oak thread</code></span> &nbsp;<span style="color: var(--c-ash); display:inline-flex; align-items:center; gap:8px">${SVG.leaf}<code class="mono-sm">ash thread</code></span>`;
+    case "kerf-line":
       return SVG.wave;
     case "colophon":
-      return `<div style="text-align:center"><p class="hand" style="color:var(--c-terracotta); margin:0 0 8px">kept by jh</p><p class="mono-sm" style="color:var(--c-bark); text-transform:uppercase">canon · design · skills</p></div>`;
+      return `<div style="text-align:center"><p class="hand" style="color:var(--c-pencil-red); margin:0 0 8px">kept by jh</p><p class="mono-sm" style="color:var(--c-bark); text-transform:uppercase">canon · design · skills</p></div>`;
     case "skip-link":
       return `<a class="skip-link" href="#" style="position:static; top:auto" onclick="event.preventDefault()">Skip to skills</a>`;
     case "newcomer-note":
@@ -156,7 +156,7 @@ const phaseThreadList = Object.entries(theme.phaseThreads)
   .join("");
 
 const phaseGlossList = Object.entries(theme.phaseGloss)
-  .map(([phase, gloss]) => `<li><strong>${phase}</strong> — <em>${esc(gloss)}</em></li>`)
+  .map(([phase, gloss]) => `<li><strong>${phase}</strong>: <em>${esc(gloss)}</em></li>`)
   .join("");
 
 const gapList = theme.knownGaps.map(g => `<li>${esc(g)}</li>`).join("");
@@ -168,7 +168,7 @@ const html = `<!DOCTYPE html>
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>ai-runbook-jh — styleguide</title>
+  <title>ai-runbook-jh: styleguide</title>
   ${FONTS_LINK}
   <style>
     ${baseCss()}
@@ -197,7 +197,7 @@ const html = `<!DOCTYPE html>
       border-radius: var(--r-pill);
       border: 1px solid var(--c-hairline);
     }
-    .sg-toc a:hover { color: var(--c-terracotta); border-color: var(--c-terracotta); }
+    .sg-toc a:hover { color: var(--c-graphite); border-color: var(--c-graphite); }
 
     .sg-section {
       padding: var(--s-xl) 0 var(--s-lg);
@@ -265,7 +265,7 @@ const html = `<!DOCTYPE html>
       padding: 8px 0;
       border-bottom: 1px dashed var(--c-hairline);
     }
-    .sg-space-bar { height: 14px; background: var(--c-terracotta-soft); border-left: 2px solid var(--c-terracotta); }
+    .sg-space-bar { height: 14px; background: var(--c-graphite-soft); border-left: 2px solid var(--c-graphite); }
     .sg-round-box { width: 60px; height: 60px; background: var(--c-paper-soft); border: 1px solid var(--c-hairline); }
 
     /* Components */
@@ -278,7 +278,7 @@ const html = `<!DOCTYPE html>
       flex-direction: column;
       gap: var(--s-base);
     }
-    .sg-component-head h3 { margin: 0; color: var(--c-terracotta); font-size: 16px; }
+    .sg-component-head h3 { margin: 0; color: var(--c-graphite); font-size: 16px; }
     .sg-component-head p { margin: 4px 0 0; color: var(--c-bark); }
     .sg-component-live {
       padding: var(--s-lg);
@@ -303,8 +303,8 @@ const html = `<!DOCTYPE html>
 
     /* Demo buttons in styleguide only */
     .sg-demo-btn-primary {
-      background: var(--c-terracotta);
-      color: var(--c-on-terracotta);
+      background: var(--c-graphite);
+      color: var(--c-on-graphite);
       ${typeInline("mono-sm")}
       text-transform: uppercase;
       border: none;
@@ -323,7 +323,7 @@ const html = `<!DOCTYPE html>
       padding: 10px 14px;
       cursor: pointer;
     }
-    .sg-demo-btn-quiet:hover { border-color: var(--c-terracotta); color: var(--c-terracotta); }
+    .sg-demo-btn-quiet:hover { border-color: var(--c-graphite); color: var(--c-graphite); }
 
     .sg-phases {
       display: grid;
@@ -342,7 +342,7 @@ const html = `<!DOCTYPE html>
       <h1>Styleguide: the system, in use.</h1>
       ${SVG.underline}
     </div>
-    <p class="tagline">Every token and component renders here from the same source the AI runbook uses. If something looks wrong, fix it in <code>tools/runbook-build/theme.js</code> and rebuild - both pages update together.</p>
+    <p class="tagline">Every token and component renders here from the same source the AI runbook uses. If something looks wrong, fix it in <code>tools/runbook-build/theme.js</code> and rebuild; both pages update together.</p>
   </header>
 
   <div class="sg-toc">
@@ -362,7 +362,7 @@ const html = `<!DOCTYPE html>
   <main class="container">
     <section class="sg-section" id="colors">
       <h2>Colors</h2>
-      <p class="sg-lede">Warm paper canvas. Soft charcoal ink. Terracotta as the single primary signal. Moss and slate as quiet phase threads — never used alone to convey meaning.</p>
+      <p class="sg-lede">Planed-pine canvas. Graphite ink, walnut for secondary text. Graphite as the single interactive signal. Pencil-red as the one warm accent: title underline and colophon only. Walnut, oak, and ash as quiet phase threads, never used alone to convey meaning.</p>
       <div class="sg-grid">
         ${Object.entries(theme.colors).map(([k, v]) => colorSwatch(k, v)).join("")}
       </div>
@@ -370,7 +370,7 @@ const html = `<!DOCTYPE html>
 
     <section class="sg-section" id="typography">
       <h2>Typography</h2>
-      <p class="sg-lede">Fraunces for display, Source Serif 4 for body, IBM Plex Mono for technical labels, Caveat for one moment of human warmth in the footer.</p>
+      <p class="sg-lede">Fraunces for display, Source Serif 4 for body, Monaspace Xenon for technical labels (slab-serif mono reads like joinery), Architects Daughter for one moment of human warmth in the footer.</p>
       ${Object.entries(theme.typography).map(([k, v]) => typeRow(k, v)).join("")}
     </section>
 
@@ -382,7 +382,7 @@ const html = `<!DOCTYPE html>
 
     <section class="sg-section" id="rounded">
       <h2>Radii</h2>
-      <p class="sg-lede">Soft, not pillowy. <code>note</code> is intentionally irregular — used on rare hand-cut elements only.</p>
+      <p class="sg-lede">Soft, not pillowy. <code>note</code> is intentionally irregular: used on rare hand-cut elements only.</p>
       ${Object.entries(theme.rounded).map(([k, v]) => roundedRow(k, v)).join("")}
     </section>
 
@@ -403,7 +403,7 @@ const html = `<!DOCTYPE html>
 
     <section class="sg-section" id="components">
       <h2>Components</h2>
-      <p class="sg-lede">Every component used in the AI runbook renders below, live. Each carries its token recipe as a disclosure — open it to see exactly which tokens compose it.</p>
+      <p class="sg-lede">Every component used in the AI runbook renders below, live. Each carries its token recipe as a disclosure: open it to see exactly which tokens compose it.</p>
       <div class="sg-grid" style="grid-template-columns: repeat(auto-fill, minmax(320px, 1fr))">
         ${Object.entries(theme.components).map(([k, v]) => componentBlock(k, v)).join("")}
       </div>
