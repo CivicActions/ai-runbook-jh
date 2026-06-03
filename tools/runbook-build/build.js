@@ -207,7 +207,7 @@ const skills = dirs.map(name => {
     security:     extractSection(body, /^Security$/i),
     related:      extractSection(body, /^Related Skills$/i),
     example:      extractSection(body, /^Example$/i),
-    filePath:     `skills/${name}/SKILL.md`,
+    filePath:     `https://github.com/CivicActions/ai-runbook-jh/blob/main/skills/${name}/SKILL.md`,
   };
 });
 
@@ -620,7 +620,7 @@ const html = `<!DOCTYPE html>
       if (skill.security) foot.push(\`<div class="modal-section" data-section="security"><h3>Security</h3>\${mdToHtmlInline(skill.security)}</div>\`);
       if (foot.length) sections.push(\`<div class="modal-footnotes">\${foot.join("")}</div>\`);
 
-      sections.push(\`<a class="modal-footer-link" href="../\${skill.filePath}">view SKILL.md →</a>\`);
+      sections.push(\`<a class="modal-footer-link" href="\${skill.filePath}" target="_blank" rel="noopener">view SKILL.md →</a>\`);
 
       document.getElementById("modal-body").innerHTML = sections.join("");
       attachNextChipHandlers(document.getElementById("modal-body"));
