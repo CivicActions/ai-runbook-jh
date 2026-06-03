@@ -297,7 +297,7 @@ const html = `<!DOCTYPE html>
       </div>
       <p class="tagline">This is my AI runbook for taking a ticket from inbox to shipped: keep the writing clear and keep sensitive details out of chat.</p>
       <aside class="newcomer-note" aria-label="New to AI skills">
-        <p><strong>New to AI skills?</strong> A "skill" is a short Markdown (text) file that tells an AI assistant how to do one specific job, like a checklist a coworker would follow for you. Reference one in your agent (<code>@triage</code>), paste it into a browser chat. Browse docs at <a href="https://agentskills.io/">agentskills.io</a>. If you can paste text into a chat window, you can use one. The six phases below are is the lifecycle of a ticket, from creation to a change shipped, done, and explained.</p>
+        <p><strong>New to AI skills?</strong> A "skill" is a short Markdown (text) file that tells an AI assistant how to do one specific job, like a checklist a coworker would follow for you. Reference one in your agent (<code>@triage</code>), paste it into a browser chat. Browse docs at <a href="https://agentskills.io/">agentskills.io</a>. If you can paste text into a chat window, you can use one.</p>
       </aside>
     </div>
     <aside class="page-header__rail" aria-label="At a glance">
@@ -318,6 +318,7 @@ const html = `<!DOCTYPE html>
 
   <div class="container">
     <nav class="phaseflow" aria-label="Six-phase flow">
+      <p class="phaseflow-lede">The six phases below are the lifecycle of a ticket, from creation to a change shipped, done, and explained.</p>
       <p class="phaseflow-caption" aria-hidden="true"><span class="num">01</span><span class="arrow">→</span><span class="num">02</span><span class="arrow">→</span><span class="num">03</span><span class="arrow">→</span><span class="num">04</span><span class="arrow">→</span><span class="num">05</span><span class="arrow">→</span><span class="num">06</span></p>
       <div class="phaseflow-row">
         ${PHASES.filter(p => p.num).map(p => `

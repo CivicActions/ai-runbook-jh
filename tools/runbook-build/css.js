@@ -324,6 +324,15 @@ ${roundedVars()}
       border-radius: var(--r-lg);
       position: relative;
     }
+    .phaseflow-lede {
+      ${typeVar("body")}
+      color: var(--c-bark);
+      text-align: center;
+      margin: 0 0 var(--s-base);
+      max-width: 60ch;
+      margin-left: auto;
+      margin-right: auto;
+    }
     .phaseflow-caption {
       ${typeVar("mono-sm")}
       color: var(--c-bark);
@@ -425,7 +434,7 @@ ${roundedVars()}
       margin-top: var(--s-sm);
       display: flex;
       flex-wrap: wrap;
-      align-items: center;
+      align-items: baseline;
       justify-content: center;
       gap: var(--s-sm);
       text-transform: none;
