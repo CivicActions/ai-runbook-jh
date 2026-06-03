@@ -1,24 +1,24 @@
 <svg viewBox="0 0 1600 1000" xmlns="http://www.w3.org/2000/svg" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif">
 
   <!-- Background -->
-  <rect width="1600" height="1000" fill="#ffffff"/>
+  <rect width="1600" height="1000" fill="#F6EFDD"/>
 
   <!-- ============ HEADER ============ -->
-  <text x="80" y="55" font-size="30" font-weight="700" fill="#1b1b1b">ai-runbook-jh <tspan font-size="20" font-weight="500" fill="#565c65">: AI-Assisted Ticket Workflow</tspan></text>
-  <text x="80" y="84" font-size="15" fill="#565c65">Six phases, 24 skills. Voice and security gate every phase. A per-project profile keeps the skills generic.</text>
-  <text x="1520" y="50" text-anchor="end" font-size="13" fill="#565c65">ai-runbook-jh</text>
-  <text x="1520" y="86" text-anchor="end" font-size="13" fill="#71767a">Framework v1.1 / June 2026</text>
-  <line x1="80" y1="108" x2="1520" y2="108" stroke="#e0e0e0" stroke-width="1"/>
+  <text x="80" y="55" font-size="30" font-weight="700" fill="#1F1E1B">ai-runbook-jh <tspan font-size="20" font-weight="500" fill="#6B5A41">: AI-Assisted Ticket Workflow</tspan></text>
+  <text x="80" y="84" font-size="15" fill="#6B5A41">Six phases, 24 skills. Voice and security gate every phase. A per-project profile keeps the skills generic.</text>
+  <text x="1520" y="50" text-anchor="end" font-size="13" fill="#6B5A41">ai-runbook-jh</text>
+  <text x="1520" y="86" text-anchor="end" font-size="13" fill="#6B5A41">Framework v1.1 / June 2026</text>
+  <line x1="80" y1="108" x2="1520" y2="108" stroke="#D9CDB1" stroke-width="1"/>
 
   <!-- ============ SECTION LABELS ============ -->
-  <text x="306" y="125" text-anchor="middle" font-size="11" font-weight="700" fill="#71767a" letter-spacing="3">PRE-DEVELOPMENT</text>
-  <text x="1054" y="125" text-anchor="middle" font-size="11" font-weight="700" fill="#1a4480" letter-spacing="3">DEVELOPMENT</text>
+  <text x="306" y="125" text-anchor="middle" font-size="11" font-weight="700" fill="#6B5A41" letter-spacing="3">PRE-DEVELOPMENT</text>
+  <text x="1054" y="125" text-anchor="middle" font-size="11" font-weight="700" fill="#2B2A26" letter-spacing="3">DEVELOPMENT</text>
 
   <!-- ============ TRANSITION LABEL + DIVIDER ============ -->
   <g>
-    <text x="562" y="146" text-anchor="middle" font-size="10" fill="#565c65">Tracker handoff: Refined → Ready for Estimate →</text>
-    <text x="562" y="161" text-anchor="middle" font-size="10" font-weight="700" fill="#1a4480">Selected for Development</text>
-    <line x1="562" y1="170" x2="562" y2="490" stroke="#71767a" stroke-width="1.5" stroke-dasharray="6 4"/>
+    <text x="562" y="146" text-anchor="middle" font-size="10" fill="#6B5A41">Tracker handoff: Refined → Ready for Estimate →</text>
+    <text x="562" y="161" text-anchor="middle" font-size="10" font-weight="700" fill="#2B2A26">Selected for Development</text>
+    <line x1="562" y1="170" x2="562" y2="490" stroke="#6B5A41" stroke-width="1.5" stroke-dasharray="6 4"/>
   </g>
 
   <!-- ============ PHASE BOXES ============ -->
@@ -26,110 +26,110 @@
 
   <!-- Phase 1: Triage (box center x = 188) -->
   <g>
-    <rect x="80" y="170" width="216" height="320" fill="#f0f7fc" stroke="#1a4480" stroke-width="1.5" rx="6"/>
-    <circle cx="188" cy="188" r="10" fill="#1a4480"/>
-    <text x="188" y="192" text-anchor="middle" font-size="12" font-weight="700" fill="#ffffff">1</text>
-    <text x="188" y="218" text-anchor="middle" font-size="17" font-weight="700" fill="#1b1b1b">Triage</text>
-    <text x="188" y="240" text-anchor="middle" font-size="11" font-weight="600" fill="#1b1b1b">First touch</text>
-    <text x="188" y="262" text-anchor="middle" font-size="10" fill="#565c65">Keep / defer / decline.</text>
-    <text x="188" y="277" text-anchor="middle" font-size="10" fill="#565c65">Min fields, initial</text>
-    <text x="188" y="292" text-anchor="middle" font-size="10" fill="#565c65">priority, reviewed tag.</text>
-    <line x1="105" y1="310" x2="271" y2="310" stroke="#aacdec" stroke-width="1"/>
-    <text x="188" y="332" text-anchor="middle" font-size="9" font-weight="700" fill="#71767a" letter-spacing="2">SKILL</text>
-    <text x="188" y="356" text-anchor="middle" font-size="11" fill="#1a4480" font-family="ui-monospace, 'SF Mono', 'Menlo', 'Courier New', monospace">triage</text>
+    <rect x="80" y="170" width="216" height="320" fill="#ECE2C9" stroke="#2B2A26" stroke-width="1.5" rx="6"/>
+    <circle cx="188" cy="188" r="10" fill="#2B2A26"/>
+    <text x="188" y="192" text-anchor="middle" font-size="12" font-weight="700" fill="#F6EFDD">1</text>
+    <text x="188" y="218" text-anchor="middle" font-size="17" font-weight="700" fill="#1F1E1B">Triage</text>
+    <text x="188" y="240" text-anchor="middle" font-size="11" font-weight="600" fill="#1F1E1B">First touch</text>
+    <text x="188" y="262" text-anchor="middle" font-size="10" fill="#6B5A41">Keep / defer / decline.</text>
+    <text x="188" y="277" text-anchor="middle" font-size="10" fill="#6B5A41">Min fields, initial</text>
+    <text x="188" y="292" text-anchor="middle" font-size="10" fill="#6B5A41">priority, reviewed tag.</text>
+    <line x1="105" y1="310" x2="271" y2="310" stroke="#D9CDB1" stroke-width="1"/>
+    <text x="188" y="332" text-anchor="middle" font-size="9" font-weight="700" fill="#6B5A41" letter-spacing="2">SKILL</text>
+    <text x="188" y="356" text-anchor="middle" font-size="11" fill="#2B2A26" font-family="ui-monospace, 'SF Mono', 'Menlo', 'Courier New', monospace">triage</text>
   </g>
 
   <!-- Phase 2: Refinement (box center x = 424) -->
   <g>
-    <rect x="316" y="170" width="216" height="320" fill="#f0f7fc" stroke="#1a4480" stroke-width="1.5" rx="6"/>
-    <circle cx="424" cy="188" r="10" fill="#1a4480"/>
-    <text x="424" y="192" text-anchor="middle" font-size="12" font-weight="700" fill="#ffffff">2</text>
-    <text x="424" y="218" text-anchor="middle" font-size="17" font-weight="700" fill="#1b1b1b">Refinement</text>
-    <text x="424" y="240" text-anchor="middle" font-size="11" font-weight="600" fill="#1b1b1b">Prep for Estimation</text>
-    <text x="424" y="262" text-anchor="middle" font-size="10" fill="#565c65">User story, AC,</text>
-    <text x="424" y="277" text-anchor="middle" font-size="10" fill="#565c65">dependencies, DoD.</text>
-    <line x1="341" y1="310" x2="507" y2="310" stroke="#aacdec" stroke-width="1"/>
-    <text x="424" y="332" text-anchor="middle" font-size="9" font-weight="700" fill="#71767a" letter-spacing="2">SKILLS</text>
-    <text x="424" y="356" text-anchor="middle" font-size="10" fill="#1a4480" font-family="ui-monospace, 'SF Mono', monospace">ticket-refinement</text>
-    <text x="424" y="376" text-anchor="middle" font-size="10" fill="#1a4480" font-family="ui-monospace, 'SF Mono', monospace">definition-of-done</text>
+    <rect x="316" y="170" width="216" height="320" fill="#ECE2C9" stroke="#2B2A26" stroke-width="1.5" rx="6"/>
+    <circle cx="424" cy="188" r="10" fill="#2B2A26"/>
+    <text x="424" y="192" text-anchor="middle" font-size="12" font-weight="700" fill="#F6EFDD">2</text>
+    <text x="424" y="218" text-anchor="middle" font-size="17" font-weight="700" fill="#1F1E1B">Refinement</text>
+    <text x="424" y="240" text-anchor="middle" font-size="11" font-weight="600" fill="#1F1E1B">Prep for Estimation</text>
+    <text x="424" y="262" text-anchor="middle" font-size="10" fill="#6B5A41">User story, AC,</text>
+    <text x="424" y="277" text-anchor="middle" font-size="10" fill="#6B5A41">dependencies, DoD.</text>
+    <line x1="341" y1="310" x2="507" y2="310" stroke="#D9CDB1" stroke-width="1"/>
+    <text x="424" y="332" text-anchor="middle" font-size="9" font-weight="700" fill="#6B5A41" letter-spacing="2">SKILLS</text>
+    <text x="424" y="356" text-anchor="middle" font-size="10" fill="#2B2A26" font-family="ui-monospace, 'SF Mono', monospace">ticket-refinement</text>
+    <text x="424" y="376" text-anchor="middle" font-size="10" fill="#2B2A26" font-family="ui-monospace, 'SF Mono', monospace">definition-of-done</text>
   </g>
 
   <!-- Phase 3: Plan (box center x = 700) -->
   <g>
-    <rect x="592" y="170" width="216" height="320" fill="#dbe9f7" stroke="#1a4480" stroke-width="2" rx="6"/>
-    <circle cx="700" cy="188" r="10" fill="#1a4480"/>
-    <text x="700" y="192" text-anchor="middle" font-size="12" font-weight="700" fill="#ffffff">3</text>
-    <text x="700" y="218" text-anchor="middle" font-size="17" font-weight="700" fill="#1b1b1b">Plan</text>
-    <text x="700" y="240" text-anchor="middle" font-size="11" font-weight="600" fill="#1b1b1b">Write the approach</text>
-    <text x="700" y="262" text-anchor="middle" font-size="10" fill="#565c65">Plan file before code.</text>
-    <text x="700" y="277" text-anchor="middle" font-size="10" fill="#565c65">Steps, risks, scope,</text>
-    <text x="700" y="292" text-anchor="middle" font-size="10" fill="#565c65">impl details, branch.</text>
-    <line x1="617" y1="310" x2="783" y2="310" stroke="#7eb0db" stroke-width="1"/>
-    <text x="700" y="332" text-anchor="middle" font-size="9" font-weight="700" fill="#71767a" letter-spacing="2">SKILLS</text>
-    <text x="700" y="356" text-anchor="middle" font-size="10" fill="#1a4480" font-family="ui-monospace, 'SF Mono', monospace">issue-plan</text>
-    <text x="700" y="376" text-anchor="middle" font-size="10" fill="#1a4480" font-family="ui-monospace, 'SF Mono', monospace">implementation-details</text>
+    <rect x="592" y="170" width="216" height="320" fill="#E6D9C0" stroke="#2B2A26" stroke-width="2" rx="6"/>
+    <circle cx="700" cy="188" r="10" fill="#2B2A26"/>
+    <text x="700" y="192" text-anchor="middle" font-size="12" font-weight="700" fill="#F6EFDD">3</text>
+    <text x="700" y="218" text-anchor="middle" font-size="17" font-weight="700" fill="#1F1E1B">Plan</text>
+    <text x="700" y="240" text-anchor="middle" font-size="11" font-weight="600" fill="#1F1E1B">Write the approach</text>
+    <text x="700" y="262" text-anchor="middle" font-size="10" fill="#6B5A41">Plan file before code.</text>
+    <text x="700" y="277" text-anchor="middle" font-size="10" fill="#6B5A41">Steps, risks, scope,</text>
+    <text x="700" y="292" text-anchor="middle" font-size="10" fill="#6B5A41">impl details, branch.</text>
+    <line x1="617" y1="310" x2="783" y2="310" stroke="#6B5A41" stroke-width="1"/>
+    <text x="700" y="332" text-anchor="middle" font-size="9" font-weight="700" fill="#6B5A41" letter-spacing="2">SKILLS</text>
+    <text x="700" y="356" text-anchor="middle" font-size="10" fill="#2B2A26" font-family="ui-monospace, 'SF Mono', monospace">issue-plan</text>
+    <text x="700" y="376" text-anchor="middle" font-size="10" fill="#2B2A26" font-family="ui-monospace, 'SF Mono', monospace">implementation-details</text>
   </g>
 
   <!-- Phase 4: Build (box center x = 936) -->
   <g>
-    <rect x="828" y="170" width="216" height="320" fill="#dbe9f7" stroke="#1a4480" stroke-width="2" rx="6"/>
-    <circle cx="936" cy="188" r="10" fill="#1a4480"/>
-    <text x="936" y="192" text-anchor="middle" font-size="12" font-weight="700" fill="#ffffff">4</text>
-    <text x="936" y="218" text-anchor="middle" font-size="17" font-weight="700" fill="#1b1b1b">Build</text>
-    <text x="936" y="240" text-anchor="middle" font-size="11" font-weight="600" fill="#1b1b1b">Implement</text>
-    <text x="936" y="262" text-anchor="middle" font-size="10" fill="#565c65">Pattern + simplicity</text>
-    <text x="936" y="277" text-anchor="middle" font-size="10" fill="#565c65">checks. Handoff mid-</text>
-    <text x="936" y="292" text-anchor="middle" font-size="10" fill="#565c65">session to carry state.</text>
-    <line x1="853" y1="310" x2="1019" y2="310" stroke="#7eb0db" stroke-width="1"/>
-    <text x="936" y="332" text-anchor="middle" font-size="9" font-weight="700" fill="#71767a" letter-spacing="2">SKILLS</text>
-    <text x="936" y="356" text-anchor="middle" font-size="10" fill="#1a4480" font-family="ui-monospace, 'SF Mono', monospace">component-design</text>
-    <text x="936" y="373" text-anchor="middle" font-size="10" fill="#1a4480" font-family="ui-monospace, 'SF Mono', monospace">kiss</text>
-    <text x="936" y="390" text-anchor="middle" font-size="10" fill="#1a4480" font-family="ui-monospace, 'SF Mono', monospace">pattern-alignment</text>
-    <text x="936" y="407" text-anchor="middle" font-size="10" fill="#1a4480" font-family="ui-monospace, 'SF Mono', monospace">handoff-message</text>
+    <rect x="828" y="170" width="216" height="320" fill="#E6D9C0" stroke="#2B2A26" stroke-width="2" rx="6"/>
+    <circle cx="936" cy="188" r="10" fill="#2B2A26"/>
+    <text x="936" y="192" text-anchor="middle" font-size="12" font-weight="700" fill="#F6EFDD">4</text>
+    <text x="936" y="218" text-anchor="middle" font-size="17" font-weight="700" fill="#1F1E1B">Build</text>
+    <text x="936" y="240" text-anchor="middle" font-size="11" font-weight="600" fill="#1F1E1B">Implement</text>
+    <text x="936" y="262" text-anchor="middle" font-size="10" fill="#6B5A41">Pattern + simplicity</text>
+    <text x="936" y="277" text-anchor="middle" font-size="10" fill="#6B5A41">checks. Handoff mid-</text>
+    <text x="936" y="292" text-anchor="middle" font-size="10" fill="#6B5A41">session to carry state.</text>
+    <line x1="853" y1="310" x2="1019" y2="310" stroke="#6B5A41" stroke-width="1"/>
+    <text x="936" y="332" text-anchor="middle" font-size="9" font-weight="700" fill="#6B5A41" letter-spacing="2">SKILLS</text>
+    <text x="936" y="356" text-anchor="middle" font-size="10" fill="#2B2A26" font-family="ui-monospace, 'SF Mono', monospace">component-design</text>
+    <text x="936" y="373" text-anchor="middle" font-size="10" fill="#2B2A26" font-family="ui-monospace, 'SF Mono', monospace">kiss</text>
+    <text x="936" y="390" text-anchor="middle" font-size="10" fill="#2B2A26" font-family="ui-monospace, 'SF Mono', monospace">pattern-alignment</text>
+    <text x="936" y="407" text-anchor="middle" font-size="10" fill="#2B2A26" font-family="ui-monospace, 'SF Mono', monospace">handoff-message</text>
   </g>
 
   <!-- Phase 5: Validate (box center x = 1172) -->
   <g>
-    <rect x="1064" y="170" width="216" height="320" fill="#dbe9f7" stroke="#1a4480" stroke-width="2" rx="6"/>
-    <circle cx="1172" cy="188" r="10" fill="#1a4480"/>
-    <text x="1172" y="192" text-anchor="middle" font-size="12" font-weight="700" fill="#ffffff">5</text>
-    <text x="1172" y="218" text-anchor="middle" font-size="17" font-weight="700" fill="#1b1b1b">Validate</text>
-    <text x="1172" y="240" text-anchor="middle" font-size="11" font-weight="600" fill="#1b1b1b">Confirm it works</text>
-    <text x="1172" y="262" text-anchor="middle" font-size="10" fill="#565c65">Browser, a11y, responsive,</text>
-    <text x="1172" y="277" text-anchor="middle" font-size="10" fill="#565c65">perf, peer review.</text>
-    <line x1="1089" y1="310" x2="1255" y2="310" stroke="#7eb0db" stroke-width="1"/>
-    <text x="1172" y="332" text-anchor="middle" font-size="9" font-weight="700" fill="#71767a" letter-spacing="2">SKILLS</text>
-    <text x="1172" y="354" text-anchor="middle" font-size="9.5" fill="#1a4480" font-family="ui-monospace, 'SF Mono', monospace">browser-check</text>
-    <text x="1172" y="370" text-anchor="middle" font-size="9.5" fill="#1a4480" font-family="ui-monospace, 'SF Mono', monospace">accessibility-audit</text>
-    <text x="1172" y="386" text-anchor="middle" font-size="9.5" fill="#1a4480" font-family="ui-monospace, 'SF Mono', monospace">responsive-design</text>
-    <text x="1172" y="402" text-anchor="middle" font-size="9.5" fill="#1a4480" font-family="ui-monospace, 'SF Mono', monospace">performance-frontend</text>
-    <text x="1172" y="418" text-anchor="middle" font-size="9.5" fill="#1a4480" font-family="ui-monospace, 'SF Mono', monospace">frontend-peer-review</text>
-    <text x="1172" y="434" text-anchor="middle" font-size="9.5" fill="#1a4480" font-family="ui-monospace, 'SF Mono', monospace">drupal-critic *</text>
+    <rect x="1064" y="170" width="216" height="320" fill="#E6D9C0" stroke="#2B2A26" stroke-width="2" rx="6"/>
+    <circle cx="1172" cy="188" r="10" fill="#2B2A26"/>
+    <text x="1172" y="192" text-anchor="middle" font-size="12" font-weight="700" fill="#F6EFDD">5</text>
+    <text x="1172" y="218" text-anchor="middle" font-size="17" font-weight="700" fill="#1F1E1B">Validate</text>
+    <text x="1172" y="240" text-anchor="middle" font-size="11" font-weight="600" fill="#1F1E1B">Confirm it works</text>
+    <text x="1172" y="262" text-anchor="middle" font-size="10" fill="#6B5A41">Browser, a11y, responsive,</text>
+    <text x="1172" y="277" text-anchor="middle" font-size="10" fill="#6B5A41">perf, peer review.</text>
+    <line x1="1089" y1="310" x2="1255" y2="310" stroke="#6B5A41" stroke-width="1"/>
+    <text x="1172" y="332" text-anchor="middle" font-size="9" font-weight="700" fill="#6B5A41" letter-spacing="2">SKILLS</text>
+    <text x="1172" y="354" text-anchor="middle" font-size="9.5" fill="#2B2A26" font-family="ui-monospace, 'SF Mono', monospace">browser-check</text>
+    <text x="1172" y="370" text-anchor="middle" font-size="9.5" fill="#2B2A26" font-family="ui-monospace, 'SF Mono', monospace">accessibility-audit</text>
+    <text x="1172" y="386" text-anchor="middle" font-size="9.5" fill="#2B2A26" font-family="ui-monospace, 'SF Mono', monospace">responsive-design</text>
+    <text x="1172" y="402" text-anchor="middle" font-size="9.5" fill="#2B2A26" font-family="ui-monospace, 'SF Mono', monospace">performance-frontend</text>
+    <text x="1172" y="418" text-anchor="middle" font-size="9.5" fill="#2B2A26" font-family="ui-monospace, 'SF Mono', monospace">frontend-peer-review</text>
+    <text x="1172" y="434" text-anchor="middle" font-size="9.5" fill="#2B2A26" font-family="ui-monospace, 'SF Mono', monospace">drupal-critic *</text>
   </g>
 
   <!-- Phase 6: Communicate (box center x = 1408) -->
   <g>
-    <rect x="1300" y="170" width="216" height="320" fill="#dbe9f7" stroke="#1a4480" stroke-width="2" rx="6"/>
-    <circle cx="1408" cy="188" r="10" fill="#1a4480"/>
-    <text x="1408" y="192" text-anchor="middle" font-size="12" font-weight="700" fill="#ffffff">6</text>
-    <text x="1408" y="218" text-anchor="middle" font-size="17" font-weight="700" fill="#1b1b1b">Communicate</text>
-    <text x="1408" y="240" text-anchor="middle" font-size="11" font-weight="600" fill="#1b1b1b">Hand off, reflect</text>
-    <text x="1408" y="262" text-anchor="middle" font-size="10" fill="#565c65">Clean commits, QA steps,</text>
-    <text x="1408" y="277" text-anchor="middle" font-size="10" fill="#565c65">closure notes, and lessons</text>
-    <text x="1408" y="292" text-anchor="middle" font-size="10" fill="#565c65">captured at handoff time.</text>
-    <line x1="1325" y1="310" x2="1491" y2="310" stroke="#7eb0db" stroke-width="1"/>
-    <text x="1408" y="332" text-anchor="middle" font-size="9" font-weight="700" fill="#71767a" letter-spacing="2">SKILLS</text>
-    <text x="1408" y="354" text-anchor="middle" font-size="9.5" fill="#1a4480" font-family="ui-monospace, 'SF Mono', monospace">organize-commits</text>
-    <text x="1408" y="370" text-anchor="middle" font-size="9.5" fill="#1a4480" font-family="ui-monospace, 'SF Mono', monospace">squash-commits</text>
-    <text x="1408" y="386" text-anchor="middle" font-size="9.5" fill="#1a4480" font-family="ui-monospace, 'SF Mono', monospace">commit-message-writer</text>
-    <text x="1408" y="402" text-anchor="middle" font-size="9.5" fill="#1a4480" font-family="ui-monospace, 'SF Mono', monospace">summarize-commits</text>
-    <text x="1408" y="418" text-anchor="middle" font-size="9.5" fill="#1a4480" font-family="ui-monospace, 'SF Mono', monospace">qa-steps</text>
-    <text x="1408" y="434" text-anchor="middle" font-size="9.5" fill="#1a4480" font-family="ui-monospace, 'SF Mono', monospace">issue-closure-notes</text>
-    <text x="1408" y="450" text-anchor="middle" font-size="9.5" fill="#1a4480" font-family="ui-monospace, 'SF Mono', monospace">lessons-learned</text>
+    <rect x="1300" y="170" width="216" height="320" fill="#E6D9C0" stroke="#2B2A26" stroke-width="2" rx="6"/>
+    <circle cx="1408" cy="188" r="10" fill="#2B2A26"/>
+    <text x="1408" y="192" text-anchor="middle" font-size="12" font-weight="700" fill="#F6EFDD">6</text>
+    <text x="1408" y="218" text-anchor="middle" font-size="17" font-weight="700" fill="#1F1E1B">Communicate</text>
+    <text x="1408" y="240" text-anchor="middle" font-size="11" font-weight="600" fill="#1F1E1B">Hand off, reflect</text>
+    <text x="1408" y="262" text-anchor="middle" font-size="10" fill="#6B5A41">Clean commits, QA steps,</text>
+    <text x="1408" y="277" text-anchor="middle" font-size="10" fill="#6B5A41">closure notes, and lessons</text>
+    <text x="1408" y="292" text-anchor="middle" font-size="10" fill="#6B5A41">captured at handoff time.</text>
+    <line x1="1325" y1="310" x2="1491" y2="310" stroke="#6B5A41" stroke-width="1"/>
+    <text x="1408" y="332" text-anchor="middle" font-size="9" font-weight="700" fill="#6B5A41" letter-spacing="2">SKILLS</text>
+    <text x="1408" y="354" text-anchor="middle" font-size="9.5" fill="#2B2A26" font-family="ui-monospace, 'SF Mono', monospace">organize-commits</text>
+    <text x="1408" y="370" text-anchor="middle" font-size="9.5" fill="#2B2A26" font-family="ui-monospace, 'SF Mono', monospace">squash-commits</text>
+    <text x="1408" y="386" text-anchor="middle" font-size="9.5" fill="#2B2A26" font-family="ui-monospace, 'SF Mono', monospace">commit-message-writer</text>
+    <text x="1408" y="402" text-anchor="middle" font-size="9.5" fill="#2B2A26" font-family="ui-monospace, 'SF Mono', monospace">summarize-commits</text>
+    <text x="1408" y="418" text-anchor="middle" font-size="9.5" fill="#2B2A26" font-family="ui-monospace, 'SF Mono', monospace">qa-steps</text>
+    <text x="1408" y="434" text-anchor="middle" font-size="9.5" fill="#2B2A26" font-family="ui-monospace, 'SF Mono', monospace">issue-closure-notes</text>
+    <text x="1408" y="450" text-anchor="middle" font-size="9.5" fill="#2B2A26" font-family="ui-monospace, 'SF Mono', monospace">lessons-learned</text>
   </g>
 
   <!-- Flow arrows between phases (4 arrows; transition between P2 and P3 is shown by the dashed divider) -->
-  <g fill="#1a4480">
+  <g fill="#B8412A">
     <polygon points="300,330 312,335 300,340"/>
     <polygon points="812,330 824,335 812,340"/>
     <polygon points="1048,330 1060,335 1048,340"/>
@@ -137,9 +137,9 @@
   </g>
 
   <!-- ============ WORKFLOW STATE CAPTIONS ============ -->
-  <text x="80" y="500" font-size="9" font-weight="700" fill="#71767a" letter-spacing="2">WORKFLOW STATE</text>
-  <text x="80" y="513" font-size="9" font-style="italic" fill="#71767a">(per project profile)</text>
-  <g font-style="italic" font-size="10" fill="#565c65" text-anchor="middle">
+  <text x="80" y="500" font-size="9" font-weight="700" fill="#6B5A41" letter-spacing="2">WORKFLOW STATE</text>
+  <text x="80" y="513" font-size="9" font-style="italic" fill="#6B5A41">(per project profile)</text>
+  <g font-style="italic" font-size="10" fill="#6B5A41" text-anchor="middle">
     <text x="188" y="513">New</text>
     <text x="424" y="513">Refined → Ready for Estimate</text>
     <text x="700" y="513">Selected → Building</text>
@@ -147,86 +147,86 @@
     <text x="1172" y="513">Building</text>
     <text x="1408" y="513">Review → QA → Done</text>
   </g>
-  <text x="1516" y="540" text-anchor="end" font-size="9" font-style="italic" fill="#71767a">Review or QA may return the ticket to Building.</text>
+  <text x="1516" y="540" text-anchor="end" font-size="9" font-style="italic" fill="#6B5A41">Review or QA may return the ticket to Building.</text>
 
   <!-- ============ CROSS-CUTTING SECTION ============ -->
-  <text x="80" y="555" font-size="11" font-weight="700" fill="#71767a" letter-spacing="3">CROSS-CUTTING CONCERNS</text>
-  <line x1="80" y1="568" x2="1520" y2="568" stroke="#e0e0e0" stroke-width="1"/>
+  <text x="80" y="555" font-size="11" font-weight="700" fill="#6B5A41" letter-spacing="3">CROSS-CUTTING CONCERNS</text>
+  <line x1="80" y1="568" x2="1520" y2="568" stroke="#D9CDB1" stroke-width="1"/>
 
   <!-- Voice -->
   <g>
-    <rect x="80" y="585" width="460" height="96" fill="#f5f0fa" rx="4"/>
-    <rect x="80" y="585" width="6" height="96" fill="#54278f"/>
-    <text x="105" y="608" font-size="14" font-weight="700" fill="#54278f" letter-spacing="1">VOICE</text>
-    <text x="105" y="630" font-size="11" fill="#1b1b1b">The keystone. Every phase produces prose; a project voice</text>
-    <text x="105" y="646" font-size="11" fill="#1b1b1b">config keeps output from reading like many different writers.</text>
-    <text x="105" y="668" font-size="11" font-family="ui-monospace, 'SF Mono', monospace" fill="#54278f">check-tone</text>
-    <text x="200" y="668" font-size="11" fill="#565c65">+</text>
-    <text x="215" y="668" font-size="11" font-family="ui-monospace, 'SF Mono', monospace" fill="#54278f">.agents/style/voice.md</text>
+    <rect x="80" y="585" width="460" height="96" fill="#E6D9C0" rx="4"/>
+    <rect x="80" y="585" width="6" height="96" fill="#6B4A2B"/>
+    <text x="105" y="608" font-size="14" font-weight="700" fill="#6B4A2B" letter-spacing="1">VOICE</text>
+    <text x="105" y="630" font-size="11" fill="#1F1E1B">The keystone. Every phase produces prose; a project voice</text>
+    <text x="105" y="646" font-size="11" fill="#1F1E1B">config keeps output from reading like many different writers.</text>
+    <text x="105" y="668" font-size="11" font-family="ui-monospace, 'SF Mono', monospace" fill="#6B4A2B">check-tone</text>
+    <text x="200" y="668" font-size="11" fill="#6B5A41">+</text>
+    <text x="215" y="668" font-size="11" font-family="ui-monospace, 'SF Mono', monospace" fill="#6B4A2B">.agents/style/voice.md</text>
   </g>
 
   <!-- Security -->
   <g>
-    <rect x="570" y="585" width="460" height="96" fill="#faf0f0" rx="4"/>
-    <rect x="570" y="585" width="6" height="96" fill="#b50909"/>
-    <text x="595" y="608" font-size="14" font-weight="700" fill="#b50909" letter-spacing="1">SECURITY</text>
-    <text x="595" y="630" font-size="11" fill="#1b1b1b">Pre-flight gate. Sanctioned vs. sensitive. AI is a thinking</text>
-    <text x="595" y="646" font-size="11" fill="#1b1b1b">partner, not an auth agent, not a higher-env actor.</text>
-    <text x="595" y="668" font-size="11" font-family="ui-monospace, 'SF Mono', monospace" fill="#b50909">security-check</text>
-    <text x="695" y="668" font-size="11" fill="#565c65">+ CA AI Usage Policy + NIST AI RMF</text>
+    <rect x="570" y="585" width="460" height="96" fill="#ECDFC4" rx="4"/>
+    <rect x="570" y="585" width="6" height="96" fill="#8A6A3A"/>
+    <text x="595" y="608" font-size="14" font-weight="700" fill="#8A6A3A" letter-spacing="1">SECURITY</text>
+    <text x="595" y="630" font-size="11" fill="#1F1E1B">Pre-flight gate. Sanctioned vs. sensitive. AI is a thinking</text>
+    <text x="595" y="646" font-size="11" fill="#1F1E1B">partner, not an auth agent, not a higher-env actor.</text>
+    <text x="595" y="668" font-size="11" font-family="ui-monospace, 'SF Mono', monospace" fill="#8A6A3A">security-check</text>
+    <text x="695" y="668" font-size="11" fill="#6B5A41">+ CA AI Usage Policy + NIST AI RMF</text>
   </g>
 
   <!-- Profile -->
   <g>
-    <rect x="1060" y="585" width="460" height="96" fill="#ecf3ec" rx="4"/>
-    <rect x="1060" y="585" width="6" height="96" fill="#2e8540"/>
-    <text x="1085" y="608" font-size="14" font-weight="700" fill="#2e8540" letter-spacing="1">PROFILE</text>
-    <text x="1085" y="630" font-size="11" fill="#1b1b1b">Names tracker, stack, DoD, voice config, and sanctioned AI</text>
-    <text x="1085" y="646" font-size="11" fill="#1b1b1b">clients. Same skill, different profile, different output.</text>
-    <text x="1085" y="668" font-size="11" font-family="ui-monospace, 'SF Mono', monospace" fill="#2e8540">.agents/profile.md</text>
+    <rect x="1060" y="585" width="460" height="96" fill="#DDD6C5" rx="4"/>
+    <rect x="1060" y="585" width="6" height="96" fill="#5C5A52"/>
+    <text x="1085" y="608" font-size="14" font-weight="700" fill="#5C5A52" letter-spacing="1">PROFILE</text>
+    <text x="1085" y="630" font-size="11" fill="#1F1E1B">Names tracker, stack, DoD, voice config, and sanctioned AI</text>
+    <text x="1085" y="646" font-size="11" fill="#1F1E1B">clients. Same skill, different profile, different output.</text>
+    <text x="1085" y="668" font-size="11" font-family="ui-monospace, 'SF Mono', monospace" fill="#5C5A52">.agents/profile.md</text>
   </g>
 
   <!-- ============ FOUNDATION SKILLS SECTION ============ -->
-  <text x="80" y="730" font-size="11" font-weight="700" fill="#71767a" letter-spacing="3">FOUNDATION SKILLS</text>
-  <text x="280" y="730" font-size="11" fill="#71767a">(called by two or more other skills; rarely run standalone)</text>
-  <line x1="80" y1="742" x2="1520" y2="742" stroke="#e0e0e0" stroke-width="1"/>
+  <text x="80" y="730" font-size="11" font-weight="700" fill="#6B5A41" letter-spacing="3">FOUNDATION SKILLS</text>
+  <text x="280" y="730" font-size="11" fill="#6B5A41">(called by two or more other skills; rarely run standalone)</text>
+  <line x1="80" y1="742" x2="1520" y2="742" stroke="#D9CDB1" stroke-width="1"/>
 
   <g>
     <!-- browser-check -->
-    <rect x="80" y="760" width="340" height="80" fill="#fffbe8" stroke="#ffbe2e" stroke-width="1" rx="4"/>
-    <text x="250" y="785" text-anchor="middle" font-size="12" font-weight="700" fill="#1a4480" font-family="ui-monospace, 'SF Mono', monospace">browser-check</text>
-    <text x="250" y="807" text-anchor="middle" font-size="10" fill="#565c65">Live page validation via chrome-devtools.</text>
-    <text x="250" y="822" text-anchor="middle" font-size="10" fill="#565c65">Invoked by all Validate skills.</text>
+    <rect x="80" y="760" width="340" height="80" fill="#E3DCC8" stroke="#2B2A26" stroke-width="1" rx="4"/>
+    <text x="250" y="785" text-anchor="middle" font-size="12" font-weight="700" fill="#2B2A26" font-family="ui-monospace, 'SF Mono', monospace">browser-check</text>
+    <text x="250" y="807" text-anchor="middle" font-size="10" fill="#6B5A41">Live page validation via chrome-devtools.</text>
+    <text x="250" y="822" text-anchor="middle" font-size="10" fill="#6B5A41">Invoked by all Validate skills.</text>
 
     <!-- definition-of-done -->
-    <rect x="440" y="760" width="340" height="80" fill="#fffbe8" stroke="#ffbe2e" stroke-width="1" rx="4"/>
-    <text x="610" y="785" text-anchor="middle" font-size="12" font-weight="700" fill="#1a4480" font-family="ui-monospace, 'SF Mono', monospace">definition-of-done</text>
-    <text x="610" y="807" text-anchor="middle" font-size="10" fill="#565c65">Canonical DoD per ticket type.</text>
-    <text x="610" y="822" text-anchor="middle" font-size="10" fill="#565c65">Used by refinement, QA, closure, impl-details.</text>
+    <rect x="440" y="760" width="340" height="80" fill="#E3DCC8" stroke="#2B2A26" stroke-width="1" rx="4"/>
+    <text x="610" y="785" text-anchor="middle" font-size="12" font-weight="700" fill="#2B2A26" font-family="ui-monospace, 'SF Mono', monospace">definition-of-done</text>
+    <text x="610" y="807" text-anchor="middle" font-size="10" fill="#6B5A41">Canonical DoD per ticket type.</text>
+    <text x="610" y="822" text-anchor="middle" font-size="10" fill="#6B5A41">Used by refinement, QA, closure, impl-details.</text>
 
     <!-- check-tone -->
-    <rect x="800" y="760" width="340" height="80" fill="#fffbe8" stroke="#ffbe2e" stroke-width="1" rx="4"/>
-    <text x="970" y="785" text-anchor="middle" font-size="12" font-weight="700" fill="#54278f" font-family="ui-monospace, 'SF Mono', monospace">check-tone</text>
-    <text x="970" y="807" text-anchor="middle" font-size="10" fill="#565c65">Voice gate for any prose output.</text>
-    <text x="970" y="822" text-anchor="middle" font-size="10" fill="#565c65">Pairs with .agents/style/voice.md.</text>
+    <rect x="800" y="760" width="340" height="80" fill="#E3DCC8" stroke="#2B2A26" stroke-width="1" rx="4"/>
+    <text x="970" y="785" text-anchor="middle" font-size="12" font-weight="700" fill="#6B4A2B" font-family="ui-monospace, 'SF Mono', monospace">check-tone</text>
+    <text x="970" y="807" text-anchor="middle" font-size="10" fill="#6B5A41">Voice gate for any prose output.</text>
+    <text x="970" y="822" text-anchor="middle" font-size="10" fill="#6B5A41">Pairs with .agents/style/voice.md.</text>
 
     <!-- security-check -->
-    <rect x="1160" y="760" width="340" height="80" fill="#fffbe8" stroke="#ffbe2e" stroke-width="1" rx="4"/>
-    <text x="1330" y="785" text-anchor="middle" font-size="12" font-weight="700" fill="#b50909" font-family="ui-monospace, 'SF Mono', monospace">security-check</text>
-    <text x="1330" y="807" text-anchor="middle" font-size="10" fill="#565c65">Pre-flight for sensitive content.</text>
-    <text x="1330" y="822" text-anchor="middle" font-size="10" fill="#565c65">Sanctioned vs. sensitive classification.</text>
+    <rect x="1160" y="760" width="340" height="80" fill="#E3DCC8" stroke="#2B2A26" stroke-width="1" rx="4"/>
+    <text x="1330" y="785" text-anchor="middle" font-size="12" font-weight="700" fill="#8A6A3A" font-family="ui-monospace, 'SF Mono', monospace">security-check</text>
+    <text x="1330" y="807" text-anchor="middle" font-size="10" fill="#6B5A41">Pre-flight for sensitive content.</text>
+    <text x="1330" y="822" text-anchor="middle" font-size="10" fill="#6B5A41">Sanctioned vs. sensitive classification.</text>
   </g>
 
   <!-- ============ FOOTER ============ -->
-  <line x1="80" y1="870" x2="1520" y2="870" stroke="#e0e0e0" stroke-width="1"/>
-  <text x="80" y="890" font-size="10" fill="#71767a">PRE-DEVELOPMENT phases happen before the ticket is pulled to "Selected for Development." Triage proposes priority for all kept tickets; refinement may update it.</text>
-  <text x="80" y="905" font-size="10" fill="#71767a">DEVELOPMENT phases happen after. Plan precedes code (and generates implementation-details). Build includes mid-session handoffs. Validate is engineer-side checking. Communicate is the handoff.</text>
-  <text x="80" y="920" font-size="10" fill="#71767a">The framework is tool-agnostic. Works with whatever AI client a project sanctions, or paper checklists.</text>
-  <text x="80" y="935" font-size="10" fill="#71767a">* <tspan font-family="ui-monospace, 'SF Mono', monospace">drupal-critic</tspan> applies only when the profile's stack is Drupal.</text>
-  <text x="80" y="958" font-size="10" fill="#1a4480" font-weight="600">Canonical doc: ai-runbook-jh/README.md</text>
-  <text x="360" y="958" font-size="10" fill="#1a4480" font-weight="600">Skills: ai-runbook-jh/skills/</text>
-  <text x="580" y="958" font-size="10" fill="#1a4480" font-weight="600">Profiles: ai-runbook-jh/profiles/</text>
-  <text x="830" y="958" font-size="10" fill="#1a4480" font-weight="600">AI runbook: ai-runbook-jh/runbook/index.html</text>
-  <text x="1180" y="958" font-size="10" fill="#1a4480" font-weight="600">Policy: CA AI Usage Policy + NIST AI RMF</text>
+  <line x1="80" y1="870" x2="1520" y2="870" stroke="#D9CDB1" stroke-width="1"/>
+  <text x="80" y="890" font-size="10" fill="#6B5A41">PRE-DEVELOPMENT phases happen before the ticket is pulled to "Selected for Development." Triage proposes priority for all kept tickets; refinement may update it.</text>
+  <text x="80" y="905" font-size="10" fill="#6B5A41">DEVELOPMENT phases happen after. Plan precedes code (and generates implementation-details). Build includes mid-session handoffs. Validate is engineer-side checking. Communicate is the handoff.</text>
+  <text x="80" y="920" font-size="10" fill="#6B5A41">The framework is tool-agnostic. Works with whatever AI client a project sanctions, or paper checklists.</text>
+  <text x="80" y="935" font-size="10" fill="#6B5A41">* <tspan font-family="ui-monospace, 'SF Mono', monospace">drupal-critic</tspan> applies only when the profile's stack is Drupal.</text>
+  <text x="80" y="958" font-size="10" fill="#B8412A" font-weight="600">Canonical doc: ai-runbook-jh/README.md</text>
+  <text x="360" y="958" font-size="10" fill="#B8412A" font-weight="600">Skills: ai-runbook-jh/skills/</text>
+  <text x="580" y="958" font-size="10" fill="#B8412A" font-weight="600">Profiles: ai-runbook-jh/profiles/</text>
+  <text x="830" y="958" font-size="10" fill="#B8412A" font-weight="600">AI runbook: ai-runbook-jh/runbook/index.html</text>
+  <text x="1180" y="958" font-size="10" fill="#B8412A" font-weight="600">Policy: CA AI Usage Policy + NIST AI RMF</text>
 
 </svg>
