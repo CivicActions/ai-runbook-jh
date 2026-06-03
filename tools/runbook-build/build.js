@@ -1,5 +1,5 @@
 // Copyright (c) 2026. Licensed under the MIT License.
-// Builds the self-contained ai-runbook-jh dashboard at dashboard/index.html.
+// Builds the self-contained ai-runbook-jh AI runbook at runbook/index.html.
 // Reads SKILL.md frontmatter + key sections, then renders against tokens
 // from theme.js via the shared css.js emitter.
 
@@ -9,7 +9,7 @@ const { baseCss, FONTS_LINK, SVG, theme } = require("./css");
 
 const REPO_ROOT = path.resolve(__dirname, "..", "..");
 const SKILLS_DIR = path.join(REPO_ROOT, "skills");
-const OUTPUT = path.join(REPO_ROOT, "dashboard", "index.html");
+const OUTPUT = path.join(REPO_ROOT, "runbook", "index.html");
 
 // ============ PHASE MAP ============
 const SKILL_META = {
@@ -264,9 +264,11 @@ function renderPhase(phase, skillsInPhase) {
       <summary>
         <span class="num">${num}</span>
         ${SVG.leaf}
-        <h2 class="name">${phase.name}</h2>
+        <span class="phase-summary-text">
+          <h2 class="name">${phase.name}</h2>
+          <span class="summary-gloss">${escapeHtml(phase.gloss)}</span>
+        </span>
       </summary>
-      <p class="gloss">${escapeHtml(phase.gloss)}</p>
       <p class="gloss-formal">${escapeHtml(phase.formal)}</p>
       <div class="skills-grid">
         ${skillsInPhase.map(renderSkillCard).join("")}
@@ -288,13 +290,29 @@ const html = `<!DOCTYPE html>
 <body>
   <a class="skip-link" href="#phases">Skip to skills</a>
   <header class="page-header container">
-    <div class="title-wrap">
-      <h1>How I work with AI.</h1>
-      ${SVG.underline}
+    <div class="page-header__main">
+      <div class="title-wrap">
+        <h1>How I work with AI.</h1>
+        ${SVG.underline}
+      </div>
+      <p class="tagline">This is my AI runbook for taking a ticket from inbox to shipped: keep the writing clear and keep sensitive details out of chat.</p>
+      <aside class="newcomer-note" aria-label="New to AI skills">
+        <p><strong>New to AI skills?</strong> A "skill" is a short Markdown (text) file that tells an AI assistant how to do one specific job, like a checklist a coworker would follow for you. Reference one in your agent (<code>@triage</code>), paste it into a browser chat. Browse docs at <a href="https://agentskills.io/">agentskills.io</a>. If you can paste text into a chat window, you can use one. The six phases below are is the lifecycle of a ticket, from creation to a change shipped, done, and explained.</p>
+      </aside>
     </div>
-    <p class="tagline">A small set of working habits for building things with AI. Voice and security run through everything.</p>
-    <aside class="newcomer-note" aria-label="New to AI skills">
-      <p><strong>New to AI skills?</strong> A "skill" is a short Markdown file that tells an AI assistant how to do one specific job, like a checklist a coworker would follow. Reference one in your agent (<code>@triage</code>), paste it into a browser chat, read it as a doc, or browse examples at <a href="https://agentskills.io/">agentskills.io</a>. If you can paste text into a chat window, you can use one. The six phases below are the shape of the work, from a ticket landing in your inbox to a change shipped and explained.</p>
+    <aside class="page-header__rail" aria-label="At a glance">
+      <a class="rail-stat" href="#phases">
+        <span class="rail-stat__num">${String(skills.length).padStart(2, "0")}</span>
+        <span class="rail-stat__label">skills</span>
+      </a>
+      <a class="rail-stat" href="#phases">
+        <span class="rail-stat__num">${String(PHASES.filter(p => p.num).length).padStart(2, "0")}</span>
+        <span class="rail-stat__label">phases</span>
+      </a>
+      <a class="rail-stat" href="#phase-cross-cutting">
+        <span class="rail-stat__num">${String(skills.filter(s => s.phase === "cross-cutting").length).padStart(2, "0")}</span>
+        <span class="rail-stat__label rail-stat__label--long">always-on gates<br>voice + security</span>
+      </a>
     </aside>
   </header>
 
@@ -315,8 +333,8 @@ const html = `<!DOCTYPE html>
         <a href="#phase-cross-cutting">voice</a><span class="sep">·</span><a href="#phase-cross-cutting">security</a>
       </div>
       <div class="phaseflow-band phaseflow-band-profiles">
-        <span class="band-label">profiles</span>
-        <span class="band-text">each skill reads a per-project profile for tracker, stack, voice, and DoD: same skill, different profile, different output</span>
+        <span class="band-label">Profiles:</span>
+        <span class="band-text">Each skill reads a per-project profile for tracker, stack, voice, and DoD: same skill, different profile, different output</span>
         <span class="band-chips">
           <a href="../profiles/uswds.md"><code>uswds</code></a>
           <a href="../profiles/_template.md"><code>_template</code></a>
@@ -328,7 +346,7 @@ const html = `<!DOCTYPE html>
 
     <main id="phases">
       <p class="accent-legend">
-        <span><strong>Card accents:</strong></span>
+        <span class="accent-legend__intro">Skills are marked when they are foundational, voice-sensitive, or security-sensitive.</span>
         <span><span class="tag tag-foundation">Foundation</span> called by other skills more than invoked directly</span>
         <span><span class="tag tag-voice">Voice</span> fires on anything written for an audience</span>
         <span><span class="tag tag-security">Security</span> fires on anything touching secrets or sensitive data</span>
@@ -383,7 +401,7 @@ const html = `<!DOCTYPE html>
   <footer class="colophon container">
     <p class="meta">
       <a href="https://github.com/civicactions/ai-runbook-jh">github</a> ·
-      <a href="../skills/">skills</a> ·
+      <a href="./index.html">AI runbook</a> ·
       <a href="./styleguide.html">styleguide</a> ·
       <a href="../diagrams/six-phase-flow.svg">one-pager</a>
     </p>

@@ -88,7 +88,7 @@
 
     /* ============ Page header ============ */
     .page-header {
-      padding: var(--s-lg) 0;
+      padding: var(--s-lg) var(--s-lg);
     }
     .page-header .eyebrow {
       font-family: "IBM Plex Mono", Consolas, monospace; font-size: 11px; font-weight: 500; line-height: 1.4; letter-spacing: 0.04em;
@@ -165,6 +165,58 @@
     .newcomer-note strong {
       color: var(--c-ink);
       font-weight: 600;
+    }
+
+    /* ============ Hero right rail (desktop only) ============ */
+    .page-header__rail { display: none; }
+    @media (min-width: 1100px) {
+      .page-header {
+        display: flex;
+        align-items: flex-start;
+        gap: var(--s-xl);
+      }
+      .page-header__main { flex: 1 1 auto; min-width: 0; }
+      .page-header__rail {
+        display: flex;
+        flex-direction: column;
+        gap: var(--s-base);
+        flex: 0 0 220px;
+        padding-top: var(--s-sm);
+      }
+      .rail-stat {
+        display: block;
+        text-decoration: none;
+        color: var(--c-bark);
+        padding: 6px 0;
+        border-top: 1px solid var(--c-hairline);
+      }
+      .rail-stat:first-child { border-top: none; padding-top: 0; }
+      .rail-stat__num {
+        font-family: "Fraunces", Georgia, serif; font-size: 28px; font-weight: 500; line-height: 1.2; letter-spacing: -0.005em;
+        display: block;
+        color: var(--c-terracotta);
+        font-size: 28px;
+        line-height: 1;
+        margin-bottom: 4px;
+      }
+      .rail-stat__label {
+        font-family: "IBM Plex Mono", Consolas, monospace; font-size: 11px; font-weight: 500; line-height: 1.4; letter-spacing: 0.04em;
+        color: var(--c-bark);
+        text-transform: uppercase;
+        letter-spacing: 0.08em;
+        line-height: 1.4;
+      }
+      .rail-stat__label--long {
+        text-transform: none;
+        letter-spacing: 0.02em;
+        line-height: 1.35;
+      }
+      .rail-stat:hover .rail-stat__num { color: var(--c-ink); }
+      .rail-stat:hover .rail-stat__label { color: var(--c-ink); }
+      .rail-stat:focus-visible {
+        outline: 2px solid var(--c-focus-ring);
+        outline-offset: 3px;
+      }
     }
 
     /* ============ Wave divider ============ */
@@ -282,7 +334,7 @@
     .phaseflow-row {
       display: grid;
       grid-template-columns: 1fr;
-      gap: var(--s-sm);
+      gap: var(--s-base);
       align-items: stretch;
     }
     .phaseflow-node {
@@ -302,7 +354,7 @@
     .phaseflow-node:not(:last-child)::after {
       content: "";
       position: absolute;
-      right: -10px;
+      right: -12px;
       top: 50%;
       width: 8px;
       height: 8px;
@@ -311,6 +363,7 @@
       transform: translateY(-50%) rotate(45deg);
       z-index: 1;
       display: none;
+      pointer-events: none;
     }
     .phaseflow-node .num {
       font-family: "IBM Plex Mono", Consolas, monospace; font-size: 11px; font-weight: 500; line-height: 1.4; letter-spacing: 0.04em;
@@ -419,7 +472,7 @@
     }
     @media (min-width: 1100px) {
       .phaseflow { padding: var(--s-lg) var(--s-base); }
-      .phaseflow-row { grid-template-columns: repeat(6, 1fr); gap: var(--s-sm); }
+      .phaseflow-row { grid-template-columns: repeat(6, 1fr); }
       .phaseflow-node:not(:last-child)::after { display: block; }
       .phaseflow-node:nth-child(3n)::after { display: block; }
     }
@@ -508,10 +561,25 @@
       border-radius: var(--r-md);
       font-family: "Source Serif 4", Georgia, serif; font-size: 14px; font-weight: 400; line-height: 1.6; letter-spacing: 0;
       color: var(--c-bark);
-      display: flex;
-      flex-wrap: wrap;
-      gap: var(--s-sm) var(--s-base);
-      align-items: baseline;
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: var(--s-sm);
+      align-items: start;
+    }
+    .accent-legend > span { display: block; text-wrap: pretty; }
+    .accent-legend .accent-legend__intro {
+      grid-column: 1 / -1;
+      color: var(--c-ink);
+      margin-bottom: 2px;
+    }
+    @media (min-width: 720px) {
+      .accent-legend {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        column-gap: var(--s-lg);
+      }
+    }
+    @media (min-width: 1100px) {
+      .accent-legend { grid-template-columns: repeat(3, minmax(0, 1fr)); }
     }
     .accent-legend strong { color: var(--c-ink); font-weight: 600; }
     .accent-legend code {
@@ -533,7 +601,7 @@
       cursor: pointer;
       padding: var(--s-lg) 0 var(--s-base);
       display: flex;
-      align-items: baseline;
+      align-items: flex-start;
       gap: var(--s-base);
     }
     .phase > summary::-webkit-details-marker { display: none; }
@@ -554,6 +622,21 @@
       flex-shrink: 0;
       margin: 0;
     }
+    .phase .phase-summary-text {
+      display: flex;
+      flex-direction: column;
+      gap: var(--s-xs);
+      min-width: 0;
+      max-width: var(--prose-w);
+      flex: 1;
+    }
+    .phase .summary-gloss {
+      font-family: "Source Serif 4", "Source Serif Pro", Georgia, serif; font-size: 18px; font-weight: 400; line-height: 1.65; letter-spacing: 0;
+      color: var(--c-bark);
+      font-style: italic;
+      line-height: 1.35;
+      text-wrap: pretty;
+    }
     .phase .leaf {
       width: 14px;
       height: 14px;
@@ -570,6 +653,7 @@
     .phase > summary::after {
       content: "▸";
       margin-left: auto;
+      align-self: center;
       color: var(--c-bark);
       transition: transform 200ms ease;
       font-size: 14px;
@@ -1059,7 +1143,7 @@
     .phase > summary { flex-wrap: wrap; }
 
     @media (min-width: 700px) {
-      .page-header { padding: var(--s-xl) 0 var(--s-lg); }
+      .page-header { padding: var(--s-xl) var(--s-lg) var(--s-lg); }
       .skills-grid { grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); }
       .modal-footnotes { grid-template-columns: 1fr 1fr; }
     }
@@ -1068,13 +1152,29 @@
 <body>
   <a class="skip-link" href="#phases">Skip to skills</a>
   <header class="page-header container">
-    <div class="title-wrap">
-      <h1>How I work with AI.</h1>
-      <svg class="underline" viewBox="0 0 300 12" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" aria-hidden="true" preserveAspectRatio="none"><path d="M2 7 Q 30 3, 60 6 T 120 7 T 180 5 T 240 7 T 298 6" pathLength="600"/></svg>
+    <div class="page-header__main">
+      <div class="title-wrap">
+        <h1>How I work with AI.</h1>
+        <svg class="underline" viewBox="0 0 300 12" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" aria-hidden="true" preserveAspectRatio="none"><path d="M2 7 Q 30 3, 60 6 T 120 7 T 180 5 T 240 7 T 298 6" pathLength="600"/></svg>
+      </div>
+      <p class="tagline">This is my AI runbook for taking a ticket from inbox to shipped: keep the writing clear and keep sensitive details out of chat.</p>
+      <aside class="newcomer-note" aria-label="New to AI skills">
+        <p><strong>New to AI skills?</strong> A "skill" is a short Markdown (text) file that tells an AI assistant how to do one specific job, like a checklist a coworker would follow for you. Reference one in your agent (<code>@triage</code>), paste it into a browser chat. Browse docs at <a href="https://agentskills.io/">agentskills.io</a>. If you can paste text into a chat window, you can use one. The six phases below are is the lifecycle of a ticket, from creation to a change shipped, done, and explained.</p>
+      </aside>
     </div>
-    <p class="tagline">A small set of working habits for building things with AI. Voice and security run through everything.</p>
-    <aside class="newcomer-note" aria-label="New to AI skills">
-      <p><strong>New to AI skills?</strong> A "skill" is a short Markdown file that tells an AI assistant how to do one specific job, like a checklist a coworker would follow. Reference one in your agent (<code>@triage</code>), paste it into a browser chat, read it as a doc, or browse examples at <a href="https://agentskills.io/">agentskills.io</a>. If you can paste text into a chat window, you can use one. The six phases below are the shape of the work, from a ticket landing in your inbox to a change shipped and explained.</p>
+    <aside class="page-header__rail" aria-label="At a glance">
+      <a class="rail-stat" href="#phases">
+        <span class="rail-stat__num">24</span>
+        <span class="rail-stat__label">skills</span>
+      </a>
+      <a class="rail-stat" href="#phases">
+        <span class="rail-stat__num">06</span>
+        <span class="rail-stat__label">phases</span>
+      </a>
+      <a class="rail-stat" href="#phase-cross-cutting">
+        <span class="rail-stat__num">02</span>
+        <span class="rail-stat__label rail-stat__label--long">always-on gates<br>voice + security</span>
+      </a>
     </aside>
   </header>
 
@@ -1125,8 +1225,8 @@
         <a href="#phase-cross-cutting">voice</a><span class="sep">·</span><a href="#phase-cross-cutting">security</a>
       </div>
       <div class="phaseflow-band phaseflow-band-profiles">
-        <span class="band-label">profiles</span>
-        <span class="band-text">each skill reads a per-project profile for tracker, stack, voice, and DoD: same skill, different profile, different output</span>
+        <span class="band-label">Profiles:</span>
+        <span class="band-text">Each skill reads a per-project profile for tracker, stack, voice, and DoD: same skill, different profile, different output</span>
         <span class="band-chips">
           <a href="../profiles/uswds.md"><code>uswds</code></a>
           <a href="../profiles/_template.md"><code>_template</code></a>
@@ -1138,7 +1238,7 @@
 
     <main id="phases">
       <p class="accent-legend">
-        <span><strong>Card accents:</strong></span>
+        <span class="accent-legend__intro">Skills are marked when they are foundational, voice-sensitive, or security-sensitive.</span>
         <span><span class="tag tag-foundation">Foundation</span> called by other skills more than invoked directly</span>
         <span><span class="tag tag-voice">Voice</span> fires on anything written for an audience</span>
         <span><span class="tag tag-security">Security</span> fires on anything touching secrets or sensitive data</span>
@@ -1148,9 +1248,11 @@
       <summary>
         <span class="num">01</span>
         <svg class="leaf" viewBox="0 0 14 14" fill="currentColor" aria-hidden="true"><path d="M7 1 C 11 3, 13 7, 7 13 C 1 7, 3 3, 7 1 Z" opacity="0.85"/></svg>
-        <h2 class="name">Triage</h2>
+        <span class="phase-summary-text">
+          <h2 class="name">Triage</h2>
+          <span class="summary-gloss">Deciding which tickets are worth working on right now.</span>
+        </span>
       </summary>
-      <p class="gloss">Deciding which tickets are worth working on right now.</p>
       <p class="gloss-formal">First touch. Keep, defer, decline. Minimum required fields, initial priority, reviewed tag.</p>
       <div class="skills-grid">
         
@@ -1167,9 +1269,11 @@
       <summary>
         <span class="num">02</span>
         <svg class="leaf" viewBox="0 0 14 14" fill="currentColor" aria-hidden="true"><path d="M7 1 C 11 3, 13 7, 7 13 C 1 7, 3 3, 7 1 Z" opacity="0.85"/></svg>
-        <h2 class="name">Refinement</h2>
+        <span class="phase-summary-text">
+          <h2 class="name">Refinement</h2>
+          <span class="summary-gloss">Filling in the gaps so the team can estimate and start the work.</span>
+        </span>
       </summary>
-      <p class="gloss">Filling in the gaps so the team can estimate and start the work.</p>
       <p class="gloss-formal">Prep for estimation. User story, acceptance criteria, dependencies, definition of done.</p>
       <div class="skills-grid">
         
@@ -1193,9 +1297,11 @@
       <summary>
         <span class="num">03</span>
         <svg class="leaf" viewBox="0 0 14 14" fill="currentColor" aria-hidden="true"><path d="M7 1 C 11 3, 13 7, 7 13 C 1 7, 3 3, 7 1 Z" opacity="0.85"/></svg>
-        <h2 class="name">Plan</h2>
+        <span class="phase-summary-text">
+          <h2 class="name">Plan</h2>
+          <span class="summary-gloss">Writing down the approach in a file before opening the editor.</span>
+        </span>
       </summary>
-      <p class="gloss">Writing down the approach in a file before opening the editor.</p>
       <p class="gloss-formal">Write the approach as a file before touching code. Generates the implementation-details checklist.</p>
       <div class="skills-grid">
         
@@ -1219,9 +1325,11 @@
       <summary>
         <span class="num">04</span>
         <svg class="leaf" viewBox="0 0 14 14" fill="currentColor" aria-hidden="true"><path d="M7 1 C 11 3, 13 7, 7 13 C 1 7, 3 3, 7 1 Z" opacity="0.85"/></svg>
-        <h2 class="name">Build</h2>
+        <span class="phase-summary-text">
+          <h2 class="name">Build</h2>
+          <span class="summary-gloss">Doing the work, and keeping the commits clean as you go.</span>
+        </span>
       </summary>
-      <p class="gloss">Doing the work, and keeping the commits clean as you go.</p>
       <p class="gloss-formal">Implement against the plan. Pattern and simplicity checks. Handoffs carry state across chats.</p>
       <div class="skills-grid">
         
@@ -1280,9 +1388,11 @@
       <summary>
         <span class="num">05</span>
         <svg class="leaf" viewBox="0 0 14 14" fill="currentColor" aria-hidden="true"><path d="M7 1 C 11 3, 13 7, 7 13 C 1 7, 3 3, 7 1 Z" opacity="0.85"/></svg>
-        <h2 class="name">Validate</h2>
+        <span class="phase-summary-text">
+          <h2 class="name">Validate</h2>
+          <span class="summary-gloss">Checking it actually works: for keyboards, screens, and real browsers.</span>
+        </span>
       </summary>
-      <p class="gloss">Checking it actually works: for keyboards, screens, and real browsers.</p>
       <p class="gloss-formal">Confirm it works. Browser, accessibility, responsiveness, performance, peer review.</p>
       <div class="skills-grid">
         
@@ -1334,9 +1444,11 @@
       <summary>
         <span class="num">06</span>
         <svg class="leaf" viewBox="0 0 14 14" fill="currentColor" aria-hidden="true"><path d="M7 1 C 11 3, 13 7, 7 13 C 1 7, 3 3, 7 1 Z" opacity="0.85"/></svg>
-        <h2 class="name">Communicate</h2>
+        <span class="phase-summary-text">
+          <h2 class="name">Communicate</h2>
+          <span class="summary-gloss">Wrapping it up so the next person, including future you, isn&#39;t lost.</span>
+        </span>
       </summary>
-      <p class="gloss">Wrapping it up so the next person, including future you, isn&#39;t lost.</p>
       <p class="gloss-formal">Hand off and reflect. PR summary, QA steps, closure notes, lessons captured at handoff.</p>
       <div class="skills-grid">
         
@@ -1374,9 +1486,11 @@
       <summary>
         <span class="num">✦</span>
         <svg class="leaf" viewBox="0 0 14 14" fill="currentColor" aria-hidden="true"><path d="M7 1 C 11 3, 13 7, 7 13 C 1 7, 3 3, 7 1 Z" opacity="0.85"/></svg>
-        <h2 class="name">Cross-cutting</h2>
+        <span class="phase-summary-text">
+          <h2 class="name">Cross-cutting</h2>
+          <span class="summary-gloss">Two habits that run alongside everything: watch your tone, watch what you share.</span>
+        </span>
       </summary>
-      <p class="gloss">Two habits that run alongside everything: watch your tone, watch what you share.</p>
       <p class="gloss-formal">Not tied to a phase. check-tone fires on anything written for an audience; security-check fires on anything touching secrets or sensitive data.</p>
       <div class="skills-grid">
         
@@ -1445,7 +1559,7 @@
   <footer class="colophon container">
     <p class="meta">
       <a href="https://github.com/civicactions/ai-runbook-jh">github</a> ·
-      <a href="../skills/">skills</a> ·
+      <a href="./index.html">AI runbook</a> ·
       <a href="./styleguide.html">styleguide</a> ·
       <a href="../diagrams/six-phase-flow.svg">one-pager</a>
     </p>

@@ -226,7 +226,7 @@
   <text x="80" y="958" font-size="10" fill="#1a4480" font-weight="600">Canonical doc: ai-runbook-jh/README.md</text>
   <text x="360" y="958" font-size="10" fill="#1a4480" font-weight="600">Skills: ai-runbook-jh/skills/</text>
   <text x="580" y="958" font-size="10" fill="#1a4480" font-weight="600">Profiles: ai-runbook-jh/profiles/</text>
-  <text x="830" y="958" font-size="10" fill="#1a4480" font-weight="600">Dashboard: ai-runbook-jh/dashboard/index.html</text>
+  <text x="830" y="958" font-size="10" fill="#1a4480" font-weight="600">AI runbook: ai-runbook-jh/runbook/index.html</text>
   <text x="1180" y="958" font-size="10" fill="#1a4480" font-weight="600">Policy: CA AI Usage Policy + NIST AI RMF</text>
 
 </svg>

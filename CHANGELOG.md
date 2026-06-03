@@ -7,7 +7,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 ## [Unreleased]
 
 ### Added
-- Hosted skills catalog at https://civicactions.github.io/ai-runbook-jh/dashboard/ (GitHub Pages); README links from intro and Skills catalog sections
+- Hosted AI runbook at https://civicactions.github.io/ai-runbook-jh/runbook/ (GitHub Pages); README links from intro and AI runbook sections
 - AI Usage Policy surfaced in `README.md` and `CONTRIBUTING.md`
 - Voice template split into humanizing baseline (`templates/voice/voice.md`) and personal overlay (`templates/voice/voice.personal.template.md`); `check-tone` layers `voice.personal.md` over `voice.md` when present
 - `security-check` wired as upstream gate for skills that ingest external content
@@ -35,7 +35,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 - Project profile system; generic skills + per-project profile (`profiles/_template.md`)
 - Example profiles: `profiles/uswds.md`
 - `sync.sh` deployment script; symlinks skills and deploys a profile into a target project
-- Skills catalog builder (`tools/dashboard-build/`); self-contained HTML view of every skill
+- AI runbook builder (`tools/runbook-build/`); self-contained HTML view of every skill
 - Deck builder (`tools/deck-build/`)
 - Voice template (`templates/voice/`)
 - Security guardrails baked into skills; `security-check` skill as pre-flight gate

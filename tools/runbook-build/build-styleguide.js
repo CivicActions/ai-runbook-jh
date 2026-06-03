@@ -1,15 +1,15 @@
 // Copyright (c) 2026. Licensed under the MIT License.
-// Builds the living styleguide at dashboard/styleguide.html.
+// Builds the living styleguide at runbook/styleguide.html.
 // Reads tokens from theme.js and renders every color, type style, spacing
 // step, radius, and component live, side by side with its token reference.
-// If the dashboard and the styleguide ever diverge, this file is the source
+// If the runbook and the styleguide ever diverge, this file is the source
 // of truth — change tokens here, both pages update on the next build.
 
 const fs = require("fs");
 const path = require("path");
 const { baseCss, FONTS_LINK, SVG, theme } = require("./css");
 
-const OUTPUT = path.join(path.resolve(__dirname, "..", ".."), "dashboard", "styleguide.html");
+const OUTPUT = path.join(path.resolve(__dirname, "..", ".."), "runbook", "styleguide.html");
 
 function esc(s) {
   return String(s).replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
@@ -140,7 +140,7 @@ function renderLive(name) {
     case "usage-modes":
       return `<section class="usage-modes" style="margin:0; max-width:560px"><h2 class="usage-modes-title">Three ways to drive the skills</h2><p class="usage-modes-intro">Pick the mode that fits the work in front of you.</p><ul class="usage-modes-list" style="grid-template-columns:1fr"><li class="usage-mode"><p class="usage-mode-head"><strong>One-off</strong>Pull a single skill when you want it.</p></li></ul></section>`;
     case "accent-legend":
-      return `<p class="accent-legend" style="margin:0; max-width:560px"><span><strong>Card accents:</strong></span><span><span class="tag tag-foundation">Foundation</span> called by other skills</span><span><span class="tag tag-voice">Voice</span> written for an audience</span><span><span class="tag tag-security">Security</span> touches secrets</span></p>`;
+      return `<p class="accent-legend" style="margin:0; max-width:560px"><span class="accent-legend__intro">Skills are marked when they are foundational, voice-sensitive, or security-sensitive.</span><span><span class="tag tag-foundation">Foundation</span> called by other skills</span><span><span class="tag tag-voice">Voice</span> written for an audience</span><span><span class="tag tag-security">Security</span> touches secrets</span></p>`;
     default:
       return `<em class="body-sm">No live demo defined.</em>`;
   }
@@ -342,7 +342,7 @@ const html = `<!DOCTYPE html>
       <h1>Styleguide: the system, in use.</h1>
       ${SVG.underline}
     </div>
-    <p class="tagline">Every token and component renders here from the same source the skills catalog uses. If something looks wrong, fix it in <code>tools/dashboard-build/theme.js</code> and rebuild — both pages update together.</p>
+    <p class="tagline">Every token and component renders here from the same source the AI runbook uses. If something looks wrong, fix it in <code>tools/runbook-build/theme.js</code> and rebuild - both pages update together.</p>
   </header>
 
   <div class="sg-toc">
@@ -403,7 +403,7 @@ const html = `<!DOCTYPE html>
 
     <section class="sg-section" id="components">
       <h2>Components</h2>
-      <p class="sg-lede">Every component used in the skills catalog renders below, live. Each carries its token recipe as a disclosure — open it to see exactly which tokens compose it.</p>
+      <p class="sg-lede">Every component used in the AI runbook renders below, live. Each carries its token recipe as a disclosure — open it to see exactly which tokens compose it.</p>
       <div class="sg-grid" style="grid-template-columns: repeat(auto-fill, minmax(320px, 1fr))">
         ${Object.entries(theme.components).map(([k, v]) => componentBlock(k, v)).join("")}
       </div>
@@ -419,7 +419,7 @@ const html = `<!DOCTYPE html>
   <footer class="colophon container">
     <p class="meta">
       <a href="https://github.com/civicactions/ai-runbook-jh">github</a> ·
-      <a href="../skills/">skills</a> ·
+      <a href="./index.html">AI runbook</a> ·
       <a href="./styleguide.html">styleguide</a> ·
       <a href="../diagrams/six-phase-flow.svg">one-pager</a>
     </p>

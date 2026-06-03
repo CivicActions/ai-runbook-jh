@@ -53,8 +53,8 @@ spacing:
 # Design
 
 > The visual rationale behind `ai-runbook-jh`. Token values live in
-> [`tools/dashboard-build/theme.js`](tools/dashboard-build/theme.js); both this
-> document and the [living styleguide](dashboard/styleguide.html) read from there.
+> [`tools/runbook-build/theme.js`](tools/runbook-build/theme.js); both this
+> document and the [living styleguide](runbook/styleguide.html) read from there.
 
 ## Overview
 
@@ -149,9 +149,9 @@ but available in the system.
 
 ## Components
 
-Every component the skills catalog renders is defined as a token recipe in
-[`theme.js`](tools/dashboard-build/theme.js) and rendered live in the
-[styleguide](dashboard/styleguide.html). The set:
+Every component the AI runbook renders is defined as a token recipe in
+[`theme.js`](tools/runbook-build/theme.js) and rendered live in the
+[styleguide](runbook/styleguide.html). The set:
 
 | Component        | Role                                                                  |
 |------------------|-----------------------------------------------------------------------|
