@@ -1,6 +1,6 @@
 ---
 name: triage
-description: "First-touch assessment of a ticket/issue, decline/defer/keep, fill minimum required fields, set initial priority, tag as reviewed. Use when the user says triage this, first pass on this ticket, quick assess this, clean up the backlog, or shares a ticket/issue they're seeing for the first time. Apply for individual items or batches when the goal is a fast keep/cut decision, not a full refinement."
+description: "First-touch assessment of a ticket/issue, decline/defer/keep, fill minimum required fields, set initial priority, tag as reviewed. Use when the user says triage this, first pass on this ticket, quick assess this, or shares a ticket/issue they're seeing for the first time. The goal is a fast keep/cut decision, not a full refinement."
 typicalNext: "After triaging, items marked 'Keep' move to `ticket-refinement` for deeper work: write the acceptance criteria, break out implementation details, and estimate LOE. Use the triage results as context for the refinement pass."
 ---
 
@@ -22,33 +22,12 @@ If no profile is present, ask the user for the project's fields and priority sch
 inventing one.
 
 ## When to Use
-Invoke for an initial pass on a ticket/issue or batch; deciding whether each survives, filling the
-minimum fields, and setting an initial priority. This is the *first* pass, not the *final* pass. A
-triaged item should be ready to be picked up later for refinement before estimation. Applies to
-backlog reviews, new bug intake, and any "I just opened this and need to figure out what to do with
-it" moment.
+Invoke for an initial pass on a ticket/issue; deciding whether it survives, filling the minimum
+fields, and setting an initial priority. This is the *first* pass, not the *final* pass. A triaged
+item should be ready to be picked up later for refinement before estimation. Applies to new bug
+intake and any "I just opened this and need to figure out what to do with it" moment.
 
-## Modes
-- **Single-item triage**: one ticket/issue, first-touch assessment. Default mode.
-- **Batch / backlog review**: a list of items being worked through. Add the Pre-review bulk prep
-  step below before going one-by-one, and prefer the per-item summary block output over the table
-  when the review will be read narratively rather than sorted.
-
-In either mode, this skill is the *first* pass only. Refinement and estimation are downstream
-(`ticket-refinement`).
-
-### Backlog review phases (context)
-A backlog review typically runs in phases. This skill covers Phase 1 only; the rest is coordinated
-by the team outside the skill.
-1. **Initial pass** *(this skill)*: decline / defer / categorize, fill minimum fields, set initial
-   priority, apply the profile's review marker.
-2. **Categorize remaining**: validate that bugs still reproduce, fold orphan items into the
-   project's grouping scheme (component / area / epic), hand judgment calls to whoever owns the
-   functional area.
-3. **Prioritize within groupings**: stakeholder / PM sets priority on customer-facing items;
-   engineering sets it on tech-debt items. Defer whole low-value groupings if warranted.
-4. **Refine and estimate**: in priority order, write the AC, generate implementation details
-   (`implementation-details`), estimate LOE, move to Ready for Dev. Use `ticket-refinement` here.
+This skill is the *first* pass only. Refinement and estimation are downstream (`ticket-refinement`).
 
 ## Goals
 - Cull aggressively, but err toward keep-with-low-priority over decline
@@ -63,18 +42,6 @@ area is needed (design, QA, DevOps, backend) so the next person knows who to loo
 starting.
 
 ## Approach
-
-### Pre-review bulk prep (batch mode only)
-Before going item-by-item, do the bulk passes that don't need per-ticket judgment. These cut noise
-and make the per-item pass faster:
-- **Reset stale priorities** to "none" (or the profile's equivalent unset value), so a long-stale
-  Medium doesn't masquerade as a deliberate prioritization. Items will get an initial priority
-  during the per-item pass.
-- **Ensure every item has the profile's required grouping field(s)** (e.g. a component / functional
-  area / equivalent from `## Required fields`). Items missing them sort to the top of the per-item
-  pass for a fast fill-in.
-- **Pull a list of orphan items** (no parent, no grouping, no review marker) so they're visible
-  during the per-item pass; the Epic / orphan cleanup step below handles them.
 
 ### Per-item pass
 1. **Decline or defer check**
@@ -95,35 +62,10 @@ and make the per-item pass faster:
 4. **Flag for deeper refinement**: note items that need a full refinement pass before estimation.
    Use `ticket-refinement` for that work.
 
-### Epic / parent and orphan cleanup (batch mode)
-Once per-item triage is done on a batch, sweep the parent and orphan picture:
-- **Low-value parents (epics, initiatives, etc.)**: parents whose only remaining children are
-  Low/Lowest items. Either reassociate the children to the project's grouping scheme so they're
-  trackable without the parent, then close the parent; or close both if nothing's worth keeping.
-- **Orphan items**: items with no parent and no grouping. Re-tag with a grouping field (per the
-  profile's `## Required fields`) if still relevant, decline if not.
-- **Other closable parents**: parents whose work has shipped or whose scope no longer applies.
-
 ## Output Format
-Pick the format that matches the mode:
-- **Table** (default for batch mode): scan and sort many items at once.
-- **Per-item summary block**: read one item at a time, narratively; better when each item needs
-  context the table can't hold. Default for single-item mode.
-
-Render either format using the profile's `## Tracker` markup (issue-ref format, heading and
-emphasis markup, monospace for code/paths).
-
-### Table format
-For each item:
-
-| Item | Decision | Priority (proposed) | Stakeholder Review? | Min Fields Filled | Needs Refinement |
-|------|----------|---------------------|---------------------|-------------------|------------------|
-| [ref] | Keep / Defer / Decline | [priority] | [stakeholder tag if applicable] | list | Yes / No |
-
-### Per-item summary block format
-One compact block per item, separated by a horizontal rule. Use the profile's emphasis/heading
-markup; the field names below are generic, substitute the project's actual field names from
-`## Required fields`:
+Render output using the profile's `## Tracker` markup (issue-ref format, heading and emphasis
+markup, monospace for code/paths). One compact block per item; substitute the project's actual
+field names from `## Required fields` for the generic ones below:
 
 ```
 [ref] — [Title]
@@ -132,7 +74,7 @@ Decision: Keep / Defer / Decline — [brief rationale]
 Type: [bug/task/feature/debt/spike] | Scope: [small/medium/large/unknown] | Risk: [low/med/high] | Dependencies: [refs or none]
 ```
 
-### Common follow-up sections (both formats)
+### Common follow-up sections
 Follow the per-item output with:
 - **Blockers**: items that gate other work
 - **Quick wins**: small scope, low risk, high value
@@ -140,7 +82,6 @@ Follow the per-item output with:
 - **Decline list**: items and brief reasons
 - **Defer list**: items and conditions for revisiting
 - **Refinement queue**: kept items that need `ticket-refinement` before estimation
-- **Parent / orphan cleanup** *(batch mode)*: parents to close or reassociate, orphans to re-tag or decline
 
 ## Voice
 Apply `.agents/style/voice.md` to decision rationales and any prose. Run shared output through
