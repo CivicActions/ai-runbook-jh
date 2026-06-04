@@ -80,7 +80,7 @@ GitHub lifecycle: **open/confirm issue → maintainer triage (Size/Severity/Prio
 - **A11y tooling:** browser + axe/manual; verify contrast ratios numerically, don't eyeball.
 
 ## Stack
-- **Framework:** none / vanilla component library (NOT Drupal). **`drupal-critic` does NOT apply.**
+- **Framework:** none / vanilla component library (NOT Drupal). **`drupal-peer-review` does NOT apply.**
 - **Templates:** Twig templates inside packages (`packages/usa-*/src/*.twig`) for component markup
   + Storybook stories.
 - **Styling:** USWDS Sass; design tokens via `color("…")`, `units("…")`, `radius("…")` etc.;

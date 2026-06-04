@@ -146,5 +146,5 @@ Divergences
 ## Related Skills
 
 - **Pairs with:** `kiss` (pattern-alignment catches under-aligned engineering; KISS catches over-engineering, both are Build-phase critics)
-- **Invoked by:** `frontend-peer-review`, `drupal-critic` (peer review applies pattern check as part of overall review)
+- **Invoked by:** `frontend-peer-review`, `drupal-peer-review` (peer review applies pattern check as part of overall review)
 - **Downstream:** `check-tone` (run shared alignment-check prose through tone check before posting)

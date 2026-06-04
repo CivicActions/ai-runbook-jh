@@ -75,7 +75,7 @@ profiles so skills resolve every reference.
 Browse the hosted **[AI runbook](https://civicactions.github.io/ai-runbook-jh/runbook/)**, or
 open [`runbook/index.html`](runbook/index.html) locally for the full catalog: one card per
 skill, grouped by phase, with when-to-use, output template, and the skill-call graph.
-`drupal-critic` applies only when the profile's stack is Drupal; `check-tone` and `security-check`
+`drupal-peer-review` applies only when the profile's stack is Drupal; `check-tone` and `security-check`
 are the cross-cutting gates.
 
 See [`DESIGN.md`](DESIGN.md) for the visual rationale and
@@ -149,6 +149,14 @@ screenshots are PII-redacted before being saved.
 - The methodology (six phases, voice keystone, security guardrails) works with any AI client, ideally within an IDE. The phases are durable; the skills are disposable.
 - Working artifacts (plans, handoffs, reviews, drafts) are personal/local and git-ignored; they may
   contain ticket details and shouldn't be committed.
+
+## Acknowledgments
+
+`drupal-peer-review` began as a fork of Zivtech's
+[drupal-critic](https://github.com/zivtech/drupal-critic) (Apache 2.0) - it was originally
+named `drupal-critic` too. It's since been reworked so heavily into this runbook's
+profile-driven style that little of the original remains, but the lineage is theirs.
+Credit and thanks to Zivtech.
 
 ## License
 

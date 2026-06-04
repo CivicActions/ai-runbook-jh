@@ -55,7 +55,7 @@
 - **Visual regression:** <Backstop, etc., or "none">
 
 ## Stack
-- **Framework:** <e.g. Drupal, none/vanilla lib, React> (determines whether `drupal-critic` applies)
+- **Framework:** <e.g. Drupal, none/vanilla lib, React> (determines whether `drupal-peer-review` applies)
 - **Templates:** <templating language + dynamic-output handling>
 - **Styling:** <design-system tokens, naming convention, prohibitions (hex, `!important`, IDs)>
 - **Breakpoints:** <named breakpoint tokens + values>
