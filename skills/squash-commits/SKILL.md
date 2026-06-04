@@ -63,6 +63,8 @@ Pull the specifics from the profile's `## Commit conventions` section. Conventio
 that hold across projects:
 - Imperative mood in the subject line
 - Subject prefixed with the issue ref (profile `## Tracker` → Issue ref format), when the project uses one
+- If the profile's `## Commit conventions` defines an enforced subject-line regex, every squashed
+  subject must match it
 - Body explains the why, not the how
 - Never squash commits already pushed to a shared branch without coordinating with the team
 
