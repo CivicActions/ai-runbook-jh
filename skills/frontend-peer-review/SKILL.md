@@ -9,7 +9,7 @@ description: "Peer reviews a frontend change; templates, styles, JavaScript, or 
 The stack conventions, visual-regression tooling, and team context are **project-specific**. Read
 them from `.agents/profile.md`:
 - **`## Stack`**: framework (Drupal/Twig or not), template/JS conventions, design-system styling
-  rules (tokens vs. hex, `!important`, BEM), library registration, and whether `drupal-critic`
+  rules (tokens vs. hex, `!important`, BEM), library registration, and whether `drupal-peer-review`
   applies.
 - **`## Environments`**: visual-regression references (e.g. Backstop) and the CI surface.
 - **`## Team context`**: team size / review norms (sets how formal vs. lightweight the review is).
@@ -112,6 +112,6 @@ Open Questions
 ## Related Skills
 - **Invokes:** `browser-check` (visual confirmation), `pattern-alignment` (checks against the
   project's canonical patterns), `kiss` (flags over-engineering)
-- **Sibling:** `drupal-critic` (BE counterpart for PHP/services/config review); applies only when
+- **Sibling:** `drupal-peer-review` (BE counterpart for PHP/services/config review); applies only when
   the profile's stack is Drupal
 - **Downstream:** `qa-steps` (peer review findings often surface QA scenarios), `check-tone` (run shared review prose through tone check before posting)

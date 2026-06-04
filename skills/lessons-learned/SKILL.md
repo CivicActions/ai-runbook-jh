@@ -62,7 +62,7 @@ Apply it to all generated prose, keep it direct and honest, not performative. Ru
 - Flag if a lesson has implications for the testing strategy or CI/CD pipeline (see the profile's
   `## Environments` → CI for the pipeline in play).
 - Note if a process change should be documented where the project files durable knowledge (e.g.
-  a team wiki or the memory bank, depending on the profile). See **Output goes where** under Related Skills.
+  the profile's `## Knowledge base`). See **Output goes where** under Related Skills.
 
 ## Attribution
 
@@ -139,5 +139,5 @@ _AI-assisted draft, reviewed before submission._   <- only if the profile define
 - **Sibling:** `issue-closure-notes` (the comms artifact); this is the discipline artifact
 - **Downstream:** `check-tone` (run shared lessons through tone check before publishing)
 - **Output goes where:** `.agents/lessons/`, plus wherever the project files durable knowledge (the
-  profile names this: e.g. a team wiki or the memory bank). Lessons that change process should
+  profile's `## Knowledge base`). Lessons that change process should
   also propagate back into the skills themselves.

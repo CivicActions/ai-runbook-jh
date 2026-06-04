@@ -11,9 +11,11 @@ Invoke when the user wants to review or plan the responsive behavior of a compon
 ## Project profile
 Breakpoints, the grid system, styling rules, and the browser tooling are **project-specific**. Read
 them from `.agents/profile.md`:
-- **`## Stack`**: the design system's breakpoint tokens, grid utilities, and styling rules
-  (mobile-first media queries, token-only colors, naming conventions). Use the design system's
-  named breakpoint tokens rather than arbitrary pixel values.
+- **`## Breakpoints`**: the design system's breakpoint tokens. Use named breakpoint tokens rather
+  than arbitrary pixel values.
+- **`## Grid`**: the design system's grid utilities/mixins.
+- **`## Stack`**: styling rules and conventions (mobile-first media queries, token-only colors,
+  naming conventions).
 - **`## Environments`**: the visual-regression tooling (e.g. Backstop references) that must be
   updated when responsive layout changes: the a11y tooling for verifying behavior.
 - **`## Sanctioned AI`** → Browser inspection MCP: the browser tool `browser-check` drives for
@@ -26,12 +28,12 @@ grid system, and styling rules rather than assuming a specific design system.
 ## Approach
 
 1. **Identify the component or layout**, what is being reviewed or designed
-2. **Check breakpoints** against the design system's breakpoint tokens (profile `## Stack`). If the
+2. **Check breakpoints** against the design system's breakpoint tokens (profile `## Breakpoints`). If the
    profile doesn't list named breakpoints, ask for the project's breakpoints or fall back to the
    common mobile / tablet / desktop tiers.
 3. **Verify mobile-first**, styles start at mobile, use `min-width` media queries to scale up (per
    the styling rules in profile `## Stack`)
-4. **Review grid usage**, the design system's grid utilities (profile `## Stack`) used correctly
+4. **Review grid usage**, the design system's grid utilities (profile `## Grid`) used correctly
 5. **Check touch targets**, interactive elements at least 44x44px on mobile
 6. **Check overflow and wrapping**, no horizontal scroll, text wraps correctly, images don't overflow
 7. **Check typography scaling**, font sizes and line heights appropriate at each breakpoint

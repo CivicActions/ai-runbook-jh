@@ -104,7 +104,7 @@
     <text x="1172" y="386" text-anchor="middle" font-size="9.5" fill="#2B2A26" font-family="ui-monospace, 'SF Mono', monospace">responsive-design</text>
     <text x="1172" y="402" text-anchor="middle" font-size="9.5" fill="#2B2A26" font-family="ui-monospace, 'SF Mono', monospace">performance-frontend</text>
     <text x="1172" y="418" text-anchor="middle" font-size="9.5" fill="#2B2A26" font-family="ui-monospace, 'SF Mono', monospace">frontend-peer-review</text>
-    <text x="1172" y="434" text-anchor="middle" font-size="9.5" fill="#2B2A26" font-family="ui-monospace, 'SF Mono', monospace">drupal-critic *</text>
+    <text x="1172" y="434" text-anchor="middle" font-size="9.5" fill="#2B2A26" font-family="ui-monospace, 'SF Mono', monospace">drupal-peer-review *</text>
   </g>
 
   <!-- Phase 6: Communicate (box center x = 1408) -->
@@ -222,7 +222,7 @@
   <text x="80" y="890" font-size="10" fill="#6B5A41">PRE-DEVELOPMENT phases happen before the ticket is pulled to "Selected for Development." Triage proposes priority for all kept tickets; refinement may update it.</text>
   <text x="80" y="905" font-size="10" fill="#6B5A41">DEVELOPMENT phases happen after. Plan precedes code (and generates implementation-details). Build includes mid-session handoffs. Validate is engineer-side checking. Communicate is the handoff.</text>
   <text x="80" y="920" font-size="10" fill="#6B5A41">The framework is tool-agnostic. Works with whatever AI client a project sanctions, or paper checklists.</text>
-  <text x="80" y="935" font-size="10" fill="#6B5A41">* <tspan font-family="ui-monospace, 'SF Mono', monospace">drupal-critic</tspan> applies only when the profile's stack is Drupal.</text>
+  <text x="80" y="935" font-size="10" fill="#6B5A41">* <tspan font-family="ui-monospace, 'SF Mono', monospace">drupal-peer-review</tspan> applies only when the profile's stack is Drupal.</text>
   <text x="80" y="958" font-size="10" fill="#B8412A" font-weight="600">Canonical doc: ai-runbook-jh/README.md</text>
   <text x="360" y="958" font-size="10" fill="#B8412A" font-weight="600">Skills: ai-runbook-jh/skills/</text>
   <text x="580" y="958" font-size="10" fill="#B8412A" font-weight="600">Profiles: ai-runbook-jh/profiles/</text>

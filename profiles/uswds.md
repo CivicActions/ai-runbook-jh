@@ -80,18 +80,22 @@ GitHub lifecycle: **open/confirm issue → maintainer triage (Size/Severity/Prio
 - **A11y tooling:** browser + axe/manual; verify contrast ratios numerically, don't eyeball.
 
 ## Stack
-- **Framework:** none / vanilla component library (NOT Drupal). **`drupal-critic` does NOT apply.**
+- **Framework:** none / vanilla component library (NOT Drupal). **`drupal-peer-review` does NOT apply.**
 - **Templates:** Twig templates inside packages (`packages/usa-*/src/*.twig`) for component markup
   + Storybook stories.
 - **Styling:** USWDS Sass; design tokens via `color("…")`, `units("…")`, `radius("…")` etc.;
   `usa-` BEM naming; **no hex, no `!important`**. Source lives under `packages/usa-*/src/styles/`.
-- **Breakpoints:** USWDS breakpoint tokens via Sass (`at-media('tablet')` etc.); `mobile-lg` 480,
-  `tablet` 640, `tablet-lg` 880, `desktop` 1024, `desktop-lg` 1200.
-- **Grid:** USWDS grid (`grid-container`, `grid-row`, `grid-col-*`; source under
-  `packages/usa-layout-grid`).
 - **JS:** vanilla component init (the USWDS receptor/behavior pattern), `const`/`let`. No
   `Drupal.behaviors`.
 - **A11y baseline:** WCAG 2.1 AA; accessibility is a first-class priority for the project.
+
+## Breakpoints
+- USWDS breakpoint tokens via Sass (`at-media('tablet')` etc.); `mobile-lg` 480, `tablet` 640,
+  `tablet-lg` 880, `desktop` 1024, `desktop-lg` 1200.
+
+## Grid
+- USWDS grid (`grid-container`, `grid-row`, `grid-col-*`; source under
+  `packages/usa-layout-grid`).
 
 ## Performance budgets
 - It's a component library, not a hosted page; budgets are component-level: minimal/no unnecessary

@@ -30,7 +30,7 @@ const SKILL_META = {
   "responsive-design":      { phase: "validate" },
   "performance-frontend":   { phase: "validate" },
   "frontend-peer-review":   { phase: "validate" },
-  "drupal-critic":          { phase: "validate" },
+  "drupal-peer-review":          { phase: "validate" },
   "summarize-commits":      { phase: "communicate" },
   "qa-steps":               { phase: "communicate" },
   "issue-closure-notes":    { phase: "communicate" },

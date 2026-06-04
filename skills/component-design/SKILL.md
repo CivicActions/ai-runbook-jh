@@ -16,6 +16,10 @@ from `.agents/profile.md`:
   are handled.
 - **`## Stack` → Styling**: the design-system styling rules: token system, naming convention, and
   the prohibitions (e.g. no hex, no `!important`, no ID selectors). Treat these as hard constraints.
+- **`## Patterns / canon`**: where the project's existing component library or design-system
+   catalog lives; check this first before proposing custom structures.
+- **`## Breakpoints`**: the project's canonical responsive breakpoint tokens.
+- **`## Grid`**: the project's canonical grid utilities/mixins.
 - **`## Stack` → JS**: the JavaScript pattern for behaviors.
 - **`## Stack` → Library registration**: where CSS/JS is declared, if the framework requires it.
 - **`## Stack` → A11y baseline**: the accessibility standard the design must meet.
@@ -34,7 +38,8 @@ implementation.
 
 1. **Understand the requirement**, what is the component, who uses it, what states does it have
 2. **Check the design system first**, does an existing component in the project's design system
-   (`## Stack` → Styling / component library) already solve this? Use it before building custom
+   already solve this? Check `## Patterns / canon` for the project's component/design-system
+   catalog and use existing patterns before building custom
 3. **Map to Atomic Design tier**:
    - Atom: single-purpose element (button, icon, label)
    - Molecule: composed of atoms (card, form field with label, nav item)
@@ -48,7 +53,8 @@ implementation.
      stack)
 5. **Accessibility requirements**, keyboard nav, ARIA roles, focus management, color contrast; meet
    the `## Stack` → A11y baseline
-6. **Responsive behavior**, mobile-first breakpoints, the design system's grid system
+6. **Responsive behavior**, mobile-first behavior using `## Breakpoints` and layout behavior using
+   `## Grid`
 7. **Library definition**, register the CSS/JS where the framework requires it (`## Stack` →
    Library registration), if applicable
 

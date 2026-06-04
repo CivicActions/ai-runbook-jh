@@ -584,7 +584,7 @@ function slideSubtitle(slide, text, x = 0.6, y = 1.25) {
     { text: "  ", options: { fontFace: F.body, fontSize: 10.5, color: C.textMid } },
     { text: "frontend-peer-review", options: { fontFace: F.code, fontSize: 10.5, color: C.primary } },
     { text: "  ", options: { fontFace: F.body, fontSize: 10.5, color: C.textMid } },
-    { text: "drupal-critic", options: { fontFace: F.code, fontSize: 10.5, color: C.primary } },
+    { text: "drupal-peer-review", options: { fontFace: F.code, fontSize: 10.5, color: C.primary } },
   ], {
     x: vx + 0.55, y: cardY + 3.7, w: vw - 1.1, h: 0.65,
     valign: "top", margin: 0,

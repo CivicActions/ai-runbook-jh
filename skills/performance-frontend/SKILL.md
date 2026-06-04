@@ -145,7 +145,7 @@ Top fixes first: chart-library defer, then image optimization.
 
 - **Upstream gate:** `security-check` (run before auditing any environment higher than local, or pasting HAR / network traces / production logs that may contain tokens, cookies, or PII)
 - **Invokes:** `browser-check` (live network/asset/console audit)
-- **Sibling Validate-phase skills:** `accessibility-audit`, `responsive-design`, `frontend-peer-review`, `drupal-critic` (Drupal stack only)
+- **Sibling Validate-phase skills:** `accessibility-audit`, `responsive-design`, `frontend-peer-review`, `drupal-peer-review` (Drupal stack only)
 - **Downstream:** `qa-steps` (perf findings often produce specific QA verification steps), `check-tone` (run shared audit prose through tone check before posting)
 
 ## Security
