@@ -10,7 +10,7 @@ The git-hygiene methodology here (group by logical unit, one change per commit, 
 issue-reference convention are project-specific; read them from the profile.
 
 ## Project contract
-Read project-specific values from `.agents/profile.md`:
+Read project-specific values from `.agents/project-contract.md`:
 - **`## Tracker` → Issue ref format**: how to reference a tracker item in a commit subject (e.g.
   `PROJ-123` for Jira, `#NNNN` for GitHub).
 - **`## Commit conventions`**: the commit-message format and any subject-line regex the project

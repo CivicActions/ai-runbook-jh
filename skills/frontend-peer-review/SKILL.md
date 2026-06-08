@@ -7,7 +7,7 @@ description: "Peer reviews a frontend change; templates, styles, JavaScript, or 
 
 ## Project contract
 The stack conventions, visual-regression tooling, and team context are **project-specific**. Read
-them from `.agents/profile.md`:
+them from `.agents/project-contract.md`:
 - **`## Stack`**: framework (Drupal/Twig or not), template/JS conventions, design-system styling
   rules (tokens vs. hex, `!important`, BEM), library registration, and whether `drupal-peer-review`
   applies.

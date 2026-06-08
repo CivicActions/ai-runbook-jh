@@ -39,7 +39,7 @@ The simplest implementation that correctly solves the stated requirement.
 Apply `.agents/style/voice.md`. Keep feedback direct, name the problem plainly. Run shared KISS-check prose through `check-tone` before posting.
 
 ## Stack-specific checks
-Read the active project's `## Stack` section from `.agents/profile.md` and apply its conventions
+Read the active project's `## Stack` section from `.agents/project-contract.md` and apply its conventions
 when judging complexity. The universal rules below hold regardless of stack; the framework name
 fills in the specifics:
 - Check what the framework / standard library already provides before building a custom utility

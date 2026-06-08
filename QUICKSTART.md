@@ -57,7 +57,7 @@ The install step copies the baseline template, which is usable as-is. Tune it to
 ls .agents/skills/
 
 # Contract is linked
-ls -la .agents/profile.md
+ls -la .agents/project-contract.md
 
 # Artifact directories exist
 ls .agents/plans .agents/handoffs .agents/lessons
@@ -111,7 +111,8 @@ export PROFILE=<project> PROJECT_ROOT=/path/to/your/project
 ```
 <project>/
 └── .agents/
-    ├── profile.md@              → ai-runbook-jh/profiles/<project>.md
+    ├── project-contract.md@     → ai-runbook-jh/profiles/<project>.md
+    ├── profile.md@              → .agents/project-contract.md   (legacy alias)
     ├── plans/
     ├── handoffs/
     ├── lessons/

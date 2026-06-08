@@ -10,7 +10,7 @@ Invoke when the user wants to review or plan the responsive behavior of a compon
 
 ## Project contract
 Breakpoints, the grid system, styling rules, and the browser tooling are **project-specific**. Read
-them from `.agents/profile.md`:
+them from `.agents/project-contract.md`:
 - **`## Breakpoints`**: the design system's breakpoint tokens. Use named breakpoint tokens rather
   than arbitrary pixel values.
 - **`## Grid`**: the design system's grid utilities/mixins.

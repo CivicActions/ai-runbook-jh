@@ -36,10 +36,11 @@ There's no one right way to run this. Three common ways to do it:
 
 ## How it works
 
-A skill is a generic instruction set for one phase. The project contract at `.agents/profile.md` supplies
+A skill is a generic instruction set for one phase. The project contract at `.agents/project-contract.md` supplies
 the tracker, stack, conventions, and DoD. Same skill, different contract, different output.
+For backward compatibility, `sync.sh` also maintains `.agents/profile.md` as a legacy alias.
 
-> **Looks like:** you run `@triage` on a fresh Jira ticket. The skill reads `.agents/profile.md`,
+> **Looks like:** you run `@triage` on a fresh Jira ticket. The skill reads `.agents/project-contract.md`,
 > sees the tracker is Jira and the priority scale runs Lowest to Highest, and returns output
 > wrapped in Jira's `{code}` blocks using your project's priority levels and "reviewed" tag. The
 > same skill on the [USWDS](https://github.com/uswds/uswds) component library reads a different
@@ -94,7 +95,7 @@ every token and component from a single source.
    `.agents/style/voice.personal.md` as a personal overlay; entries there win over the shared
    profile and the file is typically gitignored.
 4. Deploy with `sync.sh`: `PROFILE=<project> PROJECT_ROOT=/path/to/project ./sync.sh` symlinks the
-  skills into the project's `.agents/skills/` and copies the contract to `.agents/profile.md`.
+  skills into the project's `.agents/skills/` and copies the contract to `.agents/project-contract.md`.
    Override paths via `PROJECT_ROOT`, `CUSTOM`, or `PROFILE` env vars (see `sync.sh` comments;
   `CUSTOM` points at a contract kept outside this repo, useful when client details aren't safe to
    commit).

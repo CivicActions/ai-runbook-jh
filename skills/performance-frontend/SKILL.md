@@ -10,7 +10,7 @@ description: "Audits a page or component for frontend performance issues, render
 
 ## Project contract
 The local env, perf tooling, perf budgets, and stack-specific caching concerns are
-**project-specific**. Read them from `.agents/profile.md`:
+**project-specific**. Read them from `.agents/project-contract.md`:
 - **`## Environments`**: the local env to audit against, perf tooling (Lighthouse, axe, etc.),
   and any A11y/visual tooling that doubles as a perf signal.
 - **`## Stack`**: the framework. Stack-specific perf checks below (Drupal aggregation, BigPipe,

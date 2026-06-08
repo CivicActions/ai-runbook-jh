@@ -11,7 +11,7 @@ duplicating the lists, so the DoD never drifts across artifacts.
 
 ## Project contract
 The DoD lists, ticket types, and checkbox markup are **project-specific**. Read them from
-`.agents/profile.md`:
+`.agents/project-contract.md`:
 - **`## Definition of Done`**: the checklist(s) for this project, keyed by type.
 - **`## Tracker` → Checkbox markup**: how to render checkboxes (e.g. `()` for Jira, `- [ ]` for
   GitHub Markdown).

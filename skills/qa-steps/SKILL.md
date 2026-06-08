@@ -7,7 +7,7 @@ description: "Writes QA steps for a ticket or PR. Use when the user says write Q
 
 ## Project contract
 The output markup, review labels, and environment details are **project-specific**. Read them from
-`.agents/profile.md`:
+`.agents/project-contract.md`:
 - **`## Tracker`**: heading/checkbox/monospace markup and how to wrap output.
 - **`## Workflow states`**: any review labels (e.g. visual / UX QA) that gate certain changes.
 - **`## Environments`**: local URL pattern, local-vs-CI differences, higher-env validation, a11y

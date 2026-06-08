@@ -1,8 +1,8 @@
 # Project Contract: <PROJECT NAME>
 
 > Copy this to `profiles/<project>.md` and fill in every section for your project. This file is the
-> project contract for AI-assisted work. Skills read the deployed copy at `.agents/profile.md`
-> (see `sync.sh`) for compatibility. Keep the section set intact so skills
+> project contract for AI-assisted work. Skills read the deployed copy at `.agents/project-contract.md`
+> (see `sync.sh`). `sync.sh` also maintains `.agents/profile.md` as a legacy alias. Keep the section set intact so skills
 > resolve every reference; if a section truly doesn't apply, say so rather than deleting it.
 > See `profiles/uswds.md` for a worked example.
 

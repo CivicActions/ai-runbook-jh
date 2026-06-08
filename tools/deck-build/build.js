@@ -965,7 +965,7 @@ function slideSubtitle(slide, text, x = 0.6, y = 1.25) {
     color: C.primary, margin: 0,
   });
   s.addText([
-    { text: ".agents/profile.md", options: { fontFace: F.code, bold: true, breakLine: true } },
+    { text: ".agents/project-contract.md", options: { fontFace: F.code, bold: true, breakLine: true } },
     { text: "One Markdown file. Skills reference its sections by name.", options: { color: C.textMid, breakLine: true } },
     { text: " ", options: { breakLine: true } },
     { text: "## Tracker  ·  ## Required fields", options: { fontFace: F.code, bold: true, breakLine: true } },
@@ -1014,7 +1014,7 @@ function slideSubtitle(slide, text, x = 0.6, y = 1.25) {
     },
     {
       n: 4, title: "Run sync.sh",
-      detail: "PROFILE=<name> PROJECT_ROOT=<path> ./sync.sh: symlinks the skills into .agents/skills/ and deploys the contract to .agents/profile.md",
+      detail: "PROFILE=<name> PROJECT_ROOT=<path> ./sync.sh: symlinks the skills into .agents/skills/ and deploys the contract to .agents/project-contract.md",
     },
   ];
 
