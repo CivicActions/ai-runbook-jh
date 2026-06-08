@@ -30,7 +30,7 @@ There's no one right way to run this. Three common ways to do it:
 - **One-off skills.** Pull a single skill when you want it. No chain, no agent in charge.
   *e.g. "`@check-tone` on this commit message"; only `check-tone` runs, nothing before or after. Or paste the skill's Markdown into a browser chat with no repo access; the model will ask for the inputs it needs.*
 - **Mixed approach.** Agent drives some phases; you take the wheel for others. Most common in practice when iterating.
-  *e.g. you write the plan by hand, then say "implement step 2 of `plans/NSF-13412-plan.md`"; the agent runs Build while you steer commits.*
+  *e.g. you write the plan by hand, then say "implement step 2 of `plans/PROJ-1234-plan.md`"; the agent runs Build while you steer commits.*
 
 ---
 
