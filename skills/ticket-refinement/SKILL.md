@@ -188,17 +188,6 @@ Refined ticket bodies are published to the tracker and visible to the broader te
 Run `security-check` before pasting external content (user reports, customer emails, support
 tickets) into the refinement session.
 
-## Training tickets
-
-For tickets in the nsf.gov Transition/CA training epic (NSF-13548) or any similar training series:
-- The SharePoint training folder is at: https://nsf.sharepoint.com/:f:/r/sites/Beta.nsf.gov-NSFBetaTeamChannel/Shared%20Documents/NSF%20New.nsf.gov%20Team%20Channel/CA/Training
-  Include this as a resource link in Dependencies or Technical notes.
-- Preserve the full session topic list from the epic verbatim so the assignee knows the series
-  context and can coordinate with adjacent session owners.
-- Preserve the content template (Orientation / Content / Governance / Systems) verbatim as a
-  named section in the ticket body — do not collapse it to a single reference line.
-- Note explicitly which session number this is and what sessions come before and after.
-
 ## Attribution
 
 If the active profile defines an attribution marker (see its `## Attribution marker` section), end
