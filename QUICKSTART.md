@@ -34,7 +34,7 @@ export PROFILE=<project> PROJECT_ROOT=/path/to/your/project
 ./install.sh
 ```
 
-Creates `.agents/skills/` and `.agents/style/`, scaffolds `voice.md` and `voice.personal.md` from templates, then symlinks skills and deploys the profile. Safe to re-run — existing files are never overwritten.
+Creates `.agents/skills/` and `.agents/style/`, scaffolds `voice.md` and `voice.personal.md` from templates, then symlinks skills and deploys the profile. Safe to re-run; existing files are never overwritten.
 
 ---
 
@@ -44,7 +44,7 @@ Every skill loads `.agents/style/voice.md` before generating prose. `check-tone`
 
 The install step copies the baseline template, which is usable as-is. Tune it to match how the team actually writes — tone, avoid-lists, technical writing patterns — and commit it so the whole team gets consistent output.
 
-**Personal overlay:** `.agents/style/voice.personal.md` lets individuals override the shared baseline. Gitignore it — don't commit it.
+**Personal overlay:** `.agents/style/voice.personal.md` lets individuals override the shared baseline. Gitignore it; don't commit it.
 
 ---
 

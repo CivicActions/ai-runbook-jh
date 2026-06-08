@@ -49,16 +49,25 @@ directly into the tracker ticket body.
 1. **Confirm scope**: what's in, what's explicitly out
 2. **Write the user story**: `As a [user], I want to [action], so that I can [outcome]`
 3. **Define acceptance criteria** (for tasks/stories) or steps to reproduce + expected behavior (for
-   bugs)
-4. **Identify dependencies**: other tickets, modules, environments, people who need to weigh in
-5. **Note implementation surface area**: high-level pointers to modules, services, files. The
+   bugs). Write each criterion as an observable outcome, not an implementation step. A reviewer or
+   stakeholder should be able to verify it without reading the diff. Avoid file paths, internal
+   naming, and technical shorthand in criterion text; move those details to Technical notes. For
+   batched housekeeping or cleanup tickets, describe the end state of the batch rather than
+   itemizing each individual fix.
+4. **Preserve useful source content**: if the source ticket or epic contains anything that would
+   help a person or AI understand, execute, or plan the work — templates, checklists, ordered
+   lists, background context, reference structures, scope notes, or open questions — keep it
+   verbatim or as a clearly labeled block. Do not summarize it into a single line or drop it
+   in the interest of brevity. When in doubt, keep it.
+5. **Identify dependencies**: other tickets, modules, environments, people who need to weigh in
+6. **Note implementation surface area**: high-level pointers to modules, services, files. The
    detailed `implementation-details` checklist gets generated later, during Plan.
-6. **Flag risks and open questions**: anything that needs a decision before work starts
-7. **Confirm fields, labels, and priority**: fill the profile's `## Required fields`; add any
+7. **Flag risks and open questions**: anything that needs a decision before work starts
+8. **Confirm fields, labels, and priority**: fill the profile's `## Required fields`; add any
    pre-merge review labels the profile defines (e.g. visual / UX QA) when the relevant surface changes;
    revisit the initial priority set during triage if scope or risk understanding has shifted, using
    the profile's `## Priority guide`
-8. **Append Definition of Done**: invoke the `definition-of-done` skill for the appropriate subset
+9. **Append Definition of Done**: invoke the `definition-of-done` skill for the appropriate subset
 
 ## Output Format
 
@@ -67,63 +76,66 @@ can paste it directly into the tracker, and render headings/checkboxes/monospace
 Tracker markup. The structure below is generic; substitute the profile's markup for the labels and
 checkboxes.
 
+Section labels must be bolded using the profile's tracker markup. For Jira that means
+`*Label:*` syntax. Use the profile's `## Tracker` section for the exact markup rules.
+
 ### Task / Story Body
 
 ```
-User story:
+*User story:*
 As a [type of user], I want to [perform an action], so that I can [achieve a goal/benefit].
 
-Acceptance criteria:
-* [criterion]
-* [criterion]
+*Acceptance criteria:*
+* [observable outcome — verifiable without reading the diff; no file paths or internal naming]
+* [observable outcome]
 
-Context/background:
+*Context/background:*
 [1–2 paragraphs setting the stage, what's the world look like now, why does this matter]
 
-Technical notes:
+*Technical notes:*
 [Implementation hints, gotchas, file paths to look at, related modules]
 
-Implementation surface area:
+*Implementation surface area:*
 [High-level pointers, modules, services, files likely affected. Detailed checklist is generated during Plan via `issue-plan` + `implementation-details`.]
 
-Questions for refinement:
+*Questions for refinement:*
 * [open question that needs a decision before estimation]
 
-Dependencies:
+*Dependencies:*
 * [other tickets, modules, services]
 * [people who need to weigh in; UX, VX, PM, BE, per the profile's team/review context]
 
-Definition of Done:
+*Definition of Done:*
 [Use @definition-of-done for the appropriate subset]
 ```
 
 ### Bug Body
 
 ```
-User story:
+*User story:*
 As a [type of user], I want to [perform an action], so that I can [achieve a goal/benefit].
 
-What's wrong?
+*What's wrong?*
 [Current behavior, what users actually see]
 
-What should happen?
+*What should happen?*
 [Expected behavior, what users should see]
 
-How to reproduce:
+*How to reproduce:*
 1. [step]
 2. [step]
 3. [observed result]
 
-Technical notes:
+*Technical notes:*
 [Hypotheses, file paths, related areas of code]
 
-Implementation surface area:
+*Implementation surface area:*
 [High-level pointers, modules, services, files likely affected. Detailed checklist is generated during Plan via `issue-plan` + `implementation-details`.]
 
-Questions for refinement:
+*Questions for refinement:*
 * [open question that needs a decision before estimation]
 
-Definition of Done:
+*Definition of Done:*
 [Use @definition-of-done for the appropriate subset]
 ```
 
@@ -176,6 +188,17 @@ Refined ticket bodies are published to the tracker and visible to the broader te
 Run `security-check` before pasting external content (user reports, customer emails, support
 tickets) into the refinement session.
 
+## Training tickets
+
+For tickets in the nsf.gov Transition/CA training epic (NSF-13548) or any similar training series:
+- The SharePoint training folder is at: https://nsf.sharepoint.com/:f:/r/sites/Beta.nsf.gov-NSFBetaTeamChannel/Shared%20Documents/NSF%20New.nsf.gov%20Team%20Channel/CA/Training
+  Include this as a resource link in Dependencies or Technical notes.
+- Preserve the full session topic list from the epic verbatim so the assignee knows the series
+  context and can coordinate with adjacent session owners.
+- Preserve the content template (Orientation / Content / Governance / Systems) verbatim as a
+  named section in the ticket body — do not collapse it to a single reference line.
+- Note explicitly which session number this is and what sessions come before and after.
+
 ## Attribution
 
 If the active profile defines an attribution marker (see its `## Attribution marker` section), end
@@ -194,8 +217,8 @@ User story:
 As a [type of user], I want to [perform an action], so that I can [achieve a goal/benefit].
 
 Acceptance criteria:
-* [criterion]
-* [criterion]
+* [observable outcome — verifiable without reading the diff; no file paths or internal naming]
+* [observable outcome]
 
 [remaining sections...]
 

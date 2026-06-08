@@ -9,7 +9,7 @@ Use `@skill-name` in your AI client's chat. `sync.sh` handles everything needed 
 Invocation behavior varies by client:
 
 - **Amazon Q (IDE):** `sync.sh` symlinks each `SKILL.md` into `.agents/prompts/custom/`. A second symlink from `~/.aws/amazonq/prompts/<skill-name>.md` to that file makes it invokable via `@skill-name`. The install step sets this up; re-run `sync.sh` after pulling changes to pick up new skills.
-- **GitHub Copilot (VS Code agent mode, cloud agent, code review, CLI):** no `@` invocation needed. Copilot natively reads `SKILL.md` files from `.agents/skills/` (as well as `.github/skills/`, `.claude/skills/`, `~/.copilot/skills/`, `~/.agents/skills/`) and auto-selects skills based on the `description` front matter and your prompt. The symlinks `sync.sh` creates in `.agents/skills/` are sufficient — no additional wiring required. Skills can also be managed with `gh skill install/update` (GitHub CLI v2.90.0+).
+- **GitHub Copilot (VS Code agent mode, cloud agent, code review, CLI):** no `@` invocation needed. Copilot natively reads `SKILL.md` files from `.agents/skills/` (as well as `.github/skills/`, `.claude/skills/`, `~/.copilot/skills/`, `~/.agents/skills/`) and auto-selects skills based on the `description` front matter and your prompt. The symlinks `sync.sh` creates in `.agents/skills/` are sufficient; no additional wiring required. Skills can also be managed with `gh skill install/update` (GitHub CLI v2.90.0+).
 - **Other IDE clients:** behavior varies; check your client's docs
 - **Browser chat (Gemini, ChatGPT, Claude):** no file access; paste the skill's `SKILL.md` content directly into the chat; the model will ask for any inputs it can't read
 
@@ -27,7 +27,7 @@ Only if it contains nothing client-sensitive. Client-specific project profiles o
 
 **What if I skip a section in the project profile?**
 
-Skills fall back to generic behavior for any section that's missing. It still works — you just get less project-specific output. Keep all section headings intact even if a value is "none" or "n/a".
+Skills fall back to generic behavior for any section that's missing. It still works; you just get less project-specific output. Keep all section headings intact even if a value is "none" or "n/a".
 
 ---
 

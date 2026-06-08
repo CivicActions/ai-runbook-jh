@@ -54,6 +54,10 @@ on top: personal overrides win where they overlap with the shared profile. Commo
 concerns: permitted filler words (e.g. a measured "basically" when actually simplifying),
 transition vocabulary, hedging style.
 
+The same rules that apply to flagging also apply to rewriting. If voice.md bans something
+(e.g. em-dashes, academic connectors, corporate speak), do not produce it in suggested rewrites.
+Flagging a violation in the input and then reproducing it in the rewrite is itself an error.
+
 ## Register notes
 - If the profile names a user-facing audience standard (e.g. government plain language), hold
   user-facing copy to it.

@@ -5,7 +5,7 @@ Thank you for your interest in contributing to ai-runbook-jh!
 ## What to contribute
 
 - New or improved skills
-- Profile examples; generic/public projects only; do not commit client-specific profiles
+- Project profile examples; generic/public projects only; do not commit client-specific project profiles
 - Bug fixes in `sync.sh` or the build tools
 - Documentation improvements
 

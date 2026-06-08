@@ -1,8 +1,8 @@
 # ai-runbook-jh
 
 > A runbook for taking a ticket from inbox to closure with AI assistance (triage, refinement, plan,
-> build, validate, communicate) without the AI going off-voice, leaking project specifics, or
-> deciding on what "done" means.
+> build, validate, communicate) without the AI drifting off-voice, exposing project specifics, or
+> redefining what you consider "done".
 >
 > Developed against front-end work, but the skills are discipline-agnostic: the same `triage` skill
 > works for any kind of ticket. Extend it by adding new specialized skills for any area.
@@ -10,12 +10,12 @@
 > 24 single-purpose **skills** (Markdown checklists, one per task you want done the same way every
 > time: `triage`, `qa-steps`, `handoff-message`, and 21 more) plus a per-project **profile** that
 > names ticket tracker, stack, per-ticket Definition of Done, voice config, and approved AI
-> clients. Skills stay generic; the profile supplies every project-specific detail.
+> clients. Skills stay generic; the project profile supplies every project-specific detail.
 >
 > Runs with whatever AI is approved for a project. Most useful with agentic chat in an IDE or CLI
 > where the AI can read files directly. Also works ad-hoc: paste a skill's Markdown into a browser
 > chat (Gemini, ChatGPT, Claude) and the model will follow it, asking you for any inputs it can't
-> see (profile values, ticket body, diff). Take what's useful, adapt the rest.
+> see (profile values, ticket body, diff).
 
 Browse the hosted **[AI runbook](https://civicactions.github.io/ai-runbook-jh/runbook/)** for a visual catalog of every skill.
 
@@ -36,7 +36,7 @@ There's no one right way to run this. Three common ways to do it:
 
 ## How it works
 
-A skill is a generic checklist for one phase. The project profile at `.agents/profile.md` supplies
+A skill is a generic instruction set for one phase. The project profile at `.agents/profile.md` supplies
 the tracker, stack, conventions, and DoD. Same skill, different profile, different output.
 
 > **Looks like:** you run `@triage` on a fresh Jira ticket. The skill reads `.agents/profile.md`,
@@ -67,7 +67,7 @@ profiles so skills resolve every reference.
 - **`profiles/uswds.md`**: a public open-source component library on GitHub (vanilla JS/Sass, no
   Drupal). A good reference for a non-Jira, non-Drupal project.
 - **`profiles/_template.md`**: a blank, annotated profile. Copy it to start a new one.
-- A client-specific profile (e.g. a federal Drupal project) is typically kept **out of version
+- A client-specific project profile (e.g. a federal Drupal project) is typically kept **out of version
   control**; see `.gitignore`. Create your own locally from the template.
 
 ## AI runbook
@@ -98,14 +98,14 @@ every token and component from a single source.
    Override paths via `PROJECT_ROOT`, `CUSTOM`, or `PROFILE` env vars (see `sync.sh` comments;
    `CUSTOM` points at a profile kept outside this repo, useful when client details aren't safe to
    commit).
-5. Try one skill on your next ticket; `qa-steps` is a good low-risk start.
+5. Try one skill on your next ticket; `qa-steps` is a good first one.
 
 **Invocation differs by AI client.** Some clients auto-invoke skills by keyword; others require an
 explicit `@`-reference. For one-off use without a local install, paste the skill's Markdown
 directly into the chat; the model will ask for any inputs it can't read. The skill files are the
 same either way; only how they're invoked changes.
 
-## Voice is the keystone
+## Voice config
 
 Every skill loads `.agents/style/voice.md` before generating prose; `check-tone` is the gate to run
 drafts through. Without a project-level voice config, output reads like many different writers.
@@ -139,14 +139,14 @@ The core rule: don't paste sensitive content: PII, PHI, CUI, client-proprietary,
   info, a federal designation), client-proprietary, or company-confidential information
 - Ship code or take agentic actions; every output is a draft for human review
 
-Project-specific sanctioned AI, environments, and attribution markers come from the profile. Run
+Project-specific sanctioned AI, environments, and attribution markers come from the project profile. Run
 `security-check` before any session that touches sensitive data. Skill guardrails do the rest:
 browser checks run against local by default, handoffs and plans carry no credentials, and
 screenshots are PII-redacted before being saved.
 
 ## Notes
 
-- The methodology (six phases, voice keystone, security guardrails) works with any AI client, ideally within an IDE. The phases are durable; the skills are disposable.
+- The methodology (six phases, voice config, security guardrails) works with any AI client, ideally within an IDE. The phases are durable; the skills are disposable.
 - Working artifacts (plans, handoffs, reviews, drafts) are personal/local and git-ignored; they may
   contain ticket details and shouldn't be committed.
 
