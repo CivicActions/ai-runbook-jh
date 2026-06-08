@@ -69,7 +69,7 @@ profiles so skills resolve every reference.
   Drupal). A good reference for a non-Jira, non-Drupal project.
 - **`profiles/_template.md`**: a blank, annotated contract template. Copy it to start a new one.
 - A client-specific project contract (e.g. a federal Drupal project) is typically kept **out of version
-  control**; see `.gitignore`. Create your own locally from the template.
+  control**; in companion repos prefer local-only exclusion via `.git/info/exclude` (use `.gitignore` only when you want a shared team-wide ignore rule). Create your own locally from the template.
 
 ## AI runbook
 

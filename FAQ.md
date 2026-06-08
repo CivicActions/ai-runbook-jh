@@ -23,7 +23,7 @@ For IDE use, yes. For one-off use in a browser chat, no — paste the skill's Ma
 
 **Should I commit my profile to the `ai-runbook-jh` repo?**
 
-Only if it contains nothing client-sensitive. Client-specific project profiles often include internal URLs, tracker formats, and team conventions that shouldn't be public. Add your project profile to `.gitignore` and keep it local. See the existing `profiles/nsf.md` entry in `.gitignore` as a pattern.
+Only if it contains nothing client-sensitive. Client-specific project profiles often include internal URLs, tracker formats, and team conventions that shouldn't be public. In companion repos, prefer local-only exclusion via `.git/info/exclude` and keep it local. Use `.gitignore` only when you intentionally want a shared team-wide ignore rule.
 
 **What if I skip a section in the project profile?**
 

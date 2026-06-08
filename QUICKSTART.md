@@ -25,7 +25,7 @@ Then open `profiles/<project>.md` and fill in every section. Keep all section he
 
 **Optional validation tip:** run a second model/client pass on the finished contract before first use. Validate that all required sections are present, no placeholder `<...>` tokens remain, and sanctioned-AI plus branch/plan conventions are concrete.
 
-**Security note:** client-specific project contracts can contain internal URLs, tracker formats, and team conventions that shouldn't be public. The repo's `.gitignore` excludes `profiles/nsf.md` as an example pattern. Add your own contract to `.gitignore` if it contains anything client-sensitive.
+**Security note:** client-specific project contracts can contain internal URLs, tracker formats, and team conventions that shouldn't be public. In a companion repo, prefer local-only exclusion via `.git/info/exclude` for contract files. Use `.gitignore` only when you intentionally want a shared team-wide ignore rule.
 
 ---
 
