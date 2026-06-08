@@ -75,6 +75,9 @@ without stalling on missing required fields.
 Apply `.agents/style/voice.md` to goal descriptions, risk notes, and open questions. Run shared
 plan prose through `check-tone` before publishing.
 
+## Git exclusion
+Plan files are personal working artifacts — exclude `.agents/plans/` via `.git/info/exclude`, not `.gitignore`. Never add AI runbook working directories to the team-owned `.gitignore`.
+
 ## Security
 Plan files are personal artifacts that may end up team-visible (shareable on request for peer review
 or audit):

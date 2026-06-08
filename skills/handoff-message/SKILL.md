@@ -89,6 +89,9 @@ Apply `.agents/style/voice.md`. Apply it to all generated text, handoff prose, n
 - If this companion repo uses a sync/symlink step (see the project's `sync.sh`), and a new skill was
   created during this session, remind the user to run it to wire up the skill
 
+## Git exclusion
+Handoff files are personal working artifacts — exclude `.agents/handoffs/` via `.git/info/exclude`, not `.gitignore`. Never add AI runbook working directories to the team-owned `.gitignore`.
+
 ## Security
 
 Handoffs live in your personal companion repo (not the official project repo). They're shareable on request for peer review or audit. Treat them as personal artifacts that may end up team-visible, nothing in a handoff should be sensitive.

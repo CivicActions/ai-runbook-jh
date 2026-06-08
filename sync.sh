@@ -1,7 +1,7 @@
 #!/bin/bash
 # Wires this workflow framework into a target project via symlinks:
 #   - symlinks each skill directory into <project>/.agents/skills/
-#   - deploys the chosen profile to <project>/.agents/profile.md
+#   - deploys the chosen project profile to <project>/.agents/profile.md
 #
 # Required env vars:
 #   PROJECT_ROOT  target project root (the repo you're working in)
@@ -25,13 +25,25 @@ if [ -z "$PROFILE" ]; then
   exit 1
 fi
 
-# Sync skills
+# Sync skills and link each skill's SKILL.md into .agents/prompts/custom/
 for skill in "$CUSTOM"/skills/*/; do
   name=$(basename "$skill")
+
+  # Skill directory symlink
   link="$PROJECT_ROOT/.agents/skills/$name"
   if [ ! -e "$link" ]; then
     ln -s "$skill" "$link"
     echo "Linked skill: $name"
+  fi
+
+  # Prompt symlink into custom/ for Amazon Q invocation
+  prompt_dir="$PROJECT_ROOT/.agents/prompts/custom"
+  prompt_link="$prompt_dir/$name.md"
+  if [ -d "$prompt_dir" ]; then
+    if [ ! -e "$prompt_link" ]; then
+      ln -s "${skill}SKILL.md" "$prompt_link"
+      echo "Linked prompt: $name"
+    fi
   fi
 done
 
