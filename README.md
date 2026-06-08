@@ -8,14 +8,14 @@
 > works for any kind of ticket. Extend it by adding new specialized skills for any area.
 >
 > 24 single-purpose **skills** (Markdown checklists, one per task you want done the same way every
-> time: `triage`, `qa-steps`, `handoff-message`, and 21 more) plus a per-project **profile** that
+> time: `triage`, `qa-steps`, `handoff-message`, and 21 more) plus a per-project **project contract**
 > names ticket tracker, stack, per-ticket Definition of Done, voice config, and approved AI
-> clients. Skills stay generic; the project profile supplies every project-specific detail.
+> clients. Skills stay generic; the project contract supplies every project-specific detail.
 >
 > Runs with whatever AI is approved for a project. Most useful with agentic chat in an IDE or CLI
 > where the AI can read files directly. Also works ad-hoc: paste a skill's Markdown into a browser
 > chat (Gemini, ChatGPT, Claude) and the model will follow it, asking you for any inputs it can't
-> see (profile values, ticket body, diff).
+> see (contract values, ticket body, diff).
 
 Browse the hosted **[AI runbook](https://civicactions.github.io/ai-runbook-jh/runbook/)** for a visual catalog of every skill.
 
@@ -36,15 +36,15 @@ There's no one right way to run this. Three common ways to do it:
 
 ## How it works
 
-A skill is a generic instruction set for one phase. The project profile at `.agents/profile.md` supplies
-the tracker, stack, conventions, and DoD. Same skill, different profile, different output.
+A skill is a generic instruction set for one phase. The project contract at `.agents/profile.md` supplies
+the tracker, stack, conventions, and DoD. Same skill, different contract, different output.
 
 > **Looks like:** you run `@triage` on a fresh Jira ticket. The skill reads `.agents/profile.md`,
 > sees the tracker is Jira and the priority scale runs Lowest to Highest, and returns output
 > wrapped in Jira's `{code}` blocks using your project's priority levels and "reviewed" tag. The
 > same skill on the [USWDS](https://github.com/uswds/uswds) component library reads a different
-> profile and produces GitHub Markdown with USWDS labels (`Needs: Confirmation`, `Type: Bug`,
-> `Affects: Accessibility`) and an a11y-aware priority suggestion. Same skill, different profile.
+> contract and produces GitHub Markdown with USWDS labels (`Needs: Confirmation`, `Type: Bug`,
+> `Affects: Accessibility`) and an a11y-aware priority suggestion. Same skill, different contract.
 
 ## The six phases
 
@@ -55,19 +55,19 @@ the tracker, stack, conventions, and DoD. Same skill, different profile, differe
 5. **Validate**: browser, accessibility, responsiveness, performance, peer review.
 6. **Communicate**: clean commits, QA steps, closure notes, and a lessons-learned reflection.
 
-## Profiles: how the skills stay generic
+## Project contracts: how the skills stay generic
 
-A profile is a single Markdown file describing one project. Skills reference its sections by name
+A project contract is a single Markdown file describing one project. Skills reference its sections by name
 (tracker, stack, required fields, DoD, sanctioned AI, voice, and so on). The full annotated section
 set lives in [`profiles/_template.md`](profiles/_template.md); keep that set identical across
 profiles so skills resolve every reference.
 
-### Example profiles
+### Example project contracts
 
 - **`profiles/uswds.md`**: a public open-source component library on GitHub (vanilla JS/Sass, no
   Drupal). A good reference for a non-Jira, non-Drupal project.
-- **`profiles/_template.md`**: a blank, annotated profile. Copy it to start a new one.
-- A client-specific project profile (e.g. a federal Drupal project) is typically kept **out of version
+- **`profiles/_template.md`**: a blank, annotated contract template. Copy it to start a new one.
+- A client-specific project contract (e.g. a federal Drupal project) is typically kept **out of version
   control**; see `.gitignore`. Create your own locally from the template.
 
 ## AI runbook
@@ -75,7 +75,7 @@ profiles so skills resolve every reference.
 Browse the hosted **[AI runbook](https://civicactions.github.io/ai-runbook-jh/runbook/)**, or
 open [`runbook/index.html`](runbook/index.html) locally for the full catalog: one card per
 skill, grouped by phase, with when-to-use, output template, and the skill-call graph.
-`drupal-peer-review` applies only when the profile's stack is Drupal; `check-tone` and `security-check`
+`drupal-peer-review` applies only when the contract's stack is Drupal; `check-tone` and `security-check`
 are the cross-cutting gates.
 
 See [`DESIGN.md`](DESIGN.md) for the visual rationale and
@@ -94,9 +94,9 @@ every token and component from a single source.
    `.agents/style/voice.personal.md` as a personal overlay; entries there win over the shared
    profile and the file is typically gitignored.
 4. Deploy with `sync.sh`: `PROFILE=<project> PROJECT_ROOT=/path/to/project ./sync.sh` symlinks the
-   skills into the project's `.agents/skills/` and copies the profile to `.agents/profile.md`.
+  skills into the project's `.agents/skills/` and copies the contract to `.agents/profile.md`.
    Override paths via `PROJECT_ROOT`, `CUSTOM`, or `PROFILE` env vars (see `sync.sh` comments;
-   `CUSTOM` points at a profile kept outside this repo, useful when client details aren't safe to
+  `CUSTOM` points at a contract kept outside this repo, useful when client details aren't safe to
    commit).
 5. Try one skill on your next ticket; `qa-steps` is a good first one.
 
@@ -139,7 +139,7 @@ The core rule: don't paste sensitive content: PII, PHI, CUI, client-proprietary,
   info, a federal designation), client-proprietary, or company-confidential information
 - Ship code or take agentic actions; every output is a draft for human review
 
-Project-specific sanctioned AI, environments, and attribution markers come from the project profile. Run
+Project-specific sanctioned AI, environments, and attribution markers come from the project contract. Run
 `security-check` before any session that touches sensitive data. Skill guardrails do the rest:
 browser checks run against local by default, handoffs and plans carry no credentials, and
 screenshots are PII-redacted before being saved.
@@ -155,7 +155,7 @@ screenshots are PII-redacted before being saved.
 `drupal-peer-review` began as a fork of Zivtech's
 [drupal-critic](https://github.com/zivtech/drupal-critic) (Apache 2.0) - it was originally
 named `drupal-critic` too. It's since been reworked so heavily into this runbook's
-profile-driven style that little of the original remains, but the lineage is theirs.
+contract-driven style that little of the original remains, but the lineage is theirs.
 Credit and thanks to Zivtech.
 
 ## License

@@ -8,7 +8,7 @@ description: "Critically reviews Drupal PHP, Twig, SCSS, or config for correctne
 > Originally adapted from Zivtech's [drupal-critic](https://github.com/zivtech/drupal-critic)
 > (Apache 2.0); reworked into this runbook's profile-driven style.
 
-## Project profile
+## Project contract
 This skill is **inherently Drupal-specific** (BE/PHP/services/config review). It applies **only when the active profile's `## Stack` is Drupal**. If the profile's `## Stack` names a different framework (or "none / vanilla component library"), this skill does **not** apply; skip it and use the framework-neutral counterpart instead.
 
 It reads project-specifics from `.agents/profile.md`:

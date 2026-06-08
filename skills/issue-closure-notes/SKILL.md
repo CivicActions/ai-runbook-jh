@@ -5,7 +5,7 @@ description: "Writes closure notes for a completed ticket/issue. Use when the us
 
 # Issue Closure Notes
 
-## Project profile
+## Project contract
 The closure-note format and the values around it are **project-specific**. Read them from
 `.agents/profile.md`:
 - **`## Tracker`**: Issue ref format (e.g. `PROJ-123`, `#NNNN`), section heading markup, monospace

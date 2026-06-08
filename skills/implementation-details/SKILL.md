@@ -6,7 +6,7 @@ invokedBy: "issue-plan"
 
 # Implementation Details
 
-## Project profile
+## Project contract
 The methodology here is generic, but the markup and the stack-specific steps are
 **project-specific**. Read them from `.agents/profile.md`:
 - **`## Tracker` → Checkbox markup**: how to render checklist items (e.g. `()` for Jira,

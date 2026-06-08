@@ -5,7 +5,7 @@ description: "Writes a structured handoff note at the end of a work session. Use
 
 # Handoff Message
 
-## Project profile
+## Project contract
 The handoff methodology below is generic, but a few values are **project-specific**. Read them from
 `.agents/profile.md`:
 - **`## Tracker` → Issue ref format**: how to name the issue in the handoff (e.g. `PROJ-123` for
@@ -40,6 +40,7 @@ Handoffs are session-bracketed. **One per session, not one per problem.** If you
 
 ## Output Format
 
+If `.agents/handoffs/` does not exist, create it before writing.
 Save to `.agents/handoffs/[TICKET]-[YYYY-MM-DD]-[HHMM]-handoff.md`
 
 ```markdown

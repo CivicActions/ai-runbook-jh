@@ -6,7 +6,7 @@ typicalNext: "After confirming the component structure, move to `pattern-alignme
 
 # Component Design
 
-## Project profile
+## Project contract
 The design-system rules, framework, and component conventions are **project-specific**. Read them
 from `.agents/profile.md`:
 - **`## Stack` → Framework**: the project's framework (e.g. Drupal, or a vanilla component

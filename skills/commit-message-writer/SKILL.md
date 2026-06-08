@@ -9,7 +9,7 @@ typicalNext: "Run `check-tone` if you want a second pass on the wording before c
 ## When to Use
 Invoke when the user wants to write or improve a git commit message, given a diff, a list of changed files, or a plain-language description of what changed.
 
-## Project profile
+## Project contract
 The commit-message format, issue-ref convention, and any required commit annotations are
 **project-specific**. Read them from `.agents/profile.md`:
 - **`## Commit conventions`**: the message format, the required-fields regex (if any), and any

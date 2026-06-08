@@ -5,7 +5,7 @@ description: "Squashes WIP commits into clean commits before merge. Use when the
 
 # Squash Commits
 
-## Project profile
+## Project contract
 The git mechanics here (interactive rebase, `merge --squash`) are project-agnostic. The
 commit-message *format* is project-specific. Read it from `.agents/profile.md`:
 - **`## Commit conventions`**: subject-line format, issue-ref prefix, wrap width, and what the body

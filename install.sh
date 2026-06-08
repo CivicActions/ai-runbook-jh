@@ -1,13 +1,13 @@
 #!/bin/bash
 # First-time setup for a target project.
 # Creates required directories, scaffolds voice config from templates,
-# then calls sync.sh to link skills and deploy the project profile.
+# then calls sync.sh to link skills and deploy the project contract.
 #
 # Run once per project. Safe to re-run: existing files are never overwritten.
 #
 # Required env vars:
 #   PROJECT_ROOT  target project root (the repo you're working in)
-#   PROFILE       which profiles/<name>.md to deploy
+#   PROFILE       which profiles/<name>.md contract to deploy
 # Optional:
 #   CUSTOM        this framework repo's location (default: the script's own directory)
 #
@@ -23,7 +23,7 @@ if [ -z "$PROJECT_ROOT" ]; then
   exit 1
 fi
 if [ -z "$PROFILE" ]; then
-  echo "ERROR: set PROFILE to a profile name (see profiles/)" >&2
+  echo "ERROR: set PROFILE to a contract name (see profiles/)" >&2
   exit 1
 fi
 
@@ -34,7 +34,7 @@ if [ -L "$agents_dir" ]; then
 fi
 
 # Create required directories (mkdir -p is safe: no-ops if already present)
-for dir in .agents/skills .agents/style .agents/prompts/custom; do
+for dir in .agents/skills .agents/style .agents/prompts/custom .agents/plans .agents/handoffs .agents/lessons; do
   target="$PROJECT_ROOT/$dir"
   if [ -L "$target" ]; then
     echo "Skipped (symlink exists): $dir -> $(readlink "$target")"
@@ -64,5 +64,5 @@ else
   echo "Created: .agents/style/voice.personal.md — fill in personal overrides, then gitignore it"
 fi
 
-# Wire skills and profile
+# Wire skills and contract
 CUSTOM="$CUSTOM" PROJECT_ROOT="$PROJECT_ROOT" PROFILE="$PROFILE" "$CUSTOM/sync.sh"

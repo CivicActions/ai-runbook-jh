@@ -6,7 +6,7 @@ typicalNext: "After writing the plan file, open it in a fresh chat and start imp
 
 # Issue Plan
 
-## Project profile
+## Project contract
 The plan-file path, branch convention, base branch, workflow gating, and project context are
 **project-specific**. Read them from `.agents/profile.md`:
 - **`## Branch / plan conventions`**: where to write the plan file, the branch-naming format, and
@@ -22,6 +22,7 @@ If no profile is present, ask the user where plans live and what the branch conv
 **ALWAYS write the plan to the file path defined in the profile's `## Branch / plan conventions`**
 (named for the ticket/issue) and stop. Do NOT begin implementing any steps. Do NOT create files,
 run commands, or modify code. The plan is the only deliverable.
+If `.agents/plans/` does not exist, create it before writing.
 
 After writing the file, tell the user where the plan was saved and ask if they'd like to proceed
 with implementation.

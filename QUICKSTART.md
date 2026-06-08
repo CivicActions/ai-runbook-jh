@@ -11,9 +11,9 @@ First-time install. For subsequent skill updates, see [Keeping skills current](#
 
 ---
 
-## Step 1: Create a project profile
+## Step 1: Create a project contract
 
-A project profile is a single Markdown file that tells skills everything project-specific: tracker, stack, DoD, voice config, sanctioned AI, branch conventions, and more. Skills stay generic; the project profile supplies the details.
+A project contract is a single Markdown file that tells skills everything project-specific: tracker, stack, DoD, voice config, sanctioned AI, branch conventions, and more. Skills stay generic; the project contract supplies the details.
 
 Copy the template and fill it in (or have your AI do a first pass from a project description):
 
@@ -23,7 +23,9 @@ cp profiles/_template.md profiles/<project>.md
 
 Then open `profiles/<project>.md` and fill in every section. Keep all section headings intact — skills resolve references by name, so a missing section means a skill falls back to generic behavior. See `profiles/uswds.md` for a worked example.
 
-**Security note:** client-specific project profiles can contain internal URLs, tracker formats, and team conventions that shouldn't be public. The repo's `.gitignore` excludes `profiles/nsf.md` as an example pattern. Add your own profile to `.gitignore` if it contains anything client-sensitive.
+**Optional validation tip:** run a second model/client pass on the finished contract before first use. Validate that all required sections are present, no placeholder `<...>` tokens remain, and sanctioned-AI plus branch/plan conventions are concrete.
+
+**Security note:** client-specific project contracts can contain internal URLs, tracker formats, and team conventions that shouldn't be public. The repo's `.gitignore` excludes `profiles/nsf.md` as an example pattern. Add your own contract to `.gitignore` if it contains anything client-sensitive.
 
 ---
 
@@ -34,7 +36,7 @@ export PROFILE=<project> PROJECT_ROOT=/path/to/your/project
 ./install.sh
 ```
 
-Creates `.agents/skills/` and `.agents/style/`, scaffolds `voice.md` and `voice.personal.md` from templates, then symlinks skills and deploys the profile. Safe to re-run; existing files are never overwritten.
+Creates `.agents/skills/`, `.agents/style/`, `.agents/prompts/custom/`, and artifact directories (`.agents/plans/`, `.agents/handoffs/`, `.agents/lessons/`), scaffolds `voice.md` and `voice.personal.md` from templates, then symlinks skills and deploys the contract. Safe to re-run; existing files are never overwritten.
 
 ---
 
@@ -54,8 +56,11 @@ The install step copies the baseline template, which is usable as-is. Tune it to
 # Skills are symlinked
 ls .agents/skills/
 
-# Profile is linked
+# Contract is linked
 ls -la .agents/profile.md
+
+# Artifact directories exist
+ls .agents/plans .agents/handoffs .agents/lessons
 
 # Voice config exists
 ls .agents/style/voice.md
@@ -107,6 +112,9 @@ export PROFILE=<project> PROJECT_ROOT=/path/to/your/project
 <project>/
 └── .agents/
     ├── profile.md@              → ai-runbook-jh/profiles/<project>.md
+    ├── plans/
+    ├── handoffs/
+    ├── lessons/
     ├── skills/
     │   ├── triage@              → ai-runbook-jh/skills/triage/
     │   ├── qa-steps@            → ai-runbook-jh/skills/qa-steps/

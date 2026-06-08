@@ -5,7 +5,7 @@ description: "Writes QA steps for a ticket or PR. Use when the user says write Q
 
 # QA Steps
 
-## Project profile
+## Project contract
 The output markup, review labels, and environment details are **project-specific**. Read them from
 `.agents/profile.md`:
 - **`## Tracker`**: heading/checkbox/monospace markup and how to wrap output.

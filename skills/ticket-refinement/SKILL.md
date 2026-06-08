@@ -12,7 +12,7 @@ sprint. Outputs tracker-ready content for the ticket body.
 This is the second pass on a ticket, not the first. If the ticket hasn't been triaged yet, use
 `triage` first.
 
-## Project profile
+## Project contract
 
 The tracker markup, required fields, workflow-state language, priority guide, and any
 estimation/LOE scale are **project-specific**. Read them from `.agents/profile.md`:

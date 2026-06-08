@@ -5,7 +5,7 @@ description: "Writes a lessons-learned note after completing a ticket, sprint, o
 
 # Lessons Learned
 
-## Project profile
+## Project contract
 The reflection methodology below is generic. A few touchpoints are **project-specific** and read from
 `.agents/profile.md`:
 - **`## Tracker` → Issue ref format**: how to label the note (e.g. `PROJ-123`, `#NNNN`).
@@ -145,4 +145,5 @@ _AI-assisted draft, reviewed before submission._   <- only if the profile define
 - **Downstream:** `check-tone` (run shared lessons through tone check before publishing)
 - **Output goes where:** `.agents/lessons/`, plus wherever the project files durable knowledge (the
   profile's `## Knowledge base`). Flag lessons that warrant team sharing, but leave the channel to the engineer. Lessons that change process should also propagate back into the skills themselves.
+- If `.agents/lessons/` does not exist, create it before writing.
 - **Git exclusion:** `.agents/lessons/` should be excluded via `.git/info/exclude`, not `.gitignore`. AI runbook artifacts are personal working files — never add them to the team-owned `.gitignore`.
