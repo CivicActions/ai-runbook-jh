@@ -1,7 +1,8 @@
-# Project Profile: <PROJECT NAME>
+# Project Contract: <PROJECT NAME>
 
-> Copy this to `profiles/<project>.md` and fill in every section for your project. Skills read the
-> deployed copy at `.agents/profile.md` (see `sync.sh`). Keep the section set intact so skills
+> Copy this to `profiles/<project>.md` and fill in every section for your project. This file is the
+> project contract for AI-assisted work. Skills read the deployed copy at `.agents/project-contract.md`
+> (see `sync.sh`). `sync.sh` also maintains `.agents/profile.md` as a legacy alias. Keep the section set intact so skills
 > resolve every reference; if a section truly doesn't apply, say so rather than deleting it.
 > See `profiles/uswds.md` for a worked example.
 
@@ -98,6 +99,25 @@
 
 ## Voice
 - **Config path:** `.agents/style/voice.md` (author this per project)
+
+## Validation (optional)
+- Use a second model/client to review this contract before first use.
+- Validation checklist:
+  - Required sections are present (Tracker, Workflow states, Stack, Definition of Done, Sanctioned AI, Voice, Attribution marker).
+  - No placeholder tokens remain (for example `<...>` entries).
+  - Tracker issue-ref format is concrete and includes an example.
+  - Branch/plan conventions include a concrete plan-file path.
+  - Sanctioned-AI entries name real allowed/disallowed tools.
+  - Voice config path resolves in the target project.
+  - Attribution marker is explicit text or `none`.
+- Optional proof block (paste when useful):
+
+```text
+Validated by: <model/client name>
+Date: <YYYY-MM-DD>
+Checklist: <passed count>/<total> passed (exceptions: <if any>)
+Top corrections applied: <one-line summary>
+```
 
 ## Attribution marker
 - <the AI-assisted-output marker string and when to apply it; or "none" (e.g. public OSS),

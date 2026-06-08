@@ -334,8 +334,8 @@ const html = `<!DOCTYPE html>
         <a href="#phase-cross-cutting">voice</a><span class="sep">·</span><a href="#phase-cross-cutting">security</a>
       </div>
       <div class="phaseflow-band phaseflow-band-profiles">
-        <span class="band-label">Profiles:</span>
-        <span class="band-text">Each skill reads a per-project profile for tracker, stack, voice, and DoD: same skill, different profile, different output</span>
+        <span class="band-label">Project contracts:</span>
+        <span class="band-text">Each skill reads a per-project contract for tracker, stack, voice, and DoD: same skill, different contract, different output</span>
         <span class="band-chips">
           <a href="../profiles/uswds.md"><code>uswds</code></a>
           <a href="../profiles/_template.md"><code>_template</code></a>

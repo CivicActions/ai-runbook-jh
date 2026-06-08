@@ -918,13 +918,13 @@ function slideSubtitle(slide, text, x = 0.6, y = 1.25) {
   });
 }
 
-// ============ SLIDE 10: PER-PROJECT PROFILES ============
+// ============ SLIDE 10: PER-PROJECT CONTRACTS ============
 {
   const s = pres.addSlide();
   s.background = { color: C.white };
 
-  slideTitle(s, "Where this fits: per-project profiles");
-  slideSubtitle(s, "The skills are project-agnostic. One profile file per project supplies the specifics.");
+  slideTitle(s, "Where this fits: project contracts");
+  slideSubtitle(s, "The skills are project-agnostic. One contract file per project supplies the specifics.");
 
   const lx = 0.6, ly = 2.0, lw = 6.0;
   s.addShape(pres.shapes.RECTANGLE, {
@@ -941,7 +941,7 @@ function slideSubtitle(slide, text, x = 0.6, y = 1.25) {
     { text: "24 phase-based skills, all project-agnostic", options: { color: C.textMid, breakLine: true } },
     { text: " ", options: { breakLine: true } },
     { text: "profiles/_template.md", options: { fontFace: F.code, bold: true, breakLine: true } },
-    { text: "Annotated starting point for a new profile", options: { color: C.textMid, breakLine: true } },
+    { text: "Annotated starting point for a new contract", options: { color: C.textMid, breakLine: true } },
     { text: " ", options: { breakLine: true } },
     { text: "profiles/uswds.md", options: { fontFace: F.code, bold: true, breakLine: true } },
     { text: "Public worked example (open-source library on GitHub)", options: { color: C.textMid, breakLine: true } },
@@ -959,13 +959,13 @@ function slideSubtitle(slide, text, x = 0.6, y = 1.25) {
     x: rx, y: ly, w: rw, h: 4.5,
     fill: { color: C.goldLight }, line: { color: C.gold, width: 1 },
   });
-  s.addText("PROFILE (one file, per project)", {
+  s.addText("PROJECT CONTRACT (one file, per project)", {
     x: rx + 0.3, y: ly + 0.2, w: rw - 0.6, h: 0.4,
     fontSize: 12, fontFace: F.body, bold: true, charSpacing: 2,
     color: C.primary, margin: 0,
   });
   s.addText([
-    { text: ".agents/profile.md", options: { fontFace: F.code, bold: true, breakLine: true } },
+    { text: ".agents/project-contract.md", options: { fontFace: F.code, bold: true, breakLine: true } },
     { text: "One Markdown file. Skills reference its sections by name.", options: { color: C.textMid, breakLine: true } },
     { text: " ", options: { breakLine: true } },
     { text: "## Tracker  ·  ## Required fields", options: { fontFace: F.code, bold: true, breakLine: true } },
@@ -982,7 +982,7 @@ function slideSubtitle(slide, text, x = 0.6, y = 1.25) {
     paraSpaceAfter: 0,
   });
 
-  s.addText("Adopt the shared skills once; add a profile per project. The profile supplies the specifics, the skills stay portable.", {
+  s.addText("Adopt the shared skills once; add a project contract per project. The contract supplies the specifics, the skills stay portable.", {
     x: 0.6, y: 6.8, w: 12.1, h: 0.3,
     fontSize: 11, fontFace: F.body, italic: true,
     color: C.textMid, align: "center", margin: 0,
@@ -1005,7 +1005,7 @@ function slideSubtitle(slide, text, x = 0.6, y = 1.25) {
       detail: "Clone the repo somewhere alongside your project checkouts",
     },
     {
-      n: 2, title: "Pick or create a profile",
+      n: 2, title: "Pick or create a contract",
       detail: "Copy profiles/_template.md to profiles/<project>.md and fill it in (or start from profiles/uswds.md as a worked example)",
     },
     {
@@ -1014,7 +1014,7 @@ function slideSubtitle(slide, text, x = 0.6, y = 1.25) {
     },
     {
       n: 4, title: "Run sync.sh",
-      detail: "PROFILE=<name> PROJECT_ROOT=<path> ./sync.sh: symlinks the skills into .agents/skills/ and deploys the profile to .agents/profile.md",
+      detail: "PROFILE=<name> PROJECT_ROOT=<path> ./sync.sh: symlinks the skills into .agents/skills/ and deploys the contract to .agents/project-contract.md",
     },
   ];
 

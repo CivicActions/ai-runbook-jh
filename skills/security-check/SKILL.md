@@ -9,9 +9,9 @@ Pre-flight checklist run before pasting substantive context into an AI prompt. A
 
 The policy is simple: **never input sensitive or confidential information into AI tools.** This skill makes that rule actionable.
 
-## Project profile
+## Project contract
 
-The CA-wide security posture below is generic. The **project-specific** seams (which AI clients are sanctioned for which work, which environments are off-limits, and the attribution-marker string) are read from `.agents/profile.md`:
+The CA-wide security posture below is generic. The **project-specific** seams (which AI clients are sanctioned for which work, which environments are off-limits, and the attribution-marker string) are read from `.agents/project-contract.md`:
 
 - **`## Sanctioned AI`**: which tools are approved for code vs. non-code work on this project, and which are banned. This is the key project-specific seam: the tool one project sanctions, another may ban. Never hardcode a tool list; read it here.
 - **`## Environments`**: the local env (safe to screenshot/share) vs. the higher envs (AI never accesses; redact before sharing).

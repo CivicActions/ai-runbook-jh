@@ -9,8 +9,8 @@ The git-hygiene methodology here (group by logical unit, one change per commit, 
 `git add -p`, don't rewrite shared history) is project-agnostic. The commit-message format and
 issue-reference convention are project-specific; read them from the profile.
 
-## Project profile
-Read project-specific values from `.agents/profile.md`:
+## Project contract
+Read project-specific values from `.agents/project-contract.md`:
 - **`## Tracker` → Issue ref format**: how to reference a tracker item in a commit subject (e.g.
   `PROJ-123` for Jira, `#NNNN` for GitHub).
 - **`## Commit conventions`**: the commit-message format and any subject-line regex the project

@@ -6,9 +6,9 @@ invokedBy: "accessibility-audit, responsive-design, performance-frontend"
 
 # Browser Check
 
-## Project profile
+## Project contract
 The browser-inspection tool, local environment, and URL pattern are **project-specific**. Read them
-from `.agents/profile.md`:
+from `.agents/project-contract.md`:
 - **`## Sanctioned AI` → Browser inspection MCP**: which MCP to drive (e.g. chrome-devtools). Use
   the tool the profile sanctions; do not assume one.
 - **`## Environments` → Local**: the local dev server and URL pattern to validate against (e.g.

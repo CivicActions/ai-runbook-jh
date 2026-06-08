@@ -10,9 +10,9 @@ First-touch assessment of a ticket/issue. Decide whether it survives, fill in th
 fields, set an initial priority, and tag it as reviewed. Anything deeper; full acceptance
 criteria, implementation details, LOE-readiness; belongs in `ticket-refinement`.
 
-## Project profile
+## Project contract
 The fields, tags, priority guide, and markup are **project-specific**. Read them from
-`.agents/profile.md`:
+`.agents/project-contract.md`:
 - **`## Tracker`**: issue-ref format and checkbox/markup for output.
 - **`## Required fields`**: the minimum fields to fill (and the Purpose-statement format).
 - **`## Review markers / tags`**: the "reviewed" marker and any stakeholder-prioritization tag.

@@ -9,9 +9,9 @@ invokedBy: "ticket-refinement, qa-steps, issue-closure-notes"
 Emits the Definition of Done for the active project. Other skills invoke this rather than
 duplicating the lists, so the DoD never drifts across artifacts.
 
-## Project profile
+## Project contract
 The DoD lists, ticket types, and checkbox markup are **project-specific**. Read them from
-`.agents/profile.md`:
+`.agents/project-contract.md`:
 - **`## Definition of Done`**: the checklist(s) for this project, keyed by type.
 - **`## Tracker` → Checkbox markup**: how to render checkboxes (e.g. `()` for Jira, `- [ ]` for
   GitHub Markdown).

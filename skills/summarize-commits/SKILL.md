@@ -8,9 +8,9 @@ description: "Summarizes commits into a PR description, changelog, or sprint sum
 ## When to Use
 Invoke when the user wants a plain-language summary of what changed across a set of commits, for a PR description, release note, sprint summary, or changelog entry.
 
-## Project profile
+## Project contract
 Summarizing a range of commits is mostly project-agnostic, but a few touch points are
-**project-specific**. Read them from `.agents/profile.md`:
+**project-specific**. Read them from `.agents/project-contract.md`:
 - **`## Tracker` → Issue ref format**: how to cite tickets/issues in the summary (e.g. `PROJ-123`
   for Jira, `#NNNN` for GitHub). Use this format wherever the summary references an issue.
 - **`## Tracker` → Output wrapping / markup**: where a PR description or summary lands (a Jira

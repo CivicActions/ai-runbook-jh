@@ -8,9 +8,9 @@ description: "Reviews or plans responsive behavior across mobile, tablet, and de
 ## When to Use
 Invoke when the user wants to review or plan the responsive behavior of a component or layout, checking breakpoints, grid usage, mobile-first styling, and touch/viewport behavior.
 
-## Project profile
+## Project contract
 Breakpoints, the grid system, styling rules, and the browser tooling are **project-specific**. Read
-them from `.agents/profile.md`:
+them from `.agents/project-contract.md`:
 - **`## Breakpoints`**: the design system's breakpoint tokens. Use named breakpoint tokens rather
   than arbitrary pixel values.
 - **`## Grid`**: the design system's grid utilities/mixins.
