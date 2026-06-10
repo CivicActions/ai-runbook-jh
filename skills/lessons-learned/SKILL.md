@@ -11,11 +11,11 @@ The reflection methodology below is generic. A few touchpoints are **project-spe
 - **`## Tracker` → Issue ref format**: how to label the note (e.g. `PROJ-123`, `#NNNN`).
 - **`## Voice` → Config path**: the voice file to apply to generated prose.
 - **`## Attribution marker`**: whether to append a marker, and its exact wording (skip if the
-  profile defines none).
+  contract defines none).
 - Recurring-pattern hooks, where lessons get filed, and what a process change should propagate into
   are project-specific too; see **Project Context** below.
 
-If no profile is present, keep the generic behavior: label the note however the user refers to the
+If no contract is present, keep the generic behavior: label the note however the user refers to the
 work, apply whatever voice convention they have, and ask where the note should live.
 
 ## When to Use
@@ -38,7 +38,7 @@ Invoke after completing a ticket, sprint, or project phase when the user wants t
 
 ## Output Format
 
-Label the note with the work's issue reference using the profile's `## Tracker` → Issue ref format
+Label the note with the work's issue reference using the contract's `## Tracker` → Issue ref format
 (e.g. `PROJ-123`, `#NNNN`).
 
 ```
@@ -58,35 +58,35 @@ Label the note with the work's issue reference using the profile's `## Tracker` 
 ```
 
 ## Voice
-Apply the voice config named in the profile's `## Voice` section (e.g. `.agents/style/voice.md`).
+Apply the voice config named in the contract's `## Voice` section (e.g. `.agents/style/voice.md`).
 Apply it to all generated prose, keep it direct and honest, not performative. Run shared lessons-learned notes through `check-tone` before publishing.
 
 ## Project Context
-- Note if a lesson applies to a recurring pattern in the codebase (the profile's `## Stack` and
+- Note if a lesson applies to a recurring pattern in the codebase (the contract's `## Stack` and
   `## Environments` sections name the project's known gotchas, e.g. AJAX form state, Entity Browser,
-  container OOM on ARM64, depending on the profile).
-- Flag if a lesson has implications for the testing strategy or CI/CD pipeline (see the profile's
+  container OOM on ARM64, depending on the contract).
+- Flag if a lesson has implications for the testing strategy or CI/CD pipeline (see the contract's
   `## Environments` → CI for the pipeline in play).
 - Note if a process change should be documented where the project files durable knowledge (e.g.
-  the profile's `## Knowledge base`). See **Output goes where** under Related Skills.
+  the contract's `## Knowledge base`). See **Output goes where** under Related Skills.
 
 ## Attribution
 
-If the active profile defines an attribution marker (its `## Attribution marker` section), and you
+If the active contract defines an attribution marker (its `## Attribution marker` section), and you
 share this lessons-learned note with the team (added to the memory bank, shared externally, or used to inform a future process decision), end the note with that
 marker as the last line.
 
 Most lessons-learned notes end up shared or referenced later, that's their purpose, so when the
-profile defines a marker, default to including it. Only skip it for private reflections you'll
-genuinely read once and discard, or if the profile defines no marker (e.g. public OSS contributions).
+contract defines a marker, default to including it. Only skip it for private reflections you'll
+genuinely read once and discard, or if the contract defines no marker (e.g. public OSS contributions).
 Don't name the specific AI tool, the marker is intentionally tool-agnostic. The marker wording is a
 team convention, not policy text verbatim (see `security-check`); for a lessons note specifically a
-slightly more natural phrasing (e.g. `_AI-assisted reflection._`) is fine if the profile's marker
+slightly more natural phrasing (e.g. `_AI-assisted reflection._`) is fine if the contract's marker
 allows it.
 
 ### Examples
 
-**Shared / referenced later, profile defines a marker** (typical case):
+**Shared / referenced later, contract defines a marker** (typical case):
 
 ```markdown
 ## Lessons Learned: PROJ-123 filter focus restore
@@ -100,10 +100,10 @@ allows it.
 ### Carry Forward
 - [...]
 
-_AI-assisted draft, reviewed before submission._   <- only if the profile defines a marker
+_AI-assisted draft, reviewed before submission._   <- only if the contract defines a marker
 ```
 
-**Private one-time reflection, or no profile marker** (no marker):
+**Private one-time reflection, or no contract marker** (no marker):
 
 ```markdown
 ## Lessons Learned: PROJ-123 filter focus restore
@@ -137,13 +137,13 @@ _AI-assisted draft, reviewed before submission._   <- only if the profile define
 
 ## Related Skills
 
-`lessons-learned` lives at the end of the Communicate phase. It runs at handoff time, alongside `issue-closure-notes`, while the work is still fresh, before the ticket leaves your hands for downstream review (e.g. visual/UX QA, code review, QA per the profile's `## Workflow states`).
+`lessons-learned` lives at the end of the Communicate phase. It runs at handoff time, alongside `issue-closure-notes`, while the work is still fresh, before the ticket leaves your hands for downstream review (e.g. visual/UX QA, code review, QA per the contract's `## Workflow states`).
 
 - **Phase placement:** end of Phase 6 (Communicate), not a separate phase. Reflection happens as you hand off, not after merge. By the time the ticket is Done, you're already on the next thing.
 - **Upstream:** all prior phase artifacts (plan, handoffs, closure notes) feed into the reflection
 - **Sibling:** `issue-closure-notes` (the comms artifact); this is the discipline artifact
 - **Downstream:** `check-tone` (run shared lessons through tone check before publishing)
 - **Output goes where:** `.agents/lessons/`, plus wherever the project files durable knowledge (the
-  profile's `## Knowledge base`). Flag lessons that warrant team sharing, but leave the channel to the engineer. Lessons that change process should also propagate back into the skills themselves.
+  contract's `## Knowledge base`). Flag lessons that warrant team sharing, but leave the channel to the engineer. Lessons that change process should also propagate back into the skills themselves.
 - If `.agents/lessons/` does not exist, create it before writing.
 - **Git exclusion:** `.agents/lessons/` should be excluded via `.git/info/exclude`, not `.gitignore`. AI runbook artifacts are personal working files — never add them to the team-owned `.gitignore`.
