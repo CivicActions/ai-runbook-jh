@@ -15,8 +15,8 @@ The closure-note format and the values around it are **project-specific**. Read 
 - **`## Priority guide`**: how to flag the priority of any deferred follow-up work.
 - **`## Attribution marker`**: the trailing marker (if the project defines one).
 
-If no profile is present, ask the user for the project's tracker conventions rather than inventing
-them. The profile is the single source of truth.
+If no project contract is present, ask the user for the project's tracker conventions rather than inventing
+them. The project contract is the single source of truth.
 
 ## When to Use
 Invoke when a ticket is complete and the user wants to write closure notes, a durable record of what was done and what the next engineer needs to know.
@@ -24,24 +24,21 @@ Invoke when a ticket is complete and the user wants to write closure notes, a du
 ## Approach
 
 1. **Summarize the problem and approach**, what was broken or needed, how it was addressed
-2. **List changes by commit**, concrete deliverables with commit hashes if available
+2. **List changes**, past-tense bullet descriptions of what was done, no commit hashes needed
 3. **Note follow-up work**, only if there's genuinely ticketable deferred work
 
 ## Output Format
 
-If the profile's Tracker section calls for it (Output wrapping), wrap the copyable output so the
-user can paste it directly into the tracker. Use the profile's section heading markup for headings
-and its monospace markup for inline code references (file paths, selectors, module names, commit
-hashes), NOT a hardcoded syntax.
+If the project contract's Tracker section calls for it (Output wrapping), wrap the **entire copyable output** in that wrapper so the user can paste it directly into the tracker without reformatting. Use the project contract's section heading markup for headings and its monospace markup for inline code references (file paths, selectors, module names, commit hashes), NOT a hardcoded syntax.
 
-The structure below is generic. Substitute the profile's markup for `[heading]` and `[monospace]`:
+The structure below is generic. Substitute the project contract's markup for `[heading]` and `[monospace]`:
 
 ```
 [heading] Problem & Approach
 [1–2 sentences on what was broken/needed and how it was addressed]
 
 [heading] Changes
-[Bullet list: [monospace]commit-hash[/monospace], description of what the commit does]
+[Bullet list: past-tense descriptions of what was done, no commit hashes]
 
 [heading] Summary
 [1–2 sentences on the end state, what's working now, what the PR delivers]
@@ -60,22 +57,22 @@ Sections that are NOT included (handled elsewhere):
 
 ## Definition of Done
 
-After the closure notes (outside any code block), append the relevant DoD checklist by invoking the `definition-of-done` skill with the ticket type (the profile defines which types exist: e.g. FE/BE/DevOps, or a single PR checklist). The assignee confirms the items before closing.
+After the closure notes (outside any code block), append the relevant DoD checklist by invoking the `definition-of-done` skill with the ticket type (the project contract defines which types exist: e.g. FE/BE/DevOps, or a single PR checklist). The assignee confirms the items before closing.
 
 The DoD lives in one place, `definition-of-done`, so it doesn't drift across QA steps, refinement output, and closure notes.
 
 ## Attribution
 
 Closure notes are appended to a ticket/issue. **This skill does not emit a marker.** Instead, if
-the active profile defines an attribution marker (see the profile's `## Attribution marker`
+the active project contract defines an attribution marker (see the project contract's `## Attribution marker`
 section), ensure the **final assembled ticket** ends with that marker as its last line whenever any
 section was AI-assisted.
 
 One marker per ticket, at the very bottom, covering everything above it. Skip the marker entirely
-if no section was AI-assisted, or if the profile defines no marker (e.g. public OSS contributions).
+if no section was AI-assisted, or if the project contract defines no marker (e.g. public OSS contributions).
 The marker wording is a team convention, not policy text verbatim (see `security-check`).
 
-### Example (final ticket with closure notes as the last section; markup and marker from the profile)
+### Example (final ticket with closure notes as the last section; markup and marker from the project contract)
 
 ```
 [ticket body...]
@@ -84,13 +81,13 @@ The marker wording is a team convention, not policy text verbatim (see `security
 Cleared the overflow:hidden lock left behind after facet deselect.
 
 [heading] Changes
-* [monospace]a1b2c3d[/monospace], clear lock in ajaxComplete handler
-* [monospace]e4f5g6h[/monospace], add regression test
+* Cleared the overflow:hidden lock in the ajaxComplete handler.
+* Added a regression test for the deselect path.
 
 [heading] Summary
 PR delivers a clean fix; page stays scrollable after deselect across viewports.
 
-[attribution marker]   <- only if the profile defines a marker
+[attribution marker]   <- only if the project contract defines a marker
 ```
 
 ## Example
@@ -104,9 +101,9 @@ PR delivers a clean fix; page stays scrollable after deselect across viewports.
 Page locked after facet deselect; cleared the stale `overflow:hidden` in the ajaxComplete handler so the no-results branch no longer leaks the lock.
 
 ## Changes
-- `a1b2c3d` — clear overflow lock unconditionally in ajaxComplete
-- `e4f5g6h` — add regression test for the deselect path
-- `9112301` — update visual reference shot
+- Cleared the overflow lock unconditionally in ajaxComplete.
+- Added a regression test for the deselect path.
+- Updated the visual reference shot.
 
 ## Summary
 PR delivers a focused fix; page stays scrollable after deselect across desktop, tablet, and mobile.
@@ -123,23 +120,23 @@ PR delivers a focused fix; page stays scrollable after deselect across desktop, 
 - **Phase placement:** Closure notes are pre-review communication. They live in Phase 6 (Communicate) alongside `lessons-learned`, both running at handoff time.
 
 ## Voice
-Apply the project's voice config (see the profile's `## Voice` section, e.g. `.agents/style/voice.md`).
+Apply the project's voice config (see the project contract's `## Voice` section, e.g. `.agents/style/voice.md`).
 Apply it to all generated prose, problem summaries, problems encountered, and follow-up notes. Run the closure notes through `check-tone` before posting to the tracker.
 
 ## Closure Notes Context
-- Always include the issue ref in the heading, using the profile's Issue ref format (`## Tracker`)
-- Reference specific file paths and commit hashes where available
+- Always include the issue ref in the heading, using the project contract's Issue ref format (`## Tracker`)
+- Reference specific file paths where relevant
 - Only include the Follow-up section if there's genuinely ticketable work, not cosmetic notes or "nice to have" observations
-- If follow-up work carries security, accessibility, or compliance risk, flag its priority using the profile's `## Priority guide`
+- If follow-up work carries security, accessibility, or compliance risk, flag its priority using the project contract's `## Priority guide`
 
 ## Status on Closure
 When writing closure notes, confirm the ticket has what it needs to close cleanly, then transition
-it to the "done" state per the profile's `## Workflow states`:
+it to the "done" state per the project contract's `## Workflow states`:
 - Acceptance criteria marked met
 - DoD checklist items confirmed (via the `definition-of-done` skill)
 - Any deferred work has a linked follow-up ticket or is noted for creation
-- Any pre-close labels/pings owed under the profile's `## Workflow states` are resolved
-- If the ticket was a bug, satisfy the project's bug-closure rule (see the profile's `## Definition
+- Any pre-close labels/pings owed under the project contract's `## Workflow states` are resolved
+- If the ticket was a bug, satisfy the project's bug-closure rule (see the project contract's `## Definition
   of Done`: e.g. an automated test added, or a debt ticket linked)
-- Required fields complete per the profile's `## Required fields` (e.g. implementation details,
+- Required fields complete per the project contract's `## Required fields` (e.g. implementation details,
   test cases attached, QA steps added)

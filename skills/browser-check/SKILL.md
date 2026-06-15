@@ -10,7 +10,7 @@ invokedBy: "accessibility-audit, responsive-design, performance-frontend"
 The browser-inspection tool, local environment, and URL pattern are **project-specific**. Read them
 from `.agents/project-contract.md`:
 - **`## Sanctioned AI` → Browser inspection MCP**: which MCP to drive (e.g. chrome-devtools). Use
-  the tool the profile sanctions; do not assume one.
+  the tool the project contract sanctions; do not assume one.
 - **`## Environments` → Local**: the local dev server and URL pattern to validate against (e.g.
   DDEV at `https://myproject.ddev.site:8443/[path]`, or a component-library dev server like Storybook at
   `localhost:6006`). The environment can differ sharply per project; always read it here.
@@ -18,8 +18,8 @@ from `.agents/project-contract.md`:
   human-only access rule.
 - **`## Voice` → Config path**: the voice file to load before writing prose.
 
-If no profile is present, ask the user which browser-inspection MCP and local URL to use rather than
-assuming a stack. The profile is the single source of truth.
+If no project contract is present, ask the user which browser-inspection MCP and local URL to use rather than
+assuming a stack. The project contract is the single source of truth.
 
 ## When to Use
 Invoke when the user wants to validate a frontend change, bug fix, or new feature in the browser, checking visual output, console errors, network requests, and DOM state.
@@ -27,9 +27,9 @@ Invoke when the user wants to validate a frontend change, bug fix, or new featur
 ## Approach
 
 1. **Identify scope**, which pages, flows, or components to validate
-2. **Establish environment**, the profile's local dev server by default (`## Environments` → Local);
+2. **Establish environment**, the project contract's local dev server by default (`## Environments` → Local);
    higher environments (`## Environments` → Higher) are human-only; see Security
-3. **Navigate and inspect using the profile's browser-inspection MCP** (`## Sanctioned AI`):
+3. **Navigate and inspect using the project contract's browser-inspection MCP** (`## Sanctioned AI`):
    - Navigate to the target page(s)
    - Capture a screenshot to confirm visual output
    - Check the console for errors or warnings
@@ -61,20 +61,20 @@ Invoke when the user wants to validate a frontend change, bug fix, or new featur
 - Anything that could not be validated (access denied, environment unavailable, etc.)
 
 ## Voice
-Apply the voice file named in the profile's `## Voice` section (e.g. `.agents/style/voice.md`) to all
+Apply the voice file named in the project contract's `## Voice` section (e.g. `.agents/style/voice.md`) to all
 generated text: results summaries, open questions, environment notes.
 
 ## Environment notes
-- Use the project's local admin-access method from the profile (`## Environments` → Local) for
+- Use the project's local admin-access method from the project contract (`## Environments` → Local) for
   authenticated pages.
 - Higher environments may require VPN or project credentials; see Security; AI never accesses them.
 - Note if any environment or page was inaccessible, and document what was skipped.
 - Save screenshots to `.agents/reviews/[ISSUE-REF]-[description].png` (issue-ref format per the
-  profile's `## Tracker`).
+  project contract's `## Tracker`).
 
 ## Security
 
-`browser-check` operates against the **profile's local environment only by default**
+`browser-check` operates against the **project contract's local environment only by default**
 (`## Environments` → Local). Higher-environment access (`## Environments` → Higher) is a human
 action, not an AI action.
 

@@ -93,7 +93,7 @@ every token and component from a single source.
    prose). Optionally copy
    [`templates/voice/voice.personal.template.md`](templates/voice/voice.personal.template.md) to
    `.agents/style/voice.personal.md` as a personal overlay; entries there win over the shared
-   profile and the file is typically gitignored.
+   project contract and the file is typically gitignored.
 4. Deploy with `sync.sh`: `PROFILE=<project> PROJECT_ROOT=/path/to/project ./sync.sh` symlinks the
   skills into the project's `.agents/skills/` and copies the contract to `.agents/project-contract.md`.
    Override paths via `PROJECT_ROOT`, `CUSTOM`, or `PROFILE` env vars (see `sync.sh` comments;

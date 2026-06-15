@@ -16,7 +16,7 @@ Read the active project's `.agents/project-contract.md` for context that shapes 
 - **`## Team context`** / audience norms; who reads this (engineers, PMs, public OSS community,
   government plain-language audiences) shapes how direct or formal to be.
 
-If no profile is present, fall back to generic plain-language, direct-and-collegial defaults.
+If no project contract is present, fall back to generic plain-language, direct-and-collegial defaults.
 
 ## When to Use
 Invoke when the user wants to review written content for tone, clarity, professionalism, or appropriateness. Applies to commit messages, PR descriptions, tracker comments, documentation, handoff notes, or user-facing copy.
@@ -27,7 +27,7 @@ Invoke when the user wants to review written content for tone, clarity, professi
 2. **Assess tone** against the appropriate register:
    - **Technical docs / PR descriptions**: clear, direct, factual, no filler, no hedging
    - **Tracker comments / handoff notes**: professional, collegial, actionable
-   - **User-facing copy**: plain language, accessible (apply any audience standard the profile names: e.g. government plain-language for public-sector projects)
+   - **User-facing copy**: plain language, accessible (apply any audience standard the project contract names: e.g. government plain-language for public-sector projects)
    - **Commit messages**: imperative mood, concise, no apology language
 3. **Flag issues**:
    - Passive voice where active is clearer
@@ -36,6 +36,7 @@ Invoke when the user wants to review written content for tone, clarity, professi
    - Jargon that won't land with the intended audience
    - Tone mismatches (too casual for docs, too stiff for a comment)
    - Em-dashes (use colons or semicolons instead, or restructure the sentence)
+   - Code comments that read like spec writing rather than plain explanation; prefer "sits outside the form" over "escapes the form ancestor in the top layer stacking context"
 4. **Suggest rewrites** for flagged passages
 
 ## Output Format
@@ -48,9 +49,9 @@ For each flagged item:
 End with an overall tone assessment: ✅ Good / ⚠️ Needs minor adjustment / ❌ Needs rewrite.
 
 ## Voice
-Apply the voice config named in the profile's `## Voice` section (default `.agents/style/voice.md`)
+Apply the voice config named in the project contract's `## Voice` section (default `.agents/style/voice.md`)
 when writing suggested rewrites. If `.agents/style/voice.personal.md` is also present, layer it
-on top: personal overrides win where they overlap with the shared profile. Common overlay
+on top: personal overrides win where they overlap with the shared project contract. Common overlay
 concerns: permitted filler words (e.g. a measured "basically" when actually simplifying),
 transition vocabulary, hedging style.
 
@@ -59,12 +60,12 @@ The same rules that apply to flagging also apply to rewriting. If voice.md bans 
 Flagging a violation in the input and then reproducing it in the rewrite is itself an error.
 
 ## Register notes
-- If the profile names a user-facing audience standard (e.g. government plain language), hold
+- If the project contract names a user-facing audience standard (e.g. government plain language), hold
   user-facing copy to it.
 - PR descriptions and handoff notes are read by reviewers and stakeholders; be direct. Who exactly
-  is in the audience comes from the profile's `## Team context`.
+  is in the audience comes from the project contract's `## Team context`.
 - Avoid language that implies uncertainty about correctness ("I think this might work").
-- When checking a commit message, match the profile's `## Commit conventions` subject format rather
+- When checking a commit message, match the project contract's `## Commit conventions` subject format rather
   than assuming one.
 
 ## Example
@@ -87,6 +88,18 @@ Flagging a violation in the input and then reproducing it in the rewrite is itse
   Suggested rewrite: "Regression test added."
 
 Overall: Needs rewrite.
+```
+
+## Attribution marker
+If the active project contract defines an attribution marker (see the project contract's `## Attribution marker`
+section), always end the output with that marker as the last line — whether the output is findings
+only, rewrites only, or both. One marker per invocation, covering everything above it.
+
+Skip it entirely if the project contract defines no marker (e.g. public OSS contributions). Use the
+project contract's exact wording.
+
+```
+[project contract's attribution marker as the last line]
 ```
 
 ## Related Skills

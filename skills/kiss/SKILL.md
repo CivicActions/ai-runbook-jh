@@ -51,7 +51,7 @@ fills in the specifics:
 - Powerful configuration mechanisms (e.g. Drupal config splits) add complexity, only use them when
   the underlying differences they manage are real.
 
-If the profile defines no `## Stack`, apply the universal signals above without the stack-specific
+If the project contract defines no `## Stack`, apply the universal signals above without the stack-specific
 detail.
 
 ## Example
