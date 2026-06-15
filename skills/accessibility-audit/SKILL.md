@@ -8,7 +8,7 @@ typicalNext: "Document the findings in the ticket/issue (or a new one), prioriti
 
 ## Project contract
 The impact-to-priority mapping, validation tooling, environment, and stack-specific checks are
-**project-specific**. Read them from `.agents/project-contract.md`:
+**project-specific**. Read them from `.agents/project-contract.md` (shared contract), then layer `.agents/project-contract.personal.md` on top if it exists (personal entries win where they overlap):
 - **`## Priority guide` → Accessibility impact levels**: the A/B/C (or equivalent) impact-to-
   priority mapping and bump up/down rules.
 - **`## Environments`**: local environment to audit against, and the a11y validation tooling

@@ -12,7 +12,7 @@ criteria, implementation details, LOE-readiness; belongs in `ticket-refinement`.
 
 ## Project contract
 The fields, tags, priority guide, and markup are **project-specific**. Read them from
-`.agents/project-contract.md`:
+`.agents/project-contract.md` (shared contract), then layer `.agents/project-contract.personal.md` on top if it exists (personal entries win where they overlap):
 - **`## Tracker`**: issue-ref format and checkbox/markup for output.
 - **`## Required fields`**: the minimum fields to fill (and the Purpose-statement format).
 - **`## Review markers / tags`**: the "reviewed" marker and any stakeholder-prioritization tag.

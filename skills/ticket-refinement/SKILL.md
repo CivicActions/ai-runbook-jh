@@ -15,7 +15,7 @@ This is the second pass on a ticket, not the first. If the ticket hasn't been tr
 ## Project contract
 
 The tracker markup, required fields, workflow-state language, priority guide, and any
-estimation/LOE scale are **project-specific**. Read them from `.agents/project-contract.md`:
+estimation/LOE scale are **project-specific**. Read them from `.agents/project-contract.md` (shared contract), then layer `.agents/project-contract.personal.md` on top if it exists (personal entries win where they overlap):
 - **`## Tracker`**: issue-ref format, checkbox/section/monospace markup, and output wrapping for
   the ticket body.
 - **`## Required fields`**: the fields a ticket needs (component, functional area, Purpose-statement

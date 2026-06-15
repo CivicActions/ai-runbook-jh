@@ -8,7 +8,7 @@ typicalNext: "After confirming the component structure, move to `pattern-alignme
 
 ## Project contract
 The design-system rules, framework, and component conventions are **project-specific**. Read them
-from `.agents/project-contract.md`:
+from `.agents/project-contract.md` (shared contract), then layer `.agents/project-contract.personal.md` on top if it exists (personal entries win where they overlap):
 - **`## Stack` → Framework**: the project's framework (e.g. Drupal, or a vanilla component
   library). Determines whether framework-specific guidance below applies (templates, behaviors,
   component definitions, library registration).

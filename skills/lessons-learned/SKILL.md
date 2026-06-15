@@ -7,7 +7,7 @@ description: "Writes a lessons-learned note after completing a ticket, sprint, o
 
 ## Project contract
 The reflection methodology below is generic. A few touchpoints are **project-specific** and read from
-`.agents/project-contract.md`:
+`.agents/project-contract.md` (shared contract), then layer `.agents/project-contract.personal.md` on top if it exists (personal entries win where they overlap):
 - **`## Tracker` → Issue ref format**: how to label the note (e.g. `PROJ-123`, `#NNNN`).
 - **`## Voice` → Config path**: the voice file to apply to generated prose.
 - **`## Attribution marker`**: whether to append a marker, and its exact wording (skip if the

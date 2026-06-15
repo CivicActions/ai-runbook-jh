@@ -8,7 +8,7 @@ invokedBy: "issue-plan"
 
 ## Project contract
 The methodology here is generic, but the markup and the stack-specific steps are
-**project-specific**. Read them from `.agents/project-contract.md`:
+**project-specific**. Read them from `.agents/project-contract.md` (shared contract), then layer `.agents/project-contract.personal.md` on top if it exists (personal entries win where they overlap):
 - **`## Tracker` → Checkbox markup**: how to render checklist items (e.g. `()` for Jira,
   `- [ ]` for GitHub Markdown).
 - **`## Tracker` → Section heading markup**: used only when this checklist is embedded under a

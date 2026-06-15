@@ -11,7 +11,7 @@ description: "Critically reviews Drupal PHP, Twig, SCSS, or config for correctne
 ## Project contract
 This skill is **inherently Drupal-specific** (BE/PHP/services/config review). It applies **only when the active project contract's `## Stack` is Drupal**. If the project contract's `## Stack` names a different framework (or "none / vanilla component library"), this skill does **not** apply; skip it and use the framework-neutral counterpart instead.
 
-It reads project-specifics from `.agents/project-contract.md`:
+It reads project-specifics from `.agents/project-contract.md` (shared contract), then layer `.agents/project-contract.personal.md` on top if it exists (personal entries win where they overlap):
 - **`## Stack`**: confirm Drupal applies; module/theme naming, templating (Twig), styling tokens, library registration conventions.
 - **`## Environments`**: local dev tooling (DDEV/drush), CI phases, shared services, config-export commands.
 - **`## Priority guide`**: the project's bug priority levels (used to rank findings).

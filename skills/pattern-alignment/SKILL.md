@@ -10,7 +10,7 @@ the canonical example, compare, flag divergences, suggest alignment. The project
 (where the canon lives, and which stack-specific conventions to check) come from the project contract.
 
 ## Project contract
-Read project-specific values from `.agents/project-contract.md`:
+Read project-specific values from `.agents/project-contract.md` (shared contract), then layer `.agents/project-contract.personal.md` on top if it exists (personal entries win where they overlap):
 - **`## Patterns / canon`**: where this project's canonical components/patterns live (the
   component library, design source of truth, Storybook/docs). This is the first place to look for a
   reference example. If the section is absent, fall back to locating 1–2 existing examples of the

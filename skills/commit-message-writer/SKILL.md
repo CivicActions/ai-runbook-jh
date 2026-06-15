@@ -11,7 +11,7 @@ Invoke when the user wants to write or improve a git commit message, given a dif
 
 ## Project contract
 The commit-message format, issue-ref convention, and any required commit annotations are
-**project-specific**. Read them from `.agents/project-contract.md`:
+**project-specific**. Read them from `.agents/project-contract.md` (shared contract), then layer `.agents/project-contract.personal.md` on top if it exists (personal entries win where they overlap):
 - **`## Commit conventions`**: the message format, the required-fields regex (if any), and any
   per-commit annotations this project mandates (e.g. an embedded issue ref, a Release Notes line).
 - **`## Tracker` → Issue ref format**: how this project writes an issue reference (e.g. `PROJ-123`
