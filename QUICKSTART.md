@@ -18,10 +18,10 @@ A project contract is a single Markdown file that tells skills everything projec
 Copy the template and fill it in (or have your AI do a first pass from a project description):
 
 ```bash
-cp profiles/_template.md profiles/<project>.md
+cp contracts/_template.md contracts/<project>.md
 ```
 
-Then open `profiles/<project>.md` and fill in every section. Keep all section headings intact — skills resolve references by name, so a missing section means a skill falls back to generic behavior. See `profiles/uswds.md` for a worked example.
+Then open `contracts/<project>.md` and fill in every section. Keep all section headings intact — skills resolve references by name, so a missing section means a skill falls back to generic behavior. See `contracts/uswds.md` for a worked example.
 
 **Optional validation tip:** run a second model/client pass on the finished contract before first use. Validate that all required sections are present, no placeholder `<...>` tokens remain, and sanctioned-AI plus branch/plan conventions are concrete.
 
@@ -32,7 +32,7 @@ Then open `profiles/<project>.md` and fill in every section. Keep all section he
 ## Step 2: Run install.sh
 
 ```bash
-export PROFILE=<project> PROJECT_ROOT=/path/to/your/project
+export CONTRACT=<project> PROJECT_ROOT=/path/to/your/project
 ./install.sh
 ```
 
@@ -100,7 +100,7 @@ Invoke with `@` in Amazon Q or let Copilot auto-select based on your prompt. See
 `sync.sh` is the ongoing update command. Run it after pulling changes to `ai-runbook-jh` to pick up new or changed skills:
 
 ```bash
-export PROFILE=<project> PROJECT_ROOT=/path/to/your/project
+export CONTRACT=<project> PROJECT_ROOT=/path/to/your/project
 ./sync.sh
 ```
 
@@ -111,7 +111,7 @@ export PROFILE=<project> PROJECT_ROOT=/path/to/your/project
 ```
 <project>/
 └── .agents/
-    ├── project-contract.md@     → ai-runbook-jh/profiles/<project>.md
+    ├── project-contract.md@     → ai-runbook-jh/contracts/<project>.md
     ├── profile.md@              → .agents/project-contract.md   (legacy alias)
     ├── plans/
     ├── handoffs/
