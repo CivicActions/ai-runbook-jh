@@ -7,7 +7,7 @@ description: "Organizes unstaged changes into clean logical commits ready to pus
 
 The git-hygiene methodology here (group by logical unit, one change per commit, stage with
 `git add -p`, don't rewrite shared history) is project-agnostic. The commit-message format and
-issue-reference convention are project-specific; read them from the profile.
+issue-reference convention are project-specific; read them from the project contract.
 
 ## Project contract
 Read project-specific values from `.agents/project-contract.md`:
@@ -18,8 +18,8 @@ Read project-specific values from `.agents/project-contract.md`:
 - **`## Branch / plan conventions` → Base branch**: the shared branch (e.g. `develop`); never
   rewrite commits already pushed there.
 
-If no profile is present, ask the user for the project's commit format and issue-ref convention
-rather than inventing one. The profile is the single source of truth.
+If no project contract is present, ask the user for the project's commit format and issue-ref convention
+rather than inventing one. The project contract is the single source of truth.
 
 ## When to Use
 Invoke when the user has unstaged or uncommitted changes and wants them organized into clean, logical commits before pushing.
@@ -33,7 +33,7 @@ Invoke when the user has unstaged or uncommitted changes and wants them organize
 5. **Provide the git commands**, exact `git add` / `git add -p` commands to stage each group, followed by the commit
 
 ## Output Format
-Use the profile's issue-ref format and commit-message format below in place of the `<ISSUE-REF>`
+Use the project contract's issue-ref format and commit-message format below in place of the `<ISSUE-REF>`
 placeholder shown here.
 
 ### Proposed Commit Sequence
@@ -91,14 +91,14 @@ Notes
 These rules are project-agnostic; apply them on every project:
 - Use imperative mood in the subject line.
 - One logical change per commit.
-- Never rewrite commits already pushed to a shared branch (the profile's `## Branch / plan
+- Never rewrite commits already pushed to a shared branch (the project contract's `## Branch / plan
   conventions` → Base branch).
 
-The subject prefix and any enforced regex are project-specific. Read them from the profile's
-`## Commit conventions` section and prepend the issue ref (profile `## Tracker` → Issue ref format).
-If the profile defines a subject-line regex, every generated commit message must match it; surface
+The subject prefix and any enforced regex are project-specific. Read them from the project contract's
+`## Commit conventions` section and prepend the issue ref (project contract `## Tracker` → Issue ref format).
+If the project contract defines a subject-line regex, every generated commit message must match it; surface
 that regex to `commit-message-writer` so it produces a conforming subject.
 
-If the profile has no `## Commit conventions` section, fall back to a conventional subject:
+If the project contract has no `## Commit conventions` section, fall back to a conventional subject:
 `<ISSUE-REF> Subject in imperative mood`; and ask the user whether the project enforces a stricter
 format before committing.

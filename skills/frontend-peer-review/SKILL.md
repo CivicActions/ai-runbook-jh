@@ -15,31 +15,31 @@ them from `.agents/project-contract.md`:
 - **`## Team context`**: team size / review norms (sets how formal vs. lightweight the review is).
 - **`## Sanctioned AI` → Browser inspection MCP**: which browser tool `browser-check` uses.
 
-If no profile is present, default to a small-team, direct-and-efficient review and ask about the
+If no project contract is present, default to a small-team, direct-and-efficient review and ask about the
 stack conventions.
 
 ## When to Use
 Invoke for a peer review of a frontend change; templates, styles, JavaScript, component files, or
 config; before merge.
 
-Match the review weight to the profile's `## Team context`. Default (small team): direct and
+Match the review weight to the project contract's `## Team context`. Default (small team): direct and
 efficient; a second set of eyes that catches what the author missed, not a formal audit. Focus on
 real issues that matter, not process overhead.
 
 ## Approach
 1. **Understand the change**: what was the intent, what files changed
-2. **Review styles** (per the profile's `## Stack` styling rules):
+2. **Review styles** (per the project contract's `## Stack` styling rules):
    - Design-system tokens only, no hex values
    - No `!important`
    - No ID selectors
    - BEM naming consistent with existing components
    - Mobile-first media queries
-3. **Review JavaScript** (per the profile's `## Stack` JS conventions):
+3. **Review JavaScript** (per the project contract's `## Stack` JS conventions):
    - The stack's behavior/init pattern used correctly
    - `const`/`let`, no `var`
    - No inline event handlers
    - Accessible keyboard and focus handling
-4. **If the profile's stack is Drupal/Twig**, additionally review:
+4. **If the project contract's stack is Drupal/Twig**, additionally review:
    - Dynamic output uses `|e` filter or `#plain_text`
    - No logic that belongs in PHP/preprocess
    - Template hierarchy is correct (not overriding more than needed)
@@ -47,13 +47,13 @@ real issues that matter, not process overhead.
    - CSS/JS properly declared in the theme's library file
 5. **Review for regressions**:
    - Does the change affect shared styles or templates?
-   - Are visual-regression references (per the profile's `## Environments`) updated if output changed?
+   - Are visual-regression references (per the project contract's `## Environments`) updated if output changed?
    - Are accessibility requirements maintained?
-   - Use `browser-check` (with the profile's browser MCP) to validate visually
-6. **Check library registration** if the stack requires it (per the profile's `## Stack`)
+   - Use `browser-check` (with the project contract's browser MCP) to validate visually
+6. **Check library registration** if the stack requires it (per the project contract's `## Stack`)
 
 ## Output Format
-Keep it concise; match the profile's `## Team context`. On a small team, a long formal review
+Keep it concise; match the project contract's `## Team context`. On a small team, a long formal review
 creates more friction than value.
 
 ### Overall Assessment
@@ -81,8 +81,8 @@ Apply `.agents/style/voice.md` to the overall assessment, must-fix descriptions,
 Write like you're talking to a colleague, not filing a report. Run shared review prose through `check-tone` before posting.
 
 ## Attribution
-If the active profile defines an attribution marker (see its `## Attribution marker` section), end a
-shared review with that marker as the last line. Skip it for personal-use output, or if the profile
+If the active project contract defines an attribution marker (see its `## Attribution marker` section), end a
+shared review with that marker as the last line. Skip it for personal-use output, or if the project contract
 defines no marker (e.g. public OSS). Don't name the specific AI tool (see `security-check`).
 
 ## Example
@@ -113,5 +113,5 @@ Open Questions
 - **Invokes:** `browser-check` (visual confirmation), `pattern-alignment` (checks against the
   project's canonical patterns), `kiss` (flags over-engineering)
 - **Sibling:** `drupal-peer-review` (BE counterpart for PHP/services/config review); applies only when
-  the profile's stack is Drupal
+  the project contract's stack is Drupal
 - **Downstream:** `qa-steps` (peer review findings often surface QA scenarios), `check-tone` (run shared review prose through tone check before posting)

@@ -17,7 +17,7 @@ The CA-wide security posture below is generic. The **project-specific** seams (w
 - **`## Environments`**: the local env (safe to screenshot/share) vs. the higher envs (AI never accesses; redact before sharing).
 - **`## Attribution marker`**: the exact marker string and one-marker-per-artifact convention.
 
-If no profile is present, keep the generic CA posture (never input sensitive/confidential data; AI never authenticates or accesses higher envs) and ask the user which AI tools are sanctioned for this project rather than assuming.
+If no project contract is present, keep the generic CA posture (never input sensitive/confidential data; AI never authenticates or accesses higher envs) and ask the user which AI tools are sanctioned for this project rather than assuming.
 
 ## When to Use
 
@@ -42,14 +42,14 @@ The distinction is *sanctioned vs. sensitive*, not *public vs. private*. A proje
    - **Client proprietary**, content the client has explicitly NOT sanctioned for AI use (e.g. client research/grant data, business operations data, anything marked proprietary or restricted, *not* the sanctioned codebase or team wiki)
    - **CA confidential**, legal, financial, contractual, HR
 
-2. **Verify AI client tier** against the profile's `## Sanctioned AI` section:
-   - **Code work**: only the tool(s) the profile sanctions for code generation
-   - **Non-code work**: only the tool(s) the profile sanctions for non-code (refinement, QA prose, summarization)
-   - **Never**: any tool the profile lists as banned, personal-license versions, or anything not named in the profile. The banned/sanctioned split inverts between projects, so always read the profile rather than relying on memory.
+2. **Verify AI client tier** against the project contract's `## Sanctioned AI` section:
+   - **Code work**: only the tool(s) the project contract sanctions for code generation
+   - **Non-code work**: only the tool(s) the project contract sanctions for non-code (refinement, QA prose, summarization)
+   - **Never**: any tool the project contract lists as banned, personal-license versions, or anything not named in the project contract. The banned/sanctioned split inverts between projects, so always read the project contract rather than relying on memory.
 
-3. **Verify environment scope** against the profile's `## Environments` section:
+3. **Verify environment scope** against the project contract's `## Environments` section:
    - **Local env**, generally ok to share screenshots, console output, network details
-   - **Higher environments** (per the profile), redact before sharing; never paste auth/one-time-login URLs; never share session tokens. AI never accesses higher envs.
+   - **Higher environments** (per the project contract), redact before sharing; never paste auth/one-time-login URLs; never share session tokens. AI never accesses higher envs.
    - **Production logs**, redact line-by-line; user accounts and content authors are PII
 
 4. **Decision**:
@@ -85,8 +85,8 @@ Per the CA AI Usage Policy:
 
 ## Project context
 
-- Sanctioned tools differ per project, read the profile's `## Sanctioned AI` section rather than assuming
-- Higher-environment access (the envs in the profile's `## Environments`) is a human action, AI never authenticates on your behalf
+- Sanctioned tools differ per project, read the project contract's `## Sanctioned AI` section rather than assuming
+- Higher-environment access (the envs in the project contract's `## Environments`) is a human action, AI never authenticates on your behalf
 - Migration data and user accounts on any environment are PII, redact before sharing
 - Audit/compliance context may apply (e.g. FISMA, Section 508); AI artifacts may be subject to review
 - Config exports may contain admin emails or internal URLs, review before pasting
@@ -105,11 +105,11 @@ These are version-controlled and reviewable. Nothing AI sees or produces is hidd
 
 Per CA policy: "Clearly disclose and label AI-generated or AI-assisted content internally."
 
-The canonical marker string is read from the profile's `## Attribution marker` section. The original CA convention is:
+The canonical marker string is read from the project contract's `## Attribution marker` section. The original CA convention is:
 
 `_AI-assisted draft, reviewed before submission._`
 
-**Important:** this marker wording is a **team-chosen convention** to satisfy CA policy, not policy text verbatim. CA policy requires clear disclosure and labeling; this specific phrasing is one way to do that. If a surface needs a more accurate phrasing (e.g., "AI-assisted reflection" reads more naturally on a lessons-learned note), prioritize honest disclosure over wording fidelity. The skills default to the profile's marker for consistency. If the profile defines no marker (e.g. public OSS contributions where the marker reads oddly), skip it but still human-review every AI-assisted output.
+**Important:** this marker wording is a **team-chosen convention** to satisfy CA policy, not policy text verbatim. CA policy requires clear disclosure and labeling; this specific phrasing is one way to do that. If a surface needs a more accurate phrasing (e.g., "AI-assisted reflection" reads more naturally on a lessons-learned note), prioritize honest disclosure over wording fidelity. The skills default to the project contract's marker for consistency. If the project contract defines no marker (e.g. public OSS contributions where the marker reads oddly), skip it but still human-review every AI-assisted output.
 
 Don't name the specific AI tool, the marker is intentionally tool-agnostic.
 
@@ -128,14 +128,14 @@ Why bottom: keeps the artifact's content first (what the reader cares about), pu
 
 ### Example markers
 
-Use the profile's `## Attribution marker` string in place of the placeholder below.
+Use the project contract's `## Attribution marker` string in place of the placeholder below.
 
 A typical shared artifact:
 
 ```
 [content]
 
-[profile marker]
+[project contract marker]
 ```
 
 A PR description specifically (marker + "how" line as the last block):
@@ -143,7 +143,7 @@ A PR description specifically (marker + "how" line as the last block):
 ```
 Fixes [issue ref] by [...]. [1–4 sentences total.]
 
-[profile marker]
+[project contract marker]
 AI co-authored the code ([files/scope]); human-edited and reviewed line by line.
 ```
 
@@ -156,7 +156,7 @@ AI co-authored the code ([files/scope]); human-edited and reviewed line by line.
 ```
 Content type:         user data (support ticket)
 Classification:       Sensitive (contains PII)
-AI client appropriate: only the sanctioned non-code tool per profile
+AI client appropriate: only the sanctioned non-code tool per the project contract
 Environment scope:    N/A (ticket content)
 Decision:             Redact first
 

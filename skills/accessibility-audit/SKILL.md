@@ -17,7 +17,7 @@ The impact-to-priority mapping, validation tooling, environment, and stack-speci
   baseline; whether the stack is Drupal/Twig (enables the template checks below).
 - **`## Sanctioned AI` → Browser inspection MCP**: which browser tool `browser-check` uses.
 
-If no profile is present, default to WCAG 2.1 AA and ask the user for the project's tooling.
+If no project contract is present, default to WCAG 2.1 AA and ask the user for the project's tooling.
 
 ## When to Use
 Invoke to audit a page, template, component, or test spec for accessibility issues; WCAG 2.1 AA,
@@ -25,7 +25,7 @@ Section 508, or project-specific a11y requirements.
 
 ## Approach
 1. **Identify scope**: page URL, component path, or template file
-2. **Live page inspection**: use `browser-check` (with the profile's browser MCP) to navigate,
+2. **Live page inspection**: use `browser-check` (with the project contract's browser MCP) to navigate,
    capture screenshots, and inspect the rendered DOM before static analysis
 3. **Static analysis**: review markup for:
    - Missing or inadequate alt text on images
@@ -36,11 +36,11 @@ Section 508, or project-specific a11y requirements.
    - Missing ARIA roles, labels, or landmarks where needed
    - Keyboard trap risks (modals, dropdowns, custom widgets)
    - Focus management gaps in dynamic content
-4. **Design-system checks**: verify the profile's `## Stack` styling rules (e.g. color tokens, no
+4. **Design-system checks**: verify the project contract's `## Stack` styling rules (e.g. color tokens, no
    hex; no `!important`; class-based styling)
-5. **Template checks (if the profile's stack is Drupal/Twig)**: confirm `|e` filter on dynamic
+5. **Template checks (if the project contract's stack is Drupal/Twig)**: confirm `|e` filter on dynamic
    output, `#plain_text` for user content
-6. **Report findings**: classify each by impact level and priority using the profile's
+6. **Report findings**: classify each by impact level and priority using the project contract's
    Accessibility impact levels
 
 ## Output Format
@@ -48,19 +48,19 @@ Return a flat list of findings. For each:
 - **Issue**: short description
 - **Location**: file path or selector
 - **WCAG criterion**: e.g. 1.1.1, 2.4.6
-- **Impact level**: per the profile's impact typology
-- **Priority**: per the profile's priority scheme
+- **Impact level**: per the project contract's impact typology
+- **Priority**: per the project contract's priority scheme
 - **Fix**: concrete corrective action
 
-End with a summary count by priority and the profile's a11y validation commands to verify the fix.
+End with a summary count by priority and the project contract's a11y validation commands to verify the fix.
 
 ## Voice
 Apply `.agents/style/voice.md` to finding descriptions and fix suggestions. Run shared audit prose through `check-tone` before posting.
 
 ## Attribution
-If the active profile defines an attribution marker (see its `## Attribution marker` section), end
+If the active project contract defines an attribution marker (see its `## Attribution marker` section), end
 shared findings with that marker as the last line. Skip it for personal-use output, or if the
-profile defines no marker. Don't name the specific AI tool (see `security-check`).
+project contract defines no marker. Don't name the specific AI tool (see `security-check`).
 
 ## Example
 
@@ -86,12 +86,12 @@ Summary: 2 serious findings. Verify with the project's a11y command.
 - **Upstream gate:** `security-check` (run before auditing any environment higher than local, or pasting screenshots / tooling output that may contain PII or authored content)
 - **Invokes:** `browser-check` (live page inspection before static analysis)
 - **Sibling Validate-phase skills:** `responsive-design`, `performance-frontend`,
-  `frontend-peer-review`, `drupal-peer-review` (the last only when the profile's stack is Drupal); these
+  `frontend-peer-review`, `drupal-peer-review` (the last only when the project contract's stack is Drupal); these
   may all run on the same change
 - **Downstream:** `qa-steps` (a11y findings often produce QA verification steps), `check-tone` (run shared audit prose through tone check before posting)
 
 ## Security
-Audit against the profile's **local environment by default**. If a higher-environment audit is
+Audit against the project contract's **local environment by default**. If a higher-environment audit is
 needed:
 - A human runs the audit and pastes findings (selectors, contrast ratios, screen reader output)
   into the AI session, never raw page state
