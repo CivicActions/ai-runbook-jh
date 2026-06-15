@@ -10,23 +10,23 @@
 #
 # Required env vars:
 #   PROJECT_ROOT  target project root (the repo you're working in)
-#   PROFILE       which profiles/<name>.md contract to deploy
+#   CONTRACT      which contracts/<name>.md contract to deploy
 # Optional:
 #   CUSTOM        this framework repo's location (default: the script's own directory)
 #
 # Example:
-#   PROFILE=uswds PROJECT_ROOT=~/code/uswds ./sync.sh
+#   CONTRACT=uswds PROJECT_ROOT=~/code/uswds ./sync.sh
 
 CUSTOM="${CUSTOM:-$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)}"
 PROJECT_ROOT="${PROJECT_ROOT:-}"
-PROFILE="${PROFILE:-}"
+CONTRACT="${CONTRACT:-${PROFILE:-}}"
 
 if [ -z "$PROJECT_ROOT" ]; then
   echo "ERROR: set PROJECT_ROOT to the target project root" >&2
   exit 1
 fi
-if [ -z "$PROFILE" ]; then
-  echo "ERROR: set PROFILE to a contract name (see profiles/)" >&2
+if [ -z "$CONTRACT" ]; then
+  echo "ERROR: set CONTRACT to a contract name (see contracts/)" >&2
   exit 1
 fi
 
@@ -53,12 +53,12 @@ for skill in "$CUSTOM"/skills/*/; do
 done
 
 # Deploy the chosen project contract to .agents/project-contract.md
-contract_src="$CUSTOM/profiles/$PROFILE.md"
+contract_src="$CUSTOM/contracts/$CONTRACT.md"
 contract_link="$PROJECT_ROOT/.agents/project-contract.md"
 legacy_link="$PROJECT_ROOT/.agents/profile.md"
 
 if [ ! -f "$contract_src" ]; then
-  echo "ERROR: contract not found: $contract_src (see profiles/)" >&2
+  echo "ERROR: contract not found: $contract_src (see contracts/)" >&2
   exit 1
 fi
 
@@ -68,7 +68,7 @@ elif [ -e "$contract_link" ]; then
   echo "WARNING: $contract_link exists and is not a symlink; leaving it alone"
 else
   ln -s "$contract_src" "$contract_link"
-  echo "Linked contract: $PROFILE"
+  echo "Linked contract: $CONTRACT"
 fi
 
 # Legacy compatibility alias: .agents/profile.md -> .agents/project-contract.md
@@ -86,7 +86,7 @@ personal_overlay="$PROJECT_ROOT/.agents/project-contract.personal.md"
 if [ -f "$personal_overlay" ]; then
   echo "Personal overlay found: $personal_overlay (will be applied by skills at runtime)"
 else
-  echo "Tip: create .agents/project-contract.personal.md to override specific sections for personal use (see profiles/_template.md)."
+  echo "Tip: create .agents/project-contract.personal.md to override specific sections for personal use (see contracts/_template.md)."
 fi
 
 echo "Done."

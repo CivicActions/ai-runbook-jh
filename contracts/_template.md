@@ -1,10 +1,10 @@
 # Project Contract: <PROJECT NAME>
 
-> Copy this to `profiles/<project>.md` and fill in every section for your project. This file is the
+> Copy this to `contracts/<project>.md` and fill in every section for your project. This file is the
 > project contract for AI-assisted work. Skills read the deployed copy at `.agents/project-contract.md`
 > (see `sync.sh`). `sync.sh` also maintains `.agents/profile.md` as a legacy alias. Keep the section set intact so skills
 > resolve every reference; if a section truly doesn't apply, say so rather than deleting it.
-> See `profiles/uswds.md` for a worked example.
+> See `contracts/uswds.md` for a worked example.
 >
 > **Personal overlay:** You can override any section of this contract without editing the shared
 > file. Create `.agents/project-contract.personal.md` at the project root and add only the sections

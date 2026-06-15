@@ -33,10 +33,10 @@ plans/
 lessons/
 decks/
 
-# Client-specific profiles — keep local, not in the shared repo.
-# The shared repo ships only generic example profiles (e.g. profiles/uswds.md)
-# and profiles/_template.md. Create your own client profile locally from the template.
-profiles/nsf.md
+# Client-specific contracts — keep local, not in the shared repo.
+# The shared repo ships only generic example contracts (e.g. contracts/uswds.md)
+# and contracts/_template.md. Create your own client contract locally from the template.
+contracts/nsf.md
 
 # Personal voice overlay — individual, not shared.
 # The repo ships templates/voice/voice.personal.template.md as a starter scaffold.

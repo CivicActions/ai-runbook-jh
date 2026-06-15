@@ -60,14 +60,14 @@ For backward compatibility, `sync.sh` also maintains `.agents/profile.md` as a l
 
 A project contract is a single Markdown file describing one project. Skills reference its sections by name
 (tracker, stack, required fields, DoD, sanctioned AI, voice, and so on). The full annotated section
-set lives in [`profiles/_template.md`](profiles/_template.md); keep that set identical across
-profiles so skills resolve every reference.
+set lives in [`contracts/_template.md`](contracts/_template.md); keep that set identical across
+contracts so skills resolve every reference.
 
 ### Example project contracts
 
-- **`profiles/uswds.md`**: a public open-source component library on GitHub (vanilla JS/Sass, no
+- **`contracts/uswds.md`**: a public open-source component library on GitHub (vanilla JS/Sass, no
   Drupal). A good reference for a non-Jira, non-Drupal project.
-- **`profiles/_template.md`**: a blank, annotated contract template. Copy it to start a new one.
+- **`contracts/_template.md`**: a blank, annotated contract template. Copy it to start a new one.
 - A client-specific project contract (e.g. a federal Drupal project) is typically kept **out of version
   control**; in companion repos prefer local-only exclusion via `.git/info/exclude` (use `.gitignore` only when you want a shared team-wide ignore rule). Create your own locally from the template.
 
@@ -86,17 +86,17 @@ every token and component from a single source.
 ## Setup
 
 1. Clone `ai-runbook-jh`.
-2. Copy `profiles/_template.md` to `profiles/<project>.md` and fill it in (or start from
-   `profiles/uswds.md` as a worked example).
+2. Copy `contracts/_template.md` to `contracts/<project>.md` and fill it in (or start from
+   `contracts/uswds.md` as a worked example).
 3. Author `.agents/style/voice.md` at the project root. Start from
    [`templates/voice/voice.md`](templates/voice/voice.md) (a baseline for humanizing AI-generated
    prose). Optionally copy
    [`templates/voice/voice.personal.template.md`](templates/voice/voice.personal.template.md) to
    `.agents/style/voice.personal.md` as a personal overlay; entries there win over the shared
    project contract and the file is typically gitignored.
-4. Deploy with `sync.sh`: `PROFILE=<project> PROJECT_ROOT=/path/to/project ./sync.sh` symlinks the
+4. Deploy with `sync.sh`: `CONTRACT=<project> PROJECT_ROOT=/path/to/project ./sync.sh` symlinks the
   skills into the project's `.agents/skills/` and copies the contract to `.agents/project-contract.md`.
-   Override paths via `PROJECT_ROOT`, `CUSTOM`, or `PROFILE` env vars (see `sync.sh` comments;
+   Override paths via `PROJECT_ROOT`, `CUSTOM`, or `CONTRACT` env vars (see `sync.sh` comments;
   `CUSTOM` points at a contract kept outside this repo, useful when client details aren't safe to
    commit).
 5. Try one skill on your next ticket; `qa-steps` is a good first one.
