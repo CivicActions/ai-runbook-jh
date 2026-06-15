@@ -8,7 +8,7 @@ typicalNext: "After writing the plan file, open it in a fresh chat and start imp
 
 ## Project contract
 The plan-file path, branch convention, base branch, workflow gating, and project context are
-**project-specific**. Read them from `.agents/project-contract.md`:
+**project-specific**. Read them from `.agents/project-contract.md` (shared contract), then layer `.agents/project-contract.personal.md` on top if it exists (personal entries win where they overlap):
 - **`## Branch / plan conventions`**: where to write the plan file, the branch-naming format, and
   the base branch.
 - **`## Workflow states`**: the state at which a plan is appropriate (after triage/refinement, when

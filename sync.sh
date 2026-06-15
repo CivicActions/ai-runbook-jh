@@ -4,6 +4,10 @@
 #   - deploys the chosen project contract to <project>/.agents/project-contract.md
 #   - maintains <project>/.agents/profile.md as a legacy alias symlink
 #
+# Personal overlay: if .agents/project-contract.personal.md exists at PROJECT_ROOT,
+# skills will layer it on top of the shared contract at runtime (personal entries win).
+# Exclude it via .git/info/exclude, not .gitignore.
+#
 # Required env vars:
 #   PROJECT_ROOT  target project root (the repo you're working in)
 #   PROFILE       which profiles/<name>.md contract to deploy
@@ -75,6 +79,14 @@ elif [ -e "$legacy_link" ]; then
 else
   ln -s "$contract_link" "$legacy_link"
   echo "Linked legacy alias: profile.md -> project-contract.md"
+fi
+
+# Check for personal project contract overlay
+personal_overlay="$PROJECT_ROOT/.agents/project-contract.personal.md"
+if [ -f "$personal_overlay" ]; then
+  echo "Personal overlay found: $personal_overlay (will be applied by skills at runtime)"
+else
+  echo "Tip: create .agents/project-contract.personal.md to override specific sections for personal use (see profiles/_template.md)."
 fi
 
 echo "Done."

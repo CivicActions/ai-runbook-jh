@@ -7,7 +7,7 @@ description: "Writes a structured handoff note at the end of a work session. Use
 
 ## Project contract
 The handoff methodology below is generic, but a few values are **project-specific**. Read them from
-`.agents/project-contract.md`:
+`.agents/project-contract.md` (shared contract), then layer `.agents/project-contract.personal.md` on top if it exists (personal entries win where they overlap):
 - **`## Tracker` → Issue ref format**: how to name the issue in the handoff (e.g. `PROJ-123` for
   Jira, `#NNNN` for GitHub).
 - **`## Branch / plan conventions`**: branch-name pattern and the plan-file path format used when

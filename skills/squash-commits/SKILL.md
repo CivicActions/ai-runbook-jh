@@ -7,7 +7,7 @@ description: "Squashes WIP commits into clean commits before merge. Use when the
 
 ## Project contract
 The git mechanics here (interactive rebase, `merge --squash`) are project-agnostic. The
-commit-message *format* is project-specific. Read it from `.agents/project-contract.md`:
+commit-message *format* is project-specific. Read it from `.agents/project-contract.md` (shared contract), then layer `.agents/project-contract.personal.md` on top if it exists (personal entries win where they overlap):
 - **`## Commit conventions`**: subject-line format, issue-ref prefix, wrap width, and what the body
   should cover. If the profile has no `## Commit conventions` section, fall back to
   `## Tracker` → **Issue ref format** for the prefix and use a sensible default (imperative subject,

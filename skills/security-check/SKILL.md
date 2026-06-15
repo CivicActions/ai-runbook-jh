@@ -11,7 +11,7 @@ The policy is simple: **never input sensitive or confidential information into A
 
 ## Project contract
 
-The CA-wide security posture below is generic. The **project-specific** seams (which AI clients are sanctioned for which work, which environments are off-limits, and the attribution-marker string) are read from `.agents/project-contract.md`:
+The CA-wide security posture below is generic. The **project-specific** seams (which AI clients are sanctioned for which work, which environments are off-limits, and the attribution-marker string) are read from `.agents/project-contract.md` (shared contract), then layer `.agents/project-contract.personal.md` on top if it exists (personal entries win where they overlap):
 
 - **`## Sanctioned AI`**: which tools are approved for code vs. non-code work on this project, and which are banned. This is the key project-specific seam: the tool one project sanctions, another may ban. Never hardcode a tool list; read it here.
 - **`## Environments`**: the local env (safe to screenshot/share) vs. the higher envs (AI never accesses; redact before sharing).
