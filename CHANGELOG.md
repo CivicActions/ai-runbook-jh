@@ -7,6 +7,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 ## [Unreleased]
 
 ### Added
+- `evidence-check` skill: cross-cutting epistemic-honesty gate that forces claims to carry verified evidence instead of pattern-matching, with a state-claims-default-to-Unverified rule, an unchecked-guardrail flag, and a human-SME routing clause
 - Hosted AI runbook at https://civicactions.github.io/ai-runbook-jh/runbook/ (GitHub Pages); README links from intro and AI runbook sections
 - AI Usage Policy surfaced in `README.md` and `CONTRIBUTING.md`
 - Voice template split into humanizing baseline (`templates/voice/voice.md`) and personal overlay (`templates/voice/voice.personal.template.md`); `check-tone` layers `voice.personal.md` over `voice.md` when present
@@ -18,6 +19,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 - README: worked examples and inline definitions for jargon; ad-hoc browser-chat use called out alongside IDE/CLI
 
 ### Changed
+- Renamed the `check-tone` skill to `tone-check`, for consistency with the `-check` skill family (`evidence-check`, `security-check`, `browser-check`)
 - README tightened (~40% shorter lede); removed `Pre-development` section; general clarity/consistency pass
 - Em-dashes and arrow glyphs purged across skills, profiles, README, and deck per voice rules
 

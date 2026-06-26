@@ -288,7 +288,7 @@ present information and recommendations.
 - **Cross-cuts:** all skills that make technical claims or recommendations:
   `implementation-details`, `drupal-peer-review`, `frontend-peer-review`, `issue-plan`,
   `pattern-alignment`, `performance-frontend`
-- **Pairs with:** `security-check` (security claims especially need evidence), `check-tone`
+- **Pairs with:** `security-check` (security claims especially need evidence), `tone-check`
   (calibrates the confidence/hedging register), `kiss` (don't overcomplicate the evidence
   presentation itself)
 - **Invoked by:** any skill that produces architectural guidance or technical recommendations

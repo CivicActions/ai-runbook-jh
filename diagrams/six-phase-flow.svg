@@ -160,7 +160,7 @@
     <text x="105" y="608" font-size="14" font-weight="700" fill="#6B4A2B" letter-spacing="1">VOICE</text>
     <text x="105" y="630" font-size="11" fill="#1F1E1B">The keystone. Every phase produces prose; a project voice</text>
     <text x="105" y="646" font-size="11" fill="#1F1E1B">config keeps output from reading like many different writers.</text>
-    <text x="105" y="668" font-size="11" font-family="ui-monospace, 'SF Mono', monospace" fill="#6B4A2B">check-tone</text>
+    <text x="105" y="668" font-size="11" font-family="ui-monospace, 'SF Mono', monospace" fill="#6B4A2B">tone-check</text>
     <text x="200" y="668" font-size="11" fill="#6B5A41">+</text>
     <text x="215" y="668" font-size="11" font-family="ui-monospace, 'SF Mono', monospace" fill="#6B4A2B">.agents/style/voice.md</text>
   </g>
@@ -204,9 +204,9 @@
     <text x="610" y="807" text-anchor="middle" font-size="10" fill="#6B5A41">Canonical DoD per ticket type.</text>
     <text x="610" y="822" text-anchor="middle" font-size="10" fill="#6B5A41">Used by refinement, QA, closure, impl-details.</text>
 
-    <!-- check-tone -->
+    <!-- tone-check -->
     <rect x="800" y="760" width="340" height="80" fill="#E3DCC8" stroke="#2B2A26" stroke-width="1" rx="4"/>
-    <text x="970" y="785" text-anchor="middle" font-size="12" font-weight="700" fill="#6B4A2B" font-family="ui-monospace, 'SF Mono', monospace">check-tone</text>
+    <text x="970" y="785" text-anchor="middle" font-size="12" font-weight="700" fill="#6B4A2B" font-family="ui-monospace, 'SF Mono', monospace">tone-check</text>
     <text x="970" y="807" text-anchor="middle" font-size="10" fill="#6B5A41">Voice gate for any prose output.</text>
     <text x="970" y="822" text-anchor="middle" font-size="10" fill="#6B5A41">Pairs with .agents/style/voice.md.</text>
 

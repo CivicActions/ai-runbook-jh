@@ -59,7 +59,7 @@ For each ❌ or ⚠️:
 
 ## Voice
 Apply the voice config named in the project contract's `## Voice` section (e.g. `.agents/style/voice.md`).
-Apply it to divergence descriptions and suggestions. Run shared alignment-check prose through `check-tone` before posting.
+Apply it to divergence descriptions and suggestions. Run shared alignment-check prose through `tone-check` before posting.
 
 ## Patterns to Check
 What to check depends on the project's stack; read the project contract's `## Stack` section and apply only
@@ -147,4 +147,4 @@ Divergences
 
 - **Pairs with:** `kiss` (pattern-alignment catches under-aligned engineering; KISS catches over-engineering, both are Build-phase critics)
 - **Invoked by:** `frontend-peer-review`, `drupal-peer-review` (peer review applies pattern check as part of overall review)
-- **Downstream:** `check-tone` (run shared alignment-check prose through tone check before posting)
+- **Downstream:** `tone-check` (run shared alignment-check prose through tone check before posting)

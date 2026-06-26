@@ -78,7 +78,7 @@ Anything that needs a quick message or a short conversation before merge.
 
 ## Voice
 Apply `.agents/style/voice.md` to the overall assessment, must-fix descriptions, and open questions.
-Write like you're talking to a colleague, not filing a report. Run shared review prose through `check-tone` before posting.
+Write like you're talking to a colleague, not filing a report. Run shared review prose through `tone-check` before posting.
 
 ## Attribution
 If the active project contract defines an attribution marker (see its `## Attribution marker` section), end a
@@ -114,4 +114,4 @@ Open Questions
   project's canonical patterns), `kiss` (flags over-engineering)
 - **Sibling:** `drupal-peer-review` (BE counterpart for PHP/services/config review); applies only when
   the project contract's stack is Drupal
-- **Downstream:** `qa-steps` (peer review findings often surface QA scenarios), `check-tone` (run shared review prose through tone check before posting)
+- **Downstream:** `qa-steps` (peer review findings often surface QA scenarios), `tone-check` (run shared review prose through tone check before posting)

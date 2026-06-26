@@ -7,8 +7,8 @@
 > Developed against front-end work, but the skills are discipline-agnostic: the same `triage` skill
 > works for any kind of ticket. Extend it by adding new specialized skills for any area.
 >
-> 24 single-purpose **skills** (Markdown checklists, one per task you want done the same way every
-> time: `triage`, `qa-steps`, `handoff-message`, and 21 more) plus a per-project **project contract**
+> 25 single-purpose **skills** (Markdown checklists, one per task you want done the same way every
+> time: `triage`, `qa-steps`, `handoff-message`, and 22 more) plus a per-project **project contract**
 > names ticket tracker, stack, per-ticket Definition of Done, voice config, and approved AI
 > clients. Skills stay generic; the project contract supplies every project-specific detail.
 >
@@ -28,7 +28,7 @@ There's no one right way to run this. Three common ways to do it:
 - **Skills work with each other in a chain.** An agent runs the phases end-to-end, invoking skills as their triggers fire. Minimal hand-driving.
   *e.g. you paste the ticket body and say "triage this and bring it to ready-for-estimation"; the agent runs `triage`, then `ticket-refinement`, then `definition-of-done`, and hands back a refined ticket you paste into the tracker.*
 - **One-off skills.** Pull a single skill when you want it. No chain, no agent in charge.
-  *e.g. "`@check-tone` on this commit message"; only `check-tone` runs, nothing before or after. Or paste the skill's Markdown into a browser chat with no repo access; the model will ask for the inputs it needs.*
+  *e.g. "`@tone-check` on this commit message"; only `tone-check` runs, nothing before or after. Or paste the skill's Markdown into a browser chat with no repo access; the model will ask for the inputs it needs.*
 - **Mixed approach.** Agent drives some phases; you take the wheel for others. Most common in practice when iterating.
   *e.g. you write the plan by hand, then say "implement step 2 of `plans/PROJ-1234-plan.md`"; the agent runs Build while you steer commits.*
 
@@ -76,7 +76,7 @@ contracts so skills resolve every reference.
 Browse the hosted **[AI runbook](https://civicactions.github.io/ai-runbook-jh/runbook/)**, or
 open [`runbook/index.html`](runbook/index.html) locally for the full catalog: one card per
 skill, grouped by phase, with when-to-use, output template, and the skill-call graph.
-`drupal-peer-review` applies only when the contract's stack is Drupal; `check-tone` and `security-check`
+`drupal-peer-review` applies only when the contract's stack is Drupal; `tone-check` and `security-check`
 are the cross-cutting gates.
 
 See [`DESIGN.md`](DESIGN.md) for the visual rationale and
@@ -108,7 +108,7 @@ same either way; only how they're invoked changes.
 
 ## Voice config
 
-Every skill loads `.agents/style/voice.md` before generating prose; `check-tone` is the gate to run
+Every skill loads `.agents/style/voice.md` before generating prose; `tone-check` is the gate to run
 drafts through. Without a project-level voice config, output reads like many different writers.
 
 > **Looks like:** a few lines from a project's `.agents/style/voice.md`:

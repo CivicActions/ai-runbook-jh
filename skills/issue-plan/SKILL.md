@@ -74,7 +74,7 @@ without stalling on missing required fields.
 
 ## Voice
 Apply `.agents/style/voice.md` to goal descriptions, risk notes, and open questions. Run shared
-plan prose through `check-tone` before publishing.
+plan prose through `tone-check` before publishing.
 
 ## Git exclusion
 Plan files are personal working artifacts — exclude `.agents/plans/` via `.git/info/exclude`, not `.gitignore`. Never add AI runbook working directories to the team-owned `.gitignore`.
@@ -121,4 +121,4 @@ Workflow-state requirements: (per the project contract)
   IDs this plan elaborates)
 - **Invokes:** `implementation-details` (the plan includes a generated IDs checklist)
 - **Downstream:** `handoff-message` (the plan is linked from each session's handoff so the trail is
-  traceable), `check-tone` (run shared plan prose through tone check before publishing)
+  traceable), `tone-check` (run shared plan prose through tone check before publishing)

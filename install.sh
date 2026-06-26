@@ -52,7 +52,7 @@ if [ -e "$voice_dest" ]; then
   echo "Skipped (exists): .agents/style/voice.md"
 else
   cp "$CUSTOM/templates/voice/voice.md" "$voice_dest"
-  echo "Created: .agents/style/voice.md — review and customize before using check-tone"
+  echo "Created: .agents/style/voice.md — review and customize before using tone-check"
 fi
 
 # Scaffold voice.personal.md from template (never overwrites)

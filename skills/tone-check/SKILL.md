@@ -1,11 +1,11 @@
 ---
-name: check-tone
+name: tone-check
 description: "Reviews written content for tone, clarity, and appropriateness. Use when the user says check the tone, does this sound right, review this writing, is this too formal, rewrite this, or shares a commit message/PR description/ticket comment and asks for feedback. Apply when the user wants a second opinion on any written communication."
 ---
 
-# Check Tone
+# Tone Check
 
-> **Voice vs. tone.** `voice.md` is the persistent style spec (how I write, always). `check-tone` is the situational register evaluator (does this specific piece of writing fit its context). This skill applies `voice.md` when suggesting rewrites; spec and evaluator, not duplicates.
+> **Voice vs. tone.** `voice.md` is the persistent style spec (how I write, always). `tone-check` is the situational register evaluator (does this specific piece of writing fit its context). This skill applies `voice.md` when suggesting rewrites; spec and evaluator, not duplicates.
 
 ## Project contract
 Read the active project's `.agents/project-contract.md` (shared contract), then layer `.agents/project-contract.personal.md` on top if it exists (personal entries win where they overlap). Use the merged result for context that shapes the register:
@@ -70,7 +70,7 @@ Flagging a violation in the input and then reproducing it in the rewrite is itse
 
 ## Example
 
-**You ask:** `use the check-tone skill on this PR description`
+**You ask:** `use the tone-check skill on this PR description`
 
 **You get:**
 
@@ -104,7 +104,8 @@ project contract's exact wording.
 
 ## Related Skills
 
-`check-tone` is the cross-cutting voice gate for the system. Any skill that produces prose can route its output through here.
+`tone-check` is the cross-cutting voice gate for the system. Any skill that produces prose can route its output through here.
 
 - **Invoked by:** `commit-message-writer` (validates tone before finalizing), and recommended for any handoff, closure, refinement, or peer-review output before publishing
 - **Pairs with:** `.agents/style/voice.md` (the per-project voice config that defines what "on-tone" means)
+- **Pairs with:** `evidence-check` (tone-check calibrates the confidence and hedging register; evidence-check governs whether the underlying claim is earned)

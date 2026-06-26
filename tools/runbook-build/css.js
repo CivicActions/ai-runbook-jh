@@ -782,6 +782,7 @@ ${roundedVars()}
     .tag-foundation { background: var(--c-graphite-soft); color: var(--c-graphite); }
     .tag-voice      { background: var(--c-walnut-soft);       color: var(--c-walnut); }
     .tag-security   { background: var(--c-oak-soft);      color: var(--c-oak); }
+    .tag-evidence   { background: var(--c-ash-soft);      color: var(--c-ash); }
 
     /* Next chips */
     .next-row {

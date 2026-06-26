@@ -127,4 +127,4 @@ Page now stays scrollable after deselecting any facet on /search.
 - **Invokes:** `browser-check` (live page validation), `definition-of-done` (appends the DoD)
 - **Often invoked by:** `issue-closure-notes` (closure notes link to QA steps), `ticket-refinement`
   (QA steps may be written ahead of time during refinement)
-- **Downstream:** `check-tone` (run the "What Changed" summary and explanatory prose through tone check before posting)
+- **Downstream:** `tone-check` (run the "What Changed" summary and explanatory prose through tone check before posting)

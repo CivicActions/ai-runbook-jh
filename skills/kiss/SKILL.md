@@ -36,7 +36,7 @@ For each complexity signal:
 The simplest implementation that correctly solves the stated requirement.
 
 ## Voice
-Apply `.agents/style/voice.md`. Keep feedback direct, name the problem plainly. Run shared KISS-check prose through `check-tone` before posting.
+Apply `.agents/style/voice.md`. Keep feedback direct, name the problem plainly. Run shared KISS-check prose through `tone-check` before posting.
 
 ## Stack-specific checks
 Read the active project's `## Stack` section from `.agents/project-contract.md` and apply its conventions
@@ -78,4 +78,4 @@ Inline `useState` in the component; use `lodash.debounce` directly. ~120 LOC rem
 - **Pairs with:** `pattern-alignment` (KISS catches over-engineering; pattern-alignment catches under-aligned engineering, both are Build-phase critics)
 - **Pairs with:** `evidence-check` (KISS keeps evidence citations lean; don't turn proof into a bureaucratic audit trail)
 - **Invoked by:** `frontend-peer-review`, `drupal-peer-review` (peer review applies KISS check as part of overall review)
-- **Downstream:** `check-tone` (run shared KISS-check prose through tone check before posting)
+- **Downstream:** `tone-check` (run shared KISS-check prose through tone check before posting)

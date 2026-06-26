@@ -42,7 +42,7 @@ Creates `.agents/skills/`, `.agents/style/`, `.agents/prompts/custom/`, and arti
 
 ## Step 3: Customize voice.md
 
-Every skill loads `.agents/style/voice.md` before generating prose. `check-tone` uses it as its gate. Without it, output reads like different writers each time.
+Every skill loads `.agents/style/voice.md` before generating prose. `tone-check` uses it as its gate. Without it, output reads like different writers each time.
 
 The install step copies the baseline template, which is usable as-is. Tune it to match how the team actually writes — tone, avoid-lists, technical writing patterns — and commit it so the whole team gets consistent output.
 
@@ -80,15 +80,15 @@ Try a skill to confirm invocation works:
 
 ## What you now have
 
-24 skills covering the full ticket lifecycle:
+25 skills covering the full ticket lifecycle:
 
 | Phase | Skills |
 |---|---|
 | Triage | `triage` |
 | Refinement | `ticket-refinement`, `definition-of-done`, `security-check` |
-| Plan | `issue-plan`, `kiss`, `pattern-alignment` |
+| Plan | `issue-plan`, `kiss`, `pattern-alignment`, `evidence-check` |
 | Build | `implementation-details`, `handoff-message`, `component-design`, `drupal-critic` |
-| Validate | `browser-check`, `accessibility-audit`, `responsive-design`, `performance-frontend`, `frontend-peer-review`, `check-tone` |
+| Validate | `browser-check`, `accessibility-audit`, `responsive-design`, `performance-frontend`, `frontend-peer-review`, `tone-check` |
 | Communicate | `qa-steps`, `commit-message-writer`, `organize-commits`, `squash-commits`, `summarize-commits`, `issue-closure-notes`, `lessons-learned` |
 
 Invoke with `@` in Amazon Q or let Copilot auto-select based on your prompt. See [FAQ](FAQ.md) for per-client invocation details.

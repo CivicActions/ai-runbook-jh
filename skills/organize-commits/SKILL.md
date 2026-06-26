@@ -84,7 +84,7 @@ Notes
 
 ## Related Skills
 
-- **Invokes:** `commit-message-writer` (writes a message for each proposed commit, which in turn invokes `check-tone`)
+- **Invokes:** `commit-message-writer` (writes a message for each proposed commit, which in turn invokes `tone-check`)
 - **Sibling skills:** `squash-commits` (use when squashing existing commits rather than organizing working-tree changes), `summarize-commits` (use to write the PR description after commits are organized)
 
 ## Commit message format

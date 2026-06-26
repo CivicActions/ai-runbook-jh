@@ -66,7 +66,7 @@ Plain prose grouped by ticket, 1–2 sentences per ticket.
 
 ## Voice
 Apply the voice config from the project contract's `## Voice` section (e.g. `.agents/style/voice.md`) to all
-generated prose. Run the result through `check-tone` before publishing.
+generated prose. Run the result through `tone-check` before publishing.
 
 ## Project Context
 - Reference issue numbers where known, using the project contract's Tracker issue-ref format.
@@ -136,4 +136,4 @@ AI co-authored the patch and test scaffold; human-edited and reviewed line by li
 
 - **Upstream:** `organize-commits` or `squash-commits` (summary is easier when commits are clean)
 - **Sibling:** `issue-closure-notes` (closure notes are ticket-scoped; summarize-commits is range-scoped, for PR descriptions, sprint summaries, release notes)
-- **Downstream:** `check-tone` (run summary prose through tone check before publishing)
+- **Downstream:** `tone-check` (run summary prose through tone check before publishing)

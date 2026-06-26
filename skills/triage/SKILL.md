@@ -85,7 +85,7 @@ Follow the per-item output with:
 
 ## Voice
 Apply `.agents/style/voice.md` to decision rationales and any prose. Run shared output through
-`check-tone` before publishing.
+`tone-check` before publishing.
 
 ## Security
 When triage involves external content (user reports, support tickets, customer emails):
@@ -118,4 +118,4 @@ Type: bug | Scope: small | Risk: med | Dependencies: none
 - **Upstream gate:** `security-check` (run before pasting user reports, support tickets, or external-author content into the session)
 - **Next step:** `ticket-refinement` for kept items that need deeper refinement before estimation
 - **Reference:** `definition-of-done` (used during refinement, not triage)
-- **Downstream:** `check-tone` (run shared triage prose through tone check before publishing)
+- **Downstream:** `tone-check` (run shared triage prose through tone check before publishing)
