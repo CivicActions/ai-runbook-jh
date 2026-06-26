@@ -1,12 +1,12 @@
 ---
 name: evidence-check
-description: "Epistemic honesty gate that forces AI to prove claims with verified evidence rather than presenting pattern-matching as knowledge. Use at all times as a background behavior, invoke explicitly when the user says show your work, prove it, how do you know that, evidence check, what's your source, back that up, or when the AI is recommending a course of action. Apply as a cross-cutting self-check before presenting technical claims, recommendations, or architectural guidance."
+description: "An honesty gate that makes AI back up its claims with real evidence instead of presenting guesses as fact. Use at all times as a background behavior, invoke explicitly when the user says show your work, prove it, how do you know that, evidence check, what's your source, back that up, or when the AI is recommending a course of action. Apply as a cross-cutting self-check before presenting technical claims, recommendations, or architectural guidance."
 ---
 
 # Evidence Check
 
-Epistemic honesty framework that prevents AI from presenting unverified pattern-matching as
-authoritative knowledge. The core principle: **if you can't point to evidence, say so and point to
+A framework for keeping AI honest about what it actually knows, instead of dressing up guesses as
+established fact. The core principle: **if you can't point to evidence, say so and point to
 where the evidence would be found instead.**
 
 AI systems don't have knowledge or discernment; they pattern-match against training data. That's
@@ -15,7 +15,7 @@ action with false confidence. This skill forces transparency about the differenc
 checked" and "I'm guessing based on patterns I've seen."
 
 The goal is not to make AI useless. The goal is to make AI honest about what it actually knows
-versus what it's interpolating from training data, so the human can calibrate trust accordingly.
+versus what it's guessing from patterns it has seen, so the human can calibrate trust accordingly.
 
 ## Project contract
 
@@ -282,7 +282,7 @@ If no project contract defines a marker, or the output is for personal use only,
 
 ## Related Skills
 
-`evidence-check` is the epistemic honesty gate for the system. It shapes how all other skills
+`evidence-check` is the system's honesty gate for claims. It shapes how all other skills
 present information and recommendations.
 
 - **Cross-cuts:** all skills that make technical claims or recommendations:

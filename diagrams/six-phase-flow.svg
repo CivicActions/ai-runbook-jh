@@ -219,7 +219,7 @@
     <!-- evidence-check -->
     <rect x="1232" y="760" width="268" height="80" fill="#E3DCC8" stroke="#2B2A26" stroke-width="1" rx="4"/>
     <text x="1366" y="785" text-anchor="middle" font-size="12" font-weight="700" fill="#5C5A52" font-family="ui-monospace, 'SF Mono', monospace">evidence-check</text>
-    <text x="1366" y="807" text-anchor="middle" font-size="10" fill="#6B5A41">Epistemic honesty gate for claims.</text>
+    <text x="1366" y="807" text-anchor="middle" font-size="10" fill="#6B5A41">Makes claims carry evidence, not guesses.</text>
     <text x="1366" y="822" text-anchor="middle" font-size="10" fill="#6B5A41">Cross-cuts plan, build, review skills.</text>
   </g>
 
