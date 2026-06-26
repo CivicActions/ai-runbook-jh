@@ -5,7 +5,7 @@
 
   <!-- ============ HEADER ============ -->
   <text x="80" y="55" font-size="30" font-weight="700" fill="#1F1E1B">ai-runbook-jh <tspan font-size="20" font-weight="500" fill="#6B5A41">: AI-Assisted Ticket Workflow</tspan></text>
-  <text x="80" y="84" font-size="15" fill="#6B5A41">Six phases, 24 skills. Voice and security gate every phase. A per-project profile keeps the skills generic.</text>
+  <text x="80" y="84" font-size="15" fill="#6B5A41">Six phases, 25 skills. Voice, security, and evidence gate every phase. A per-project contract keeps the skills generic.</text>
   <text x="1520" y="50" text-anchor="end" font-size="13" fill="#6B5A41">ai-runbook-jh</text>
   <text x="1520" y="86" text-anchor="end" font-size="13" fill="#6B5A41">Framework v1.1 / June 2026</text>
   <line x1="80" y1="108" x2="1520" y2="108" stroke="#D9CDB1" stroke-width="1"/>
@@ -138,7 +138,7 @@
 
   <!-- ============ WORKFLOW STATE CAPTIONS ============ -->
   <text x="80" y="500" font-size="9" font-weight="700" fill="#6B5A41" letter-spacing="2">WORKFLOW STATE</text>
-  <text x="80" y="513" font-size="9" font-style="italic" fill="#6B5A41">(per project profile)</text>
+  <text x="80" y="513" font-size="9" font-style="italic" fill="#6B5A41">(per project contract)</text>
   <g font-style="italic" font-size="10" fill="#6B5A41" text-anchor="middle">
     <text x="188" y="513">New</text>
     <text x="424" y="513">Refined → Ready for Estimate</text>
@@ -176,14 +176,14 @@
     <text x="695" y="668" font-size="11" fill="#6B5A41">+ CA AI Usage Policy + NIST AI RMF</text>
   </g>
 
-  <!-- Profile -->
+  <!-- Contract -->
   <g>
     <rect x="1060" y="585" width="460" height="96" fill="#DDD6C5" rx="4"/>
     <rect x="1060" y="585" width="6" height="96" fill="#5C5A52"/>
-    <text x="1085" y="608" font-size="14" font-weight="700" fill="#5C5A52" letter-spacing="1">PROFILE</text>
+    <text x="1085" y="608" font-size="14" font-weight="700" fill="#5C5A52" letter-spacing="1">CONTRACT</text>
     <text x="1085" y="630" font-size="11" fill="#1F1E1B">Names tracker, stack, DoD, voice config, and sanctioned AI</text>
-    <text x="1085" y="646" font-size="11" fill="#1F1E1B">clients. Same skill, different profile, different output.</text>
-    <text x="1085" y="668" font-size="11" font-family="ui-monospace, 'SF Mono', monospace" fill="#5C5A52">.agents/profile.md</text>
+    <text x="1085" y="646" font-size="11" fill="#1F1E1B">clients. Same skill, different contract, different output.</text>
+    <text x="1085" y="668" font-size="11" font-family="ui-monospace, 'SF Mono', monospace" fill="#5C5A52">.agents/project-contract.md</text>
   </g>
 
   <!-- ============ FOUNDATION SKILLS SECTION ============ -->
@@ -193,28 +193,34 @@
 
   <g>
     <!-- browser-check -->
-    <rect x="80" y="760" width="340" height="80" fill="#E3DCC8" stroke="#2B2A26" stroke-width="1" rx="4"/>
-    <text x="250" y="785" text-anchor="middle" font-size="12" font-weight="700" fill="#2B2A26" font-family="ui-monospace, 'SF Mono', monospace">browser-check</text>
-    <text x="250" y="807" text-anchor="middle" font-size="10" fill="#6B5A41">Live page validation via chrome-devtools.</text>
-    <text x="250" y="822" text-anchor="middle" font-size="10" fill="#6B5A41">Invoked by all Validate skills.</text>
+    <rect x="80" y="760" width="268" height="80" fill="#E3DCC8" stroke="#2B2A26" stroke-width="1" rx="4"/>
+    <text x="214" y="785" text-anchor="middle" font-size="12" font-weight="700" fill="#2B2A26" font-family="ui-monospace, 'SF Mono', monospace">browser-check</text>
+    <text x="214" y="807" text-anchor="middle" font-size="10" fill="#6B5A41">Live page validation via chrome-devtools.</text>
+    <text x="214" y="822" text-anchor="middle" font-size="10" fill="#6B5A41">Invoked by all Validate skills.</text>
 
     <!-- definition-of-done -->
-    <rect x="440" y="760" width="340" height="80" fill="#E3DCC8" stroke="#2B2A26" stroke-width="1" rx="4"/>
-    <text x="610" y="785" text-anchor="middle" font-size="12" font-weight="700" fill="#2B2A26" font-family="ui-monospace, 'SF Mono', monospace">definition-of-done</text>
-    <text x="610" y="807" text-anchor="middle" font-size="10" fill="#6B5A41">Canonical DoD per ticket type.</text>
-    <text x="610" y="822" text-anchor="middle" font-size="10" fill="#6B5A41">Used by refinement, QA, closure, impl-details.</text>
+    <rect x="368" y="760" width="268" height="80" fill="#E3DCC8" stroke="#2B2A26" stroke-width="1" rx="4"/>
+    <text x="502" y="785" text-anchor="middle" font-size="12" font-weight="700" fill="#2B2A26" font-family="ui-monospace, 'SF Mono', monospace">definition-of-done</text>
+    <text x="502" y="807" text-anchor="middle" font-size="10" fill="#6B5A41">Canonical DoD per ticket type.</text>
+    <text x="502" y="822" text-anchor="middle" font-size="10" fill="#6B5A41">Used by refinement, QA, closure, impl.</text>
 
     <!-- tone-check -->
-    <rect x="800" y="760" width="340" height="80" fill="#E3DCC8" stroke="#2B2A26" stroke-width="1" rx="4"/>
-    <text x="970" y="785" text-anchor="middle" font-size="12" font-weight="700" fill="#6B4A2B" font-family="ui-monospace, 'SF Mono', monospace">tone-check</text>
-    <text x="970" y="807" text-anchor="middle" font-size="10" fill="#6B5A41">Voice gate for any prose output.</text>
-    <text x="970" y="822" text-anchor="middle" font-size="10" fill="#6B5A41">Pairs with .agents/style/voice.md.</text>
+    <rect x="656" y="760" width="268" height="80" fill="#E3DCC8" stroke="#2B2A26" stroke-width="1" rx="4"/>
+    <text x="790" y="785" text-anchor="middle" font-size="12" font-weight="700" fill="#6B4A2B" font-family="ui-monospace, 'SF Mono', monospace">tone-check</text>
+    <text x="790" y="807" text-anchor="middle" font-size="10" fill="#6B5A41">Voice gate for any prose output.</text>
+    <text x="790" y="822" text-anchor="middle" font-size="10" fill="#6B5A41">Pairs with .agents/style/voice.md.</text>
 
     <!-- security-check -->
-    <rect x="1160" y="760" width="340" height="80" fill="#E3DCC8" stroke="#2B2A26" stroke-width="1" rx="4"/>
-    <text x="1330" y="785" text-anchor="middle" font-size="12" font-weight="700" fill="#8A6A3A" font-family="ui-monospace, 'SF Mono', monospace">security-check</text>
-    <text x="1330" y="807" text-anchor="middle" font-size="10" fill="#6B5A41">Pre-flight for sensitive content.</text>
-    <text x="1330" y="822" text-anchor="middle" font-size="10" fill="#6B5A41">Sanctioned vs. sensitive classification.</text>
+    <rect x="944" y="760" width="268" height="80" fill="#E3DCC8" stroke="#2B2A26" stroke-width="1" rx="4"/>
+    <text x="1078" y="785" text-anchor="middle" font-size="12" font-weight="700" fill="#8A6A3A" font-family="ui-monospace, 'SF Mono', monospace">security-check</text>
+    <text x="1078" y="807" text-anchor="middle" font-size="10" fill="#6B5A41">Pre-flight for sensitive content.</text>
+    <text x="1078" y="822" text-anchor="middle" font-size="10" fill="#6B5A41">Sanctioned vs. sensitive classification.</text>
+
+    <!-- evidence-check -->
+    <rect x="1232" y="760" width="268" height="80" fill="#E3DCC8" stroke="#2B2A26" stroke-width="1" rx="4"/>
+    <text x="1366" y="785" text-anchor="middle" font-size="12" font-weight="700" fill="#5C5A52" font-family="ui-monospace, 'SF Mono', monospace">evidence-check</text>
+    <text x="1366" y="807" text-anchor="middle" font-size="10" fill="#6B5A41">Epistemic honesty gate for claims.</text>
+    <text x="1366" y="822" text-anchor="middle" font-size="10" fill="#6B5A41">Cross-cuts plan, build, review skills.</text>
   </g>
 
   <!-- ============ FOOTER ============ -->
@@ -222,10 +228,10 @@
   <text x="80" y="890" font-size="10" fill="#6B5A41">PRE-DEVELOPMENT phases happen before the ticket is pulled to "Selected for Development." Triage proposes priority for all kept tickets; refinement may update it.</text>
   <text x="80" y="905" font-size="10" fill="#6B5A41">DEVELOPMENT phases happen after. Plan precedes code (and generates implementation-details). Build includes mid-session handoffs. Validate is engineer-side checking. Communicate is the handoff.</text>
   <text x="80" y="920" font-size="10" fill="#6B5A41">The framework is tool-agnostic. Works with whatever AI client a project sanctions, or paper checklists.</text>
-  <text x="80" y="935" font-size="10" fill="#6B5A41">* <tspan font-family="ui-monospace, 'SF Mono', monospace">drupal-peer-review</tspan> applies only when the profile's stack is Drupal.</text>
+  <text x="80" y="935" font-size="10" fill="#6B5A41">* <tspan font-family="ui-monospace, 'SF Mono', monospace">drupal-peer-review</tspan> applies only when the contract's stack is Drupal.</text>
   <text x="80" y="958" font-size="10" fill="#B8412A" font-weight="600">Canonical doc: ai-runbook-jh/README.md</text>
   <text x="360" y="958" font-size="10" fill="#B8412A" font-weight="600">Skills: ai-runbook-jh/skills/</text>
-  <text x="580" y="958" font-size="10" fill="#B8412A" font-weight="600">Profiles: ai-runbook-jh/profiles/</text>
+  <text x="580" y="958" font-size="10" fill="#B8412A" font-weight="600">Contracts: ai-runbook-jh/contracts/</text>
   <text x="830" y="958" font-size="10" fill="#B8412A" font-weight="600">AI runbook: ai-runbook-jh/runbook/index.html</text>
   <text x="1180" y="958" font-size="10" fill="#B8412A" font-weight="600">Policy: CA AI Usage Policy + NIST AI RMF</text>
 
