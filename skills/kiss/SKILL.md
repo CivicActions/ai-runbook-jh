@@ -76,5 +76,6 @@ Inline `useState` in the component; use `lodash.debounce` directly. ~120 LOC rem
 ## Related Skills
 
 - **Pairs with:** `pattern-alignment` (KISS catches over-engineering; pattern-alignment catches under-aligned engineering, both are Build-phase critics)
+- **Pairs with:** `evidence-check` (KISS keeps evidence citations lean; don't turn proof into a bureaucratic audit trail)
 - **Invoked by:** `frontend-peer-review`, `drupal-peer-review` (peer review applies KISS check as part of overall review)
 - **Downstream:** `check-tone` (run shared KISS-check prose through tone check before posting)
