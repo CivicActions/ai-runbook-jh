@@ -19,6 +19,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 - README: worked examples and inline definitions for jargon; ad-hoc browser-chat use called out alongside IDE/CLI
 
 ### Changed
+- Completed the `profile` to `contract` naming convention: `profiles/` directory renamed to `contracts/`, `PROFILE` env var to `CONTRACT` (with `PROFILE` kept as a backward-compat shim), and the terminology carried across the docs. `.agents/profile.md` stays as a legacy alias.
 - Renamed the `check-tone` skill to `tone-check`, for consistency with the `-check` skill family (`evidence-check`, `security-check`, `browser-check`)
 - README tightened (~40% shorter lede); removed `Pre-development` section; general clarity/consistency pass
 - Em-dashes and arrow glyphs purged across skills, profiles, README, and deck per voice rules
