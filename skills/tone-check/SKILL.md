@@ -92,7 +92,7 @@ Overall: Needs rewrite.
 
 ## Attribution marker
 If the active project contract defines an attribution marker (see the project contract's `## Attribution marker`
-section), always end the output with that marker as the last line — whether the output is findings
+section), always end the output with that marker as the last line, whether the output is findings
 only, rewrites only, or both. One marker per invocation, covering everything above it.
 
 Skip it entirely if the project contract defines no marker (e.g. public OSS contributions). Use the
