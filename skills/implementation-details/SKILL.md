@@ -163,4 +163,5 @@ _AI-assisted draft, reviewed before submission._   <- only if the project contra
 
 - **Invoked by:** `ticket-refinement` (the IDs checklist is part of the refined ticket body), `issue-plan` (the plan includes a generated IDs checklist as Step 7)
 - **Invokes:** `definition-of-done` is the canonical source for the gating checks this checklist anticipates
+- **Pairs with:** `evidence-check` (the surface-area pointers here are claims about the code; confirm them by reading, don't list files from memory)
 - **Standalone use:** also useful when a ticket already exists and only needs its IDs filled in without a full refinement pass

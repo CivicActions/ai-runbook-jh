@@ -120,5 +120,6 @@ Workflow-state requirements: (per the project contract)
 - **Upstream:** `triage` (first touch), `ticket-refinement` (deeper refinement, produces the AC and
   IDs this plan elaborates)
 - **Invokes:** `implementation-details` (the plan includes a generated IDs checklist)
+- **Pairs with:** `evidence-check` (the plan's approach and surface-area claims run through the recommendation protocol: state what was checked, cite it, flag the unverified parts)
 - **Downstream:** `handoff-message` (the plan is linked from each session's handoff so the trail is
   traceable), `tone-check` (run shared plan prose through tone check before publishing)

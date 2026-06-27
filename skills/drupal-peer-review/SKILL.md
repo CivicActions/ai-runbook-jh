@@ -133,4 +133,5 @@ Good Calls
 
 - **Sibling:** `frontend-peer-review` (FE counterpart, apply both on full-stack changes)
 - **Pairs with:** `pattern-alignment` (project pattern conformance), `kiss` (over-engineering check)
+- **Pairs with:** `evidence-check` (verify each finding against the actual code or config before posting; don't flag what you haven't traced)
 - **Downstream:** `qa-steps` (findings often surface QA verification steps), `tone-check` (run shared critique prose through tone check before posting)

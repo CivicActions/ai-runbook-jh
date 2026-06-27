@@ -146,5 +146,6 @@ Divergences
 ## Related Skills
 
 - **Pairs with:** `kiss` (pattern-alignment catches under-aligned engineering; KISS catches over-engineering, both are Build-phase critics)
+- **Pairs with:** `evidence-check` ("matches the canonical pattern" and "no existing helper" are claims; confirm them by reading the code, not from memory)
 - **Invoked by:** `frontend-peer-review`, `drupal-peer-review` (peer review applies pattern check as part of overall review)
 - **Downstream:** `tone-check` (run shared alignment-check prose through tone check before posting)

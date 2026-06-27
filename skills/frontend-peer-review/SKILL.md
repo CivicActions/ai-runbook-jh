@@ -114,4 +114,5 @@ Open Questions
   project's canonical patterns), `kiss` (flags over-engineering)
 - **Sibling:** `drupal-peer-review` (BE counterpart for PHP/services/config review); applies only when
   the project contract's stack is Drupal
+- **Pairs with:** `evidence-check` (a review finding is a claim about the diff; verify it before posting, don't flag what you haven't traced)
 - **Downstream:** `qa-steps` (peer review findings often surface QA scenarios), `tone-check` (run shared review prose through tone check before posting)
