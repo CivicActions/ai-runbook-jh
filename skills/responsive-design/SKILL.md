@@ -62,7 +62,7 @@ For each ⚠️ / ❌:
 - Any content reordering that affects reading order
 
 ## Voice
-Apply the voice config from the project contract `## Voice`. Apply it to issue descriptions and fix suggestions. Run shared review prose through `check-tone` before posting.
+Apply the voice config from the project contract `## Voice`. Apply it to issue descriptions and fix suggestions. Run shared review prose through `tone-check` before posting.
 
 ## Styling Standards
 Pull these from the project contract `## Stack` (and `## Environments` for visual regression). Typical rules:
@@ -139,4 +139,4 @@ Accessibility Notes
 - **Upstream gate:** `security-check` (run before inspecting any environment higher than local, or capturing viewport screenshots that may contain PII or authored content)
 - **Invokes:** `browser-check` (viewport simulation via the project contract's browser inspection MCP)
 - **Sibling Validate-phase skills:** `accessibility-audit`, `performance-frontend`, `frontend-peer-review`
-- **Downstream:** `qa-steps` (responsive checks often produce specific QA viewport scenarios), `check-tone` (run shared review prose through tone check before posting)
+- **Downstream:** `qa-steps` (responsive checks often produce specific QA viewport scenarios), `tone-check` (run shared review prose through tone check before posting)

@@ -1,7 +1,7 @@
 ---
 name: commit-message-writer
 description: "Writes a well-formed git commit message. Use when the user says write a commit, commit message, what should my commit say, help me commit, or draft a commit. Apply even when the user just says 'commit this' or shares a diff without explicitly asking for a message."
-typicalNext: "Run `check-tone` if you want a second pass on the wording before committing."
+typicalNext: "Run `tone-check` if you want a second pass on the wording before committing."
 ---
 
 # Commit Message Writer
@@ -35,7 +35,7 @@ convention rather than inventing a ref format.
      Release Notes statement)
    - 10 characters minimum of meaningful subject, 72 characters max
    - Match any required-fields regex the project contract defines
-4. **Check tone**, use `check-tone` skill on the drafted message before finalizing
+4. **Check tone**, use `tone-check` skill on the drafted message before finalizing
 5. **Flag if scope is too broad**, suggest splitting into multiple commits
 
 ## Output Format
@@ -71,7 +71,7 @@ Alternatives:
 
 ## Related Skills
 
-- **Invokes:** `check-tone` (validates tone before finalizing any message)
+- **Invokes:** `tone-check` (validates tone before finalizing any message)
 - **Invoked by:** `organize-commits` (writes a message for each proposed commit), `squash-commits` (writes the squashed message)
 
 ## Voice

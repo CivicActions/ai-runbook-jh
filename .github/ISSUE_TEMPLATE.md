@@ -20,7 +20,7 @@ about: Report a bug or suggest an improvement
 ## Environment
 
 - AI client:
-- Profile in use:
+- Contract in use:
 - OS:
 
 ## Additional context

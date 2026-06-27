@@ -173,4 +173,5 @@ Reasoning: ticket contains identifiable user data; safe to share after redaction
 This skill is the gate that runs *before* other skills when they're about to ingest sensitive data or operate against higher environments.
 
 - **Runs before:** `browser-check` (especially higher envs), `handoff-message` (when summarizing external content), `triage` and `ticket-refinement` (when summarizing user reports or support tickets), any skill that ingests external data
+- **Pairs with:** `evidence-check` (security claims especially need evidence; pair the security gate with the evidence gate)
 - **References:** [CivicActions AI Usage Policy](https://civicactions.atlassian.net/wiki/x/AwC3Ig), [NIST AI Risk Management Framework](https://www.nist.gov/itl/ai-risk-management-framework)

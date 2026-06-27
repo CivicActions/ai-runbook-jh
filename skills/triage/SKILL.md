@@ -68,8 +68,8 @@ markup, monospace for code/paths). One compact block per item; substitute the pr
 field names from `## Required fields` for the generic ones below:
 
 ```
-[ref] — [Title]
-Decision: Keep / Defer / Decline — [brief rationale]
+[ref]: [Title]
+Decision: Keep / Defer / Decline ([brief rationale])
 [Grouping field 1]: [value] | [Grouping field 2]: [value] | Priority: [value] | Review marker: [project contract's marker]
 Type: [bug/task/feature/debt/spike] | Scope: [small/medium/large/unknown] | Risk: [low/med/high] | Dependencies: [refs or none]
 ```
@@ -85,7 +85,7 @@ Follow the per-item output with:
 
 ## Voice
 Apply `.agents/style/voice.md` to decision rationales and any prose. Run shared output through
-`check-tone` before publishing.
+`tone-check` before publishing.
 
 ## Security
 When triage involves external content (user reports, support tickets, customer emails):
@@ -108,8 +108,8 @@ defines no marker. Tool-agnostic wording (see `security-check`).
 **You get:**
 
 ```
-PROJ-1234 — Facet deselect locks page scroll
-Decision: Keep — repro confirmed, recent regression
+PROJ-1234: Facet deselect locks page scroll
+Decision: Keep (repro confirmed, recent regression)
 Component: Search | Functional area: Filters | Priority: High | Review marker: triaged
 Type: bug | Scope: small | Risk: med | Dependencies: none
 ```
@@ -118,4 +118,4 @@ Type: bug | Scope: small | Risk: med | Dependencies: none
 - **Upstream gate:** `security-check` (run before pasting user reports, support tickets, or external-author content into the session)
 - **Next step:** `ticket-refinement` for kept items that need deeper refinement before estimation
 - **Reference:** `definition-of-done` (used during refinement, not triage)
-- **Downstream:** `check-tone` (run shared triage prose through tone check before publishing)
+- **Downstream:** `tone-check` (run shared triage prose through tone check before publishing)

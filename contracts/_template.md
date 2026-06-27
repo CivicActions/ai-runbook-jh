@@ -1,16 +1,16 @@
 # Project Contract: <PROJECT NAME>
 
-> Copy this to `profiles/<project>.md` and fill in every section for your project. This file is the
+> Copy this to `contracts/<project>.md` and fill in every section for your project. This file is the
 > project contract for AI-assisted work. Skills read the deployed copy at `.agents/project-contract.md`
 > (see `sync.sh`). `sync.sh` also maintains `.agents/profile.md` as a legacy alias. Keep the section set intact so skills
 > resolve every reference; if a section truly doesn't apply, say so rather than deleting it.
-> See `profiles/uswds.md` for a worked example.
+> See `contracts/uswds.md` for a worked example.
 >
 > **Personal overlay:** You can override any section of this contract without editing the shared
 > file. Create `.agents/project-contract.personal.md` at the project root and add only the sections
 > you want to change. Skills load the shared contract first, then apply the personal overlay on top;
 > personal entries win where they overlap. Exclude the file from version control via
-> `.git/info/exclude` (not `.gitignore`) — it's a personal artifact, not a team-owned ignore rule.
+> `.git/info/exclude` (not `.gitignore`); it's a personal artifact, not a team-owned ignore rule.
 > A minimal example that changes only the attribution marker:
 >
 > ```markdown

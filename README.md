@@ -7,8 +7,8 @@
 > Developed against front-end work, but the skills are discipline-agnostic: the same `triage` skill
 > works for any kind of ticket. Extend it by adding new specialized skills for any area.
 >
-> 24 single-purpose **skills** (Markdown checklists, one per task you want done the same way every
-> time: `triage`, `qa-steps`, `handoff-message`, and 21 more) plus a per-project **project contract**
+> 25 single-purpose **skills** (Markdown checklists, one per task you want done the same way every
+> time: `triage`, `qa-steps`, `handoff-message`, and 22 more) plus a per-project **project contract**
 > names ticket tracker, stack, per-ticket Definition of Done, voice config, and approved AI
 > clients. Skills stay generic; the project contract supplies every project-specific detail.
 >
@@ -28,7 +28,7 @@ There's no one right way to run this. Three common ways to do it:
 - **Skills work with each other in a chain.** An agent runs the phases end-to-end, invoking skills as their triggers fire. Minimal hand-driving.
   *e.g. you paste the ticket body and say "triage this and bring it to ready-for-estimation"; the agent runs `triage`, then `ticket-refinement`, then `definition-of-done`, and hands back a refined ticket you paste into the tracker.*
 - **One-off skills.** Pull a single skill when you want it. No chain, no agent in charge.
-  *e.g. "`@check-tone` on this commit message"; only `check-tone` runs, nothing before or after. Or paste the skill's Markdown into a browser chat with no repo access; the model will ask for the inputs it needs.*
+  *e.g. "`@tone-check` on this commit message"; only `tone-check` runs, nothing before or after. Or paste the skill's Markdown into a browser chat with no repo access; the model will ask for the inputs it needs.*
 - **Mixed approach.** Agent drives some phases; you take the wheel for others. Most common in practice when iterating.
   *e.g. you write the plan by hand, then say "implement step 2 of `plans/PROJ-1234-plan.md`"; the agent runs Build while you steer commits.*
 
@@ -60,14 +60,14 @@ For backward compatibility, `sync.sh` also maintains `.agents/profile.md` as a l
 
 A project contract is a single Markdown file describing one project. Skills reference its sections by name
 (tracker, stack, required fields, DoD, sanctioned AI, voice, and so on). The full annotated section
-set lives in [`profiles/_template.md`](profiles/_template.md); keep that set identical across
-profiles so skills resolve every reference.
+set lives in [`contracts/_template.md`](contracts/_template.md); keep that set identical across
+contracts so skills resolve every reference.
 
 ### Example project contracts
 
-- **`profiles/uswds.md`**: a public open-source component library on GitHub (vanilla JS/Sass, no
+- **`contracts/uswds.md`**: a public open-source component library on GitHub (vanilla JS/Sass, no
   Drupal). A good reference for a non-Jira, non-Drupal project.
-- **`profiles/_template.md`**: a blank, annotated contract template. Copy it to start a new one.
+- **`contracts/_template.md`**: a blank, annotated contract template. Copy it to start a new one.
 - A client-specific project contract (e.g. a federal Drupal project) is typically kept **out of version
   control**; in companion repos prefer local-only exclusion via `.git/info/exclude` (use `.gitignore` only when you want a shared team-wide ignore rule). Create your own locally from the template.
 
@@ -76,7 +76,7 @@ profiles so skills resolve every reference.
 Browse the hosted **[AI runbook](https://civicactions.github.io/ai-runbook-jh/runbook/)**, or
 open [`runbook/index.html`](runbook/index.html) locally for the full catalog: one card per
 skill, grouped by phase, with when-to-use, output template, and the skill-call graph.
-`drupal-peer-review` applies only when the contract's stack is Drupal; `check-tone` and `security-check`
+`drupal-peer-review` applies only when the contract's stack is Drupal; `tone-check` and `security-check`
 are the cross-cutting gates.
 
 See [`DESIGN.md`](DESIGN.md) for the visual rationale and
@@ -86,17 +86,17 @@ every token and component from a single source.
 ## Setup
 
 1. Clone `ai-runbook-jh`.
-2. Copy `profiles/_template.md` to `profiles/<project>.md` and fill it in (or start from
-   `profiles/uswds.md` as a worked example).
+2. Copy `contracts/_template.md` to `contracts/<project>.md` and fill it in (or start from
+   `contracts/uswds.md` as a worked example).
 3. Author `.agents/style/voice.md` at the project root. Start from
    [`templates/voice/voice.md`](templates/voice/voice.md) (a baseline for humanizing AI-generated
    prose). Optionally copy
    [`templates/voice/voice.personal.template.md`](templates/voice/voice.personal.template.md) to
    `.agents/style/voice.personal.md` as a personal overlay; entries there win over the shared
    project contract and the file is typically gitignored.
-4. Deploy with `sync.sh`: `PROFILE=<project> PROJECT_ROOT=/path/to/project ./sync.sh` symlinks the
+4. Deploy with `sync.sh`: `CONTRACT=<project> PROJECT_ROOT=/path/to/project ./sync.sh` symlinks the
   skills into the project's `.agents/skills/` and copies the contract to `.agents/project-contract.md`.
-   Override paths via `PROJECT_ROOT`, `CUSTOM`, or `PROFILE` env vars (see `sync.sh` comments;
+   Override paths via `PROJECT_ROOT`, `CUSTOM`, or `CONTRACT` env vars (see `sync.sh` comments;
   `CUSTOM` points at a contract kept outside this repo, useful when client details aren't safe to
    commit).
 5. Try one skill on your next ticket; `qa-steps` is a good first one.
@@ -108,7 +108,7 @@ same either way; only how they're invoked changes.
 
 ## Voice config
 
-Every skill loads `.agents/style/voice.md` before generating prose; `check-tone` is the gate to run
+Every skill loads `.agents/style/voice.md` before generating prose; `tone-check` is the gate to run
 drafts through. Without a project-level voice config, output reads like many different writers.
 
 > **Looks like:** a few lines from a project's `.agents/style/voice.md`:

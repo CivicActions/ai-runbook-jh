@@ -782,6 +782,7 @@ ${roundedVars()}
     .tag-foundation { background: var(--c-graphite-soft); color: var(--c-graphite); }
     .tag-voice      { background: var(--c-walnut-soft);       color: var(--c-walnut); }
     .tag-security   { background: var(--c-oak-soft);      color: var(--c-oak); }
+    .tag-evidence   { background: var(--c-ash-soft);      color: var(--c-ash); }
 
     /* Next chips */
     .next-row {
@@ -1176,7 +1177,7 @@ const SVG = {
   // Hand-drawn pencil-red underline. Scaled by CSS. Thicker stroke to read as pencil, not ink.
   underline:
     `<svg class="underline" viewBox="0 0 300 12" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" preserveAspectRatio="none"><path d="M2 7 Q 30 3, 60 6 T 120 7 T 180 5 T 240 7 T 298 6" pathLength="600"/></svg>`,
-  // Dovetail notch: trapezoid wider at top, narrower at bottom — the classic dovetail tail shape.
+  // Dovetail notch: trapezoid wider at top, narrower at bottom, the classic dovetail tail shape.
   leaf:
     `<svg class="leaf" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 4 L11 4 L9 11 L5 11 Z" opacity="0.9"/></svg>`,
   // Kerf line: hairline + three short tick marks. Reads as a measurement on the bench.

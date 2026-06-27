@@ -64,9 +64,9 @@ Flag anything that needs a decision before committing, e.g. unrelated changes th
 
 ```
 Proposed Commit Sequence
-1. PROJ-1234 Clear overflow lock after facet deselect — filter-button.js
-2. PROJ-1234 Add regression test for deselect — tests/e2e/facets.spec.js
-3. chore: update visual reference shot — backstop_data/
+1. PROJ-1234 Clear overflow lock after facet deselect (filter-button.js)
+2. PROJ-1234 Add regression test for deselect (tests/e2e/facets.spec.js)
+3. chore: update visual reference shot (backstop_data/)
 
 Commands
 git add src/components/filter-button.js
@@ -84,7 +84,7 @@ Notes
 
 ## Related Skills
 
-- **Invokes:** `commit-message-writer` (writes a message for each proposed commit, which in turn invokes `check-tone`)
+- **Invokes:** `commit-message-writer` (writes a message for each proposed commit, which in turn invokes `tone-check`)
 - **Sibling skills:** `squash-commits` (use when squashing existing commits rather than organizing working-tree changes), `summarize-commits` (use to write the PR description after commits are organized)
 
 ## Commit message format

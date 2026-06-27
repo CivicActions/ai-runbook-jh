@@ -55,7 +55,7 @@ Return a flat list of findings. For each:
 End with a summary count by priority and the project contract's a11y validation commands to verify the fix.
 
 ## Voice
-Apply `.agents/style/voice.md` to finding descriptions and fix suggestions. Run shared audit prose through `check-tone` before posting.
+Apply `.agents/style/voice.md` to finding descriptions and fix suggestions. Run shared audit prose through `tone-check` before posting.
 
 ## Attribution
 If the active project contract defines an attribution marker (see its `## Attribution marker` section), end
@@ -88,7 +88,7 @@ Summary: 2 serious findings. Verify with the project's a11y command.
 - **Sibling Validate-phase skills:** `responsive-design`, `performance-frontend`,
   `frontend-peer-review`, `drupal-peer-review` (the last only when the project contract's stack is Drupal); these
   may all run on the same change
-- **Downstream:** `qa-steps` (a11y findings often produce QA verification steps), `check-tone` (run shared audit prose through tone check before posting)
+- **Downstream:** `qa-steps` (a11y findings often produce QA verification steps), `tone-check` (run shared audit prose through tone check before posting)
 
 ## Security
 Audit against the project contract's **local environment by default**. If a higher-environment audit is

@@ -275,7 +275,7 @@ module.exports = {
       typography:      "{typography.mono-sm}",
       rounded:         "{rounded.md}",
       padding:         "{spacing.sm} {spacing.base}",
-      role: "Horizontal strip beneath the phase nodes. Carries cross-cutting + profiles metadata.",
+      role: "Horizontal strip beneath the phase nodes. Carries cross-cutting + contracts metadata.",
     },
     "usage-modes": {
       backgroundColor: "{colors.paper}",

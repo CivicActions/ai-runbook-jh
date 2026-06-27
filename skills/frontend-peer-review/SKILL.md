@@ -78,7 +78,7 @@ Anything that needs a quick message or a short conversation before merge.
 
 ## Voice
 Apply `.agents/style/voice.md` to the overall assessment, must-fix descriptions, and open questions.
-Write like you're talking to a colleague, not filing a report. Run shared review prose through `check-tone` before posting.
+Write like you're talking to a colleague, not filing a report. Run shared review prose through `tone-check` before posting.
 
 ## Attribution
 If the active project contract defines an attribution marker (see its `## Attribution marker` section), end a
@@ -93,11 +93,11 @@ defines no marker (e.g. public OSS). Don't name the specific AI tool (see `secur
 
 ```
 Overall Assessment
-Request changes — two small must-fixes; regression coverage is solid.
+Request changes: two small must-fixes; regression coverage is solid.
 
 Must Fix
-- src/components/Facet.jsx:42 — local useState diverges from FilterContext pattern; switch to the shared context.
-- src/utils/scroll.js — duplicates existing useScrollLock hook; delete and import.
+- src/components/Facet.jsx:42: local useState diverges from FilterContext pattern; switch to the shared context.
+- src/utils/scroll.js: duplicates existing useScrollLock hook; delete and import.
 
 Worth Noting
 - Filter handlers could share a single keydown helper, but not blocking.
@@ -114,4 +114,5 @@ Open Questions
   project's canonical patterns), `kiss` (flags over-engineering)
 - **Sibling:** `drupal-peer-review` (BE counterpart for PHP/services/config review); applies only when
   the project contract's stack is Drupal
-- **Downstream:** `qa-steps` (peer review findings often surface QA scenarios), `check-tone` (run shared review prose through tone check before posting)
+- **Pairs with:** `evidence-check` (a review finding is a claim about the diff; verify it before posting, don't flag what you haven't traced)
+- **Downstream:** `qa-steps` (peer review findings often surface QA scenarios), `tone-check` (run shared review prose through tone check before posting)

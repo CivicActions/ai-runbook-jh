@@ -1,15 +1,15 @@
 ---
-name: check-tone
+name: tone-check
 description: "Reviews written content for tone, clarity, and appropriateness. Use when the user says check the tone, does this sound right, review this writing, is this too formal, rewrite this, or shares a commit message/PR description/ticket comment and asks for feedback. Apply when the user wants a second opinion on any written communication."
 ---
 
-# Check Tone
+# Tone Check
 
-> **Voice vs. tone.** `voice.md` is the persistent style spec (how I write, always). `check-tone` is the situational register evaluator (does this specific piece of writing fit its context). This skill applies `voice.md` when suggesting rewrites; spec and evaluator, not duplicates.
+> **Voice vs. tone.** `voice.md` is the persistent style spec (how I write, always). `tone-check` is the situational register evaluator (does this specific piece of writing fit its context). This skill applies `voice.md` when suggesting rewrites; spec and evaluator, not duplicates.
 
 ## Project contract
 Read the active project's `.agents/project-contract.md` (shared contract), then layer `.agents/project-contract.personal.md` on top if it exists (personal entries win where they overlap). Use the merged result for context that shapes the register:
-- **`## Voice`**: the voice config path (default `.agents/style/voice.md`); apply it when writing rewrites. If a sibling `.agents/style/voice.personal.md` exists (per-engineer overlay, typically gitignored), load it too and let it supplant the shared profile where they overlap (e.g. permitted words, transition style, hedging). Don't double-flag something the personal overlay explicitly allows.
+- **`## Voice`**: the voice config path (default `.agents/style/voice.md`); apply it when writing rewrites. If a sibling `.agents/style/voice.personal.md` exists (per-engineer overlay, typically gitignored), load it too and let it supplant the shared voice config where they overlap (e.g. permitted words, transition style, hedging). Don't double-flag something the personal overlay explicitly allows.
 - **`## Tracker`**: the issue/comment system (e.g. Jira, GitHub) so tracker-comment register lands.
 - **`## Commit conventions`**: the project's commit subject format, so commit-message tone checks
   match the real convention rather than a hardcoded one.
@@ -70,7 +70,7 @@ Flagging a violation in the input and then reproducing it in the rewrite is itse
 
 ## Example
 
-**You ask:** `use the check-tone skill on this PR description`
+**You ask:** `use the tone-check skill on this PR description`
 
 **You get:**
 
@@ -92,7 +92,7 @@ Overall: Needs rewrite.
 
 ## Attribution marker
 If the active project contract defines an attribution marker (see the project contract's `## Attribution marker`
-section), always end the output with that marker as the last line — whether the output is findings
+section), always end the output with that marker as the last line, whether the output is findings
 only, rewrites only, or both. One marker per invocation, covering everything above it.
 
 Skip it entirely if the project contract defines no marker (e.g. public OSS contributions). Use the
@@ -104,7 +104,8 @@ project contract's exact wording.
 
 ## Related Skills
 
-`check-tone` is the cross-cutting voice gate for the system. Any skill that produces prose can route its output through here.
+`tone-check` is the cross-cutting voice gate for the system. Any skill that produces prose can route its output through here.
 
 - **Invoked by:** `commit-message-writer` (validates tone before finalizing), and recommended for any handoff, closure, refinement, or peer-review output before publishing
 - **Pairs with:** `.agents/style/voice.md` (the per-project voice config that defines what "on-tone" means)
+- **Pairs with:** `evidence-check` (tone-check calibrates the confidence and hedging register; evidence-check governs whether the underlying claim is earned)

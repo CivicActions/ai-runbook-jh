@@ -82,7 +82,7 @@ Simplified HTML/template markup showing structure and key classes
 
 ## Voice
 Apply the voice config from the project contract's `## Voice` section (e.g. `.agents/style/voice.md`). Apply
-it to component overview prose and open questions. Run shared design proposals through `check-tone` before posting.
+it to component overview prose and open questions. Run shared design proposals through `tone-check` before posting.
 
 ## Design-system standards
 Pull the hard constraints from the project contract's `## Stack` → Styling section and apply them as
@@ -167,5 +167,5 @@ Open Questions
 
 ## Related Skills
 
-- **Downstream:** `pattern-alignment` (once designed, verify implementation follows established patterns), `kiss` (verify the design isn't over-engineered), `check-tone` (run shared design proposals through tone check before posting)
+- **Downstream:** `pattern-alignment` (once designed, verify implementation follows established patterns), `kiss` (verify the design isn't over-engineered), `tone-check` (run shared design proposals through tone check before posting)
 - **Upstream:** `ticket-refinement` (design thinking often surfaces during refinement, component-design can shape AC and IDs)

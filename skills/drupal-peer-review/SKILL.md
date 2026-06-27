@@ -69,7 +69,7 @@ Always include a **Good Calls** section.
 - Styling must use the project's design-system tokens (see the project contract `## Stack`), never hardcoded hex values.
 
 ## Voice
-Load the voice config from the project contract's `## Voice` section (e.g. `.agents/style/voice.md`) and apply it to all finding descriptions and suggested fixes. Run shared critique prose through `check-tone` before posting.
+Load the voice config from the project contract's `## Voice` section (e.g. `.agents/style/voice.md`) and apply it to all finding descriptions and suggested fixes. Run shared critique prose through `tone-check` before posting.
 
 ## Attribution
 
@@ -113,15 +113,15 @@ If the critique is only for your own immediate use, skip the marker. Skip it ent
 
 ```
 High
-- mymodule.module:23 — direct `\Drupal::service()` call inside hook.
+- mymodule.module:23: direct `\Drupal::service()` call inside hook.
   Fix: move logic to a service class with dependency injection.
 
 Medium
-- mymodule.module:47 — user-facing string lacks `t()` translation wrapper.
+- mymodule.module:47: user-facing string lacks `t()` translation wrapper.
   Fix: wrap with `t('...')`.
 
 Low
-- mymodule.module:12 — static $form_ids array inline.
+- mymodule.module:12: static $form_ids array inline.
   Fix: extract to a module constant.
 
 Good Calls
@@ -133,4 +133,5 @@ Good Calls
 
 - **Sibling:** `frontend-peer-review` (FE counterpart, apply both on full-stack changes)
 - **Pairs with:** `pattern-alignment` (project pattern conformance), `kiss` (over-engineering check)
-- **Downstream:** `qa-steps` (findings often surface QA verification steps), `check-tone` (run shared critique prose through tone check before posting)
+- **Pairs with:** `evidence-check` (verify each finding against the actual code or config before posting; don't flag what you haven't traced)
+- **Downstream:** `qa-steps` (findings often surface QA verification steps), `tone-check` (run shared critique prose through tone check before posting)

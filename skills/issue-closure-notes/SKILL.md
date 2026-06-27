@@ -116,12 +116,12 @@ PR delivers a focused fix; page stays scrollable after deselect across desktop, 
 
 - **Upstream:** `qa-steps` (closure notes reference the QA steps written earlier), `handoff-message` (closure notes summarize what the handoffs documented)
 - **Invokes:** `definition-of-done` (appends the DoD checklist)
-- **Downstream:** `check-tone` (run closure-note prose through tone check before posting)
+- **Downstream:** `tone-check` (run closure-note prose through tone check before posting)
 - **Phase placement:** Closure notes are pre-review communication. They live in Phase 6 (Communicate) alongside `lessons-learned`, both running at handoff time.
 
 ## Voice
 Apply the project's voice config (see the project contract's `## Voice` section, e.g. `.agents/style/voice.md`).
-Apply it to all generated prose, problem summaries, problems encountered, and follow-up notes. Run the closure notes through `check-tone` before posting to the tracker.
+Apply it to all generated prose, problem summaries, problems encountered, and follow-up notes. Run the closure notes through `tone-check` before posting to the tracker.
 
 ## Closure Notes Context
 - Always include the issue ref in the heading, using the project contract's Issue ref format (`## Tracker`)

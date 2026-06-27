@@ -7,23 +7,23 @@
 #
 # Required env vars:
 #   PROJECT_ROOT  target project root (the repo you're working in)
-#   PROFILE       which profiles/<name>.md contract to deploy
+#   CONTRACT      which contracts/<name>.md contract to deploy
 # Optional:
 #   CUSTOM        this framework repo's location (default: the script's own directory)
 #
 # Example:
-#   PROFILE=myproject PROJECT_ROOT=~/code/myproject ./install.sh
+#   CONTRACT=myproject PROJECT_ROOT=~/code/myproject ./install.sh
 
 CUSTOM="${CUSTOM:-$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)}"
 PROJECT_ROOT="${PROJECT_ROOT:-}"
-PROFILE="${PROFILE:-}"
+CONTRACT="${CONTRACT:-${PROFILE:-}}"
 
 if [ -z "$PROJECT_ROOT" ]; then
   echo "ERROR: set PROJECT_ROOT to the target project root" >&2
   exit 1
 fi
-if [ -z "$PROFILE" ]; then
-  echo "ERROR: set PROFILE to a contract name (see profiles/)" >&2
+if [ -z "$CONTRACT" ]; then
+  echo "ERROR: set CONTRACT to a contract name (see contracts/)" >&2
   exit 1
 fi
 
@@ -52,7 +52,7 @@ if [ -e "$voice_dest" ]; then
   echo "Skipped (exists): .agents/style/voice.md"
 else
   cp "$CUSTOM/templates/voice/voice.md" "$voice_dest"
-  echo "Created: .agents/style/voice.md — review and customize before using check-tone"
+  echo "Created: .agents/style/voice.md (review and customize before using tone-check)"
 fi
 
 # Scaffold voice.personal.md from template (never overwrites)
@@ -61,8 +61,8 @@ if [ -e "$personal_dest" ]; then
   echo "Skipped (exists): .agents/style/voice.personal.md"
 else
   cp "$CUSTOM/templates/voice/voice.personal.template.md" "$personal_dest"
-  echo "Created: .agents/style/voice.personal.md — fill in personal overrides, then gitignore it"
+  echo "Created: .agents/style/voice.personal.md (fill in personal overrides, then gitignore it)"
 fi
 
 # Wire skills and contract
-CUSTOM="$CUSTOM" PROJECT_ROOT="$PROJECT_ROOT" PROFILE="$PROFILE" "$CUSTOM/sync.sh"
+CUSTOM="$CUSTOM" PROJECT_ROOT="$PROJECT_ROOT" CONTRACT="$CONTRACT" "$CUSTOM/sync.sh"

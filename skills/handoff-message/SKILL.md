@@ -79,7 +79,7 @@ Save to `.agents/handoffs/[TICKET]-[YYYY-MM-DD]-[HHMM]-handoff.md`
 ```
 
 ## Voice
-Apply `.agents/style/voice.md`. Apply it to all generated text, handoff prose, next steps, risk notes. Run shared handoff prose through `check-tone` before publishing.
+Apply `.agents/style/voice.md`. Apply it to all generated text, handoff prose, next steps, risk notes. Run shared handoff prose through `tone-check` before publishing.
 
 ## Project-specific notes
 - Always include the issue ref in the project contract's `## Tracker` format (e.g. `PROJ-123`, `#NNNN`)
@@ -91,7 +91,7 @@ Apply `.agents/style/voice.md`. Apply it to all generated text, handoff prose, n
   created during this session, remind the user to run it to wire up the skill
 
 ## Git exclusion
-Handoff files are personal working artifacts — exclude `.agents/handoffs/` via `.git/info/exclude`, not `.gitignore`. Never add AI runbook working directories to the team-owned `.gitignore`.
+Handoff files are personal working artifacts; exclude `.agents/handoffs/` via `.git/info/exclude`, not `.gitignore`. Never add AI runbook working directories to the team-owned `.gitignore`.
 
 ## Security
 
@@ -172,7 +172,7 @@ Page locks after facet deselect; tracked to a stale overflow style.
 - filter-button.js: overflow clear added (~L120)
 
 ## Validation performed
-- Local: deselect across desktop/tablet/mobile — passes
+- Local: deselect across desktop/tablet/mobile, passes
 
 ## Known risks and open questions
 - ajaxComplete may race with manual unlock
@@ -188,4 +188,4 @@ Page locks after facet deselect; tracked to a stale overflow style.
 - **Upstream gate:** `security-check` (run before summarizing external content, user reports, or higher-env findings into the handoff)
 - **Phase placement:** Handoff is part of the Build phase. It's a mid-work pause/resume mechanic for carrying state across chat sessions. For end-of-work communication (after build is done), use `issue-closure-notes`. For lessons captured at handoff time, use `lessons-learned`.
 - **Often references:** `issue-plan` (the plan file is linked from the handoff), prior handoffs in `.agents/handoffs/`
-- **Downstream:** `check-tone` (run shared handoff prose through tone check before publishing)
+- **Downstream:** `tone-check` (run shared handoff prose through tone check before publishing)
