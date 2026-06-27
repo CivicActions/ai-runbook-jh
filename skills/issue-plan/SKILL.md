@@ -77,7 +77,7 @@ Apply `.agents/style/voice.md` to goal descriptions, risk notes, and open questi
 plan prose through `tone-check` before publishing.
 
 ## Git exclusion
-Plan files are personal working artifacts — exclude `.agents/plans/` via `.git/info/exclude`, not `.gitignore`. Never add AI runbook working directories to the team-owned `.gitignore`.
+Plan files are personal working artifacts; exclude `.agents/plans/` via `.git/info/exclude`, not `.gitignore`. Never add AI runbook working directories to the team-owned `.gitignore`.
 
 ## Security
 Plan files are personal artifacts that may end up team-visible (shareable on request for peer review

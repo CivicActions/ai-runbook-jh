@@ -21,7 +21,7 @@ Copy the template and fill it in (or have your AI do a first pass from a project
 cp contracts/_template.md contracts/<project>.md
 ```
 
-Then open `contracts/<project>.md` and fill in every section. Keep all section headings intact — skills resolve references by name, so a missing section means a skill falls back to generic behavior. See `contracts/uswds.md` for a worked example.
+Then open `contracts/<project>.md` and fill in every section. Keep all section headings intact; skills resolve references by name, so a missing section means a skill falls back to generic behavior. See `contracts/uswds.md` for a worked example.
 
 **Optional validation tip:** run a second model/client pass on the finished contract before first use. Validate that all required sections are present, no placeholder `<...>` tokens remain, and sanctioned-AI plus branch/plan conventions are concrete.
 
@@ -44,7 +44,7 @@ Creates `.agents/skills/`, `.agents/style/`, `.agents/prompts/custom/`, and arti
 
 Every skill loads `.agents/style/voice.md` before generating prose. `tone-check` uses it as its gate. Without it, output reads like different writers each time.
 
-The install step copies the baseline template, which is usable as-is. Tune it to match how the team actually writes — tone, avoid-lists, technical writing patterns — and commit it so the whole team gets consistent output.
+The install step copies the baseline template, which is usable as-is. Tune it to match how the team actually writes (tone, avoid-lists, technical writing patterns), and commit it so the whole team gets consistent output.
 
 **Personal overlay:** `.agents/style/voice.personal.md` lets individuals override the shared baseline. Gitignore it; don't commit it.
 

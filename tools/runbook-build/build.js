@@ -285,7 +285,7 @@ const html = `<!DOCTYPE html>
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>ai-runbook-jh — skills</title>
+  <title>ai-runbook-jh: skills</title>
   ${FONTS_LINK}
   <style>${baseCss()}</style>
 </head>

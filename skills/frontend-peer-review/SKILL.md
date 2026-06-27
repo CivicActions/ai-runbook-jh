@@ -93,11 +93,11 @@ defines no marker (e.g. public OSS). Don't name the specific AI tool (see `secur
 
 ```
 Overall Assessment
-Request changes — two small must-fixes; regression coverage is solid.
+Request changes: two small must-fixes; regression coverage is solid.
 
 Must Fix
-- src/components/Facet.jsx:42 — local useState diverges from FilterContext pattern; switch to the shared context.
-- src/utils/scroll.js — duplicates existing useScrollLock hook; delete and import.
+- src/components/Facet.jsx:42: local useState diverges from FilterContext pattern; switch to the shared context.
+- src/utils/scroll.js: duplicates existing useScrollLock hook; delete and import.
 
 Worth Noting
 - Filter handlers could share a single keydown helper, but not blocking.

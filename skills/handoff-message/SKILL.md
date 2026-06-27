@@ -91,7 +91,7 @@ Apply `.agents/style/voice.md`. Apply it to all generated text, handoff prose, n
   created during this session, remind the user to run it to wire up the skill
 
 ## Git exclusion
-Handoff files are personal working artifacts — exclude `.agents/handoffs/` via `.git/info/exclude`, not `.gitignore`. Never add AI runbook working directories to the team-owned `.gitignore`.
+Handoff files are personal working artifacts; exclude `.agents/handoffs/` via `.git/info/exclude`, not `.gitignore`. Never add AI runbook working directories to the team-owned `.gitignore`.
 
 ## Security
 
@@ -172,7 +172,7 @@ Page locks after facet deselect; tracked to a stale overflow style.
 - filter-button.js: overflow clear added (~L120)
 
 ## Validation performed
-- Local: deselect across desktop/tablet/mobile — passes
+- Local: deselect across desktop/tablet/mobile, passes
 
 ## Known risks and open questions
 - ajaxComplete may race with manual unlock

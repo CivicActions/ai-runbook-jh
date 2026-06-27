@@ -65,7 +65,7 @@ Complexity Assessment
 Significantly over-engineered for the stated requirement.
 
 Signals Found
-- FilterContext + reducer + 3 hooks for what is a 4-line useState — adds indirection without reuse.
+- FilterContext + reducer + 3 hooks for what is a 4-line useState; adds indirection without reuse.
 - Custom debounce util duplicates lodash.debounce already in dependencies.
 - Three-layer Provider → Hook → Adapter chain for a single call site.
 

@@ -68,8 +68,8 @@ markup, monospace for code/paths). One compact block per item; substitute the pr
 field names from `## Required fields` for the generic ones below:
 
 ```
-[ref] — [Title]
-Decision: Keep / Defer / Decline — [brief rationale]
+[ref]: [Title]
+Decision: Keep / Defer / Decline ([brief rationale])
 [Grouping field 1]: [value] | [Grouping field 2]: [value] | Priority: [value] | Review marker: [project contract's marker]
 Type: [bug/task/feature/debt/spike] | Scope: [small/medium/large/unknown] | Risk: [low/med/high] | Dependencies: [refs or none]
 ```
@@ -108,8 +108,8 @@ defines no marker. Tool-agnostic wording (see `security-check`).
 **You get:**
 
 ```
-PROJ-1234 — Facet deselect locks page scroll
-Decision: Keep — repro confirmed, recent regression
+PROJ-1234: Facet deselect locks page scroll
+Decision: Keep (repro confirmed, recent regression)
 Component: Search | Functional area: Filters | Priority: High | Review marker: triaged
 Type: bug | Scope: small | Risk: med | Dependencies: none
 ```

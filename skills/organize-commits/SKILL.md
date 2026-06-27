@@ -64,9 +64,9 @@ Flag anything that needs a decision before committing, e.g. unrelated changes th
 
 ```
 Proposed Commit Sequence
-1. PROJ-1234 Clear overflow lock after facet deselect — filter-button.js
-2. PROJ-1234 Add regression test for deselect — tests/e2e/facets.spec.js
-3. chore: update visual reference shot — backstop_data/
+1. PROJ-1234 Clear overflow lock after facet deselect (filter-button.js)
+2. PROJ-1234 Add regression test for deselect (tests/e2e/facets.spec.js)
+3. chore: update visual reference shot (backstop_data/)
 
 Commands
 git add src/components/filter-button.js

@@ -23,13 +23,13 @@ Invoke after completing a ticket, sprint, or project phase when the user wants t
 
 ## Approach
 
-**If conversation history is available**, derive everything from it directly — do not ask the user to supply scope, details, or a summary. Read the chat, extract the lessons, write the file.
+**If conversation history is available**, derive everything from it directly; do not ask the user to supply scope, details, or a summary. Read the chat, extract the lessons, write the file.
 
 **If no conversation history is available** (e.g. invoked in a fresh session with no context), ask the user for scope and a brief summary before proceeding.
 
-**One file per topic, not per session.** A single conversation may produce multiple lessons files if distinct topics were covered. Topic-scoped files are more useful as future context than session dumps — they're findable, targeted, and load as signal rather than noise. If a lesson naturally extends a prior file on the same topic, update that file rather than creating a new one.
+**One file per topic, not per session.** A single conversation may produce multiple lessons files if distinct topics were covered. Topic-scoped files are more useful as future context than session dumps; they're findable, targeted, and load as signal rather than noise. If a lesson naturally extends a prior file on the same topic, update that file rather than creating a new one.
 
-1. **Identify the scope**, single ticket, sprint, or larger effort — infer from conversation if present
+1. **Identify the scope**, single ticket, sprint, or larger effort; infer from conversation if present
 2. **What went well**, approaches, tools, or decisions that paid off
 3. **What didn't go well**, blockers, missteps, or things that cost time
 4. **Root causes**, for each thing that didn't go well, what was the underlying reason
@@ -146,4 +146,4 @@ _AI-assisted draft, reviewed before submission._   <- only if the project contra
 - **Output goes where:** `.agents/lessons/`, plus wherever the project files durable knowledge (the
   project contract's `## Knowledge base`). Flag lessons that warrant team sharing, but leave the channel to the engineer. Lessons that change process should also propagate back into the skills themselves.
 - If `.agents/lessons/` does not exist, create it before writing.
-- **Git exclusion:** `.agents/lessons/` should be excluded via `.git/info/exclude`, not `.gitignore`. AI runbook artifacts are personal working files — never add them to the team-owned `.gitignore`.
+- **Git exclusion:** `.agents/lessons/` should be excluded via `.git/info/exclude`, not `.gitignore`. AI runbook artifacts are personal working files; never add them to the team-owned `.gitignore`.

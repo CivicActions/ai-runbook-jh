@@ -35,7 +35,7 @@ component's structure or markup matches the project's design system or design sp
 ## Approach
 
 1. **Identify the implementation type**, service, hook, template, styling component, test, migration, etc.
-2. **Find the canonical pattern**, start at the project contract's `## Patterns / canon` (the component library / design source of truth); otherwise locate 1–2 existing examples of the same type in the codebase. Before asserting a convention exists, verify it with at least one real example from the codebase — don't infer conventions from the project contract alone if the actual files contradict them.
+2. **Find the canonical pattern**, start at the project contract's `## Patterns / canon` (the component library / design source of truth); otherwise locate 1–2 existing examples of the same type in the codebase. Before asserting a convention exists, verify it with at least one real example from the codebase; don't infer conventions from the project contract alone if the actual files contradict them.
 3. **Compare**, does the new implementation follow the same structure, naming, and conventions?
 4. **Flag divergences**, note where it differs and whether the difference is intentional or accidental
 5. **Suggest alignment**, provide the corrected pattern with a concrete code example

@@ -55,8 +55,8 @@ directly into the tracker ticket body.
    batched housekeeping or cleanup tickets, describe the end state of the batch rather than
    itemizing each individual fix.
 4. **Preserve useful source content**: if the source ticket or epic contains anything that would
-   help a person or AI understand, execute, or plan the work — templates, checklists, ordered
-   lists, background context, reference structures, scope notes, or open questions — keep it
+   help a person or AI understand, execute, or plan the work (templates, checklists, ordered
+   lists, background context, reference structures, scope notes, or open questions), keep it
    verbatim or as a clearly labeled block. Do not summarize it into a single line or drop it
    in the interest of brevity. When in doubt, keep it.
 5. **Identify dependencies**: other tickets, modules, environments, people who need to weigh in
@@ -86,7 +86,7 @@ Section labels must be bolded using the project contract's tracker markup. For J
 As a [type of user], I want to [perform an action], so that I can [achieve a goal/benefit].
 
 *Acceptance criteria:*
-* [observable outcome — verifiable without reading the diff; no file paths or internal naming]
+* [observable outcome, verifiable without reading the diff; no file paths or internal naming]
 * [observable outcome]
 
 *Context/background:*
@@ -196,7 +196,7 @@ User story:
 As a [type of user], I want to [perform an action], so that I can [achieve a goal/benefit].
 
 Acceptance criteria:
-* [observable outcome — verifiable without reading the diff; no file paths or internal naming]
+* [observable outcome, verifiable without reading the diff; no file paths or internal naming]
 * [observable outcome]
 
 [remaining sections...]

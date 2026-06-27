@@ -33,7 +33,7 @@ Invoke when the user wants a practical checklist of implementation steps for a t
 1. **Understand the ticket**, read the bug description, acceptance criteria, and any technical notes
 2. **Think through the full surface area**, what files are likely involved, what viewports/browsers need checking, what tests need updating
 3. **Include the non-obvious steps**, things a developer might forget: checking adjacent viewports, updating visual-regression reference shots, confirming the fix doesn't regress something nearby
-4. **Keep each item short**, one line, action-oriented — no qualifiers, conditionals, or inline notes ("if X", "opens/closes correctly", "on Y env") — those belong in QA steps or the DoD, not here
+4. **Keep each item short**, one line, action-oriented; no qualifiers, conditionals, or inline notes ("if X", "opens/closes correctly", "on Y env"). Those belong in QA steps or the DoD, not here
 
 ### Stack-conditional steps
 Tailor the test/template/styling steps to the project contract's `## Stack` and `## Environments`; don't
