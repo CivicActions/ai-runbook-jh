@@ -1,6 +1,6 @@
-# Project Profile: USWDS (uswds/uswds, GitHub)
+# Project Contract: USWDS (uswds/uswds, GitHub)
 
-> A worked example for a public OSS component library, and the proving ground for the profile
+> A worked example for a public OSS component library, and the proving ground for the contract
 > abstraction. Scope: the `uswds/uswds` GitHub repo (JS + Sass component library).
 
 ## Tracker
@@ -144,7 +144,7 @@ evidence, no PR.)
 ## Sanctioned AI
 - **Code:** Claude via GitHub Copilot in VS Code (agent mode); the repo driver.
 - **Non-code (reasoning, prose, diff review):** ChatGPT, Gemini.
-- **Note:** sanctioned tools vary by client; always confirm the per-project profile rather than
+- **Note:** sanctioned tools vary by client; always confirm the per-project contract rather than
   assuming a given tool is allowed.
 - **Browser inspection:** Copilot/VS Code tooling or chrome-devtools.
 

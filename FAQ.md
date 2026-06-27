@@ -15,17 +15,17 @@ Invocation behavior varies by client:
 
 **Do I need the repo cloned locally to use skills?**
 
-For IDE use, yes. For one-off use in a browser chat, no — paste the skill's Markdown directly and the model will prompt you for missing context (profile values, ticket body, diff, etc.).
+For IDE use, yes. For one-off use in a browser chat, no — paste the skill's Markdown directly and the model will prompt you for missing context (contract values, ticket body, diff, etc.).
 
 ---
 
-## Profiles
+## Contracts
 
-**Should I commit my profile to the `ai-runbook-jh` repo?**
+**Should I commit my contract to the `ai-runbook-jh` repo?**
 
-Only if it contains nothing client-sensitive. Client-specific project profiles often include internal URLs, tracker formats, and team conventions that shouldn't be public. In companion repos, prefer local-only exclusion via `.git/info/exclude` and keep it local. Use `.gitignore` only when you intentionally want a shared team-wide ignore rule.
+Only if it contains nothing client-sensitive. Client-specific project contracts often include internal URLs, tracker formats, and team conventions that shouldn't be public. In companion repos, prefer local-only exclusion via `.git/info/exclude` and keep it local. Use `.gitignore` only when you intentionally want a shared team-wide ignore rule.
 
-**What if I skip a section in the project profile?**
+**What if I skip a section in the project contract?**
 
 Skills fall back to generic behavior for any section that's missing. It still works; you just get less project-specific output. Keep all section headings intact even if a value is "none" or "n/a".
 
@@ -51,4 +51,4 @@ Run `sync.sh`. It adds symlinks for any new skills and skips everything already 
 
 **Why is there both `install.sh` and `sync.sh`?**
 
-`install.sh` is for first-time setup: creates directories, scaffolds voice files, then calls `sync.sh`. `sync.sh` is for ongoing updates: links new skills, deploys the profile. Run install once; run sync whenever you pull upstream changes.
+`install.sh` is for first-time setup: creates directories, scaffolds voice files, then calls `sync.sh`. `sync.sh` is for ongoing updates: links new skills, deploys the contract. Run install once; run sync whenever you pull upstream changes.

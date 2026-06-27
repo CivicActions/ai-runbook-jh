@@ -812,13 +812,13 @@ function slideSubtitle(slide, text, x = 0.6, y = 1.25) {
   });
   s.addText([
     { text: "Which tools are approved depends on the client. ", options: {} },
-    { text: "Read the profile's Sanctioned AI section", options: { bold: true } },
+    { text: "Read the contract's Sanctioned AI section", options: { bold: true } },
     { text: " before using any AI client on project work.", options: {} },
   ], {
     x: rdx + 0.2, y: 5.5, w: rdw - 0.4, h: 0.7,
     fontSize: 11, fontFace: F.body, color: C.textDark, margin: 0,
   });
-  s.addText("Skills are portable across clients; the profile names what's allowed.", {
+  s.addText("Skills are portable across clients; the contract names what's allowed.", {
     x: rdx + 0.2, y: 6.25, w: rdw - 0.4, h: 0.3,
     fontSize: 10, fontFace: F.body, italic: true, color: C.textMid, margin: 0,
   });
@@ -1014,7 +1014,7 @@ function slideSubtitle(slide, text, x = 0.6, y = 1.25) {
     },
     {
       n: 4, title: "Run sync.sh",
-      detail: "PROFILE=<name> PROJECT_ROOT=<path> ./sync.sh: symlinks the skills into .agents/skills/ and deploys the contract to .agents/project-contract.md",
+      detail: "CONTRACT=<name> PROJECT_ROOT=<path> ./sync.sh: symlinks the skills into .agents/skills/ and deploys the contract to .agents/project-contract.md",
     },
   ];
 

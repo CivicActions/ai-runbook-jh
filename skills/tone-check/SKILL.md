@@ -9,7 +9,7 @@ description: "Reviews written content for tone, clarity, and appropriateness. Us
 
 ## Project contract
 Read the active project's `.agents/project-contract.md` (shared contract), then layer `.agents/project-contract.personal.md` on top if it exists (personal entries win where they overlap). Use the merged result for context that shapes the register:
-- **`## Voice`**: the voice config path (default `.agents/style/voice.md`); apply it when writing rewrites. If a sibling `.agents/style/voice.personal.md` exists (per-engineer overlay, typically gitignored), load it too and let it supplant the shared profile where they overlap (e.g. permitted words, transition style, hedging). Don't double-flag something the personal overlay explicitly allows.
+- **`## Voice`**: the voice config path (default `.agents/style/voice.md`); apply it when writing rewrites. If a sibling `.agents/style/voice.personal.md` exists (per-engineer overlay, typically gitignored), load it too and let it supplant the shared voice config where they overlap (e.g. permitted words, transition style, hedging). Don't double-flag something the personal overlay explicitly allows.
 - **`## Tracker`**: the issue/comment system (e.g. Jira, GitHub) so tracker-comment register lands.
 - **`## Commit conventions`**: the project's commit subject format, so commit-message tone checks
   match the real convention rather than a hardcoded one.
