@@ -9,7 +9,7 @@ description: "Squashes WIP commits into clean commits before merge. Use when the
 The git mechanics here (interactive rebase, `merge --squash`) are project-agnostic. The
 commit-message *format* is project-specific. Read it from `.agents/project-contract.md` (shared contract), then layer `.agents/project-contract.personal.md` on top if it exists (personal entries win where they overlap):
 - **`## Commit conventions`**: subject-line format, issue-ref prefix, wrap width, and what the body
-  should cover. If the profile has no `## Commit conventions` section, fall back to
+  should cover. If the project contract has no `## Commit conventions` section, fall back to
   `## Tracker` → **Issue ref format** for the prefix and use a sensible default (imperative subject,
   72-char wrap, body explains the why).
 - **`## Branch / plan conventions`**: **Base branch** (the target you squash a feature branch into)
@@ -17,7 +17,7 @@ commit-message *format* is project-specific. Read it from `.agents/project-contr
 - **`## Voice`**: the voice config to apply to the squashed message (see Voice below).
 - **`## Attribution marker`**: whether the project defines one (see Attribution below).
 
-If no profile is present, ask the user for the commit-message convention rather than inventing one.
+If no project contract is present, ask the user for the commit-message convention rather than inventing one.
 
 ## When to Use
 Invoke when the user wants to squash multiple WIP or incremental commits into one clean commit (or a small number of logical commits) before merging.
@@ -26,27 +26,27 @@ Invoke when the user wants to squash multiple WIP or incremental commits into on
 
 1. **Review the commits to squash**, `git log --oneline` to see the range
 2. **Identify the logical groupings**, should this be one commit or a few?
-3. **Write the squashed commit message(s)**, following the profile's commit conventions and voice profile
+3. **Write the squashed commit message(s)**, following the project contract's commit conventions and voice profile
 4. **Provide the git commands**, interactive rebase or `git merge --squash`
 
 ## Output Format
 
 ### Proposed Squashed Message
-Format the subject line per the profile's `## Commit conventions` (issue-ref prefix from
-`## Tracker` → Issue ref format, imperative description, profile wrap width):
+Format the subject line per the project contract's `## Commit conventions` (issue-ref prefix from
+`## Tracker` → Issue ref format, imperative description, project contract wrap width):
 ```
 [<issue-ref>] Brief imperative description
 
-Optional body explaining what changed and why. Wrap per the profile (default 72 characters).
+Optional body explaining what changed and why. Wrap per the project contract (default 72 characters).
 ```
 
 ### Commands
-Use the profile's **Base branch** wherever a target branch is referenced:
+Use the project contract's **Base branch** wherever a target branch is referenced:
 ```bash
 # Squash last N commits interactively
 git rebase -i HEAD~N
 
-# Or squash a branch into one commit from the base branch (see profile Base branch)
+# Or squash a branch into one commit from the base branch (see project contract Base branch)
 git merge --squash <feature-branch>
 git commit
 ```
@@ -55,15 +55,15 @@ git commit
 Flag if any commits in the range should be kept separate rather than squashed.
 
 ## Voice
-Apply the voice config from the profile's `## Voice` section (e.g. `.agents/style/voice.md`) to the
+Apply the voice config from the project contract's `## Voice` section (e.g. `.agents/style/voice.md`) to the
 squashed commit message.
 
 ## Commit Conventions
-Pull the specifics from the profile's `## Commit conventions` section. Convention-independent rules
+Pull the specifics from the project contract's `## Commit conventions` section. Convention-independent rules
 that hold across projects:
 - Imperative mood in the subject line
-- Subject prefixed with the issue ref (profile `## Tracker` → Issue ref format), when the project uses one
-- If the profile's `## Commit conventions` defines an enforced subject-line regex, every squashed
+- Subject prefixed with the issue ref (project contract `## Tracker` → Issue ref format), when the project uses one
+- If the project contract's `## Commit conventions` defines an enforced subject-line regex, every squashed
   subject must match it
 - Body explains the why, not the how
 - Never squash commits already pushed to a shared branch without coordinating with the team

@@ -14,7 +14,7 @@ The output markup, review labels, and environment details are **project-specific
   test commands, and any tooling caveats.
 - **`## Sanctioned AI` → Browser inspection MCP**: which browser tool `browser-check` uses.
 
-If no profile is present, ask the user for the tracker markup and test environment.
+If no project contract is present, ask the user for the tracker markup and test environment.
 
 ## When to Use
 Invoke to write QA steps for a ticket or PR: clear instructions for a reviewer or QA engineer to
@@ -23,8 +23,8 @@ verify the change works correctly.
 ## Approach
 1. **Summarize what changed**: one paragraph on the scope of the change
 2. **Environment setup**: what environment to use, any setup steps (enable a module, create
-   content, use a specific URL), per the profile's `## Environments`
-3. **Execute browser validation**: use `browser-check` (with the profile's browser MCP) to
+   content, use a specific URL), per the project contract's `## Environments`
+3. **Execute browser validation**: use `browser-check` (with the project contract's browser MCP) to
    navigate the relevant pages, capture screenshots, check console for errors, and validate DOM
 4. **Test steps**: ordered, concrete steps to verify the change
 5. **Expected results**: what success looks like for each step
@@ -32,9 +32,9 @@ verify the change works correctly.
 7. **Success criteria**: the minimum bar for the change to be considered passing
 
 ## Output Format
-Render using the profile's `## Tracker` markup. In the structure below, `[heading]` = the profile's
+Render using the project contract's `## Tracker` markup. In the structure below, `[heading]` = the project contract's
 section-heading markup, `[checkbox]` = its checkbox markup, and `[step]` = a plain bullet (no
-checkbox). Wrap the full output per the profile's output-wrapping convention.
+checkbox). Wrap the full output per the project contract's output-wrapping convention.
 
 ```
 [heading] What Changed
@@ -48,7 +48,7 @@ checkbox). Wrap the full output per the profile's output-wrapping convention.
 knows what to expect before they start. Omit section if none.]
 
 [heading] <Review label section, e.g. Visual QA>
-[Include only if the profile defines such a label AND the change has the relevant surface]
+[Include only if the project contract defines such a label AND the change has the relevant surface]
 [step] Setup step
 [step] Navigation step
 [checkbox] Validation: what to verify
@@ -67,7 +67,7 @@ knows what to expect before they start. Omit section if none.]
 ```
 
 - Use plain bullets for setup/navigation steps (no checkbox)
-- Use the profile's checkbox markup before validation/expected lines
+- Use the project contract's checkbox markup before validation/expected lines
 - Omit sections that don't apply (e.g. no review-label section if purely functional, no Caveats if
   none)
 - For bug tickets, Scenario 1 should be the reproduce-then-verify flow
@@ -77,20 +77,20 @@ knows what to expect before they start. Omit section if none.]
 Apply `.agents/style/voice.md` to the "What Changed" summary and any explanatory prose.
 
 ## Environment notes
-Pull from the profile's `## Environments`: note local-vs-CI differences, reference the project's
-local URL pattern, flag if higher-environment validation is required, add the profile's a11y check
+Pull from the project contract's `## Environments`: note local-vs-CI differences, reference the project's
+local URL pattern, flag if higher-environment validation is required, add the project contract's a11y check
 command when the change has accessibility implications, and respect any tooling caveats.
 
 ## Definition of Done
 After writing QA steps, append the relevant DoD by invoking `definition-of-done` with the
-ticket/PR type. The DoD lives in one place (the profile, surfaced via `definition-of-done`) so it
+ticket/PR type. The DoD lives in one place (the project contract, surfaced via `definition-of-done`) so it
 doesn't drift across QA steps, refinement output, and closure notes.
 
 ## Attribution
-QA steps are appended to a ticket/PR. **This skill does not emit a marker.** If the active profile
+QA steps are appended to a ticket/PR. **This skill does not emit a marker.** If the active project contract
 defines an attribution marker, ensure the **final assembled ticket/PR** ends with that marker as its
 last line whenever any section was AI-assisted: one marker per artifact, at the very bottom. Skip
-it entirely if no section was AI-assisted, or if the profile defines no marker (e.g. public OSS).
+it entirely if no section was AI-assisted, or if the project contract defines no marker (e.g. public OSS).
 
 ## Example
 
@@ -129,4 +129,4 @@ Page now stays scrollable after deselecting any facet on /search.
 - **Invokes:** `browser-check` (live page validation), `definition-of-done` (appends the DoD)
 - **Often invoked by:** `issue-closure-notes` (closure notes link to QA steps), `ticket-refinement`
   (QA steps may be written ahead of time during refinement)
-- **Downstream:** `check-tone` (run the "What Changed" summary and explanatory prose through tone check before posting)
+- **Downstream:** `tone-check` (run the "What Changed" summary and explanatory prose through tone check before posting)

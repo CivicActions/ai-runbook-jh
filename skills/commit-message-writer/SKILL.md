@@ -1,7 +1,7 @@
 ---
 name: commit-message-writer
 description: "Writes a well-formed git commit message. Use when the user says write a commit, commit message, what should my commit say, help me commit, or draft a commit. Apply even when the user just says 'commit this' or shares a diff without explicitly asking for a message."
-typicalNext: "Run `check-tone` if you want a second pass on the wording before committing."
+typicalNext: "Run `tone-check` if you want a second pass on the wording before committing."
 ---
 
 # Commit Message Writer
@@ -17,9 +17,9 @@ The commit-message format, issue-ref convention, and any required commit annotat
 - **`## Tracker` → Issue ref format**: how this project writes an issue reference (e.g. `PROJ-123`
   for Jira, `#NNNN` for GitHub). Use this whenever the convention embeds a ref in the message.
 - **`## Voice`**: the voice config to apply to the subject and body.
-- **`## Attribution marker`**: only if the profile defines one (see Attribution below).
+- **`## Attribution marker`**: only if the project contract defines one (see Attribution below).
 
-If no profile is present, fall back to the generic methodology below: conventional-commit-style
+If no project contract is present, fall back to the generic methodology below: conventional-commit-style
 subject, imperative mood, one sentence, no required ref. Ask the user for the project's commit
 convention rather than inventing a ref format.
 
@@ -27,20 +27,20 @@ convention rather than inventing a ref format.
 
 1. **Gather context**, diff, changed files, issue/ticket reference, or description of the change
 2. **Identify the change type**: fix / feat / refactor / chore / test / docs / style
-3. **Write the message** per the profile's `## Commit conventions`:
+3. **Write the message** per the project contract's `## Commit conventions`:
    - Imperative mood ("Add", "Fix", "Remove", not "Added", "Fixed")
-   - Apply the profile's message **Format** (e.g. an embedded issue ref in the profile's
+   - Apply the project contract's message **Format** (e.g. an embedded issue ref in the project contract's
      `## Tracker` → Issue ref format, or a conventional-commit prefix)
    - 1 sentence, 2 at most, no body block (unless the convention requires one, e.g. a
      Release Notes statement)
    - 10 characters minimum of meaningful subject, 72 characters max
-   - Match any required-fields regex the profile defines
-4. **Check tone**, use `check-tone` skill on the drafted message before finalizing
+   - Match any required-fields regex the project contract defines
+4. **Check tone**, use `tone-check` skill on the drafted message before finalizing
 5. **Flag if scope is too broad**, suggest splitting into multiple commits
 
 ## Output Format
 
-Output the message in the profile's commit format, e.g.:
+Output the message in the project contract's commit format, e.g.:
 
 ```
 [issue-ref or prefix]: Brief imperative description of the change.
@@ -71,14 +71,14 @@ Alternatives:
 
 ## Related Skills
 
-- **Invokes:** `check-tone` (validates tone before finalizing any message)
+- **Invokes:** `tone-check` (validates tone before finalizing any message)
 - **Invoked by:** `organize-commits` (writes a message for each proposed commit), `squash-commits` (writes the squashed message)
 
 ## Voice
-Apply the voice config from the profile's `## Voice` section (e.g. `.agents/style/voice.md`). Apply
+Apply the voice config from the project contract's `## Voice` section (e.g. `.agents/style/voice.md`). Apply
 it to the subject line, body, and any alternatives generated.
 
 ## Attribution
 A commit message is not a shared artifact in the same way a ticket or PR description is, so this
-skill does not emit a marker by default. If the active profile's `## Attribution marker` section
+skill does not emit a marker by default. If the active project contract's `## Attribution marker` section
 calls for marking AI-assisted commit messages, honor it; otherwise emit none.

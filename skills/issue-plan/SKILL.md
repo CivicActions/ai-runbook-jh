@@ -16,10 +16,10 @@ The plan-file path, branch convention, base branch, workflow gating, and project
 - **`## Priority guide`, `## Environments`, `## Stack`**: for flagging risk, env steps, and
   compliance implications in project terms.
 
-If no profile is present, ask the user where plans live and what the branch convention is.
+If no project contract is present, ask the user where plans live and what the branch convention is.
 
 ## Output
-**ALWAYS write the plan to the file path defined in the profile's `## Branch / plan conventions`**
+**ALWAYS write the plan to the file path defined in the project contract's `## Branch / plan conventions`**
 (named for the ticket/issue) and stop. Do NOT begin implementing any steps. Do NOT create files,
 run commands, or modify code. The plan is the only deliverable.
 If `.agents/plans/` does not exist, create it before writing.
@@ -40,17 +40,17 @@ identifying risks, and clarifying acceptance criteria.
 6. **Estimate complexity**: small / medium / large / spike
 7. **Generate task list**: use `implementation-details` to produce a concrete ordered task set
 8. **Include branch creation**: first implementation step creates a feature branch from the
-   profile's base branch, named per the profile's branch convention
+   project contract's base branch, named per the project contract's branch convention
 
 ## Project context
-Flag, in the project's terms (read from the profile):
+Flag, in the project's terms (read from the project contract):
 - Environment steps the change requires (e.g. config export); see `## Environments`
 - Whether the change touches shared infrastructure or carries elevated risk; see `## Priority guide`
 - Whether higher-environment validation is required before production; see `## Environments`
-- Security, accessibility, or compliance implications, classified per the profile's priority scheme
+- Security, accessibility, or compliance implications, classified per the project contract's priority scheme
 
 ## Workflow gating
-A plan is written once an item reaches the profile's "ready for development" state (triage and
+A plan is written once an item reaches the project contract's "ready for development" state (triage and
 refinement have already produced the AC, implementation details, LOE, and priority). The plan is the
 implementer's working document, not a refinement artifact. If the item isn't there yet, the right
 skill is `triage` (first touch) or `ticket-refinement` (deeper refinement), not this one.
@@ -58,9 +58,9 @@ skill is `triage` (first touch) or `ticket-refinement` (deeper refinement), not 
 ## Workflow-state field requirements
 End the plan with a checklist of the remaining workflow states ahead of the work and the fields
 that must be filled to enter each one. Read both the state sequence and the per-state required
-fields from the profile (`## Workflow states` and `## Required fields`); don't hardcode them here.
+fields from the project contract (`## Workflow states` and `## Required fields`); don't hardcode them here.
 
-Generic shape (substitute the profile's actual states and fields):
+Generic shape (substitute the project contract's actual states and fields):
 
 ```
 - [State A] → needs: [field, field, field]
@@ -74,10 +74,10 @@ without stalling on missing required fields.
 
 ## Voice
 Apply `.agents/style/voice.md` to goal descriptions, risk notes, and open questions. Run shared
-plan prose through `check-tone` before publishing.
+plan prose through `tone-check` before publishing.
 
 ## Git exclusion
-Plan files are personal working artifacts — exclude `.agents/plans/` via `.git/info/exclude`, not `.gitignore`. Never add AI runbook working directories to the team-owned `.gitignore`.
+Plan files are personal working artifacts; exclude `.agents/plans/` via `.git/info/exclude`, not `.gitignore`. Never add AI runbook working directories to the team-owned `.gitignore`.
 
 ## Security
 Plan files are personal artifacts that may end up team-visible (shareable on request for peer review
@@ -87,8 +87,8 @@ or audit):
 - **No CUI or client-confidential content**: link to internal docs by reference, don't paste them
 
 ## Attribution
-If the active profile defines an attribution marker (see its `## Attribution marker` section), end a
-shared plan with that marker as the last line. Skip it for a personal-only plan, or if the profile
+If the active project contract defines an attribution marker (see its `## Attribution marker` section), end a
+shared plan with that marker as the last line. Skip it for a personal-only plan, or if the project contract
 defines no marker. Don't name the specific AI tool (see `security-check`).
 
 ## Example
@@ -113,12 +113,13 @@ Risks: ajaxComplete may race with manual unlock.
 Branch: fix/PROJ-1234-facet-scroll  (base: develop)
 
 Implementation details: (generated checklist)
-Workflow-state requirements: (per profile)
+Workflow-state requirements: (per the project contract)
 ```
 
 ## Related Skills
 - **Upstream:** `triage` (first touch), `ticket-refinement` (deeper refinement, produces the AC and
   IDs this plan elaborates)
 - **Invokes:** `implementation-details` (the plan includes a generated IDs checklist)
+- **Pairs with:** `evidence-check` (the plan's approach and surface-area claims run through the recommendation protocol: state what was checked, cite it, flag the unverified parts)
 - **Downstream:** `handoff-message` (the plan is linked from each session's handoff so the trail is
-  traceable), `check-tone` (run shared plan prose through tone check before publishing)
+  traceable), `tone-check` (run shared plan prose through tone check before publishing)

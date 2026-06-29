@@ -18,7 +18,7 @@ The fields, tags, priority guide, and markup are **project-specific**. Read them
 - **`## Review markers / tags`**: the "reviewed" marker and any stakeholder-prioritization tag.
 - **`## Priority guide`**: bug priority levels + criteria, and always-high categories.
 
-If no profile is present, ask the user for the project's fields and priority scheme rather than
+If no project contract is present, ask the user for the project's fields and priority scheme rather than
 inventing one.
 
 ## When to Use
@@ -33,7 +33,7 @@ This skill is the *first* pass only. Refinement and estimation are downstream (`
 - Cull aggressively, but err toward keep-with-low-priority over decline
 - Fill the minimum fields so the item is findable and groupable
 - Set an initial priority so it can be sorted against others
-- Tag with the profile's review marker so the next reviewer knows it's been touched
+- Tag with the project contract's review marker so the next reviewer knows it's been touched
 
 ## Audience
 Triage output is written for the **next engineer** who will pick the item up (for refinement,
@@ -49,28 +49,28 @@ starting.
    - References a technology no longer in use? Likely decline.
    - Vague to the point of unactionable? Decline or send back to the author.
    - Err toward keep-with-low-priority over outright decline.
-2. **Fill in the minimum fields** for kept items; use the profile's `## Required fields` (including
-   the Purpose-statement format if the profile defines one).
+2. **Fill in the minimum fields** for kept items; use the project contract's `## Required fields` (including
+   the Purpose-statement format if the project contract defines one).
 3. **Set initial priority**: propose a working priority for every kept item so it can be sorted and
-   reported on, using the profile's `## Priority guide`:
+   reported on, using the project contract's `## Priority guide`:
    - Tech debt / engineering-owned: engineer sets the priority directly.
    - Customer-facing or stakeholder-owned: propose a priority based on visible impact, *and* apply
-     the profile's stakeholder-prioritization tag (if defined) so it surfaces in the stakeholder's
+     the project contract's stakeholder-prioritization tag (if defined) so it surfaces in the stakeholder's
      review; the stakeholder can override.
-   - Bugs: classify per the profile's bug priority levels.
+   - Bugs: classify per the project contract's bug priority levels.
    - Tasks/features: judgment based on user impact and dependencies.
 4. **Flag for deeper refinement**: note items that need a full refinement pass before estimation.
    Use `ticket-refinement` for that work.
 
 ## Output Format
-Render output using the profile's `## Tracker` markup (issue-ref format, heading and emphasis
+Render output using the project contract's `## Tracker` markup (issue-ref format, heading and emphasis
 markup, monospace for code/paths). One compact block per item; substitute the project's actual
 field names from `## Required fields` for the generic ones below:
 
 ```
-[ref] — [Title]
-Decision: Keep / Defer / Decline — [brief rationale]
-[Grouping field 1]: [value] | [Grouping field 2]: [value] | Priority: [value] | Review marker: [profile's marker]
+[ref]: [Title]
+Decision: Keep / Defer / Decline ([brief rationale])
+[Grouping field 1]: [value] | [Grouping field 2]: [value] | Priority: [value] | Review marker: [project contract's marker]
 Type: [bug/task/feature/debt/spike] | Scope: [small/medium/large/unknown] | Risk: [low/med/high] | Dependencies: [refs or none]
 ```
 
@@ -85,7 +85,7 @@ Follow the per-item output with:
 
 ## Voice
 Apply `.agents/style/voice.md` to decision rationales and any prose. Run shared output through
-`check-tone` before publishing.
+`tone-check` before publishing.
 
 ## Security
 When triage involves external content (user reports, support tickets, customer emails):
@@ -97,8 +97,8 @@ When triage involves external content (user reports, support tickets, customer e
 Run `security-check` before pasting external user reports or support content.
 
 ## Attribution
-If the active profile defines an attribution marker (see its `## Attribution marker` section), end
-shared output with that marker as the last line. Skip it for personal-use output, or if the profile
+If the active project contract defines an attribution marker (see its `## Attribution marker` section), end
+shared output with that marker as the last line. Skip it for personal-use output, or if the project contract
 defines no marker. Tool-agnostic wording (see `security-check`).
 
 ## Example
@@ -108,8 +108,8 @@ defines no marker. Tool-agnostic wording (see `security-check`).
 **You get:**
 
 ```
-PROJ-1234 — Facet deselect locks page scroll
-Decision: Keep — repro confirmed, recent regression
+PROJ-1234: Facet deselect locks page scroll
+Decision: Keep (repro confirmed, recent regression)
 Component: Search | Functional area: Filters | Priority: High | Review marker: triaged
 Type: bug | Scope: small | Risk: med | Dependencies: none
 ```
@@ -118,4 +118,4 @@ Type: bug | Scope: small | Risk: med | Dependencies: none
 - **Upstream gate:** `security-check` (run before pasting user reports, support tickets, or external-author content into the session)
 - **Next step:** `ticket-refinement` for kept items that need deeper refinement before estimation
 - **Reference:** `definition-of-done` (used during refinement, not triage)
-- **Downstream:** `check-tone` (run shared triage prose through tone check before publishing)
+- **Downstream:** `tone-check` (run shared triage prose through tone check before publishing)

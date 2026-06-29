@@ -24,22 +24,22 @@ estimation/LOE scale are **project-specific**. Read them from `.agents/project-c
   ticket needs to move from refinement-ready to estimation-ready to dev-ready), plus any pre-merge
   review labels (e.g. visual / UX QA) and who pulls work onto the board.
 - **`## Priority guide`**: for revisiting the initial priority if scope or risk understanding shifts.
-- **`## Estimation`**: the LOE/estimation scale, *if the profile defines one* (see note below).
+- **`## Estimation`**: the LOE/estimation scale, *if the project contract defines one* (see note below).
 - **`## Environments`** / **`## Stack`**: for the project-specific context flags (config exports,
   shared infrastructure, higher-env validation, compliance surfaces).
-- **`## Attribution marker`**: the trailing marker for shared output, *if the profile defines one*.
+- **`## Attribution marker`**: the trailing marker for shared output, *if the project contract defines one*.
 
-If no profile is present, ask the user for the project's fields, workflow states, and markup rather
+If no project contract is present, ask the user for the project's fields, workflow states, and markup rather
 than inventing them.
 
 > **Estimation/LOE:** refinement gets a ticket *ready* to be estimated; it does not set the LOE
-> itself (that's owned by the estimating practice area/team). If the profile defines a `## Estimation`
+> itself (that's owned by the estimating practice area/team). If the project contract defines a `## Estimation`
 > section, reference its scale when flagging what estimation still needs. If it doesn't, flag
-> that the ticket is ready for estimation per the profile's workflow states.
+> that the ticket is ready for estimation per the project contract's workflow states.
 
 ## When to Use
 
-Invoke when a ticket has passed triage and now needs the full description, acceptance criteria, and technical context required to move it to the next workflow state before estimation (see the profile's `## Workflow states`). The output is intended to be pasted directly into the tracker ticket body.
+Invoke when a ticket has passed triage and now needs the full description, acceptance criteria, and technical context required to move it to the next workflow state before estimation (see the project contract's `## Workflow states`). The output is intended to be pasted directly into the tracker ticket body.
 
 ## Approach
 
@@ -51,7 +51,7 @@ Invoke when a ticket has passed triage and now needs the full description, accep
    naming, and technical shorthand in criterion text; move those details to Technical notes. For
    batched housekeeping or cleanup tickets, describe the end state of the batch rather than
    itemizing each individual fix.
-4. **Preserve useful source content (CRITICAL — do not lose context)**: if the source ticket or
+4. **Preserve useful source content (CRITICAL: do not lose context)**: if the source ticket or
    epic contains anything that would help a person or AI understand, execute, or plan the work,
    keep it verbatim or as a clearly labeled block. Do not summarize it into a single line or drop
    it in the interest of brevity. When in doubt, keep it.
@@ -66,32 +66,32 @@ Invoke when a ticket has passed triage and now needs the full description, accep
 
    These should appear in the refined body in their original form (or lightly reformatted for
    readability). A link to a Confluence page about NVDA setup, for example, is not "context you
-   can paraphrase" — it's an actionable prerequisite the developer needs. Embed it where a
+   can paraphrase": it's an actionable prerequisite the developer needs. Embed it where a
    developer would look for it (usually Context/background or Technical notes).
-5. **Fold dependencies and surface area into Technical notes**: other tickets, modules, services, files, and people who need to weigh in all go in Technical notes as bullets — no separate sections.
+5. **Fold dependencies and surface area into Technical notes**: other tickets, modules, services, files, and people who need to weigh in all go in Technical notes as bullets; no separate sections.
 6. **Answer open questions first, then flag what remains**: if the ticket already has open questions, attempt to resolve them using available context (codebase, config, existing docs, triage notes) before listing them as still-open. Only surface a question if it genuinely cannot be answered from what's available. The goal is to reduce open questions, not accumulate them.
-7. **Accessibility bugs — map WCAG criteria**: if the ticket is an accessibility bug (Component =
+7. **Accessibility bugs: map WCAG criteria**: if the ticket is an accessibility bug (Component =
    Accessibility, or the issue describes an AT/keyboard/perceivability failure), identify the
    specific WCAG 2.1 success criteria violated and recommend them as Jira labels in the format
    `WCAG-X.X.X` (e.g. `WCAG-4.1.2`, `WCAG-2.4.7`). Use the `accessibility-wcag` skill's
    checklist and process reference to determine the correct criteria. Include multiple labels if
    more than one criterion applies. These labels go in the "Recommended fields" output alongside
    Component, Priority, etc.
-8. **Confirm fields, labels, and priority**: fill the profile's `## Required fields`; add any
-   pre-merge review labels the profile defines (e.g. visual / UX QA) when the relevant surface changes;
+8. **Confirm fields, labels, and priority**: fill the project contract's `## Required fields`; add any
+   pre-merge review labels the project contract defines (e.g. visual / UX QA) when the relevant surface changes;
    revisit the initial priority set during triage if scope or risk understanding has shifted, using
-   the profile's `## Priority guide`
+   the project contract's `## Priority guide`
 9. **Append Definition of Done**: invoke the `definition-of-done` skill for the appropriate subset
 
 ## Output Format
 
-Wrap the output per the profile's `## Tracker` output-wrapping rule (e.g. a code block) so the user
-can paste it directly into the tracker, and render headings/checkboxes/monospace using the profile's
-Tracker markup. The structure below is generic; substitute the profile's markup for the labels and
+Wrap the output per the project contract's `## Tracker` output-wrapping rule (e.g. a code block) so the user
+can paste it directly into the tracker, and render headings/checkboxes/monospace using the project contract's
+Tracker markup. The structure below is generic; substitute the project contract's markup for the labels and
 checkboxes.
 
-Section labels must be bolded using the profile's tracker markup. For Jira that means
-`*Label:*` syntax. Use the profile's `## Tracker` section for the exact markup rules.
+Section labels must be bolded using the project contract's tracker markup. For Jira that means
+`*Label:*` syntax. Use the project contract's `## Tracker` section for the exact markup rules.
 
 ### Task / Story Body
 
@@ -100,7 +100,7 @@ Section labels must be bolded using the profile's tracker markup. For Jira that 
 As a [type of user], I want to [perform an action], so that I can [achieve a goal/benefit].
 
 *Acceptance criteria:*
-* [observable outcome — verifiable without reading the diff; no file paths or internal naming]
+* [observable outcome, verifiable without reading the diff; no file paths or internal naming]
 * [observable outcome]
 
 *Context/background:*
@@ -147,38 +147,38 @@ As a [type of user], I want to [perform an action], so that I can [achieve a goa
 
 ## Workflow / Lifecycle
 
-Refinement advances a ticket through the project's lifecycle (see the profile's `## Workflow
+Refinement advances a ticket through the project's lifecycle (see the project contract's `## Workflow
 states`). Generically:
 
-- **Into estimation-ready**: the ticket needs a full description, acceptance criteria (task) or steps to reproduce (bug), technical notes covering surface area and dependencies, links to related issues, and any required labels (e.g. the profile's pre-merge review labels). This is what refinement delivers.
+- **Into estimation-ready**: the ticket needs a full description, acceptance criteria (task) or steps to reproduce (bug), technical notes covering surface area and dependencies, links to related issues, and any required labels (e.g. the project contract's pre-merge review labels). This is what refinement delivers.
 - **Estimation-ready → dev-ready**: needs LOE set by the estimating practice area/team (per the
-  profile's `## Estimation` scale, if defined). Done in estimation, not refinement.
-- **Dev-ready → selected for development**: whoever the profile names (e.g. PM/practice area) sets
+  project contract's `## Estimation` scale, if defined). Done in estimation, not refinement.
+- **Dev-ready → selected for development**: whoever the project contract names (e.g. PM/practice area) sets
   the working priority and pulls it onto the board.
 
 Flag any ticket that lacks the fields/labels above before moving it forward.
 
 ## Project context flags
 
-Surface project-specific risks during refinement, drawn from the profile's `## Environments`,
+Surface project-specific risks during refinement, drawn from the project contract's `## Environments`,
 `## Stack`, and `## Priority guide`:
 
-- Note if the ticket requires a **config export** (the profile's config-export command, e.g. for a
+- Note if the ticket requires a **config export** (the project contract's config-export command, e.g. for a
   Drupal project).
-- Flag if the change touches **shared infrastructure / services** the profile calls out (e.g. Redis,
+- Flag if the change touches **shared infrastructure / services** the project contract calls out (e.g. Redis,
   Elasticsearch, SAML, migrations) so dependency review happens.
 - Note if **higher-environment validation** (stage / pre-prod / etc.) is required before production.
-- Flag **security, accessibility, or compliance** implications (the profile's always-high
+- Flag **security, accessibility, or compliance** implications (the project contract's always-high
   categories) so they're caught before estimation.
-- If **UX or VX changes** are involved and the profile defines pre-merge review labels, add them and
+- If **UX or VX changes** are involved and the project contract defines pre-merge review labels, add them and
   note that the relevant team needs to weigh in pre-merge.
 
 (These are the project-specific instances; pull the exact services, commands, and labels from the
-profile rather than assuming a default set.)
+project contract rather than assuming a default set.)
 
 ## Voice
 
-Apply `.agents/style/voice.md` to context/background prose, technical notes, and open questions. Run the assembled ticket body through `check-tone` before pasting it into the tracker.
+Apply `.agents/style/voice.md` to context/background prose, technical notes, and open questions. Run the assembled ticket body through `tone-check` before pasting it into the tracker.
 
 ## Security
 
@@ -194,9 +194,9 @@ tickets) into the refinement session.
 
 ## Attribution
 
-If the active profile defines an attribution marker (see its `## Attribution marker` section), end
+If the active project contract defines an attribution marker (see its `## Attribution marker` section), end
 the **final assembled ticket** with that marker as its last line; one marker per ticket, at the
-very bottom, covering everything above it. Skip it for personal-use output, or if the profile
+very bottom, covering everything above it. Skip it for personal-use output, or if the project contract
 defines no marker (e.g. public OSS contributions). Tool-agnostic wording (see `security-check`).
 
 **Assembly note:** if you append more AI-assisted sections later (e.g., `qa-steps`,
@@ -210,7 +210,7 @@ User story:
 As a [type of user], I want to [perform an action], so that I can [achieve a goal/benefit].
 
 Acceptance criteria:
-* [observable outcome — verifiable without reading the diff; no file paths or internal naming]
+* [observable outcome, verifiable without reading the diff; no file paths or internal naming]
 * [observable outcome]
 
 [remaining sections...]
@@ -219,7 +219,7 @@ Definition of Done:
 [checkbox] Acceptance Criteria are met.
 [checkbox] [...]
 
-_AI-assisted draft, reviewed before submission._   <- only if the profile defines a marker
+_AI-assisted draft, reviewed before submission._   <- only if the project contract defines a marker
 ```
 
 ## Example
@@ -241,9 +241,6 @@ Context/background:
 Users report the page locks after deselect; introduced in the recent filter refactor.
 
 Technical notes:
-Suspect overflow:hidden left on body by the ajaxSend handler.
-
-Technical notes:
 - Suspect overflow:hidden left on body by the ajaxSend handler
 - Surface area: filter button JS, facet AJAX lifecycle (detailed checklist during Plan)
 - Should the fix also cover the no-results branch? (open question)
@@ -259,4 +256,4 @@ Definition of Done:
 - **Upstream:** `triage` (refinement only happens on tickets that survived triage)
 - **Invokes:** `definition-of-done` (generates DoD subset)
 - **Downstream:** `issue-plan` (once selected for development, writes the implementation plan from
-  refined ticket content), `check-tone` (run the assembled ticket body through tone check before publishing)
+  refined ticket content), `tone-check` (run the assembled ticket body through tone check before publishing)

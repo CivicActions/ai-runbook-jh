@@ -36,7 +36,7 @@ For each complexity signal:
 The simplest implementation that correctly solves the stated requirement.
 
 ## Voice
-Apply `.agents/style/voice.md`. Keep feedback direct, name the problem plainly. Run shared KISS-check prose through `check-tone` before posting.
+Apply `.agents/style/voice.md`. Keep feedback direct, name the problem plainly. Run shared KISS-check prose through `tone-check` before posting.
 
 ## Stack-specific checks
 Read the active project's `## Stack` section from `.agents/project-contract.md` and apply its conventions
@@ -51,7 +51,7 @@ fills in the specifics:
 - Powerful configuration mechanisms (e.g. Drupal config splits) add complexity, only use them when
   the underlying differences they manage are real.
 
-If the profile defines no `## Stack`, apply the universal signals above without the stack-specific
+If the project contract defines no `## Stack`, apply the universal signals above without the stack-specific
 detail.
 
 ## Example
@@ -65,7 +65,7 @@ Complexity Assessment
 Significantly over-engineered for the stated requirement.
 
 Signals Found
-- FilterContext + reducer + 3 hooks for what is a 4-line useState — adds indirection without reuse.
+- FilterContext + reducer + 3 hooks for what is a 4-line useState; adds indirection without reuse.
 - Custom debounce util duplicates lodash.debounce already in dependencies.
 - Three-layer Provider → Hook → Adapter chain for a single call site.
 
@@ -76,5 +76,6 @@ Inline `useState` in the component; use `lodash.debounce` directly. ~120 LOC rem
 ## Related Skills
 
 - **Pairs with:** `pattern-alignment` (KISS catches over-engineering; pattern-alignment catches under-aligned engineering, both are Build-phase critics)
+- **Pairs with:** `evidence-check` (KISS keeps evidence citations lean; don't turn proof into a bureaucratic audit trail)
 - **Invoked by:** `frontend-peer-review`, `drupal-peer-review` (peer review applies KISS check as part of overall review)
-- **Downstream:** `check-tone` (run shared KISS-check prose through tone check before posting)
+- **Downstream:** `tone-check` (run shared KISS-check prose through tone check before posting)

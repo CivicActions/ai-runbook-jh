@@ -4,7 +4,7 @@
 
 **How do I call a skill?**
 
-Use `@skill-name` in your AI client's chat. `sync.sh` handles everything needed for invocation: it symlinks each skill directory into `.agents/skills/` and also symlinks each `SKILL.md` into `.agents/prompts/custom/`. From there, your AI client picks them up — either directly or via a final link from `~/.aws/amazonq/prompts/`.
+Use `@skill-name` in your AI client's chat. `sync.sh` handles everything needed for invocation: it symlinks each skill directory into `.agents/skills/` and also symlinks each `SKILL.md` into `.agents/prompts/custom/`. From there, your AI client picks them up, either directly or via a final link from `~/.aws/amazonq/prompts/`.
 
 Invocation behavior varies by client:
 
@@ -15,7 +15,7 @@ Invocation behavior varies by client:
 
 **Do I need the repo cloned locally to use skills?**
 
-For IDE use, yes. For one-off use in a browser chat, no — paste the skill's Markdown directly and the model will prompt you for missing context (project contract values, ticket body, diff, etc.).
+For IDE use, yes. For one-off use in a browser chat, no: paste the skill's Markdown directly and the model will prompt you for missing context (contract values, ticket body, diff, etc.).
 
 ---
 
@@ -39,7 +39,7 @@ No. The baseline template is usable as-is. But the more it reflects how your tea
 
 **What's the difference between `voice.md` and `voice.personal.md`?**
 
-`voice.md` is the shared project baseline — commit it so the whole team gets consistent output. `voice.personal.md` is a personal overlay for individual style preferences; entries there win over the shared file. Gitignore it.
+`voice.md` is the shared project baseline; commit it so the whole team gets consistent output. `voice.personal.md` is a personal overlay for individual style preferences; entries there win over the shared file. Gitignore it.
 
 ---
 

@@ -7,7 +7,7 @@ description: "Organizes unstaged changes into clean logical commits ready to pus
 
 The git-hygiene methodology here (group by logical unit, one change per commit, stage with
 `git add -p`, don't rewrite shared history) is project-agnostic. The commit-message format and
-issue-reference convention are project-specific; read them from the profile.
+issue-reference convention are project-specific; read them from the project contract.
 
 ## Project contract
 Read project-specific values from `.agents/project-contract.md` (shared contract), then layer `.agents/project-contract.personal.md` on top if it exists (personal entries win where they overlap):
@@ -18,8 +18,8 @@ Read project-specific values from `.agents/project-contract.md` (shared contract
 - **`## Branch / plan conventions` → Base branch**: the shared branch (e.g. `develop`); never
   rewrite commits already pushed there.
 
-If no profile is present, ask the user for the project's commit format and issue-ref convention
-rather than inventing one. The profile is the single source of truth.
+If no project contract is present, ask the user for the project's commit format and issue-ref convention
+rather than inventing one. The project contract is the single source of truth.
 
 ## When to Use
 Invoke when the user has unstaged or uncommitted changes and wants them organized into clean, logical commits before pushing.
@@ -33,7 +33,7 @@ Invoke when the user has unstaged or uncommitted changes and wants them organize
 5. **Provide the git commands**, exact `git add` / `git add -p` commands to stage each group, followed by the commit
 
 ## Output Format
-Use the profile's issue-ref format and commit-message format below in place of the `<ISSUE-REF>`
+Use the project contract's issue-ref format and commit-message format below in place of the `<ISSUE-REF>`
 placeholder shown here.
 
 ### Proposed Commit Sequence
@@ -64,9 +64,9 @@ Flag anything that needs a decision before committing, e.g. unrelated changes th
 
 ```
 Proposed Commit Sequence
-1. PROJ-1234 Clear overflow lock after facet deselect — filter-button.js
-2. PROJ-1234 Add regression test for deselect — tests/e2e/facets.spec.js
-3. chore: update visual reference shot — backstop_data/
+1. PROJ-1234 Clear overflow lock after facet deselect (filter-button.js)
+2. PROJ-1234 Add regression test for deselect (tests/e2e/facets.spec.js)
+3. chore: update visual reference shot (backstop_data/)
 
 Commands
 git add src/components/filter-button.js
@@ -84,21 +84,21 @@ Notes
 
 ## Related Skills
 
-- **Invokes:** `commit-message-writer` (writes a message for each proposed commit, which in turn invokes `check-tone`)
+- **Invokes:** `commit-message-writer` (writes a message for each proposed commit, which in turn invokes `tone-check`)
 - **Sibling skills:** `squash-commits` (use when squashing existing commits rather than organizing working-tree changes), `summarize-commits` (use to write the PR description after commits are organized)
 
 ## Commit message format
 These rules are project-agnostic; apply them on every project:
 - Use imperative mood in the subject line.
 - One logical change per commit.
-- Never rewrite commits already pushed to a shared branch (the profile's `## Branch / plan
+- Never rewrite commits already pushed to a shared branch (the project contract's `## Branch / plan
   conventions` → Base branch).
 
-The subject prefix and any enforced regex are project-specific. Read them from the profile's
-`## Commit conventions` section and prepend the issue ref (profile `## Tracker` → Issue ref format).
-If the profile defines a subject-line regex, every generated commit message must match it; surface
+The subject prefix and any enforced regex are project-specific. Read them from the project contract's
+`## Commit conventions` section and prepend the issue ref (project contract `## Tracker` → Issue ref format).
+If the project contract defines a subject-line regex, every generated commit message must match it; surface
 that regex to `commit-message-writer` so it produces a conforming subject.
 
-If the profile has no `## Commit conventions` section, fall back to a conventional subject:
+If the project contract has no `## Commit conventions` section, fall back to a conventional subject:
 `<ISSUE-REF> Subject in imperative mood`; and ask the user whether the project enforces a stricter
 format before committing.

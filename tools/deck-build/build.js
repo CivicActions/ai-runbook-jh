@@ -284,7 +284,7 @@ function slideSubtitle(slide, text, x = 0.6, y = 1.25) {
     fontSize: 13, fontFace: F.header, bold: true, charSpacing: 2,
     color: C.voice, margin: 0,
   });
-  s.addText("Every phase produces prose. A project voice config keeps the system from reading like 24 writers.", {
+  s.addText("Every phase produces prose. A project voice config keeps the system from reading like 25 writers.", {
     x: 0.85, y: ccY + 0.45, w: 5.5, h: 0.5,
     fontSize: 11, fontFace: F.body, color: C.textDark, margin: 0,
   });
@@ -677,7 +677,7 @@ function slideSubtitle(slide, text, x = 0.6, y = 1.25) {
     {
       label: "THE GATE",
       body: [
-        { text: "check-tone", options: { bold: true, fontFace: F.code, breakLine: true } },
+        { text: "tone-check", options: { bold: true, fontFace: F.code, breakLine: true } },
         { text: " ", options: { breakLine: true, fontSize: 6 } },
         { text: "Runs any draft through the voice config before publishing. Flags passive voice, hedging, drift.", options: {} },
       ],
@@ -812,13 +812,13 @@ function slideSubtitle(slide, text, x = 0.6, y = 1.25) {
   });
   s.addText([
     { text: "Which tools are approved depends on the client. ", options: {} },
-    { text: "Read the profile's Sanctioned AI section", options: { bold: true } },
+    { text: "Read the contract's Sanctioned AI section", options: { bold: true } },
     { text: " before using any AI client on project work.", options: {} },
   ], {
     x: rdx + 0.2, y: 5.5, w: rdw - 0.4, h: 0.7,
     fontSize: 11, fontFace: F.body, color: C.textDark, margin: 0,
   });
-  s.addText("Skills are portable across clients; the profile names what's allowed.", {
+  s.addText("Skills are portable across clients; the contract names what's allowed.", {
     x: rdx + 0.2, y: 6.25, w: rdw - 0.4, h: 0.3,
     fontSize: 10, fontFace: F.body, italic: true, color: C.textMid, margin: 0,
   });
@@ -940,10 +940,10 @@ function slideSubtitle(slide, text, x = 0.6, y = 1.25) {
     { text: "skills/", options: { fontFace: F.code, bold: true, breakLine: true } },
     { text: "24 phase-based skills, all project-agnostic", options: { color: C.textMid, breakLine: true } },
     { text: " ", options: { breakLine: true } },
-    { text: "profiles/_template.md", options: { fontFace: F.code, bold: true, breakLine: true } },
+    { text: "contracts/_template.md", options: { fontFace: F.code, bold: true, breakLine: true } },
     { text: "Annotated starting point for a new contract", options: { color: C.textMid, breakLine: true } },
     { text: " ", options: { breakLine: true } },
-    { text: "profiles/uswds.md", options: { fontFace: F.code, bold: true, breakLine: true } },
+    { text: "contracts/uswds.md", options: { fontFace: F.code, bold: true, breakLine: true } },
     { text: "Public worked example (open-source library on GitHub)", options: { color: C.textMid, breakLine: true } },
     { text: " ", options: { breakLine: true } },
     { text: "sync.sh", options: { fontFace: F.code, bold: true, breakLine: true } },
@@ -1006,7 +1006,7 @@ function slideSubtitle(slide, text, x = 0.6, y = 1.25) {
     },
     {
       n: 2, title: "Pick or create a contract",
-      detail: "Copy profiles/_template.md to profiles/<project>.md and fill it in (or start from profiles/uswds.md as a worked example)",
+      detail: "Copy contracts/_template.md to contracts/<project>.md and fill it in (or start from contracts/uswds.md as a worked example)",
     },
     {
       n: 3, title: "Author the voice config",
@@ -1014,7 +1014,7 @@ function slideSubtitle(slide, text, x = 0.6, y = 1.25) {
     },
     {
       n: 4, title: "Run sync.sh",
-      detail: "PROFILE=<name> PROJECT_ROOT=<path> ./sync.sh: symlinks the skills into .agents/skills/ and deploys the contract to .agents/project-contract.md",
+      detail: "CONTRACT=<name> PROJECT_ROOT=<path> ./sync.sh: symlinks the skills into .agents/skills/ and deploys the contract to .agents/project-contract.md",
     },
   ];
 

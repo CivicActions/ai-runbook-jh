@@ -35,8 +35,9 @@ const SKILL_META = {
   "qa-steps":               { phase: "communicate" },
   "issue-closure-notes":    { phase: "communicate" },
   "lessons-learned":        { phase: "communicate" },
-  "check-tone":             { phase: "cross-cutting", crossCutting: "voice",    foundation: true },
+  "tone-check":             { phase: "cross-cutting", crossCutting: "voice",    foundation: true },
   "security-check":         { phase: "cross-cutting", crossCutting: "security", foundation: true },
+  "evidence-check":         { phase: "cross-cutting", crossCutting: "evidence", foundation: true },
 };
 
 const PHASES = [
@@ -46,7 +47,7 @@ const PHASES = [
   { id: "build",         num: 4,    name: "Build",         formal: "Implement against the plan. Pattern and simplicity checks. Handoffs carry state across chats.",      state: "Building" },
   { id: "validate",      num: 5,    name: "Validate",      formal: "Confirm it works. Browser, accessibility, responsiveness, performance, peer review.",                state: "Building" },
   { id: "communicate",   num: 6,    name: "Communicate",   formal: "Hand off and reflect. PR summary, QA steps, closure notes, lessons captured at handoff.",            state: "Review ▸ QA ▸ Done" },
-  { id: "cross-cutting", num: null, name: "Cross-cutting", formal: "Not tied to a phase. check-tone fires on anything written for an audience; security-check fires on anything touching secrets or sensitive data.", state: "Always on" },
+  { id: "cross-cutting", num: null, name: "Cross-cutting", formal: "Not tied to a phase. tone-check fires on anything written for an audience; security-check fires on anything touching secrets or sensitive data; evidence-check fires on any technical claim or recommendation.", state: "Always on" },
 ];
 
 for (const p of PHASES) {
@@ -225,6 +226,7 @@ function renderSkillCard(skill) {
   if (skill.foundation) tags.push('<span class="tag tag-foundation">Foundation</span>');
   if (skill.crossCutting === "voice")    tags.push('<span class="tag tag-voice">Voice</span>');
   if (skill.crossCutting === "security") tags.push('<span class="tag tag-security">Security</span>');
+  if (skill.crossCutting === "evidence") tags.push('<span class="tag tag-evidence">Evidence</span>');
   const tagsHtml = tags.length ? `<div class="meta">${tags.join("")}</div>` : "";
 
   const next = [];
@@ -283,7 +285,7 @@ const html = `<!DOCTYPE html>
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>ai-runbook-jh — skills</title>
+  <title>ai-runbook-jh: skills</title>
   ${FONTS_LINK}
   <style>${baseCss()}</style>
 </head>
@@ -311,7 +313,7 @@ const html = `<!DOCTYPE html>
       </a>
       <a class="rail-stat" href="#phase-cross-cutting">
         <span class="rail-stat__num">${String(skills.filter(s => s.phase === "cross-cutting").length).padStart(2, "0")}</span>
-        <span class="rail-stat__label rail-stat__label--long">always-on gates<br>voice + security</span>
+        <span class="rail-stat__label rail-stat__label--long">always-on gates<br>voice + security + evidence</span>
       </a>
     </aside>
   </header>
@@ -331,14 +333,14 @@ const html = `<!DOCTYPE html>
       </div>
       <div class="phaseflow-band">
         cross-cutting · run through every phase ·
-        <a href="#phase-cross-cutting">voice</a><span class="sep">·</span><a href="#phase-cross-cutting">security</a>
+        <a href="#phase-cross-cutting">voice</a><span class="sep">·</span><a href="#phase-cross-cutting">security</a><span class="sep">·</span><a href="#phase-cross-cutting">evidence</a>
       </div>
       <div class="phaseflow-band phaseflow-band-profiles">
         <span class="band-label">Project contracts:</span>
         <span class="band-text">Each skill reads a per-project contract for tracker, stack, voice, and DoD: same skill, different contract, different output</span>
         <span class="band-chips">
-          <a href="../profiles/uswds.md"><code>uswds</code></a>
-          <a href="../profiles/_template.md"><code>_template</code></a>
+          <a href="../contracts/uswds.md"><code>uswds</code></a>
+          <a href="../contracts/_template.md"><code>_template</code></a>
         </span>
       </div>
     </nav>
@@ -347,10 +349,11 @@ const html = `<!DOCTYPE html>
 
     <main id="phases">
       <p class="accent-legend">
-        <span class="accent-legend__intro">Skills are marked when they are foundational, voice-sensitive, or security-sensitive.</span>
+        <span class="accent-legend__intro">Skills are marked when they are foundational, voice-sensitive, security-sensitive, or evidence-sensitive.</span>
         <span><span class="tag tag-foundation">Foundation</span> called by other skills more than invoked directly</span>
         <span><span class="tag tag-voice">Voice</span> fires on anything written for an audience</span>
         <span><span class="tag tag-security">Security</span> fires on anything touching secrets or sensitive data</span>
+        <span><span class="tag tag-evidence">Evidence</span> fires on any technical claim or recommendation</span>
       </p>
       ${PHASES.map(phase => renderPhase(phase, skills.filter(s => s.phase === phase.id))).join("")}
     </main>
@@ -371,8 +374,8 @@ const html = `<!DOCTYPE html>
         <li class="usage-mode">
           <p class="usage-mode-head"><strong>One-off</strong>Pull a single skill when you want it. No chain, no agent in charge.</p>
           <div class="usage-mode-mini">
-            <div class="usage-mode-row" data-who="you"><span class="usage-mode-who">you</span><span class="usage-mode-msg"><code>@check-tone</code> on this commit message.</span></div>
-            <div class="usage-mode-row" data-who="ai"><span class="usage-mode-who">ai</span><span class="usage-mode-msg">runs only <code>check-tone</code>. Nothing before or after.</span></div>
+            <div class="usage-mode-row" data-who="you"><span class="usage-mode-who">you</span><span class="usage-mode-msg"><code>@tone-check</code> on this commit message.</span></div>
+            <div class="usage-mode-row" data-who="ai"><span class="usage-mode-who">ai</span><span class="usage-mode-msg">runs only <code>tone-check</code>. Nothing before or after.</span></div>
           </div>
         </li>
         <li class="usage-mode">
@@ -557,6 +560,7 @@ const html = `<!DOCTYPE html>
       if (skill.foundation) tags.push('<span class="tag tag-foundation">Foundation</span>');
       if (skill.crossCutting === "voice")    tags.push('<span class="tag tag-voice">Voice</span>');
       if (skill.crossCutting === "security") tags.push('<span class="tag tag-security">Security</span>');
+      if (skill.crossCutting === "evidence") tags.push('<span class="tag tag-evidence">Evidence</span>');
 
       document.getElementById("modal-title").textContent = skill.name;
       document.getElementById("modal-tags").innerHTML = tags.join(" ");

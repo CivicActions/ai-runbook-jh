@@ -26,8 +26,8 @@ from `.agents/project-contract.md` (shared contract), then layer `.agents/projec
 - **`## Voice`**: the voice config to apply to prose.
 - **`## Attribution marker`**: the marker to append to shared output, if the project defines one.
 
-If no profile is present, ask the user for the project's design system and framework rather than
-inventing conventions. The profile is the single source of truth.
+If no project contract is present, ask the user for the project's design system and framework rather than
+inventing conventions. The project contract is the single source of truth.
 
 ## When to Use
 Invoke when the user wants to design a new frontend component, review a layout approach, or evaluate
@@ -44,7 +44,7 @@ implementation.
    - Atom: single-purpose element (button, icon, label)
    - Molecule: composed of atoms (card, form field with label, nav item)
    - Organism: complex section (header, search bar, teaser list)
-4. **Define component structure** (apply the framework-specific items only when the profile's
+4. **Define component structure** (apply the framework-specific items only when the project contract's
    `## Stack` → Framework calls for them):
    - Template variables and their types (templating language per `## Stack` → Templates)
    - CSS class naming per the design system's convention (`## Stack` → Styling)
@@ -81,12 +81,12 @@ Simplified HTML/template markup showing structure and key classes
 - Anything needing design or content decisions before implementation
 
 ## Voice
-Apply the voice config from the profile's `## Voice` section (e.g. `.agents/style/voice.md`). Apply
-it to component overview prose and open questions. Run shared design proposals through `check-tone` before posting.
+Apply the voice config from the project contract's `## Voice` section (e.g. `.agents/style/voice.md`). Apply
+it to component overview prose and open questions. Run shared design proposals through `tone-check` before posting.
 
 ## Design-system standards
-Pull the hard constraints from the profile's `## Stack` → Styling section and apply them as
-non-negotiable. For a USWDS-based design system (depends on the profile) that means:
+Pull the hard constraints from the project contract's `## Stack` → Styling section and apply them as
+non-negotiable. For a USWDS-based design system (depends on the project contract) that means:
 - Design tokens only, never hex
 - The design system's naming convention (e.g. BEM, `usa-` prefixes)
 - No ID selectors, no `!important`
@@ -98,17 +98,17 @@ Generic frontend best practices that apply regardless of stack:
 ## Attribution
 
 If you share this design with the team (PR comment, Slack message, posted to the tracker, attached
-to a ticket, used to inform a business decision) **and the active profile defines an attribution
-marker** (see the profile's `## Attribution marker` section), end the output with that marker as the
+to a ticket, used to inform a business decision) **and the active project contract defines an attribution
+marker** (see the project contract's `## Attribution marker` section), end the output with that marker as the
 last line.
 
-If the design is only for your own immediate use, or the profile defines no marker (e.g. public OSS
+If the design is only for your own immediate use, or the project contract defines no marker (e.g. public OSS
 contributions), skip it. The marker wording is a project convention, not policy text verbatim (see
 `security-check`).
 
 ### Examples
 
-**Shared, profile defines a marker** (e.g., attached to a refinement ticket):
+**Shared, project contract defines a marker** (e.g., attached to a refinement ticket):
 
 ```markdown
 ## Frontend design proposal: funding-search filter chip
@@ -120,7 +120,7 @@ Name: filter-chip. Tier: molecule. Purpose: [...]
 | Variable | Type | Required | Description |
 | [...]
 
-[attribution marker from the profile, as the last line]
+[attribution marker from the project contract, as the last line]
 ```
 
 **Personal use only, or no marker defined** (no marker):
@@ -167,5 +167,5 @@ Open Questions
 
 ## Related Skills
 
-- **Downstream:** `pattern-alignment` (once designed, verify implementation follows established patterns), `kiss` (verify the design isn't over-engineered), `check-tone` (run shared design proposals through tone check before posting)
+- **Downstream:** `pattern-alignment` (once designed, verify implementation follows established patterns), `kiss` (verify the design isn't over-engineered), `tone-check` (run shared design proposals through tone check before posting)
 - **Upstream:** `ticket-refinement` (design thinking often surfaces during refinement, component-design can shape AC and IDs)

@@ -10,7 +10,7 @@
 > file. Create `.agents/project-contract.personal.md` at the project root and add only the sections
 > you want to change. Skills load the shared contract first, then apply the personal overlay on top;
 > personal entries win where they overlap. Exclude the file from version control via
-> `.git/info/exclude` (not `.gitignore`) — it's a personal artifact, not a team-owned ignore rule.
+> `.git/info/exclude` (not `.gitignore`); it's a personal artifact, not a team-owned ignore rule.
 > A minimal example that changes only the attribution marker:
 >
 > ```markdown
