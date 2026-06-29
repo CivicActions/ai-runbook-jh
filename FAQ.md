@@ -19,9 +19,9 @@ For IDE use, yes. For one-off use in a browser chat, no: paste the skill's Markd
 
 ---
 
-## Contracts
+## Project Contracts
 
-**Should I commit my contract to the `ai-runbook-jh` repo?**
+**Should I commit my project contract to the `ai-runbook-jh` repo?**
 
 Only if it contains nothing client-sensitive. Client-specific project contracts often include internal URLs, tracker formats, and team conventions that shouldn't be public. In companion repos, prefer local-only exclusion via `.git/info/exclude` and keep it local. Use `.gitignore` only when you intentionally want a shared team-wide ignore rule.
 
@@ -51,4 +51,4 @@ Run `sync.sh`. It adds symlinks for any new skills and skips everything already 
 
 **Why is there both `install.sh` and `sync.sh`?**
 
-`install.sh` is for first-time setup: creates directories, scaffolds voice files, then calls `sync.sh`. `sync.sh` is for ongoing updates: links new skills, deploys the contract. Run install once; run sync whenever you pull upstream changes.
+`install.sh` is for first-time setup: creates directories, scaffolds voice files, then calls `sync.sh`. `sync.sh` is for ongoing updates: links new skills, deploys the project contract. Run install once; run sync whenever you pull upstream changes.

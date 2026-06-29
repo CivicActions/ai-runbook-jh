@@ -43,6 +43,10 @@ checkbox). Wrap the full output per the project contract's output-wrapping conve
 [heading] Setup
 [Any prerequisite steps, login state, content needed, environment]
 
+[heading] Caveats
+[Known edge cases, limitations, or follow-up decisions — list BEFORE scenarios so the reviewer
+knows what to expect before they start. Omit section if none.]
+
 [heading] <Review label section, e.g. Visual QA>
 [Include only if the project contract defines such a label AND the change has the relevant surface]
 [step] Setup step
@@ -60,9 +64,6 @@ checkbox). Wrap the full output per the project contract's output-wrapping conve
 [heading] Scenario 2: [Plain language description]
 [step] Step
 ...
-
-[heading] Caveats
-[Known edge cases, limitations, or follow-up decisions]
 ```
 
 - Use plain bullets for setup/navigation steps (no checkbox)
@@ -105,6 +106,9 @@ Page now stays scrollable after deselecting any facet on /search.
 - Use local environment at the project's local URL.
 - No special content or login required.
 
+## Caveats
+- None.
+
 ## Test Scenarios
 
 ### Scenario 1: Reproduce and verify fix
@@ -119,8 +123,6 @@ Page now stays scrollable after deselecting any facet on /search.
 - [ ] Expected: scrolls at all viewports
 - [ ] Expected: no console errors
 
-## Caveats
-- None.
 ```
 
 ## Related Skills

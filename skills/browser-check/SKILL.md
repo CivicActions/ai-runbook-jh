@@ -32,15 +32,24 @@ Invoke when the user wants to validate a frontend change, bug fix, or new featur
 3. **Navigate and inspect using the project contract's browser-inspection MCP** (`## Sanctioned AI`):
    - Navigate to the target page(s)
    - Capture a screenshot to confirm visual output
-   - Check the console for errors or warnings
+   - Check the console for errors, warnings, and debug log output (if instrumented)
    - Inspect relevant DOM elements
    - Review network requests for failures
    - Take additional screenshots for specific states or viewports
    (Exact tool names vary by MCP; map these steps to the sanctioned tool's API.)
-4. **Cross-viewport check**, test at mobile (375px), tablet (768px), and desktop (1280px) widths where relevant
-5. **Authenticated flows**, use the project's local admin-access method (`## Environments` →
+4. **Debug instrumentation** (only when investigating unexpected behavior):
+   - If something isn't working as expected during step 3, add temporary `console.log`
+     statements at key decision points in the code under test before re-navigating
+   - Use a consistent prefix (e.g. `[debug:browser-check]`) so logs are easy to filter
+   - Target: function entry/exit, conditional branches, AJAX/event callbacks, DOM mutation points
+   - Keep instrumentation minimal but sufficient to trace the execution path
+   - Skip this step entirely for straightforward validation where behavior matches expectations
+   - Remove all debug logs before finishing the check (they are ephemeral, not committed)
+5. **Cross-viewport check**, test at mobile (375px), tablet (768px), and desktop (1280px) widths where relevant
+6. **Authenticated flows**, use the project's local admin-access method (`## Environments` →
    Local: e.g. a Drupal `drush uli` URL, a login route, or none for a public component library)
-6. **Document results**, record what was checked, what passed, what failed
+7. **Document results**, record what was checked, what passed, what failed
+8. **Clean up**, remove any debug instrumentation added in step 4
 
 ## Output Format
 

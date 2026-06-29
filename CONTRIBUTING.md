@@ -5,7 +5,7 @@ Thank you for your interest in contributing to ai-runbook-jh!
 ## What to contribute
 
 - New or improved skills
-- Project contract examples; generic/public projects only; do not commit client-specific project contracts
+- Project contract examples; generic/public projects only; do not commit client-specific contracts
 - Bug fixes in `sync.sh` or the build tools
 - Documentation improvements
 
@@ -18,7 +18,7 @@ Thank you for your interest in contributing to ai-runbook-jh!
 
 ## Guidelines
 
-- Keep skills discipline-agnostic; project specifics belong in contracts.
+- Keep skills discipline-agnostic; project specifics belong in project contracts.
 - Follow the voice and formatting conventions in existing skills.
 - Do not include PII, client ticket data, credentials, or internal URLs.
 - CivicActions contributors: follow the

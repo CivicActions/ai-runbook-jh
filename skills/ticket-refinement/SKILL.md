@@ -39,10 +39,7 @@ than inventing them.
 
 ## When to Use
 
-Invoke when a ticket has passed triage and now needs the full description, acceptance criteria,
-implementation surface area, and dependency analysis required to move it to the next workflow state
-before estimation (see the project contract's `## Workflow states`). The output is intended to be pasted
-directly into the tracker ticket body.
+Invoke when a ticket has passed triage and now needs the full description, acceptance criteria, and technical context required to move it to the next workflow state before estimation (see the project contract's `## Workflow states`). The output is intended to be pasted directly into the tracker ticket body.
 
 ## Approach
 
@@ -54,15 +51,32 @@ directly into the tracker ticket body.
    naming, and technical shorthand in criterion text; move those details to Technical notes. For
    batched housekeeping or cleanup tickets, describe the end state of the batch rather than
    itemizing each individual fix.
-4. **Preserve useful source content**: if the source ticket or epic contains anything that would
-   help a person or AI understand, execute, or plan the work (templates, checklists, ordered
-   lists, background context, reference structures, scope notes, or open questions), keep it
-   verbatim or as a clearly labeled block. Do not summarize it into a single line or drop it
-   in the interest of brevity. When in doubt, keep it.
-5. **Identify dependencies**: other tickets, modules, environments, people who need to weigh in
-6. **Note implementation surface area**: high-level pointers to modules, services, files. The
-   detailed `implementation-details` checklist gets generated later, during Plan.
-7. **Flag risks and open questions**: anything that needs a decision before work starts
+4. **Preserve useful source content (CRITICAL: do not lose context)**: if the source ticket or
+   epic contains anything that would help a person or AI understand, execute, or plan the work,
+   keep it verbatim or as a clearly labeled block. Do not summarize it into a single line or drop
+   it in the interest of brevity. When in doubt, keep it.
+
+   Specifically, NEVER drop or summarize away:
+   - **Links** (Confluence, docs, setup guides, external references, related tickets)
+   - **Environment or tooling prerequisites** (VM setup, special hardware, credentials needed)
+   - **Reproduction-critical details** (specific URLs, browser/AT versions, device configurations)
+   - **Quoted conversations** that contain diagnostic observations or ruling-out info
+   - **Attachments, screenshots, or video references**
+   - **Workarounds or partial fixes** already attempted
+
+   These should appear in the refined body in their original form (or lightly reformatted for
+   readability). A link to a Confluence page about NVDA setup, for example, is not "context you
+   can paraphrase": it's an actionable prerequisite the developer needs. Embed it where a
+   developer would look for it (usually Context/background or Technical notes).
+5. **Fold dependencies and surface area into Technical notes**: other tickets, modules, services, files, and people who need to weigh in all go in Technical notes as bullets; no separate sections.
+6. **Answer open questions first, then flag what remains**: if the ticket already has open questions, attempt to resolve them using available context (codebase, config, existing docs, triage notes) before listing them as still-open. Only surface a question if it genuinely cannot be answered from what's available. The goal is to reduce open questions, not accumulate them.
+7. **Accessibility bugs: map WCAG criteria**: if the ticket is an accessibility bug (Component =
+   Accessibility, or the issue describes an AT/keyboard/perceivability failure), identify the
+   specific WCAG 2.1 success criteria violated and recommend them as Jira labels in the format
+   `WCAG-X.X.X` (e.g. `WCAG-4.1.2`, `WCAG-2.4.7`). Use the `accessibility-wcag` skill's
+   checklist and process reference to determine the correct criteria. Include multiple labels if
+   more than one criterion applies. These labels go in the "Recommended fields" output alongside
+   Component, Priority, etc.
 8. **Confirm fields, labels, and priority**: fill the project contract's `## Required fields`; add any
    pre-merge review labels the project contract defines (e.g. visual / UX QA) when the relevant surface changes;
    revisit the initial priority set during triage if scope or risk understanding has shifted, using
@@ -93,10 +107,7 @@ As a [type of user], I want to [perform an action], so that I can [achieve a goa
 [1–2 paragraphs setting the stage, what's the world look like now, why does this matter]
 
 *Technical notes:*
-[Implementation hints, gotchas, file paths to look at, related modules, no prescribed solutions]
-
-*Questions for refinement:*
-* [open question that needs a human decision before estimation]
+[Hypotheses, file paths, related areas of code, high-level surface area (modules, services, files likely affected), dependencies (other tickets, people who need to weigh in). Prefer concise bullets. Lead each bullet with the key fact; save full sentences for genuinely complex reasoning that can't be compressed. Detailed implementation checklist is generated during Plan via `issue-plan` + `implementation-details`.]
 
 *Definition of Done:*
 [Use @definition-of-done for the appropriate subset]
@@ -120,23 +131,26 @@ As a [type of user], I want to [perform an action], so that I can [achieve a goa
 3. [observed result]
 
 *Technical notes:*
-[Hypotheses, file paths, related areas of code]
+[Hypotheses, file paths, related areas of code, and high-level implementation surface area (modules, services, files likely affected). Prefer concise bullets over prose paragraphs. Lead each bullet with the key fact; save full sentences for genuinely complex reasoning that can't be compressed. Detailed implementation checklist is generated during Plan via `issue-plan` + `implementation-details`.]
 
 *Questions for refinement:*
-* [open question that needs a human decision before estimation]
+* [open question that needs a decision before estimation]
 
 *Definition of Done:*
 [Use @definition-of-done for the appropriate subset]
 ```
+
+> **Context preservation check (run before finalizing):** Compare the refined body against the
+> source ticket. Every link, URL, doc reference, prerequisite instruction, and quoted diagnostic
+> observation from the original must appear somewhere in the refined output. If something was
+> dropped, add it back. Conciseness never justifies losing actionable information.
 
 ## Workflow / Lifecycle
 
 Refinement advances a ticket through the project's lifecycle (see the project contract's `## Workflow
 states`). Generically:
 
-- **Into estimation-ready**: the ticket needs the implementation surface area, full description,
-  acceptance criteria (task) or steps to reproduce (bug), links to related issues, and any required
-  labels (e.g. the project contract's pre-merge review labels). This is what refinement delivers.
+- **Into estimation-ready**: the ticket needs a full description, acceptance criteria (task) or steps to reproduce (bug), technical notes covering surface area and dependencies, links to related issues, and any required labels (e.g. the project contract's pre-merge review labels). This is what refinement delivers.
 - **Estimation-ready → dev-ready**: needs LOE set by the estimating practice area/team (per the
   project contract's `## Estimation` scale, if defined). Done in estimation, not refinement.
 - **Dev-ready → selected for development**: whoever the project contract names (e.g. PM/practice area) sets
@@ -227,16 +241,10 @@ Context/background:
 Users report the page locks after deselect; introduced in the recent filter refactor.
 
 Technical notes:
-Suspect overflow:hidden left on body by the ajaxSend handler.
-
-Implementation surface area:
-Filter button JS; facet AJAX lifecycle. Detailed checklist generated during Plan.
-
-Questions for refinement:
-- Should the fix also cover the no-results branch?
-
-Dependencies:
-- None
+- Suspect overflow:hidden left on body by the ajaxSend handler
+- Surface area: filter button JS, facet AJAX lifecycle (detailed checklist during Plan)
+- Should the fix also cover the no-results branch? (open question)
+- Dependencies: none
 
 Definition of Done:
 [Use definition-of-done]
