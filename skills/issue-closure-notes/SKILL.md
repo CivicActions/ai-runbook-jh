@@ -24,7 +24,7 @@ Invoke when a ticket is complete and the user wants to write closure notes, a du
 ## Approach
 
 1. **Summarize the problem and approach**, what was broken or needed, how it was addressed
-2. **List changes by commit**, concrete deliverables with commit hashes if available
+2. **Summarize changes by logical area**, not by commit. Group related changes together (e.g. "component markup and styles," "JS behavior," "Storybook," "CI/testing"). List commits only when there is a single commit directly worth linking, or when the commit hash is the most useful reference (e.g. a fix commit that can be cherry-picked). Never list every commit.
 3. **Note follow-up work**, only if there's genuinely ticketable deferred work
 
 ## Output Format
@@ -41,7 +41,7 @@ The structure below is generic. Substitute the profile's markup for `[heading]` 
 [1–2 sentences on what was broken/needed and how it was addressed]
 
 [heading] Changes
-[Bullet list: [monospace]commit-hash[/monospace], description of what the commit does]
+[Bullet list grouped by logical area, not by commit. Include a [monospace]commit-hash[/monospace] only when it's the most useful reference for a specific item.]
 
 [heading] Summary
 [1–2 sentences on the end state, what's working now, what the PR delivers]

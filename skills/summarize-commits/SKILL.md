@@ -36,13 +36,15 @@ them, plain Markdown output, no attribution marker.
 
 ### For a PR Description
 
-Keep the body to **1–4 sentences total** (excluding the marker and "how" line). PR descriptions exist to be skimmed, the diff carries the detail. If the profile defines an attribution marker and any commit being summarized was AI-assisted, end the PR description with that marker as the very last block, followed (or preceded) by a one-sentence "how" line that honestly describes what AI did. Wrap and mark up the output per the profile's Tracker section.
+**Hard cap: 1–4 sentences total** (excluding the marker and "how" line). PR descriptions exist to be skimmed; the diff carries the detail. One sentence on what the PR fixes/adds, one or two on anything a reviewer actually needs to know before reading the diff. If there's nothing a reviewer needs to know beyond the subject line, one sentence is enough. Resist the pull to list every file or explain every decision — that belongs in code comments and the plan file. Use plain language; avoid developer shorthand (e.g. "no-ops", "gates", "shims") that a reviewer outside the immediate team might not parse.
+
+Wrap the output in a code block per the profile's Tracker output-wrapping convention so the user can copy and paste directly.
 
 ```
-[1–4 sentences total. State what the PR fixes/adds and any one or two facts a reviewer needs to know. Link the issue (profile Tracker issue-ref format) if not auto-linked.]
+[1–4 sentences total. State what the PR fixes/adds and any one or two facts a reviewer needs to know.]
 
 [attribution marker, if the profile defines one and a commit was AI-assisted]
-[Honest "how" line, see Attribution section for the full menu of variants.]
+[Honest "how" line]
 ```
 
 See `## Attribution` below for full rules.
