@@ -85,21 +85,82 @@ every token and component from a single source.
 
 ## Setup
 
-1. Clone `ai-runbook-jh`.
-2. Copy `contracts/_template.md` to `contracts/<project>.md` and fill it in (or start from
-   `contracts/uswds.md` as a worked example).
-3. Author `.agents/style/voice.md` at the project root. Start from
-   [`templates/voice/voice.md`](templates/voice/voice.md) (a baseline for humanizing AI-generated
-   prose). Optionally copy
-   [`templates/voice/voice.personal.template.md`](templates/voice/voice.personal.template.md) to
-   `.agents/style/voice.personal.md` as a personal overlay; entries there win over the shared
-   profile and the file is typically gitignored.
-4. Deploy with `sync.sh`: `CONTRACT=<project> PROJECT_ROOT=/path/to/project ./sync.sh` symlinks the
-  skills into the project's `.agents/skills/` and copies the contract to `.agents/project-contract.md`.
-   Override paths via `PROJECT_ROOT`, `CUSTOM`, or `CONTRACT` env vars (see `sync.sh` comments;
-  `CUSTOM` points at a contract kept outside this repo, useful when client details aren't safe to
-   commit).
-5. Try one skill on your next ticket; `qa-steps` is a good first one.
+### Prerequisites
+
+- A project repo where you want the skills deployed
+- A project contract for that project — a single Markdown file that tells skills which issue tracker you use, what your tech stack is, what "done" means on your team, and which AI tools are approved. See [Project contracts](#project-contracts-how-the-skills-stay-generic) below, or start from `contracts/_template.md`.
+
+### Fresh install (first time for a project)
+
+```bash
+# 1. Clone this repo somewhere persistent
+git clone https://github.com/CivicActions/ai-runbook-jh.git ~/ai-runbook-jh
+
+# 2. Create your project contract (or start from the USWDS example)
+cp ~/ai-runbook-jh/contracts/_template.md ~/ai-runbook-jh/contracts/myproject.md
+# Edit contracts/myproject.md — fill in every section (tracker, tech stack, definition of done, sanctioned AI tools, etc.)
+
+# 3. Run install.sh — creates directories, scaffolds voice config, links skills
+CONTRACT=myproject PROJECT_ROOT=/path/to/your/project ./install.sh
+```
+
+This creates the following in your project:
+
+```text
+.agents/
+  skills/          -> symlinks to each skill in this repo
+  style/
+    voice.md       -> scaffolded from template (customize it)
+    voice.personal.md -> personal overlay (gitignore this)
+  project-contract.md -> symlink to your contract
+  profile.md       -> legacy alias (symlink to project-contract.md)
+  prompts/custom/  -> prompt symlinks for Amazon Q invocation
+  plans/
+  handoffs/
+  lessons/
+```
+
+### Update (pull new/changed skills into an existing project)
+
+```bash
+# Pull latest skills
+cd ~/ai-runbook-jh
+git pull
+
+# Re-run sync.sh — links any new skills, leaves existing links alone
+CONTRACT=myproject PROJECT_ROOT=/path/to/your/project ./sync.sh
+```
+
+`sync.sh` is safe to re-run: it only creates missing symlinks and never overwrites existing files.
+
+### Environment variables
+
+| Variable       | Required | Description                                                  |
+|----------------|----------|--------------------------------------------------------------|
+| `PROJECT_ROOT` | Yes      | Absolute path to the target project repo                     |
+| `CONTRACT`     | Yes      | Name of your contract file (without path or `.md` extension) |
+| `CUSTOM`       | No       | Path to this repo (defaults to the script's own directory)   |
+
+### Keeping client contracts out of version control
+
+If your project contract contains client-specific details that shouldn't be committed to this repo,
+keep it outside and pass it via `CUSTOM`:
+
+```bash
+# Contract lives at ~/contracts/client-project.md (not in this repo)
+CUSTOM=~/ai-runbook-jh CONTRACT=client-project PROJECT_ROOT=/path/to/project ./sync.sh
+```
+
+Or create the contract locally at `contracts/client-project.md` and add it to
+`.git/info/exclude` (local-only ignore, not shared via `.gitignore`).
+
+### Personal overlay
+
+Create `.agents/project-contract.personal.md` in your project root to override specific sections
+for personal use (e.g., your preferred commit style, personal voice tweaks). Exclude it via
+`.git/info/exclude`. Skills layer it on top of the shared contract at runtime.
+
+### Invocation
 
 **Invocation differs by AI client.** Some clients auto-invoke skills by keyword; others require an
 explicit `@`-reference. For one-off use without a local install, paste the skill's Markdown
