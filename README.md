@@ -76,8 +76,8 @@ contracts so skills resolve every reference.
 Browse the hosted **[AI runbook](https://civicactions.github.io/ai-runbook-jh/runbook/)**, or
 open [`runbook/index.html`](runbook/index.html) locally for the full catalog: one card per
 skill, grouped by phase, with when-to-use, output template, and the skill-call graph.
-`drupal-peer-review` applies only when the contract's stack is Drupal; `tone-check` and `security-check`
-are the cross-cutting gates.
+`drupal-peer-review` applies only when the contract's stack is Drupal; `tone-check`, `security-check`,
+and `evidence-check` are the cross-cutting gates.
 
 See [`DESIGN.md`](DESIGN.md) for the visual rationale and
 [`runbook/styleguide.html`](runbook/styleguide.html) for the living styleguide that renders
