@@ -85,11 +85,12 @@ Try a skill to confirm invocation works:
 | Phase | Skills |
 |---|---|
 | Triage | `triage` |
-| Refinement | `ticket-refinement`, `definition-of-done`, `security-check` |
-| Plan | `issue-plan`, `kiss`, `pattern-alignment`, `evidence-check` |
-| Build | `implementation-details`, `handoff-message`, `component-design`, `drupal-critic` |
-| Validate | `browser-check`, `accessibility-audit`, `responsive-design`, `performance-frontend`, `frontend-peer-review`, `tone-check` |
-| Communicate | `qa-steps`, `commit-message-writer`, `organize-commits`, `squash-commits`, `summarize-commits`, `issue-closure-notes`, `lessons-learned` |
+| Refinement | `ticket-refinement`, `definition-of-done` |
+| Plan | `issue-plan`, `implementation-details` |
+| Build | `pattern-alignment`, `component-design`, `kiss`, `handoff-message`, `organize-commits`, `squash-commits`, `commit-message-writer` |
+| Validate | `browser-check`, `accessibility-audit`, `responsive-design`, `performance-frontend`, `frontend-peer-review`, `drupal-peer-review` |
+| Communicate | `summarize-commits`, `qa-steps`, `issue-closure-notes`, `lessons-learned` |
+| Cross-cutting | `tone-check`, `security-check`, `evidence-check` |
 
 Invoke with `@` in Amazon Q or let Copilot auto-select based on your prompt. See [FAQ](FAQ.md) for per-client invocation details.
 

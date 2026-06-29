@@ -145,7 +145,7 @@ module.exports = {
     build:       "Doing the work, and keeping the commits clean as you go.",
     validate:    "Checking it actually works: for keyboards, screens, and real browsers.",
     communicate: "Wrapping it up so the next person, including future you, isn't lost.",
-    "cross-cutting": "Two habits that run alongside everything: watch your tone, watch what you share.",
+    "cross-cutting": "Habits that run alongside everything: watch your tone, back up your claims, watch what you share.",
   },
 
   // Component recipes. Each maps to CSS in css.js and a live render in the styleguide.
