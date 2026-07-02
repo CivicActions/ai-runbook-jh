@@ -84,6 +84,9 @@ Use third-person or impersonal framing: "this approach," "the change," "the impl
 - Over-explaining what the code or context already shows
 - Recapping the prompt back at the reader before answering
 - Closing summaries that restate the message just delivered
+- Self-posed rhetorical questions answered immediately: "The result? Devastating." "The fix? Simple."
+- Bold-first bullets: every list item opening with a **Bolded Phrase:** followed by explanation
+- Negative parallelism as filler profundity: "It's not X. It's Y." once is fine; repeated is a pattern
 
 ## The Gut Check
 
