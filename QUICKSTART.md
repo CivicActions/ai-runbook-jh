@@ -105,6 +105,8 @@ export CONTRACT=<project> PROJECT_ROOT=/path/to/your/project
 ./sync.sh
 ```
 
+`sync.sh` also applies compatibility link updates (for example, legacy `profile.md` alias wiring) so users do not need a separate migration step.
+
 ---
 
 ## File layout after install

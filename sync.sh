@@ -30,6 +30,9 @@ if [ -z "$CONTRACT" ]; then
   exit 1
 fi
 
+# Ensure base .agents dirs exist for first-time installs and fresh repos.
+mkdir -p "$PROJECT_ROOT/.agents/skills" "$PROJECT_ROOT/.agents/prompts/custom"
+
 # Sync skills and link each skill's SKILL.md into .agents/prompts/custom/
 for skill in "$CUSTOM"/skills/*/; do
   name=$(basename "$skill")
@@ -63,17 +66,37 @@ if [ ! -f "$contract_src" ]; then
 fi
 
 if [ -L "$contract_link" ]; then
-  echo "Contract already linked: $(readlink "$contract_link")"
+  # If the symlink target no longer exists, repair it to the resolved source.
+  if [ ! -e "$contract_link" ]; then
+    rm "$contract_link"
+    ln -s "$contract_src" "$contract_link"
+    echo "Re-linked contract: $CONTRACT"
+  else
+    echo "Contract already linked: $(readlink "$contract_link")"
+  fi
 elif [ -e "$contract_link" ]; then
   echo "WARNING: $contract_link exists and is not a symlink; leaving it alone"
 else
-  ln -s "$contract_src" "$contract_link"
-  echo "Linked contract: $CONTRACT"
+  # Migration helper: if users only have a legacy profile.md symlink, reuse that target.
+  if [ -L "$legacy_link" ] && [ -e "$legacy_link" ]; then
+    ln -s "$(readlink "$legacy_link")" "$contract_link"
+    echo "Migrated contract link from legacy profile.md"
+  else
+    ln -s "$contract_src" "$contract_link"
+    echo "Linked contract: $CONTRACT"
+  fi
 fi
 
 # Legacy compatibility alias: .agents/profile.md -> .agents/project-contract.md
 if [ -L "$legacy_link" ]; then
-  echo "Legacy alias already linked: $(readlink "$legacy_link")"
+  # Normalize old behavior where profile.md linked directly to the contract source.
+  if [ "$(readlink "$legacy_link")" = "$contract_link" ]; then
+    echo "Legacy alias already linked: $(readlink "$legacy_link")"
+  else
+    rm "$legacy_link"
+    ln -s "$contract_link" "$legacy_link"
+    echo "Updated legacy alias: profile.md -> project-contract.md"
+  fi
 elif [ -e "$legacy_link" ]; then
   echo "WARNING: $legacy_link exists and is not a symlink; leaving it alone"
 else
