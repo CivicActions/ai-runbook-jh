@@ -58,6 +58,84 @@ implementation.
 7. **Library definition**, register the CSS/JS where the framework requires it (`## Stack` →
    Library registration), if applicable
 
+## Modern-first design principle
+
+AI training data is biased toward legacy patterns because older approaches have more representation
+in codebases, tutorials, and Stack Overflow answers. When designing new components, actively prefer
+modern alternatives that the project's browser support baseline already accommodates.
+
+**Before proposing a pattern, check:** is this the way we'd solve it today given current browser
+support, or is this the way we solved it in 2018 because we had to?
+
+**Common legacy traps in component design:**
+
+| Legacy pattern | Modern alternative | Check support via |
+|---|---|---|
+| `padding-bottom` aspect-ratio hack | `aspect-ratio` property | caniuse, MDN |
+| Wrapper divs for spacing | `gap` on flex/grid containers | Baseline since 2021 |
+| JS intersection observer for lazy images | `loading="lazy"` attribute | Baseline since 2022 |
+| Manual ARIA dialog with focus trap JS | Native `<dialog>` + `showModal()` | Baseline since 2022 |
+| JS-driven disclosure widget | `<details>`/`<summary>` | Long-baseline |
+| JS tooltip/popover libraries | `popover` attribute | Check current support |
+| Float/clearfix layouts | CSS Grid or Flexbox | Long-baseline |
+| Vendor-prefixed properties | Unprefixed (check baseline) | caniuse |
+| `@media` only for responsive components | `@container` queries | Check current support |
+| Absolute positioning for overlays | CSS Anchor Positioning | Check current support |
+
+**The directive:** When the project contract's `## Stack` or browser support targets indicate modern
+features are available, design with them. Don't reach for the legacy workaround out of habit. If
+browser support is uncertain, use web research to confirm before proposing, but don't default to
+legacy as the "safe" choice when the modern alternative is already baseline.
+
+**Exception:** If `pattern-alignment` confirms the project's existing components use the legacy
+approach consistently and a migration isn't in scope, note the modern alternative as a "worth
+considering" callout rather than proposing it as the primary design. Don't create inconsistency
+without acknowledging it.
+
+## Progressive enhancement and fallback strategy
+
+When a component design uses a feature that isn't yet Baseline Widely Available (per the project
+contract's `## Browser support` → Baseline policy), the design must include the fallback behavior.
+Don't propose cutting-edge CSS or APIs without specifying what non-supporting browsers get.
+
+**Read the project contract's `## Browser support` section for:**
+- The browserslist query (defines the support floor)
+- The baseline policy (which tier of support requires a fallback)
+- The fallback strategy (progressive enhancement, polyfill, or feature-detect)
+
+**For each non-baseline feature in the design, specify:**
+1. **The feature** and its current support status (use web research to confirm)
+2. **The fallback** — what does the component look like/do in non-supporting browsers?
+3. **The mechanism** — `@supports`, progressive enhancement (works without, enhanced with), or
+   polyfill (rare; justify the bundle cost)
+4. **Acceptability** — is the fallback experience "good enough" or does it degrade core function?
+
+**Tiered approach:**
+
+| Support tier | Design requirement |
+|---|---|
+| Baseline Widely Available | Use freely, no fallback needed |
+| Baseline Newly Available | Include a CSS fallback or `@supports` gate in the design |
+| Not yet baseline | Full progressive enhancement plan: what the component does WITHOUT the feature, plus what it gains WITH it |
+| Experimental / behind flags | Do not propose without explicit user agreement; note the risk |
+
+**Examples of fallback decisions in a component design:**
+
+- **Container queries (Newly Available):** Design the mobile layout to work with media queries;
+  container queries refine it. Non-supporting browsers get the media-query layout.
+- **`popover` attribute (Newly Available):** Design with JS-toggled disclosure as base; `popover`
+  enhances (removes JS, gives free light-dismiss). Non-supporting browsers get the JS version.
+- **CSS Anchor Positioning (Not yet baseline):** Design the tooltip/popover with absolute
+  positioning as the base; anchor positioning is the enhancement. Spec both positions.
+- **View Transitions (Not yet baseline):** Design the page/state transition without animation;
+  View Transitions add the polish. Non-supporting browsers get an instant transition.
+
+**What NOT to do:**
+- Don't propose a feature without checking its support tier
+- Don't say "add a polyfill" without justifying the bundle cost and maintenance burden
+- Don't design a component that *breaks* without the modern feature — that's not progressive
+  enhancement, that's a browser support bug
+
 ## Output Format
 
 ### Component Overview

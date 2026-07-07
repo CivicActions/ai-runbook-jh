@@ -73,6 +73,66 @@ Pull these from the project contract `## Stack` (and `## Environments` for visua
 - Touch targets minimum 44x44px
 - Visual-regression references (project contract `## Environments`) must be updated if responsive layout changes
 
+## Modern-first responsive patterns
+
+AI training data over-represents older responsive techniques because they dominated for years
+before modern CSS alternatives reached baseline support. When recommending responsive solutions,
+actively prefer modern CSS when the project's browser support allows it.
+
+**Before recommending a responsive pattern, ask:** is this the approach we'd use today given
+current CSS support, or is this the pre-2022 workaround?
+
+| Legacy responsive pattern | Modern alternative | Notes |
+|---|---|---|
+| `@media` queries for component-level layout | `@container` queries | Component-intrinsic responsiveness |
+| `vh` units (100vh mobile bug) | `dvh` / `svh` / `lvh` | Dynamic viewport units |
+| Negative margins for grid gutters | `gap` property | Works on flex and grid |
+| Media-query-based show/hide | Container queries + `display` | Context-aware, not viewport-aware |
+| JS-based resize observers for layout | CSS container queries | Declarative, no JS |
+| Complex `calc()` for fluid type | `clamp()` for fluid typography | Cleaner, more readable |
+| z-index stacking hacks | CSS `@layer` for specificity | Eliminates specificity wars |
+| Grid frameworks (12-col via classes) | Native CSS Grid with `auto-fit`/`auto-fill` | No class dependencies |
+| `subgrid` polyfills or workarounds | Native `subgrid` | Check current support |
+| Manual aspect-ratio padding trick | `aspect-ratio` property | Baseline since 2021 |
+
+**The directive:** When the project's browser support targets (read from the project contract or
+inferred from the stack) accommodate modern CSS features, recommend them as the primary approach.
+If support is uncertain, use web research to confirm. Don't default to the legacy workaround as
+the "safe" path when the modern property is already baseline.
+
+**Interaction with existing code:** If the project's existing responsive patterns use legacy
+approaches, note the modern alternative as available but don't create inconsistency without
+flagging it. "Your existing breakpoint system uses media queries; container queries are now
+supported and would let this component respond to its own container width rather than the viewport.
+Worth considering for new components, or as a broader migration."
+
+## Progressive enhancement for responsive features
+
+When recommending a responsive technique that isn't Baseline Widely Available, always specify the
+fallback layout for non-supporting browsers. A responsive design that breaks in older browsers
+isn't responsive — it's broken.
+
+**Read the project contract's `## Browser support` section** for the baseline policy and fallback
+strategy. Apply the same tiered approach:
+
+| Support tier | Responsive design requirement |
+|---|---|
+| Baseline Widely Available | Use freely (e.g. flexbox, grid, `gap`, `clamp()`) |
+| Baseline Newly Available | Specify the media-query or simpler-CSS fallback |
+| Not yet baseline | Full fallback layout: what the user sees WITHOUT the feature |
+
+**For responsive recommendations specifically:**
+- **Container queries:** Fallback is media queries at equivalent breakpoints. Spec both.
+- **`dvh`/`svh` units:** Fallback is `vh` with the known mobile-toolbar issue documented.
+- **Subgrid:** Fallback is explicit grid-template on the child, duplicating the parent's tracks.
+- **`@layer`:** Fallback is specificity management via source order and BEM (existing practice).
+- **`has()` selector:** Fallback is a parent class toggled by JS, or a simpler layout that works
+  without the conditional.
+
+**In the output:** If any recommended technique requires a fallback, add a "Fallback" column or
+note to the Breakpoint Behavior table showing what non-supporting browsers get. Don't bury it;
+make it as visible as the primary recommendation.
+
 ## Attribution
 
 If the active project contract defines an attribution marker (project contract `## Attribution marker`) and you share

@@ -57,6 +57,26 @@ For each ❌ or ⚠️:
 - Whether it's a problem or an intentional variation
 - Suggested fix with code example
 
+### Legacy Pattern Flags
+If the canonical pattern itself uses a legacy approach where a modern alternative is now available
+and supported by the project's browser baseline, flag it separately here. This is not a divergence
+from the project's conventions — it's a signal that the convention itself may be worth updating.
+
+For each flag:
+- The existing pattern and where it's used
+- The modern alternative and its support status
+- Whether this is worth addressing now (the new code is touching this area anyway) or later
+  (a separate modernization effort)
+- Risk assessment: would switching cause inconsistency with untouched code?
+
+**The distinction:** A divergence means "your code doesn't match the project." A legacy pattern
+flag means "the project's pattern is itself outdated; here's what's available now." The first is
+usually a fix. The second is a conversation.
+
+**When NOT to flag:** Don't flag legacy patterns in areas the current change doesn't touch. The
+scope is: "if you're writing new code in this area and the canonical pattern is legacy, you should
+know about the modern alternative before replicating the old approach."
+
 ## Voice
 Apply the voice config named in the project contract's `## Voice` section (e.g. `.agents/style/voice.md`).
 Apply it to divergence descriptions and suggestions. Run shared alignment-check prose through `tone-check` before posting.
