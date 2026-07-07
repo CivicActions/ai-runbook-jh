@@ -87,6 +87,7 @@ Use third-person or impersonal framing: "this approach," "the change," "the impl
 - Self-posed rhetorical questions answered immediately: "The result? Devastating." "The fix? Simple."
 - Bold-first bullets: every list item opening with a **Bolded Phrase:** followed by explanation
 - Negative parallelism as filler profundity: "It's not X. It's Y." once is fine; repeated is a pattern
+- Synonym cycling: rotating near-synonyms to avoid repeating a word ("developers... engineers... builders" for one group). Repeat the clear word instead.
 
 ## The Gut Check
 
