@@ -67,6 +67,42 @@ production. Include a pasteable fix where possible.
 Standards violations or things that will cause pain later, but don't block merge if the author has a
 good reason. Frame as a suggestion.
 
+**Legacy pattern detection:** If the submitted code uses a legacy approach where a modern
+alternative exists and is supported by the project's browser baseline, surface it here as a "Worth
+Noting" item — not a blocker, but an opportunity. Frame it as: "This works, but [modern
+alternative] is available given your support targets and would [specific benefit: less JS, better
+performance, simpler markup, native browser behavior]."
+
+Common patterns to watch for:
+- JS solutions for problems CSS now handles natively (scroll snap, aspect-ratio, container queries)
+- Polyfills or shims for features that reached baseline support
+- Vendor-prefixed CSS that no longer needs prefixing
+- Manual implementations of behavior that native HTML now provides (`<dialog>`, `<details>`,
+  `loading="lazy"`, `popover`)
+- jQuery patterns in a project that's moved to vanilla JS
+- Outdated font-loading or image-optimization strategies
+
+Don't flag legacy patterns that match the project's established conventions unless the author is
+specifically modernizing that area. `pattern-alignment` handles the "match existing code" check;
+this flag is for when new code introduces legacy approaches unnecessarily.
+
+**Missing fallback detection:** If the submitted code uses a feature that isn't Baseline Widely
+Available (per the project contract's `## Browser support` → Baseline policy) without a fallback
+strategy, flag it here. The severity depends on what breaks:
+
+- **Must Fix** if core content or functionality is inaccessible without the feature (e.g., layout
+  entirely depends on container queries with no media-query fallback, or navigation requires
+  `popover` with no JS alternative)
+- **Worth Noting** if the feature is purely cosmetic or enhancing (e.g., View Transitions for page
+  navigation polish, `text-wrap: balance` for heading aesthetics)
+
+Check for:
+- CSS features used without an `@supports` gate or natural fallback
+- APIs used without feature detection (`if ('popover' in HTMLElement.prototype)`)
+- Progressive enhancement claims that don't actually degrade gracefully (test by disabling the
+  feature mentally: does the page still work?)
+- Polyfills added without justification for the bundle cost
+
 ### Nits
 Only if genuinely quick to fix. Skip nits entirely if there are Must Fix items.
 

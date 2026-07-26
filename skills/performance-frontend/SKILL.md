@@ -51,6 +51,10 @@ Invoke when the user wants to audit a page, component, or asset pipeline for fro
    - *(Drupal stack)* Object cache backend (e.g. Redis) active for sessions and application cache
    - CDN serving static assets in production
 8. **Check for N+1 patterns** *(Drupal/backend stack)*, entity loads in loops, missing `loadMultiple()`
+9. **Validate recommendations against current sources** (see "Web research validation" below):
+   before recommending a specific optimization technique, confirm it reflects current platform
+   state. Performance APIs, browser behaviors, and best practices shift; don't prescribe fixes
+   from stale training data.
 
 For a non-Drupal stack, drop the items marked *(Drupal stack)* and audit the framework's own
 equivalents (bundler output, HTTP caching headers, CDN config).
@@ -77,6 +81,34 @@ Map findings to the project contract's `## Priority guide`. As a guide:
 ## Voice
 Load the project contract's voice config (`## Voice` → config path) before writing finding descriptions and
 fix suggestions, and apply it to the prose. Run shared audit prose through `tone-check` before posting.
+
+## Web research validation
+
+Before recommending a performance fix, use web research to confirm the technique is current and
+supported. Performance best practices age fast; what was optimal two years ago may be superseded or
+even counterproductive today.
+
+**Always validate externally when recommending:**
+- Browser APIs for resource hints (`fetchpriority`, `Speculation Rules`, `modulepreload`)
+- Image format support and encoding strategies (AVIF, animated WebP, responsive `sizes`)
+- Core Web Vitals threshold changes (Google updates these; don't assume the thresholds in this
+  document are still current)
+- CSS performance techniques (`content-visibility`, `contain`, layer-based composition)
+- Font loading strategies (changes in browser preload behavior, `font-display` nuances)
+- HTTP caching and CDN strategies (103 Early Hints, stale-while-revalidate semantics)
+- Third-party script loading patterns (Partytown, web workers, iframe sandboxing)
+
+**What to check:**
+- web.dev / developer.chrome.com for current Google guidance on Core Web Vitals
+- MDN for API support status and deprecation notices
+- caniuse.com for browser support of recommended features
+- Framework changelogs when recommending framework-specific optimizations
+
+**How this interacts with the audit:** Findings from steps 1–8 describe *what's wrong* (measured
+locally). The fix recommendation is where staleness risk lives. A finding like "LCP is 3.8s due to
+a 2.4MB hero image" is observational (valid). But the fix "use `fetchpriority=high` on the LCP
+image" is a claim about platform state that should be validated if there's any doubt about current
+support or recommended usage.
 
 ## Performance targets
 Read targets from the project contract's `## Performance budgets` (if defined): page-load / TTI thresholds,

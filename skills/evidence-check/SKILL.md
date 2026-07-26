@@ -62,6 +62,32 @@ The AI executed a command, ran a test, observed runtime behavior, or confirmed v
 **Example:** "This function throws a TypeError when passed null: I ran the test suite and
 `testNullInput` fails with that exact error."
 
+### Externally Validated
+
+The AI used web research to confirm that a proposed fix, technique, or claim is supported by
+current documentation, standards, or community consensus. This is especially important for claims
+about web technologies, APIs, browser behavior, library features, or best practices that evolve
+over time.
+
+**AI behavior:** State with confidence, citing the source. Note the publication date or version
+where relevant, since web technology moves fast and yesterday's best practice may be today's
+antipattern.
+
+**When to apply:** Before recommending a fix or strategy that depends on how modern web
+technologies work (CSS features, browser APIs, framework patterns, security practices, performance
+strategies), research it. Training data has a cutoff; the web doesn't.
+
+**What to check:**
+- Official documentation (MDN, framework docs, W3C specs)
+- Browser/runtime support status (caniuse, Node.js docs)
+- Current library versions and their changelogs
+- Whether a recommended API/feature is deprecated or superseded
+- Whether a security practice is still considered sound
+
+**Example:** "For lazy-loading below-the-fold images, the `loading='lazy'` attribute is supported
+across all modern browsers (confirmed via MDN, current as of 2024). No polyfill needed unless you
+target IE11, which is EOL."
+
 ### Confirmed
 
 The AI read the actual source code, configuration file, or project documentation and found the
@@ -127,6 +153,12 @@ This is the rule that catches the dangerous case: confidently prescribing a fix 
 processor") for a state you never inspected (is the X processor already enabled?). Naming a real
 thing is not the same as confirming the present state of *this* project.
 
+**Web technology claims carry the same risk in a different dimension.** A claim about browser
+support, API availability, or framework best practice may have been true during training but
+shifted since. "Use X approach, it's the modern way" is unverified until you've checked that X is
+still current, still supported in target browsers/runtimes, and hasn't been deprecated or
+superseded. When a recommendation depends on the state of the web platform, go look.
+
 ## Trivial Claims
 
 Not every statement needs a citation. The following are exempt from evidence requirements:
@@ -173,7 +205,13 @@ approaches):
    carries its own warnings (form help text, deprecation notes, "don't rely on this" docs). Say you
    haven't checked those caveats. Frameworks bury footguns exactly where pattern-matching glosses
    over them.
-7. **Route to the human SME when one owns the domain.** Evidence honesty is only half the
+7. **Validate against current sources** when the recommendation involves web technologies,
+   browser APIs, security strategies, performance patterns, or any technique that evolves with the
+   platform. Use web research to confirm the approach is still current, not deprecated, and
+   actually supported in target environments. Training data ages; the recommendation shouldn't.
+   Common traps: recommending a CSS property that's still behind a flag, suggesting a Node API
+   that was removed two versions ago, or proposing a security pattern that's been superseded.
+8. **Route to the human SME when one owns the domain.** Evidence honesty is only half the
    discipline; the other half is *who should answer at all.* If a reachable person owns this code,
    AI output is a hypothesis to validate or bring to them, not a recommendation to push into their
    channel as if it were vetted. Often the fastest correct path is to just ask them.
@@ -218,6 +256,30 @@ processing."~~
 the queue base class), a queue worker follows your established pattern. The alternative would be
 a cron hook, but your codebase already has the queue infrastructure. Want me to verify the queue
 runner is configured in your local environment?"
+
+### Bad: recommending a web technique without checking currency
+
+~~"Use `aspect-ratio` in CSS to maintain the image proportions. Add `object-fit: cover` and
+you're set."~~
+
+### Good: same recommendation, externally validated
+
+"CSS `aspect-ratio` is supported in all modern browsers (validated: MDN shows baseline support
+since 2021, no prefix needed). Combined with `object-fit: cover`, this handles responsive image
+containers without padding hacks. Only concern would be if you need to support browsers older than
+Safari 15, but your analytics would tell you that."
+
+### Bad: confident security claim from training data
+
+~~"Use SameSite=Strict on all cookies; it prevents CSRF completely."~~
+
+### Good: same claim, researched and nuanced
+
+"SameSite=Strict does prevent most CSRF vectors (confirmed via current OWASP guidance), but it
+breaks legitimate cross-site navigation flows like clicking links from email. Your auth cookies
+should use `SameSite=Lax` (the current browser default anyway) unless you have a specific
+same-origin-only requirement. I'd check what your session config currently sets before changing
+anything."
 
 ### Bad: confident state claim that was never inspected (real failure)
 

@@ -40,8 +40,47 @@ Section 508, or project-specific a11y requirements.
    hex; no `!important`; class-based styling)
 5. **Template checks (if the project contract's stack is Drupal/Twig)**: confirm `|e` filter on dynamic
    output, `#plain_text` for user content
-6. **Report findings**: classify each by impact level and priority using the project contract's
+6. **Validate recommendations against current guidance** (see "Web research validation" below):
+   before recommending a specific ARIA pattern, technique, or remediation, confirm it reflects
+   current WAI-ARIA Authoring Practices and browser/AT support. Accessibility guidance evolves;
+   don't prescribe patterns from stale training data.
+7. **Report findings**: classify each by impact level and priority using the project contract's
    Accessibility impact levels
+
+## Web research validation
+
+Before recommending an accessibility fix, use web research to confirm the technique is current,
+well-supported by assistive technologies, and aligned with the latest WCAG and ARIA guidance.
+Accessibility best practices evolve as specs mature, browser implementations improve, and screen
+reader support changes.
+
+**Always validate externally when recommending:**
+- ARIA roles, states, and properties (the Authoring Practices get rewritten; patterns that were
+  recommended two years ago may now carry "warning: avoid this pattern" notes)
+- Specific ARIA widget patterns (combobox, dialog, disclosure, tabs, treegrid) — these are the
+  patterns most likely to have shifted between APG versions
+- New semantic HTML elements that may reduce ARIA need (e.g. `<search>`, `<dialog>`, `popover`)
+- Screen reader support for specific techniques (what works in NVDA may not work in VoiceOver;
+  don't assume uniform AT support)
+- WCAG version applicability (2.1 AA vs. 2.2 AA vs. 3.0 draft — know which version the project
+  targets and whether a newer criterion applies)
+- Focus management patterns (especially `inert`, focus-trapping in dialogs, `focusgroup`)
+- Color contrast algorithm changes (APCA vs. WCAG 2.x contrast ratio)
+
+**What to check:**
+- WAI-ARIA Authoring Practices Guide (w3.org/WAI/ARIA/apg/) for current recommended patterns
+- WCAG 2.2 Understanding documents for success criterion interpretation
+- a11ysupport.io for real-world assistive technology support data
+- MDN for HTML element and ARIA attribute browser support
+- Scott O'Hara, Adrian Roselli, Sara Soueidan (established a11y practitioners whose blogs often
+  surface AT support issues that specs don't capture)
+
+**How this interacts with the audit:** Findings from steps 1–5 describe *what's wrong* (observed
+in the DOM or against the spec). The fix recommendation is where staleness risk lives. A finding
+like "dialog has no `aria-modal`" is observational (valid). But the fix "use the ARIA dialog
+pattern with manual focus trapping" is a claim about current best practice that should be
+validated — the native `<dialog>` element with `showModal()` may now be the better path, and the
+APG may have updated its guidance since training.
 
 ## Output Format
 Return a flat list of findings. For each:

@@ -78,6 +78,19 @@
 ## Breakpoints
 - <named breakpoint tokens + values>
 
+## Browser support
+- **Browserslist query:** <e.g. `> 2%, last 2 versions, not dead`; or a specific list>
+- **Baseline policy:** <e.g. "features that reached Baseline Widely Available are safe without
+  fallback; features that are Baseline Newly Available need a fallback; features not yet baseline
+  need a fallback or progressive enhancement strategy">
+- **Hard floor:** <the oldest browser/version the project must not break in; e.g. "Safari 15.4+"
+  or "whatever `> 2%` resolves to at build time">
+- **Fallback strategy:** <e.g. "progressive enhancement: core content/function always accessible;
+  modern features enhance when available" or "polyfill via [tool]" or "feature-detect with
+  `@supports`">
+- **Analytics source:** <where to check real user browser distribution, if available; e.g. Google
+  Analytics property, gov analytics dashboard>
+
 ## Grid
 - <grid utilities/mixins>
 
