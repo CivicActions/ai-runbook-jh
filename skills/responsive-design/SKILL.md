@@ -90,7 +90,7 @@ current CSS support, or is this the pre-2022 workaround?
 | Media-query-based show/hide | Container queries + `display` | Context-aware, not viewport-aware |
 | JS-based resize observers for layout | CSS container queries | Declarative, no JS |
 | Complex `calc()` for fluid type | `clamp()` for fluid typography | Cleaner, more readable |
-| z-index stacking hacks | CSS `@layer` for specificity | Eliminates specificity wars |
+| Escalating z-index values to force stacking order | `isolation: isolate` | Creates a new stacking context without raising z-index; `@layer` controls cascade specificity, not stacking context — don't reach for it here |
 | Grid frameworks (12-col via classes) | Native CSS Grid with `auto-fit`/`auto-fill` | No class dependencies |
 | `subgrid` polyfills or workarounds | Native `subgrid` | Check current support |
 | Manual aspect-ratio padding trick | `aspect-ratio` property | Baseline since 2021 |

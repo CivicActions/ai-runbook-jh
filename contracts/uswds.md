@@ -93,6 +93,19 @@ GitHub lifecycle: **open/confirm issue → maintainer triage (Size/Severity/Prio
 - USWDS breakpoint tokens via Sass (`at-media('tablet')` etc.); `mobile-lg` 480, `tablet` 640,
   `tablet-lg` 880, `desktop` 1024, `desktop-lg` 1200.
 
+## Browser support
+- **Browserslist query:** `> 2%, last 2 versions, not dead` (`.browserslistrc` at repo root).
+- **Baseline policy:** features that reached Baseline Widely Available are safe without fallback;
+  features that are Baseline Newly Available need a fallback, since federal agency users skew
+  toward older, managed browser installs; features not yet baseline need a fallback or progressive
+  enhancement strategy.
+- **Hard floor:** whatever `> 2%, last 2 versions, not dead` resolves to at build time — no fixed
+  named-version floor; a query-based approach that shifts as usage shifts, not a manually maintained one.
+- **Fallback strategy:** progressive enhancement — core content/function always accessible; modern
+  CSS/JS enhances when available. Feature-detect with `@supports` rather than user-agent sniffing.
+- **Analytics source:** no public real-user browser distribution for USWDS itself; contributors
+  should reason from the browserslist query rather than assuming specific gov-analytics figures.
+
 ## Grid
 - USWDS grid (`grid-container`, `grid-row`, `grid-col-*`; source under
   `packages/usa-layout-grid`).
