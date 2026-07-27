@@ -26,6 +26,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ### Fixed
 - Stale `jiraCaptions` entry in deck no longer uses arrow glyphs
+- `contracts/uswds.md` was missing the `## Browser support` section `_template.md` now requires; filled it in against the repo's real `.browserslistrc`
+- `skills/responsive-design/SKILL.md` mapped z-index stacking hacks to CSS `@layer`, which is wrong (`@layer` governs cascade specificity, not stacking contexts) -- swapped in `isolation: isolate`
 
 ### Chore
 - `lessons/` directory gitignored
