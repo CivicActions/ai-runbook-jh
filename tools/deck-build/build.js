@@ -938,7 +938,7 @@ function slideSubtitle(slide, text, x = 0.6, y = 1.25) {
   });
   s.addText([
     { text: "skills/", options: { fontFace: F.code, bold: true, breakLine: true } },
-    { text: "24 phase-based skills, all project-agnostic", options: { color: C.textMid, breakLine: true } },
+    { text: "Phase-based skills, all project-agnostic", options: { color: C.textMid, breakLine: true } },
     { text: " ", options: { breakLine: true } },
     { text: "contracts/_template.md", options: { fontFace: F.code, bold: true, breakLine: true } },
     { text: "Annotated starting point for a new contract", options: { color: C.textMid, breakLine: true } },

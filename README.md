@@ -7,8 +7,8 @@
 > Developed against front-end work, but the skills are discipline-agnostic: the same `triage` skill
 > works for any kind of ticket. Extend it by adding new specialized skills for any area.
 >
-> 25 single-purpose **skills** (Markdown checklists, one per task you want done the same way every
-> time: `triage`, `qa-steps`, `handoff-message`, and 23 more) plus a per-project **project contract**
+> Single-purpose **skills** (Markdown checklists, one per task you want done the same way every
+> time: `triage`, `qa-steps`, `handoff-message`, and more) plus a per-project **project contract**
 > names ticket tracker, stack, per-ticket Definition of Done, voice config, and approved AI
 > clients. Skills stay generic; the project contract supplies every project-specific detail.
 >

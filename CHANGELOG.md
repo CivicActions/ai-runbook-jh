@@ -32,6 +32,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ### Chore
 - `lessons/` directory gitignored
+- Dropped hardcoded skill counts from README, QUICKSTART, and the deck -- every addition meant hunting down and bumping a number in four places, and one already drifted out of sync. Also removed the decorative `01→02→03→04→05→06` eyebrow above the runbook's phase row; it just repeated the numbers already on the phase cards below it.
 
 ## [1.0.0] - 2026-05-24
 

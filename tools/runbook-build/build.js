@@ -322,7 +322,6 @@ const html = `<!DOCTYPE html>
   <div class="container">
     <nav class="phaseflow" aria-label="Six-phase flow">
       <p class="phaseflow-lede">The six phases below are the lifecycle of a ticket, from creation to a change shipped, done, and explained.</p>
-      <p class="phaseflow-caption" aria-hidden="true"><span class="num">01</span><span class="arrow">→</span><span class="num">02</span><span class="arrow">→</span><span class="num">03</span><span class="arrow">→</span><span class="num">04</span><span class="arrow">→</span><span class="num">05</span><span class="arrow">→</span><span class="num">06</span></p>
       <div class="phaseflow-row">
         ${PHASES.filter(p => p.num).map(p => `
           <a class="phaseflow-node" href="#phase-${p.id}">
