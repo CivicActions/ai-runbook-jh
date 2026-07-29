@@ -208,7 +208,7 @@ screenshots are PII-redacted before being saved.
 
 ## Notes
 
-- The methodology (six phases, voice config, security guardrails) works with any AI client, ideally within an IDE. The phases are durable; the skills are disposable.
+- The methodology (six phases, voice config, security guardrails) works with any AI client, ideally within an IDE. For me, the phases have stayed durable; the skills are what I keep swapping out.
 - Working artifacts (plans, handoffs, reviews, drafts) are personal/local and git-ignored; they may
   contain ticket details and shouldn't be committed.
 

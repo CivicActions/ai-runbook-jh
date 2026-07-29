@@ -534,8 +534,8 @@ ${roundedVars()}
       gap: var(--s-xs);
       padding: var(--s-sm) var(--s-base);
       background: var(--c-paper-soft);
-      border-left: 3px solid var(--c-hairline);
-      border-radius: 0 var(--r-md) var(--r-md) 0;
+      border: 1px solid var(--c-hairline);
+      border-radius: var(--r-md);
       ${typeVar("body-sm")}
     }
     .usage-mode-row { display: flex; gap: var(--s-sm); align-items: baseline; }
@@ -554,6 +554,34 @@ ${roundedVars()}
       padding: 1px 5px;
       border-radius: var(--r-sm);
     }
+
+    /* ============ Skill filter ============ */
+    .skill-filter {
+      display: flex;
+      align-items: center;
+      gap: var(--s-sm);
+      margin: var(--s-base) 0;
+    }
+    .skill-filter__label {
+      ${typeVar("mono-sm")}
+      text-transform: uppercase;
+      color: var(--c-bark);
+    }
+    .skill-filter__input {
+      ${typeVar("body-sm")}
+      flex: 1 1 320px;
+      max-width: 420px;
+      padding: 8px 12px;
+      background: var(--c-paper);
+      border: 1px solid var(--c-hairline);
+      border-radius: var(--r-md);
+      color: var(--c-ink);
+    }
+    .skill-filter__input:focus-visible {
+      outline: 2px solid var(--c-focus-ring);
+      outline-offset: 1px;
+    }
+    .phase[hidden] { display: none; }
 
     /* ============ Accent legend (tag meanings) ============ */
     .accent-legend {
@@ -931,8 +959,8 @@ ${roundedVars()}
       font-style: italic;
       padding: var(--s-base) var(--s-lg);
       background: var(--c-paper-soft);
-      border-left: 3px solid var(--c-graphite);
-      border-radius: 0 var(--r-md) var(--r-md) 0;
+      border: 1px solid var(--c-graphite);
+      border-radius: var(--r-md);
       margin: 0;
     }
     .modal-body p { margin: var(--s-sm) 0; }
@@ -1032,7 +1060,6 @@ ${roundedVars()}
     .chat-ask .chat-bubble {
       background: var(--c-paper);
       border-color: var(--c-graphite);
-      border-left-width: 3px;
     }
     .chat-ask .chat-bubble code {
       background: var(--c-graphite-soft);

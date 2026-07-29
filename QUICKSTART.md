@@ -80,7 +80,7 @@ Try a skill to confirm invocation works:
 
 ## What you now have
 
-Skills covering the full ticket lifecycle:
+Skills covering how I run a ticket end to end:
 
 | Phase | Skills |
 |---|---|
