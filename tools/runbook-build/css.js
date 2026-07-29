@@ -578,7 +578,7 @@ ${roundedVars()}
       color: var(--c-ink);
     }
     .skill-filter__input:focus-visible {
-      outline: 2px solid var(--focus-ring);
+      outline: 2px solid var(--c-focus-ring);
       outline-offset: 1px;
     }
     .skill-filter__count {
