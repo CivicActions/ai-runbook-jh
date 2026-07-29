@@ -333,21 +333,6 @@ ${roundedVars()}
       margin-left: auto;
       margin-right: auto;
     }
-    .phaseflow-caption {
-      ${typeVar("mono-sm")}
-      color: var(--c-bark);
-      text-transform: uppercase;
-      letter-spacing: 0.08em;
-      text-align: center;
-      margin: 0 0 var(--s-base);
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      align-items: center;
-      gap: 6px;
-    }
-    .phaseflow-caption .num { color: var(--c-ink); font-weight: 600; }
-    .phaseflow-caption .arrow { color: var(--c-graphite); }
     .phaseflow-row {
       display: grid;
       grid-template-columns: 1fr;

@@ -333,21 +333,6 @@
       margin-left: auto;
       margin-right: auto;
     }
-    .phaseflow-caption {
-      font-family: "Monaspace Xenon", "JetBrains Mono", "IBM Plex Mono", Consolas, monospace; font-size: 11px; font-weight: 500; line-height: 1.4; letter-spacing: 0.08em;
-      color: var(--c-bark);
-      text-transform: uppercase;
-      letter-spacing: 0.08em;
-      text-align: center;
-      margin: 0 0 var(--s-base);
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      align-items: center;
-      gap: 6px;
-    }
-    .phaseflow-caption .num { color: var(--c-ink); font-weight: 600; }
-    .phaseflow-caption .arrow { color: var(--c-graphite); }
     .phaseflow-row {
       display: grid;
       grid-template-columns: 1fr;
@@ -1203,7 +1188,6 @@
   <div class="container">
     <nav class="phaseflow" aria-label="Six-phase flow">
       <p class="phaseflow-lede">The six phases below are the lifecycle of a ticket, from creation to a change shipped, done, and explained.</p>
-      <p class="phaseflow-caption" aria-hidden="true"><span class="num">01</span><span class="arrow">→</span><span class="num">02</span><span class="arrow">→</span><span class="num">03</span><span class="arrow">→</span><span class="num">04</span><span class="arrow">→</span><span class="num">05</span><span class="arrow">→</span><span class="num">06</span></p>
       <div class="phaseflow-row">
         
           <a class="phaseflow-node" href="#phase-triage">
