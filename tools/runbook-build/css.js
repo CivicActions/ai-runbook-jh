@@ -581,10 +581,6 @@ ${roundedVars()}
       outline: 2px solid var(--c-focus-ring);
       outline-offset: 1px;
     }
-    .skill-filter__count {
-      ${typeVar("mono-sm")}
-      color: var(--c-bark);
-    }
     .phase[hidden] { display: none; }
 
     /* ============ Accent legend (tag meanings) ============ */

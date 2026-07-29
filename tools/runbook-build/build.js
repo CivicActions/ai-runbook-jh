@@ -351,7 +351,6 @@ const html = `<!DOCTYPE html>
       <div class="skill-filter">
         <label for="skill-filter-input" class="skill-filter__label">Filter skills</label>
         <input type="search" id="skill-filter-input" class="skill-filter__input" placeholder="Filter by name or description, e.g. kiss" autocomplete="off">
-        <span class="skill-filter__count" id="skill-filter-count" aria-live="polite"></span>
       </div>
       <p class="accent-legend">
         <span class="accent-legend__intro">Skills are marked when they are foundational, voice-sensitive, security-sensitive, or evidence-sensitive.</span>
@@ -682,9 +681,6 @@ const html = `<!DOCTYPE html>
 
     function attachSkillFilter() {
       const input = document.getElementById("skill-filter-input");
-      const count = document.getElementById("skill-filter-count");
-      const cards = Array.from(document.querySelectorAll(".skill-card"));
-      const total = cards.length;
       let wasOpenBeforeFilter = null;
 
       input.addEventListener("input", () => {
@@ -695,14 +691,13 @@ const html = `<!DOCTYPE html>
           );
         }
 
-        let shown = 0;
         document.querySelectorAll(".phase").forEach(phase => {
           const phaseCards = Array.from(phase.querySelectorAll(".skill-card"));
           let phaseShown = 0;
           phaseCards.forEach(card => {
             const matches = !query || card.dataset.search.includes(query);
             card.hidden = !matches;
-            if (matches) { shown++; phaseShown++; }
+            if (matches) phaseShown++;
           });
           phase.hidden = query.length > 0 && phaseShown === 0;
           if (query) {
@@ -712,12 +707,7 @@ const html = `<!DOCTYPE html>
           }
         });
 
-        if (!query) {
-          wasOpenBeforeFilter = null;
-          count.textContent = "";
-        } else {
-          count.textContent = \`\${shown} of \${total} skills\`;
-        }
+        if (!query) wasOpenBeforeFilter = null;
       });
     }
 
