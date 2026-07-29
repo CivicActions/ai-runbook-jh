@@ -135,7 +135,7 @@ function slideSubtitle(slide, text, x = 0.6, y = 1.25) {
     x: leftX, y: cardY, w: 0.1, h: cardH,
     fill: { color: C.primary }, line: { type: "none" },
   });
-  s.addText("The same things get forgotten every ticket.", {
+  s.addText("The same things I forget, ticket after ticket.", {
     x: leftX + 0.4, y: cardY + 0.3, w: leftW - 0.6, h: 0.6,
     fontSize: 18, fontFace: F.header, bold: true, color: C.textDark, margin: 0,
   });
