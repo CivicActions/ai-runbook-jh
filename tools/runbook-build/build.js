@@ -13,6 +13,7 @@ const OUTPUT = path.join(REPO_ROOT, "runbook", "index.html");
 
 // ============ PHASE MAP ============
 const SKILL_META = {
+  "work-intake":            { phase: "triage" },
   triage:                   { phase: "triage" },
   "ticket-refinement":      { phase: "refinement" },
   "definition-of-done":     { phase: "refinement", foundation: true },
