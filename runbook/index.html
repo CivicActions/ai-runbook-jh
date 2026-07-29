@@ -534,8 +534,8 @@
       gap: var(--s-xs);
       padding: var(--s-sm) var(--s-base);
       background: var(--c-paper-soft);
-      border-left: 3px solid var(--c-hairline);
-      border-radius: 0 var(--r-md) var(--r-md) 0;
+      border: 1px solid var(--c-hairline);
+      border-radius: var(--r-md);
       font-family: "Source Serif 4", Georgia, serif; font-size: 14px; font-weight: 400; line-height: 1.6; letter-spacing: 0;
     }
     .usage-mode-row { display: flex; gap: var(--s-sm); align-items: baseline; }
@@ -554,6 +554,38 @@
       padding: 1px 5px;
       border-radius: var(--r-sm);
     }
+
+    /* ============ Skill filter ============ */
+    .skill-filter {
+      display: flex;
+      align-items: center;
+      gap: var(--s-sm);
+      margin: var(--s-base) 0;
+    }
+    .skill-filter__label {
+      font-family: "Monaspace Xenon", "JetBrains Mono", "IBM Plex Mono", Consolas, monospace; font-size: 11px; font-weight: 500; line-height: 1.4; letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--c-bark);
+    }
+    .skill-filter__input {
+      font-family: "Source Serif 4", Georgia, serif; font-size: 14px; font-weight: 400; line-height: 1.6; letter-spacing: 0;
+      flex: 1 1 320px;
+      max-width: 420px;
+      padding: 8px 12px;
+      background: var(--c-paper);
+      border: 1px solid var(--c-hairline);
+      border-radius: var(--r-md);
+      color: var(--c-ink);
+    }
+    .skill-filter__input:focus-visible {
+      outline: 2px solid var(--focus-ring);
+      outline-offset: 1px;
+    }
+    .skill-filter__count {
+      font-family: "Monaspace Xenon", "JetBrains Mono", "IBM Plex Mono", Consolas, monospace; font-size: 11px; font-weight: 500; line-height: 1.4; letter-spacing: 0.08em;
+      color: var(--c-bark);
+    }
+    .phase[hidden] { display: none; }
 
     /* ============ Accent legend (tag meanings) ============ */
     .accent-legend {
@@ -931,8 +963,8 @@
       font-style: italic;
       padding: var(--s-base) var(--s-lg);
       background: var(--c-paper-soft);
-      border-left: 3px solid var(--c-graphite);
-      border-radius: 0 var(--r-md) var(--r-md) 0;
+      border: 1px solid var(--c-graphite);
+      border-radius: var(--r-md);
       margin: 0;
     }
     .modal-body p { margin: var(--s-sm) 0; }
@@ -1032,7 +1064,6 @@
     .chat-ask .chat-bubble {
       background: var(--c-paper);
       border-color: var(--c-graphite);
-      border-left-width: 3px;
     }
     .chat-ask .chat-bubble code {
       background: var(--c-graphite-soft);
@@ -1187,7 +1218,7 @@
 
   <div class="container">
     <nav class="phaseflow" aria-label="Six-phase flow">
-      <p class="phaseflow-lede">The six phases below are the lifecycle of a ticket, from creation to a change shipped, done, and explained.</p>
+      <p class="phaseflow-lede">Six phases: how I take a ticket from creation to a change shipped, done, and explained.</p>
       <div class="phaseflow-row">
         
           <a class="phaseflow-node" href="#phase-triage">
@@ -1244,6 +1275,11 @@
     <svg class="wave-divider" viewBox="0 0 1200 18" fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="round" aria-hidden="true" preserveAspectRatio="none"><line x1="0" y1="9" x2="1200" y2="9"/><line x1="300" y1="3" x2="300" y2="15"/><line x1="600" y1="3" x2="600" y2="15"/><line x1="900" y1="3" x2="900" y2="15"/></svg>
 
     <main id="phases">
+      <div class="skill-filter">
+        <label for="skill-filter-input" class="skill-filter__label">Filter skills</label>
+        <input type="search" id="skill-filter-input" class="skill-filter__input" placeholder="Filter by name or description, e.g. kiss" autocomplete="off">
+        <span class="skill-filter__count" id="skill-filter-count" aria-live="polite"></span>
+      </div>
       <p class="accent-legend">
         <span class="accent-legend__intro">Skills are marked when they are foundational, voice-sensitive, security-sensitive, or evidence-sensitive.</span>
         <span><span class="tag tag-foundation">Foundation</span> called by other skills more than invoked directly</span>
@@ -1264,14 +1300,14 @@
       <p class="gloss-formal">First touch. Keep, defer, decline. Minimum required fields, initial priority, reviewed tag.</p>
       <div class="skills-grid">
         
-    <button type="button" class="skill-card" data-skill="work-intake">
+    <button type="button" class="skill-card" data-skill="work-intake" data-search="work-intake periodic sweep of the tracker and wiki for everything assigned to you or waiting on you, returned as one copy-pasteable digest. use when the user says what am i on the hook for, sweep my tickets, what did i miss, catch me up on my queue, or comes back from time off. answers what is on my plate, not what should i do about any one item.">
       <span class="name">work-intake</span>
       <span class="desc">Periodic sweep of the tracker and wiki for everything assigned to you or waiting on you, returned as one copy-pasteable digest. Use when the user says what am I on the hook for, sweep my tickets, what did I miss, catch me up on my queue, or comes back from time off. Answers what is on my plate, not what should I do about any one item.</span>
       
       <div class="next-row"><span class="label">Next</span><span class="next-chip is-static">triage</span><span class="next-chip is-static">ticket-refinement</span></div>
       <span class="open-hint">open full skill</span>
     </button>
-    <button type="button" class="skill-card" data-skill="triage">
+    <button type="button" class="skill-card" data-skill="triage" data-search="triage first-touch assessment of a ticket/issue, decline/defer/keep, fill minimum required fields, set initial priority, tag as reviewed. use when the user says triage this, first pass on this ticket, quick assess this, or shares a ticket/issue they&#39;re seeing for the first time. the goal is a fast keep/cut decision, not a full refinement.">
       <span class="name">triage</span>
       <span class="desc">First-touch assessment of a ticket/issue, decline/defer/keep, fill minimum required fields, set initial priority, tag as reviewed. Use when the user says triage this, first pass on this ticket, quick assess this, or shares a ticket/issue they&#39;re seeing for the first time. The goal is a fast keep/cut decision, not a full refinement.</span>
       
@@ -1292,14 +1328,14 @@
       <p class="gloss-formal">Prep for estimation. User story, acceptance criteria, dependencies, definition of done.</p>
       <div class="skills-grid">
         
-    <button type="button" class="skill-card" data-skill="ticket-refinement">
+    <button type="button" class="skill-card" data-skill="ticket-refinement" data-search="ticket-refinement deeper refinement of a ticket/issue to advance it toward ready for estimation or ready for dev. use when the user says refine this ticket, prep this ticket, get this ready for estimation, write up the ticket body, this ticket needs more detail, or fill in the ac. apply after triage when a ticket needs full acceptance criteria, implementation details, and loe-readiness.">
       <span class="name">ticket-refinement</span>
       <span class="desc">Deeper refinement of a ticket/issue to advance it toward Ready for Estimation or Ready for Dev. Use when the user says refine this ticket, prep this ticket, get this ready for estimation, write up the ticket body, this ticket needs more detail, or fill in the AC. Apply after triage when a ticket needs full acceptance criteria, implementation details, and LOE-readiness.</span>
       
       <div class="next-row"><span class="label">Next</span><span class="next-chip is-static">issue-plan</span></div>
       <span class="open-hint">open full skill</span>
     </button>
-    <button type="button" class="skill-card" data-skill="definition-of-done">
+    <button type="button" class="skill-card" data-skill="definition-of-done" data-search="definition-of-done outputs the appropriate definition of done checklist for a ticket type (fe, be, devops), read from the active project contract. use when the user says dod checklist, definition of done, append the dod, what&#39;s the checklist, or when another skill (ticket-refinement, qa-steps, issue-closure-notes) needs to append the dod. single canonical source so the dod list doesn&#39;t drift across artifacts.">
       <span class="name">definition-of-done</span>
       <span class="desc">Outputs the appropriate Definition of Done checklist for a ticket type (FE, BE, DevOps), read from the active project contract. Use when the user says DoD checklist, definition of done, append the DoD, what&#39;s the checklist, or when another skill (ticket-refinement, qa-steps, issue-closure-notes) needs to append the DoD. Single canonical source so the DoD list doesn&#39;t drift across artifacts.</span>
       <div class="meta"><span class="tag tag-foundation">Foundation</span></div>
@@ -1320,14 +1356,14 @@
       <p class="gloss-formal">Write the approach as a file before touching code. Generates the implementation-details checklist.</p>
       <div class="skills-grid">
         
-    <button type="button" class="skill-card" data-skill="issue-plan">
+    <button type="button" class="skill-card" data-skill="issue-plan" data-search="issue-plan writes an implementation plan for a ticket/issue. use when the user says plan this ticket, plan this issue, break this down, what&#39;s the approach, stub out this ticket, or i need to write up a ticket. apply when the user wants to think through a ticket/issue before starting work.">
       <span class="name">issue-plan</span>
       <span class="desc">Writes an implementation plan for a ticket/issue. Use when the user says plan this ticket, plan this issue, break this down, what&#39;s the approach, stub out this ticket, or I need to write up a ticket. Apply when the user wants to think through a ticket/issue before starting work.</span>
       
       
       <span class="open-hint">open full skill</span>
     </button>
-    <button type="button" class="skill-card" data-skill="implementation-details">
+    <button type="button" class="skill-card" data-skill="implementation-details" data-search="implementation-details writes the implementation details checklist for a ticket. use when the user says write up the implementation details, add implementation details, or what would i do for this ticket. produces a practical dev checklist of what to actually do, not a narrative of what was done. reads project-specific values (tracker markup, stack, tooling) from the active project contract.">
       <span class="name">implementation-details</span>
       <span class="desc">Writes the implementation details checklist for a ticket. Use when the user says write up the implementation details, add implementation details, or what would I do for this ticket. Produces a practical dev checklist of what to actually do, not a narrative of what was done. Reads project-specific values (tracker markup, stack, tooling) from the active project contract.</span>
       
@@ -1348,49 +1384,49 @@
       <p class="gloss-formal">Implement against the plan. Pattern and simplicity checks. Handoffs carry state across chats.</p>
       <div class="skills-grid">
         
-    <button type="button" class="skill-card" data-skill="pattern-alignment">
+    <button type="button" class="skill-card" data-skill="pattern-alignment" data-search="pattern-alignment checks whether a new implementation follows existing codebase patterns, read from the active project contract. use when the user says does this follow our patterns, is this consistent, how do we normally do this, check my approach, or am i doing this the right way. apply when the user shares new code and wants to know if it fits the project conventions.">
       <span class="name">pattern-alignment</span>
       <span class="desc">Checks whether a new implementation follows existing codebase patterns, read from the active project contract. Use when the user says does this follow our patterns, is this consistent, how do we normally do this, check my approach, or am I doing this the right way. Apply when the user shares new code and wants to know if it fits the project conventions.</span>
       
       
       <span class="open-hint">open full skill</span>
     </button>
-    <button type="button" class="skill-card" data-skill="component-design">
+    <button type="button" class="skill-card" data-skill="component-design" data-search="component-design produces a component design spec (variables, markup sketch, states, a11y notes) against the active project&#39;s design system, not working code. use when the user says design this component, how should this look, plan this ui, sketch this out, what component should i use, or review this design. apply before implementation to align on structure.">
       <span class="name">component-design</span>
       <span class="desc">Produces a component design spec (variables, markup sketch, states, a11y notes) against the active project&#39;s design system, not working code. Use when the user says design this component, how should this look, plan this UI, sketch this out, what component should I use, or review this design. Apply before implementation to align on structure.</span>
       
       <div class="next-row"><span class="label">Next</span><span class="next-chip is-static">pattern-alignment</span></div>
       <span class="open-hint">open full skill</span>
     </button>
-    <button type="button" class="skill-card" data-skill="kiss">
+    <button type="button" class="skill-card" data-skill="kiss" data-search="kiss checks an implementation for unnecessary complexity and suggests the simplest approach. use when the user says is this too complex, am i over-engineering this, simplify this, is there a simpler way, or do i need all of this. apply when the user shares code and seems uncertain whether the approach is too involved.">
       <span class="name">kiss</span>
       <span class="desc">Checks an implementation for unnecessary complexity and suggests the simplest approach. Use when the user says is this too complex, am I over-engineering this, simplify this, is there a simpler way, or do I need all of this. Apply when the user shares code and seems uncertain whether the approach is too involved.</span>
       
       
       <span class="open-hint">open full skill</span>
     </button>
-    <button type="button" class="skill-card" data-skill="handoff-message">
+    <button type="button" class="skill-card" data-skill="handoff-message" data-search="handoff-message writes a structured handoff note at the end of a work session. use when the user says handoff, write a handoff, i&#39;m done for the day, end of session, picking this up later, or hand this off. apply when the user is wrapping up work even if they don&#39;t say &#39;handoff&#39;.">
       <span class="name">handoff-message</span>
       <span class="desc">Writes a structured handoff note at the end of a work session. Use when the user says handoff, write a handoff, I&#39;m done for the day, end of session, picking this up later, or hand this off. Apply when the user is wrapping up work even if they don&#39;t say &#39;handoff&#39;.</span>
       
       
       <span class="open-hint">open full skill</span>
     </button>
-    <button type="button" class="skill-card" data-skill="organize-commits">
+    <button type="button" class="skill-card" data-skill="organize-commits" data-search="organize-commits organizes unstaged changes into clean logical commits ready to push, following the active project&#39;s commit conventions. use when the user says organize commits, stage my changes, help me commit, prep for a pr, or my changes are a mess. prefer squash-commits when the user only wants to squash existing commits, not organize working tree changes.">
       <span class="name">organize-commits</span>
       <span class="desc">Organizes unstaged changes into clean logical commits ready to push, following the active project&#39;s commit conventions. Use when the user says organize commits, stage my changes, help me commit, prep for a PR, or my changes are a mess. Prefer squash-commits when the user only wants to squash existing commits, not organize working tree changes.</span>
       
       
       <span class="open-hint">open full skill</span>
     </button>
-    <button type="button" class="skill-card" data-skill="squash-commits">
+    <button type="button" class="skill-card" data-skill="squash-commits" data-search="squash-commits squashes wip commits into clean commits before merge. use when the user says squash commits, clean up commits, squash these, combine commits, or i have a bunch of wip commits. apply when the user wants to tidy history before opening a pr even if they don&#39;t say &#39;squash&#39;.">
       <span class="name">squash-commits</span>
       <span class="desc">Squashes WIP commits into clean commits before merge. Use when the user says squash commits, clean up commits, squash these, combine commits, or I have a bunch of WIP commits. Apply when the user wants to tidy history before opening a PR even if they don&#39;t say &#39;squash&#39;.</span>
       
       
       <span class="open-hint">open full skill</span>
     </button>
-    <button type="button" class="skill-card" data-skill="commit-message-writer">
+    <button type="button" class="skill-card" data-skill="commit-message-writer" data-search="commit-message-writer writes a well-formed git commit message. use when the user says write a commit, commit message, what should my commit say, help me commit, or draft a commit. apply even when the user just says &#39;commit this&#39; or shares a diff without explicitly asking for a message.">
       <span class="name">commit-message-writer</span>
       <span class="desc">Writes a well-formed git commit message. Use when the user says write a commit, commit message, what should my commit say, help me commit, or draft a commit. Apply even when the user just says &#39;commit this&#39; or shares a diff without explicitly asking for a message.</span>
       
@@ -1411,42 +1447,42 @@
       <p class="gloss-formal">Confirm it works. Browser, accessibility, responsiveness, performance, peer review.</p>
       <div class="skills-grid">
         
-    <button type="button" class="skill-card" data-skill="browser-check">
+    <button type="button" class="skill-card" data-skill="browser-check" data-search="browser-check validates a change in the browser using the project&#39;s sanctioned browser-inspection mcp, navigating pages, inspecting dom/console/network, capturing screenshots. use when the user says browser check, validate locally, test this in the browser, check the console, does this look right, or check this page. apply when validating any frontend change even if the user does not say &#39;browser check&#39;.">
       <span class="name">browser-check</span>
       <span class="desc">Validates a change in the browser using the project&#39;s sanctioned browser-inspection MCP, navigating pages, inspecting DOM/console/network, capturing screenshots. Use when the user says browser check, validate locally, test this in the browser, check the console, does this look right, or check this page. Apply when validating any frontend change even if the user does not say &#39;browser check&#39;.</span>
       <div class="meta"><span class="tag tag-foundation">Foundation</span></div>
       
       <span class="open-hint">open full skill</span>
     </button>
-    <button type="button" class="skill-card" data-skill="accessibility-audit">
+    <button type="button" class="skill-card" data-skill="accessibility-audit" data-search="accessibility-audit audits a page, component, or template for wcag 2.1 aa / section 508 compliance. use when the user says accessibility audit, check a11y, find accessibility issues, is this accessible, section 508 check, or review this for accessibility. apply when the user shares a page or component and wants compliance validation even if they don&#39;t say &#39;audit&#39;.">
       <span class="name">accessibility-audit</span>
       <span class="desc">Audits a page, component, or template for WCAG 2.1 AA / Section 508 compliance. Use when the user says accessibility audit, check a11y, find accessibility issues, is this accessible, Section 508 check, or review this for accessibility. Apply when the user shares a page or component and wants compliance validation even if they don&#39;t say &#39;audit&#39;.</span>
       
       
       <span class="open-hint">open full skill</span>
     </button>
-    <button type="button" class="skill-card" data-skill="responsive-design">
+    <button type="button" class="skill-card" data-skill="responsive-design" data-search="responsive-design reviews or plans responsive behavior across mobile, tablet, and desktop breakpoints. use when the user says check responsiveness, does this work on mobile, responsive review, test at different viewports, or how does this look on small screens. apply when the user shares a component or layout and wants breakpoint validation.">
       <span class="name">responsive-design</span>
       <span class="desc">Reviews or plans responsive behavior across mobile, tablet, and desktop breakpoints. Use when the user says check responsiveness, does this work on mobile, responsive review, test at different viewports, or how does this look on small screens. Apply when the user shares a component or layout and wants breakpoint validation.</span>
       
       
       <span class="open-hint">open full skill</span>
     </button>
-    <button type="button" class="skill-card" data-skill="performance-frontend">
+    <button type="button" class="skill-card" data-skill="performance-frontend" data-search="performance-frontend audits a page or component for frontend performance issues, render blocking, asset size, caching, core web vitals. use when the user says performance audit, this page is slow, check performance, core web vitals, why is this loading slowly, or check my assets. apply when the user wants to find or fix frontend performance problems.">
       <span class="name">performance-frontend</span>
       <span class="desc">Audits a page or component for frontend performance issues, render blocking, asset size, caching, Core Web Vitals. Use when the user says performance audit, this page is slow, check performance, Core Web Vitals, why is this loading slowly, or check my assets. Apply when the user wants to find or fix frontend performance problems.</span>
       
       
       <span class="open-hint">open full skill</span>
     </button>
-    <button type="button" class="skill-card" data-skill="frontend-peer-review">
+    <button type="button" class="skill-card" data-skill="frontend-peer-review" data-search="frontend-peer-review peer reviews a frontend change; templates, styles, javascript, or component files; before merge. use when the user says review this, peer review, look at my frontend change, is this ready to merge, or review this pr. apply when the user shares frontend code and wants a second opinion even if they don&#39;t say &#39;peer review&#39;.">
       <span class="name">frontend-peer-review</span>
       <span class="desc">Peer reviews a frontend change; templates, styles, JavaScript, or component files; before merge. Use when the user says review this, peer review, look at my frontend change, is this ready to merge, or review this PR. Apply when the user shares frontend code and wants a second opinion even if they don&#39;t say &#39;peer review&#39;.</span>
       
       
       <span class="open-hint">open full skill</span>
     </button>
-    <button type="button" class="skill-card" data-skill="drupal-peer-review">
+    <button type="button" class="skill-card" data-skill="drupal-peer-review" data-search="drupal-peer-review critically reviews drupal php, twig, scss, or config for correctness, security, performance, and project standards. use when the user says review this drupal code, critique this, is this correct, check my service/hook/template, or what&#39;s wrong with this. apply when the user shares backend drupal code and wants a quality check even if they don&#39;t say &#39;review&#39;.">
       <span class="name">drupal-peer-review</span>
       <span class="desc">Critically reviews Drupal PHP, Twig, SCSS, or config for correctness, security, performance, and project standards. Use when the user says review this Drupal code, critique this, is this correct, check my service/hook/template, or what&#39;s wrong with this. Apply when the user shares backend Drupal code and wants a quality check even if they don&#39;t say &#39;review&#39;.</span>
       
@@ -1467,28 +1503,28 @@
       <p class="gloss-formal">Hand off and reflect. PR summary, QA steps, closure notes, lessons captured at handoff.</p>
       <div class="skills-grid">
         
-    <button type="button" class="skill-card" data-skill="summarize-commits">
+    <button type="button" class="skill-card" data-skill="summarize-commits" data-search="summarize-commits summarizes commits into a pr description, changelog, or sprint summary. use when the user says summarize these commits, write a pr description, what changed in this branch, write release notes, or sprint summary. apply when the user shares a git log and wants a human-readable summary.">
       <span class="name">summarize-commits</span>
       <span class="desc">Summarizes commits into a PR description, changelog, or sprint summary. Use when the user says summarize these commits, write a PR description, what changed in this branch, write release notes, or sprint summary. Apply when the user shares a git log and wants a human-readable summary.</span>
       
       
       <span class="open-hint">open full skill</span>
     </button>
-    <button type="button" class="skill-card" data-skill="qa-steps">
+    <button type="button" class="skill-card" data-skill="qa-steps" data-search="qa-steps writes qa steps for a ticket or pr. use when the user says write qa steps, add testing instructions, how do i test this, write the qa section, or what should qa check. apply when the user is preparing a ticket or pr for review and needs test instructions.">
       <span class="name">qa-steps</span>
       <span class="desc">Writes QA steps for a ticket or PR. Use when the user says write QA steps, add testing instructions, how do I test this, write the QA section, or what should QA check. Apply when the user is preparing a ticket or PR for review and needs test instructions.</span>
       
       
       <span class="open-hint">open full skill</span>
     </button>
-    <button type="button" class="skill-card" data-skill="issue-closure-notes">
+    <button type="button" class="skill-card" data-skill="issue-closure-notes" data-search="issue-closure-notes writes closure notes for a completed ticket/issue. use when the user says close this ticket, write closure notes, ticket is done, wrap up this ticket, or i&#39;m closing [issue-ref]. apply when the user is finishing a ticket even if they don&#39;t say &#39;closure notes&#39;.">
       <span class="name">issue-closure-notes</span>
       <span class="desc">Writes closure notes for a completed ticket/issue. Use when the user says close this ticket, write closure notes, ticket is done, wrap up this ticket, or I&#39;m closing [issue-ref]. Apply when the user is finishing a ticket even if they don&#39;t say &#39;closure notes&#39;.</span>
       
       
       <span class="open-hint">open full skill</span>
     </button>
-    <button type="button" class="skill-card" data-skill="lessons-learned">
+    <button type="button" class="skill-card" data-skill="lessons-learned" data-search="lessons-learned writes a lessons-learned note after completing a ticket, sprint, or project phase. use when the user says lessons learned, retrospective, what did we learn, what went wrong, what would i do differently, or i just finished this and want to reflect. apply at the end of any significant piece of work.">
       <span class="name">lessons-learned</span>
       <span class="desc">Writes a lessons-learned note after completing a ticket, sprint, or project phase. Use when the user says lessons learned, retrospective, what did we learn, what went wrong, what would I do differently, or I just finished this and want to reflect. Apply at the end of any significant piece of work.</span>
       
@@ -1509,21 +1545,21 @@
       <p class="gloss-formal">Not tied to a phase. tone-check fires on anything written for an audience; security-check fires on anything touching secrets or sensitive data; evidence-check fires on any technical claim or recommendation.</p>
       <div class="skills-grid">
         
-    <button type="button" class="skill-card" data-skill="tone-check">
+    <button type="button" class="skill-card" data-skill="tone-check" data-search="tone-check reviews written content for tone, clarity, and appropriateness. use when the user says check the tone, does this sound right, review this writing, is this too formal, rewrite this, or shares a commit message/pr description/ticket comment and asks for feedback. apply when the user wants a second opinion on any written communication.">
       <span class="name">tone-check</span>
       <span class="desc">Reviews written content for tone, clarity, and appropriateness. Use when the user says check the tone, does this sound right, review this writing, is this too formal, rewrite this, or shares a commit message/PR description/ticket comment and asks for feedback. Apply when the user wants a second opinion on any written communication.</span>
       <div class="meta"><span class="tag tag-foundation">Foundation</span><span class="tag tag-voice">Voice</span></div>
       
       <span class="open-hint">open full skill</span>
     </button>
-    <button type="button" class="skill-card" data-skill="security-check">
+    <button type="button" class="skill-card" data-skill="security-check" data-search="security-check pre-flight checklist before pasting context into an ai prompt. use at the start of an ai session, before pasting user data, before sharing screenshots, before authentication-adjacent work, or when the user says is this safe to share, can i paste this, security check, ai safety, will this contain pii. apply whenever the next action involves sending substantive content to an ai tool.">
       <span class="name">security-check</span>
       <span class="desc">Pre-flight checklist before pasting context into an AI prompt. Use at the start of an AI session, before pasting user data, before sharing screenshots, before authentication-adjacent work, or when the user says is this safe to share, can I paste this, security check, AI safety, will this contain PII. Apply whenever the next action involves sending substantive content to an AI tool.</span>
       <div class="meta"><span class="tag tag-foundation">Foundation</span><span class="tag tag-security">Security</span></div>
       
       <span class="open-hint">open full skill</span>
     </button>
-    <button type="button" class="skill-card" data-skill="evidence-check">
+    <button type="button" class="skill-card" data-skill="evidence-check" data-search="evidence-check an honesty gate that makes ai back up its claims with real evidence instead of presenting guesses as fact. use at all times as a background behavior, invoke explicitly when the user says show your work, prove it, how do you know that, evidence check, what&#39;s your source, back that up, or when the ai is recommending a course of action. apply as a cross-cutting self-check before presenting technical claims, recommendations, or architectural guidance.">
       <span class="name">evidence-check</span>
       <span class="desc">An honesty gate that makes AI back up its claims with real evidence instead of presenting guesses as fact. Use at all times as a background behavior, invoke explicitly when the user says show your work, prove it, how do you know that, evidence check, what&#39;s your source, back that up, or when the AI is recommending a course of action. Apply as a cross-cutting self-check before presenting technical claims, recommendations, or architectural guidance.</span>
       <div class="meta"><span class="tag tag-foundation">Foundation</span><span class="tag tag-evidence">Evidence</span></div>
@@ -1851,6 +1887,47 @@
       attachNextChipHandlers(document);
     }
 
+    function attachSkillFilter() {
+      const input = document.getElementById("skill-filter-input");
+      const count = document.getElementById("skill-filter-count");
+      const cards = Array.from(document.querySelectorAll(".skill-card"));
+      const total = cards.length;
+      let wasOpenBeforeFilter = null;
+
+      input.addEventListener("input", () => {
+        const query = input.value.trim().toLowerCase();
+        if (query && wasOpenBeforeFilter === null) {
+          wasOpenBeforeFilter = new Map(
+            Array.from(document.querySelectorAll(".phase")).map(p => [p.id, p.open])
+          );
+        }
+
+        let shown = 0;
+        document.querySelectorAll(".phase").forEach(phase => {
+          const phaseCards = Array.from(phase.querySelectorAll(".skill-card"));
+          let phaseShown = 0;
+          phaseCards.forEach(card => {
+            const matches = !query || card.dataset.search.includes(query);
+            card.hidden = !matches;
+            if (matches) { shown++; phaseShown++; }
+          });
+          phase.hidden = query.length > 0 && phaseShown === 0;
+          if (query) {
+            phase.open = phaseShown > 0;
+          } else if (wasOpenBeforeFilter && wasOpenBeforeFilter.has(phase.id)) {
+            phase.open = wasOpenBeforeFilter.get(phase.id);
+          }
+        });
+
+        if (!query) {
+          wasOpenBeforeFilter = null;
+          count.textContent = "";
+        } else {
+          count.textContent = `${shown} of ${total} skills`;
+        }
+      });
+    }
+
     function attachNextChipHandlers(root) {
       root.querySelectorAll("button.next-chip").forEach(chip => {
         chip.addEventListener("click", (e) => {
@@ -1886,6 +1963,7 @@
     });
 
     attachCardHandlers();
+    attachSkillFilter();
   </script>
 </body>
 </html>

@@ -19,7 +19,11 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 - Deck: phase icons and Batch A/B copy polish
 - README: worked examples and inline definitions for jargon; ad-hoc browser-chat use called out alongside IDE/CLI
 
+### Added
+- Runbook: a client-side filter above the phase list, so a 25+ skill catalog can be searched by name or description instead of scrolled through.
+
 ### Changed
+- Runbook: swapped the one-sided `border-left` accent (the classic AI-UI tell) for a full border on the usage-mode example cards, modal description blockquote, and chat-ask bubble; kept it only on the hero newcomer note, the one place it reads as an actual footnote convention. Also reworded the phase-flow lede off a declarative "the six phases are the lifecycle of a ticket" claim to "how I take a ticket" -- it's one person's framework, not a universal fact.
 - Completed the `profile` to `contract` naming convention: `profiles/` directory renamed to `contracts/`, `PROFILE` env var to `CONTRACT` (with `PROFILE` kept as a backward-compat shim), and the terminology carried across the docs. `.agents/profile.md` stays as a legacy alias.
 - Renamed the `check-tone` skill to `tone-check`, for consistency with the `-check` skill family (`evidence-check`, `security-check`, `browser-check`)
 - README tightened (~40% shorter lede); removed `Pre-development` section; general clarity/consistency pass

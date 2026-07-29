@@ -249,7 +249,7 @@ function renderSkillCard(skill) {
     : "";
 
   return `
-    <button type="button" class="skill-card" data-skill="${skill.name}">
+    <button type="button" class="skill-card" data-skill="${skill.name}" data-search="${escapeHtml(`${skill.name} ${skill.description}`.toLowerCase())}">
       <span class="name">${skill.name}</span>
       <span class="desc">${escapeHtml(skill.description)}</span>
       ${tagsHtml}
@@ -321,7 +321,7 @@ const html = `<!DOCTYPE html>
 
   <div class="container">
     <nav class="phaseflow" aria-label="Six-phase flow">
-      <p class="phaseflow-lede">The six phases below are the lifecycle of a ticket, from creation to a change shipped, done, and explained.</p>
+      <p class="phaseflow-lede">Six phases: how I take a ticket from creation to a change shipped, done, and explained.</p>
       <div class="phaseflow-row">
         ${PHASES.filter(p => p.num).map(p => `
           <a class="phaseflow-node" href="#phase-${p.id}">
@@ -348,6 +348,11 @@ const html = `<!DOCTYPE html>
     ${SVG.wave}
 
     <main id="phases">
+      <div class="skill-filter">
+        <label for="skill-filter-input" class="skill-filter__label">Filter skills</label>
+        <input type="search" id="skill-filter-input" class="skill-filter__input" placeholder="Filter by name or description, e.g. kiss" autocomplete="off">
+        <span class="skill-filter__count" id="skill-filter-count" aria-live="polite"></span>
+      </div>
       <p class="accent-legend">
         <span class="accent-legend__intro">Skills are marked when they are foundational, voice-sensitive, security-sensitive, or evidence-sensitive.</span>
         <span><span class="tag tag-foundation">Foundation</span> called by other skills more than invoked directly</span>
@@ -675,6 +680,47 @@ const html = `<!DOCTYPE html>
       attachNextChipHandlers(document);
     }
 
+    function attachSkillFilter() {
+      const input = document.getElementById("skill-filter-input");
+      const count = document.getElementById("skill-filter-count");
+      const cards = Array.from(document.querySelectorAll(".skill-card"));
+      const total = cards.length;
+      let wasOpenBeforeFilter = null;
+
+      input.addEventListener("input", () => {
+        const query = input.value.trim().toLowerCase();
+        if (query && wasOpenBeforeFilter === null) {
+          wasOpenBeforeFilter = new Map(
+            Array.from(document.querySelectorAll(".phase")).map(p => [p.id, p.open])
+          );
+        }
+
+        let shown = 0;
+        document.querySelectorAll(".phase").forEach(phase => {
+          const phaseCards = Array.from(phase.querySelectorAll(".skill-card"));
+          let phaseShown = 0;
+          phaseCards.forEach(card => {
+            const matches = !query || card.dataset.search.includes(query);
+            card.hidden = !matches;
+            if (matches) { shown++; phaseShown++; }
+          });
+          phase.hidden = query.length > 0 && phaseShown === 0;
+          if (query) {
+            phase.open = phaseShown > 0;
+          } else if (wasOpenBeforeFilter && wasOpenBeforeFilter.has(phase.id)) {
+            phase.open = wasOpenBeforeFilter.get(phase.id);
+          }
+        });
+
+        if (!query) {
+          wasOpenBeforeFilter = null;
+          count.textContent = "";
+        } else {
+          count.textContent = \`\${shown} of \${total} skills\`;
+        }
+      });
+    }
+
     function attachNextChipHandlers(root) {
       root.querySelectorAll("button.next-chip").forEach(chip => {
         chip.addEventListener("click", (e) => {
@@ -710,6 +756,7 @@ const html = `<!DOCTYPE html>
     });
 
     attachCardHandlers();
+    attachSkillFilter();
   </script>
 </body>
 </html>
