@@ -7,6 +7,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 ## [Unreleased]
 
 ### Added
+- `work-intake` skill: periodic sweep of the tracker and wiki for everything assigned to you or waiting on you, returned as one copy-pasteable digest. Leads with the items other people are blocked on, holds a fixed 14-day lookback so a skipped run drops nothing, and requires failed queries to be reported so an unsupported search never reads as a clean result. Estimation and workflow vocabulary come from the project contract rather than defaulting to points and sprints.
 - `evidence-check` skill: cross-cutting honesty gate that makes claims carry verified evidence instead of guesses, with a state-claims-default-to-Unverified rule, an unchecked-guardrail flag, and a human-SME routing clause
 - Hosted AI runbook at https://civicactions.github.io/ai-runbook-jh/runbook/ (GitHub Pages); README links from intro and AI runbook sections
 - AI Usage Policy surfaced in `README.md` and `CONTRIBUTING.md`
