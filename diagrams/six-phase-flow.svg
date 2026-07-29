@@ -5,7 +5,7 @@
 
   <!-- ============ HEADER ============ -->
   <text x="80" y="55" font-size="30" font-weight="700" fill="#1F1E1B">ai-runbook-jh <tspan font-size="20" font-weight="500" fill="#6B5A41">: AI-Assisted Ticket Workflow</tspan></text>
-  <text x="80" y="84" font-size="15" fill="#6B5A41">Six phases, 25 skills. Voice, security, and evidence gate every phase. A per-project contract keeps the skills generic.</text>
+  <text x="80" y="84" font-size="15" fill="#6B5A41">Six phases, single-purpose skills. Voice, security, and evidence gate every phase. A per-project contract keeps the skills generic.</text>
   <text x="1520" y="50" text-anchor="end" font-size="13" fill="#6B5A41">ai-runbook-jh</text>
   <text x="1520" y="86" text-anchor="end" font-size="13" fill="#6B5A41">Framework v1.1 / June 2026</text>
   <line x1="80" y1="108" x2="1520" y2="108" stroke="#D9CDB1" stroke-width="1"/>
