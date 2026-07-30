@@ -26,14 +26,18 @@ If no project contract is present, ask the user for the tracker markup and stack
 or a specific framework. The project contract is the single source of truth.
 
 ## When to Use
-Invoke when the user wants a practical checklist of implementation steps for a ticket, what a developer would actually do to work the ticket, in roughly the order they'd do it.
+Invoke at the **start** of a ticket — before work begins — to produce a checklist of the major tasks a developer would actually do to work it. This is a planning artifact, not a retrospective one.
+
+**Default assumption:** the ticket is not started. Do not generate a QA/verification list; generate the work.
+
+**Exception:** if the user explicitly says the ticket is in-progress or done (e.g. "the branch is already built, write up what was done"), adapt accordingly — but only when told. Do not infer this from context.
 
 ## Approach
 
 1. **Understand the ticket**, read the bug description, acceptance criteria, and any technical notes
-2. **Think through the full surface area**, what files are likely involved, what viewports/browsers need checking, what tests need updating
-3. **Include the non-obvious steps**, things a developer might forget: checking adjacent viewports, updating visual-regression reference shots, confirming the fix doesn't regress something nearby
-4. **Keep each item short**, one line, action-oriented; no qualifiers, conditionals, or inline notes ("if X", "opens/closes correctly", "on Y env"). Those belong in QA steps or the DoD, not here
+2. **Think in major work phases**, not sub-steps — config, code, tests, visual regression, linting. Each item should represent a meaningful chunk of work, not a micro-task
+3. **Include the non-obvious items** a developer might forget: updating visual-regression reference shots, exporting config, adding automated tests
+4. **Keep each item short**, one line, action-oriented. No qualifiers, conditionals, or inline notes ("if X", "on Y env"). Those belong in the DoD or QA steps
 
 ### Stack-conditional steps
 Tailor the test/template/styling steps to the project contract's `## Stack` and `## Environments`; don't
@@ -97,13 +101,13 @@ would read:
 - [ ] npm run lint
 ```
 
-Bad (written after the fact):
+Bad (written after the fact / too specific about solution):
 ```
 () Remove the mousedown handler and replace with window.scrollTo() at ajaxSend
 () Replace the conditional overflow unlock with unconditional removeProperty calls
 ```
 
-Bad (too granular):
+Bad (too granular / micro-tasks):
 ```
 () Identify where the lock is set in filter-button.js
 () Trace the unlock path in ajaxComplete
@@ -111,6 +115,15 @@ Bad (too granular):
 () Confirm fix on desktop
 () Confirm fix on tablet
 () Confirm fix on mobile
+```
+
+Bad (too granular / QA verification list instead of work items):
+```
+() Verify help text renders on each option
+() Check each style at full-width, half-width, and one-third-width
+() Confirm border-radius renders at every breakpoint
+() Run Pa11y contrast check for each palette option
+()  Check browser console for errors
 ```
 
 Bad (too vague):

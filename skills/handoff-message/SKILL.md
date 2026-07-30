@@ -37,6 +37,7 @@ Handoffs are session-bracketed. **One per session, not one per problem.** If you
 5. **List what was validated**, environments tested, commands run, results observed
 6. **Identify known risks and open questions**, anything uncertain or deferred
 7. **Write next steps**, concrete, ordered, with commands where applicable
+8. **Run lessons-learned**, after the handoff file is saved, invoke the `lessons-learned` skill to capture what went well, what didn't, and what to carry forward. Write the output to `.agents/lessons/`. This always runs at handoff time — reflection is most useful while the work is fresh.
 
 ## Output Format
 
@@ -189,3 +190,4 @@ Page locks after facet deselect; tracked to a stale overflow style.
 - **Phase placement:** Handoff is part of the Build phase. It's a mid-work pause/resume mechanic for carrying state across chat sessions. For end-of-work communication (after build is done), use `issue-closure-notes`. For lessons captured at handoff time, use `lessons-learned`.
 - **Often references:** `issue-plan` (the plan file is linked from the handoff), prior handoffs in `.agents/handoffs/`
 - **Downstream:** `tone-check` (run shared handoff prose through tone check before publishing)
+- **Invokes (after handoff file is written):** `lessons-learned` — always run at the end of every handoff session. Captures what went well, what didn't, and what to carry forward while the work is still fresh. Write the lessons file to `.agents/lessons/` before closing the session.

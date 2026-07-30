@@ -34,13 +34,20 @@ identifying risks, and clarifying acceptance criteria.
 ## Approach
 1. **Understand the item**: the goal, what's in scope, what's explicitly out of scope
 2. **Identify dependencies**: other tickets, modules, environments, or people needed
-3. **Break down the work**: ordered, concrete, actionable implementation steps
-4. **Define acceptance criteria**: what does done look like, how will it be verified
-5. **Flag risks**: anything that could block progress or require a decision
-6. **Estimate complexity**: small / medium / large / spike
-7. **Generate task list**: use `implementation-details` to produce a concrete ordered task set
-8. **Include branch creation**: first implementation step creates a feature branch from the
+3. **Inspect the source branch** (if one exists): read the diff, understand what's already built,
+   what config/code state the plan inherits. Don't plan work that's already done. If the ticket
+   references a parent branch, feature branch, or upstream PR, run `git diff` and read the
+   relevant files to ground the plan in the actual current state — not a remembered or assumed state.
+4. **Break down the work**: ordered, concrete, actionable implementation steps
+5. **Define acceptance criteria**: what does done look like, how will it be verified
+6. **Flag risks**: anything that could block progress or require a decision
+7. **Estimate complexity**: small / medium / large / spike
+8. **Generate task list**: use `implementation-details` to produce a concrete ordered task set
+9. **Include branch creation**: first implementation step creates a feature branch from the
    project contract's base branch, named per the project contract's branch convention
+10. **Map skill usage**: scan `.agents/skills/` for skills relevant to the plan's execution phases
+    (build, validate, pre-push, session end). Include a skill-usage table showing which skills fire
+    at which point. Exclude skills that don't apply and state why.
 
 ## Project context
 Flag, in the project's terms (read from the project contract):
