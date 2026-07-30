@@ -123,8 +123,7 @@ Bad (too granular / QA verification list instead of work items):
 () Check each style at full-width, half-width, and one-third-width
 () Confirm border-radius renders at every breakpoint
 () Run Pa11y contrast check for each palette option
-()  Check browser console for errors
-```
+() Check browser console for errors```
 
 Bad (too vague):
 ```

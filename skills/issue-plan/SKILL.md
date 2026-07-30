@@ -37,7 +37,7 @@ identifying risks, and clarifying acceptance criteria.
 3. **Inspect the source branch** (if one exists): read the diff, understand what's already built,
    what config/code state the plan inherits. Don't plan work that's already done. If the ticket
    references a parent branch, feature branch, or upstream PR, run `git diff` and read the
-   relevant files to ground the plan in the actual current state — not a remembered or assumed state.
+   relevant files to ground the plan in the actual current state, not a remembered or assumed state.
 4. **Break down the work**: ordered, concrete, actionable implementation steps
 5. **Define acceptance criteria**: what does done look like, how will it be verified
 6. **Flag risks**: anything that could block progress or require a decision
