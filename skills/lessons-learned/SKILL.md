@@ -140,6 +140,7 @@ _AI-assisted draft, reviewed before submission._   <- only if the project contra
 `lessons-learned` lives at the end of the Communicate phase. It runs at handoff time, alongside `issue-closure-notes`, while the work is still fresh, before the ticket leaves your hands for downstream review (e.g. visual/UX QA, code review, QA per the project contract's `## Workflow states`).
 
 - **Phase placement:** end of Phase 6 (Communicate), not a separate phase. Reflection happens as you hand off, not after merge. By the time the ticket is Done, you're already on the next thing.
+- **Invoked by:** `handoff-message` (invoked automatically after the handoff file is saved)
 - **Upstream:** all prior phase artifacts (plan, handoffs, closure notes) feed into the reflection
 - **Sibling:** `issue-closure-notes` (the comms artifact); this is the discipline artifact
 - **Downstream:** `tone-check` (run shared lessons through tone check before publishing)
