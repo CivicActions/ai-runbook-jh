@@ -24,6 +24,9 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ### Changed
 - Runbook: swapped the one-sided `border-left` accent (the classic AI-UI tell) for a full border on the usage-mode example cards, modal description blockquote, and chat-ask bubble; kept it only on the hero newcomer note, the one place it reads as an actual footnote convention. Also reworded the phase-flow lede off a declarative "the six phases are the lifecycle of a ticket" claim to "how I take a ticket" -- it's one person's framework, not a universal fact.
+- `handoff-message`: now invokes `lessons-learned` automatically after the handoff file is saved; reflection is most useful while the work is fresh
+- `implementation-details`: reframed as a pre-work planning artifact, not a retrospective checklist; added explicit default assumption (ticket not started) with escape hatch for in-progress/done tickets; added bad example showing QA verification lists incorrectly used as implementation steps
+- `issue-plan`: added step to inspect the source branch before planning (don't plan work that's already done); added skill-usage mapping table to output showing which skills fire at which execution phase
 - Completed the `profile` to `contract` naming convention: `profiles/` directory renamed to `contracts/`, `PROFILE` env var to `CONTRACT` (with `PROFILE` kept as a backward-compat shim), and the terminology carried across the docs. `.agents/profile.md` stays as a legacy alias.
 - Renamed the `check-tone` skill to `tone-check`, for consistency with the `-check` skill family (`evidence-check`, `security-check`, `browser-check`)
 - README tightened (~40% shorter lede); removed `Pre-development` section; general clarity/consistency pass
