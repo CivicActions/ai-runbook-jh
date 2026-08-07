@@ -70,6 +70,8 @@ Invoke when a ticket has passed triage and now needs the full description, accep
    developer would look for it (usually Context/background or Technical notes).
 5. **Fold dependencies and surface area into Technical notes**: other tickets, modules, services, files, and people who need to weigh in all go in Technical notes as bullets; no separate sections.
 6. **Answer open questions first, then flag what remains**: if the ticket already has open questions, attempt to resolve them using available context (codebase, config, existing docs, triage notes) before listing them as still-open. Only surface a question if it genuinely cannot be answered from what's available. The goal is to reduce open questions, not accumulate them.
+
+   Questions that can be resolved by reading the codebase (e.g. "what selector targets X?", "which file handles Y?") must be answered in Technical notes, not listed as open questions. Open questions are for decisions that require another person or external input — things like scope calls, product decisions, confirmation from a stakeholder, or investigation that requires running the site.
 7. **Accessibility bugs: map WCAG criteria**: if the ticket is an accessibility bug (Component =
    Accessibility, or the issue describes an AT/keyboard/perceivability failure), identify the
    specific WCAG 2.1 success criteria violated and recommend them as Jira labels in the format
@@ -93,9 +95,24 @@ checkboxes.
 Section labels must be bolded using the project contract's tracker markup. For Jira that means
 `*Label:*` syntax. Use the project contract's `## Tracker` section for the exact markup rules.
 
+### Suggested title
+
+Always output 1–3 suggested titles before the ticket body, outside the copyable code block. Titles should be
+concise, action-oriented, and specific enough to distinguish the ticket from similar work. Lead with the
+affected area or component, not generic verbs like "Fix" or "Update" when a more specific framing exists.
+
+```
+Suggested title(s):
+1. [Primary option — clearest and most specific]
+2. [Alternative if primary is debatable]
+```
+
 ### Task / Story Body
 
 ```
+*Purpose:*
+[Audience]: [Value statement in plain language, stakeholder-readable. See project contract Purpose statement format.]
+
 *User story:*
 As a [type of user], I want to [perform an action], so that I can [achieve a goal/benefit].
 
@@ -116,6 +133,9 @@ As a [type of user], I want to [perform an action], so that I can [achieve a goa
 ### Bug Body
 
 ```
+*Purpose:*
+[Audience]: [Value statement in plain language, stakeholder-readable. See project contract Purpose statement format.]
+
 *User story:*
 As a [type of user], I want to [perform an action], so that I can [achieve a goal/benefit].
 
@@ -188,6 +208,7 @@ Refined ticket bodies are published to the tracker and visible to the broader te
 - **No CUI** in ticket bodies; Controlled Unclassified Information must not be entered
 - **Reference, don't reproduce**: link to internal docs, support ticket IDs, or PR URLs rather than
   pasting their contents
+- **Do not name team members in output**: refer to colleagues by role ("the UX lead," "the prior contributor") — never by name. Exception: the user explicitly says to include a name.
 
 Run `security-check` before pasting external content (user reports, customer emails, support
 tickets) into the refinement session.
