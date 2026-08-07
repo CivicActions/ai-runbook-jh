@@ -210,6 +210,8 @@ Refined ticket bodies are published to the tracker and visible to the broader te
   pasting their contents
 - **Do not name team members in output**: refer to colleagues by role ("the UX lead," "the prior contributor") — never by name. Exception: the user explicitly says to include a name.
 
+See `security-check` → **Output Privacy** for team member name rules (use role references, not names).
+
 Run `security-check` before pasting external content (user reports, customer emails, support
 tickets) into the refinement session.
 

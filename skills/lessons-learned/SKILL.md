@@ -62,8 +62,8 @@ Apply the voice config named in the project contract's `## Voice` section (e.g. 
 Apply it to all generated prose, keep it direct and honest, not performative. Run shared lessons-learned notes through `tone-check` before publishing.
 
 ## Privacy
-- **Do not name team members**: refer to people as "a colleague," "the team," "a prior contributor," or by role (e.g. "the UX lead") — never by first name, last name, or initials. Exception: the user explicitly says to include a name.
-- Lessons are retrospective artifacts that often get shared or added to the memory bank; names create unnecessary friction if they do.
+
+See `security-check` → **Output Privacy** for the centralized rule. In short: no team member names in output — use role references ("a colleague," "the UX lead," "the team"). Exception: the user explicitly says to include a name.
 
 ## Project Context
 - Note if a lesson applies to a recurring pattern in the codebase (the project contract's `## Stack` and
