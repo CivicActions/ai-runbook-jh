@@ -54,6 +54,52 @@ fills in the specifics:
 If the project contract defines no `## Stack`, apply the universal signals above without the stack-specific
 detail.
 
+### CSS/SCSS Coverage Check (when reviewing CSS/SCSS)
+
+When the implementation under review includes CSS or SCSS, use the browser to check for unused selectors
+before concluding. This catches rules that were written but never matched — a common KISS failure mode.
+
+**Steps:**
+
+1. Open the relevant page in the browser (DDEV sandbox if local).
+2. Run this script in the iframe or document context — adjust the selector filter to match the feature under review:
+
+```js
+const results = [];
+
+function collectRules(ruleList) {
+  for (const rule of Array.from(ruleList || [])) {
+    // Recurse into grouping rules (@media, @supports, @layer, etc.)
+    if (rule.cssRules) {
+      collectRules(rule.cssRules);
+    } else if (rule.selectorText) {
+      // Filter to your feature's selectors — adjust the condition:
+      if (!rule.selectorText.includes('your-class')) continue;
+      const matches = document.querySelectorAll(rule.selectorText);
+      results.push({ selector: rule.selectorText, count: matches.length });
+    }
+  }
+}
+
+for (const sheet of document.styleSheets) {
+  try { collectRules(sheet.cssRules); } catch(e) {}
+}
+return results.filter(r => r.count === 0);
+```
+
+3. **Categorize each zero-match selector:**
+   - **Interactive state** (`:hover`, `:focus`, `::before`, `::after`, `:focus-within`) — keep, can't be matched statically
+   - **Override suppressor** (e.g. `display: none` cancelling a base style) — keep if the base rule exists
+   - **Conditional DOM** (element only present in a specific state like filtered/paginated) — verify by triggering that state
+   - **Genuinely unused** — remove
+
+4. Report findings in the standard output format below, limited to genuinely unused rules.
+
+**What counts as genuinely unused:**
+- A selector that matches 0 elements across all reachable states of the UI
+- A property that duplicates the browser default or an already-inherited value
+- A rule that was superseded by a later, more specific rule in the same stylesheet
+
 ## Example
 
 **You ask:** `use the kiss skill on this implementation`

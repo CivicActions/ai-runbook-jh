@@ -33,12 +33,13 @@ Invoke when the user wants to squash multiple WIP or incremental commits into on
 
 ### Proposed Squashed Message
 Format the subject line per the project contract's `## Commit conventions` (issue-ref prefix from
-`## Tracker` → Issue ref format, imperative description, project contract wrap width):
+`## Tracker` → Issue ref format, imperative description, project contract wrap width). Subject line
+only — no body — unless the project contract's `## Commit conventions` explicitly requires one (e.g.
+a required body annotation or Release Notes statement):
 ```
 [<issue-ref>] Brief imperative description
-
-Optional body explaining what changed and why. Wrap per the project contract (default 72 characters).
 ```
+If the project contract requires a body, include it per its format.
 
 ### Commands
 Use the project contract's **Base branch** wherever a target branch is referenced:

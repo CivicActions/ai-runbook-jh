@@ -22,6 +22,12 @@ If no project contract is present, ask the user where plans live and what the br
 **ALWAYS write the plan to the file path defined in the project contract's `## Branch / plan conventions`**
 (named for the ticket/issue) and stop. Do NOT begin implementing any steps. Do NOT create files,
 run commands, or modify code. The plan is the only deliverable.
+
+Before writing, check for existing files in `.agents/plans/`. The contract path is authoritative;
+existing files may inform slug formatting only when consistent with the contract (e.g. if the
+contract specifies `NSF-[ticket]-plan.md` and existing files use a description slug like
+`NSF-13747-select-file-plan.md`, adopt the slug format). If existing files contradict the contract,
+follow the contract.
 If `.agents/plans/` does not exist, create it before writing.
 
 After writing the file, tell the user where the plan was saved and ask if they'd like to proceed
@@ -34,13 +40,20 @@ identifying risks, and clarifying acceptance criteria.
 ## Approach
 1. **Understand the item**: the goal, what's in scope, what's explicitly out of scope
 2. **Identify dependencies**: other tickets, modules, environments, or people needed
-3. **Break down the work**: ordered, concrete, actionable implementation steps
-4. **Define acceptance criteria**: what does done look like, how will it be verified
-5. **Flag risks**: anything that could block progress or require a decision
-6. **Estimate complexity**: small / medium / large / spike
-7. **Generate task list**: use `implementation-details` to produce a concrete ordered task set
-8. **Include branch creation**: first implementation step creates a feature branch from the
+3. **Inspect the source branch** (if one exists): read the diff, understand what's already built,
+   what config/code state the plan inherits. Don't plan work that's already done. If the ticket
+   references a parent branch, feature branch, or upstream PR, run `git diff` and read the
+   relevant files to ground the plan in the actual current state, not a remembered or assumed state.
+4. **Break down the work**: ordered, concrete, actionable implementation steps
+5. **Define acceptance criteria**: what does done look like, how will it be verified
+6. **Flag risks**: anything that could block progress or require a decision
+7. **Estimate complexity**: small / medium / large / spike
+8. **Generate task list**: use `implementation-details` to produce a concrete ordered task set
+9. **Include branch creation**: first implementation step creates a feature branch from the
    project contract's base branch, named per the project contract's branch convention
+10. **Map skill usage**: scan `.agents/skills/` for skills relevant to the plan's execution phases
+    (build, validate, pre-push, session end). Include a skill-usage table showing which skills fire
+    at which point. Exclude skills that don't apply and state why.
 
 ## Project context
 Flag, in the project's terms (read from the project contract):
