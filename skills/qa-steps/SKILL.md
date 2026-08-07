@@ -31,6 +31,16 @@ verify the change works correctly.
 6. **Regression check**: what adjacent functionality to spot-check
 7. **Success criteria**: the minimum bar for the change to be considered passing
 
+## Scope rules
+
+**Source of truth for scenarios is the ticket's AC, not the implementation.**
+
+- Derive scenarios from the acceptance criteria and user story. If it's not in the AC, don't test for it.
+- Do not add checks for things discovered and fixed during the build (implementation details, regressions caught mid-work, intermediate states). Those are solved; they add noise to QA steps and imply QA should re-validate internal implementation decisions.
+- Keep the scenario set to the MVP: the minimum steps needed to confirm the AC is met. One scenario per distinct AC area is usually enough. Prefer fewer, clearer scenarios over exhaustive checklists.
+- If a bug was fixed as part of the work, one scenario confirming the fixed behavior is fine — but only if it was a stated AC item or was explicitly called out in the ticket, not because it happened to come up during implementation.
+- **When no ticket or AC is available** (e.g. PR-only request): derive scenarios from the PR description and the user-stated expected behavior. State that AC was not available and list the source used.
+
 ## Output Format
 Render using the project contract's `## Tracker` markup. In the structure below, `[heading]` = the project contract's
 section-heading markup, `[checkbox]` = its checkbox markup, and `[step]` = a plain bullet (no

@@ -39,6 +39,16 @@ Invoke when the user wants to review written content for tone, clarity, professi
    - Code comments that read like spec writing rather than plain explanation; prefer "sits outside the form" over "escapes the form ancestor in the top layer stacking context"
 4. **Suggest rewrites** for flagged passages
 
+### Code comment bar
+When reviewing code comments specifically, apply this two-question test before flagging tone:
+
+1. **Does the comment explain something the code can't show?** If the code already says it (a selector name, a property name, what a value does), the comment adds noise — flag it for removal rather than rewriting.
+2. **Is it plain English?** Dev shorthand ("BFC", "no-ops", "guards against") and spec-style notation (`heading→input = label→field`) should be rephrased in plain language a future dev outside the immediate team can parse.
+
+Keep: override rationale ("removes the left-side X from `_facets-summary.scss`"), non-obvious browser behavior ("flow-root stops child margins from collapsing through this element"), scope constraints ("scoped here so other entity browsers aren't affected").
+
+Remove: comments that restate what the selector or property already communicates ("// gap before heading", "// filter chips", "// × icon").
+
 ## Output Format
 
 For each flagged item:

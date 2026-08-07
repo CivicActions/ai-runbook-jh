@@ -22,6 +22,12 @@ If no project contract is present, ask the user where plans live and what the br
 **ALWAYS write the plan to the file path defined in the project contract's `## Branch / plan conventions`**
 (named for the ticket/issue) and stop. Do NOT begin implementing any steps. Do NOT create files,
 run commands, or modify code. The plan is the only deliverable.
+
+Before writing, check for existing files in `.agents/plans/`. The contract path is authoritative;
+existing files may inform slug formatting only when consistent with the contract (e.g. if the
+contract specifies `NSF-[ticket]-plan.md` and existing files use a description slug like
+`NSF-13747-select-file-plan.md`, adopt the slug format). If existing files contradict the contract,
+follow the contract.
 If `.agents/plans/` does not exist, create it before writing.
 
 After writing the file, tell the user where the plan was saved and ask if they'd like to proceed

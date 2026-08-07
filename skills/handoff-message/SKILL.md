@@ -100,6 +100,7 @@ Handoffs live in your personal companion repo (not the official project repo). T
 
 - **Never include**: credentials, auth tokens, one-time login URLs (e.g. `drush uli`), session IDs, `.env` contents, SSH keys
 - **Never include**: PII (user emails, names, addresses), PHI, CUI, client proprietary data
+- **Never include team member names**: refer to people as "a colleague," "a prior contributor," "the team," or by role (e.g. "the UX lead") — never by first name, last name, or initials. Exception: the user explicitly says to include a name.
 - **Reference URLs and credentials by name, not by value**, `[local admin login URL]` not the actual URL
 - **Redact before writing**, if a handoff would naturally contain any of the above, redact before writing the file
 

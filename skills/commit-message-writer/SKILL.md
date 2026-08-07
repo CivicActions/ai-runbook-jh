@@ -31,8 +31,8 @@ convention rather than inventing a ref format.
    - Imperative mood ("Add", "Fix", "Remove", not "Added", "Fixed")
    - Apply the project contract's message **Format** (e.g. an embedded issue ref in the project contract's
      `## Tracker` → Issue ref format, or a conventional-commit prefix)
-   - 1 sentence, 2 at most, no body block (unless the convention requires one, e.g. a
-     Release Notes statement)
+   - **Subject line only. No body.** Do not add a blank line followed by body text unless the
+     project contract's `## Commit conventions` explicitly requires a body.
    - 10 characters minimum of meaningful subject, 72 characters max
    - Match any required-fields regex the project contract defines
 4. **Check tone**, use `tone-check` skill on the drafted message before finalizing
@@ -51,7 +51,7 @@ Provide 1–3 alternatives if the change could be framed multiple ways.
 ## General conventions
 These hold regardless of project:
 - Use imperative mood in the subject line
-- Keep it to 1 sentence, 2 at most, with no body block unless the convention requires one
+- Subject line only — no body block unless the project contract explicitly requires one
 - Never include "WIP" in a commit intended for merge
 - Separate unrelated changes into separate commits
 
