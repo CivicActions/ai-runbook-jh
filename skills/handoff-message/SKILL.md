@@ -96,13 +96,14 @@ Handoff files are personal working artifacts; exclude `.agents/handoffs/` via `.
 
 ## Security
 
-Handoffs live in your personal companion repo (not the official project repo). They're shareable on request for peer review or audit. Treat them as personal artifacts that may end up team-visible, nothing in a handoff should be sensitive.
+Handoffs live in your personal companion repo (not the official project repo). They're shareable on request for peer review or audit. Treat them as personal artifacts that may end up team-visible; nothing in a handoff should be sensitive.
 
 - **Never include**: credentials, auth tokens, one-time login URLs (e.g. `drush uli`), session IDs, `.env` contents, SSH keys
-- **Never include**: PII (user emails, names, addresses), PHI, CUI, client proprietary data
-- **Never include team member names**: refer to people as "a colleague," "a prior contributor," "the team," or by role (e.g. "the UX lead") — never by first name, last name, or initials. Exception: the user explicitly says to include a name.
-- **Reference URLs and credentials by name, not by value**, `[local admin login URL]` not the actual URL
-- **Redact before writing**, if a handoff would naturally contain any of the above, redact before writing the file
+- **Never include**: PII from external sources (user emails, addresses, account IDs), PHI, CUI, client proprietary data
+- **Reference URLs and credentials by name, not by value**: `[local admin login URL]` not the actual URL
+- **Redact before writing**: if a handoff would naturally contain any of the above, redact before writing the file
+
+See `security-check` → **Output Privacy** for team member name rules. In short: use role references ("a colleague," "the UX lead") instead of names, unless the user explicitly requests a name.
 
 Run `security-check` before pasting external content into the handoff session.
 

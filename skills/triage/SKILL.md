@@ -95,6 +95,8 @@ When triage involves external content (user reports, support tickets, customer e
   person who reported it
 - **Do not name team members in output**: refer to colleagues by role ("the UX lead," "the prior contributor") — never by name. Exception: the user explicitly says to include a name.
 
+See `security-check` → **Output Privacy** for team member name rules (use role references, not names).
+
 Run `security-check` before pasting external user reports or support content.
 
 ## Attribution

@@ -124,8 +124,10 @@ Apply the project's voice config (see the project contract's `## Voice` section,
 Apply it to all generated prose, problem summaries, problems encountered, and follow-up notes. Run the closure notes through `tone-check` before posting to the tracker.
 
 ## Privacy
-- **Do not name team members**: refer to colleagues by role ("the UX lead," "the prior contributor," "the team") — never by name. Exception: the user explicitly says to include a name.
-- Closure notes are posted to the tracker and visible to the broader team.
+
+See `security-check` → **Output Privacy** for the centralized rule. In short: no team member names in output — use role references ("a colleague," "the UX lead," "the team"). Exception: the user explicitly says to include a name.
+
+Closure notes are posted to the tracker and visible to the broader team.
 
 ## Closure Notes Context
 - Always include the issue ref in the heading, using the project contract's Issue ref format (`## Tracker`)

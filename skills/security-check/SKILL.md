@@ -73,7 +73,11 @@ Reasoning:
 [1-2 sentences on the classification call]
 ```
 
-## Sensitive Information Categories
+## Security
+
+This section covers both directions: what you're pasting into AI (input) and what AI generates for sharing (output).
+
+### Sensitive Information Categories (input)
 
 Per the CA AI Usage Policy:
 
@@ -82,6 +86,25 @@ Per the CA AI Usage Policy:
 - **CUI**, Controlled Unclassified Information (federal classification)
 - **Client proprietary**, content the client has explicitly NOT sanctioned for AI use (client research/grant data, business operations data, anything marked proprietary or restricted; *not* the sanctioned codebase or accessible team wiki/tracker)
 - **CivicActions confidential**, legal, financial, contractual, HR
+
+### Output Privacy (what NOT to produce)
+
+The input rules above focus on what you paste into AI. This subsection covers output — what AI generates for sharing.
+
+**Team member names**: Do not include first names, last names, or initials of colleagues in AI-generated output. Use role references instead:
+- "a colleague" / "the team" / "a prior contributor"
+- Role titles: "the UX lead," "the reviewer," "the author"
+
+**Exception**: the user explicitly says to include a name.
+
+**Why this matters**: AI-generated artifacts (handoffs, closure notes, lessons learned, refinements, triage summaries) often get shared beyond the original context — added to a memory bank, referenced in tickets, surfaced in audits. Names create friction when context shifts.
+
+**Where this applies**: Any skill that produces prose for sharing. The rule is centralized here; individual skills reference it rather than duplicating.
+
+**What's still fine**:
+- Referencing the user directly ("you asked," "your branch")
+- Quoting attribution markers from the project contract
+- Names the user explicitly provides for inclusion
 
 ## Project context
 
