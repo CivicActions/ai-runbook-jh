@@ -73,7 +73,11 @@ Reasoning:
 [1-2 sentences on the classification call]
 ```
 
-## Sensitive Information Categories
+## Security
+
+This section covers both directions: what you're pasting into AI (input) and what AI generates for sharing (output).
+
+### Sensitive Information Categories (input)
 
 Per the CA AI Usage Policy:
 
@@ -83,9 +87,9 @@ Per the CA AI Usage Policy:
 - **Client proprietary**, content the client has explicitly NOT sanctioned for AI use (client research/grant data, business operations data, anything marked proprietary or restricted; *not* the sanctioned codebase or accessible team wiki/tracker)
 - **CivicActions confidential**, legal, financial, contractual, HR
 
-## Output Privacy (what NOT to produce)
+### Output Privacy (what NOT to produce)
 
-The rules above focus on input — what you're pasting into the AI. This section covers output — what the AI generates for sharing.
+The input rules above focus on what you paste into AI. This subsection covers output — what AI generates for sharing.
 
 **Team member names**: Do not include first names, last names, or initials of colleagues in AI-generated output. Use role references instead:
 - "a colleague" / "the team" / "a prior contributor"
