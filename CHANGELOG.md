@@ -6,6 +6,9 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ## [Unreleased]
 
+### Fixed
+- `work-intake` skill: the waiting-on-me heading qualified on "mentions, reviews, unanswered comments," which flagged any thread where the reader was tagged and hadn't replied — whether or not anyone was actually stopped. A live run returned six rows and all six were false positives (a colleague claiming work for themselves, a routine open PR, a thread already handled off-ticket, a cold ping that was the reader's own follow-up to chase). The heading now reads "someone else is stopped until you act," a rule states that single test with the four shapes above, and the worked example — which was the sanitized version of one of the false positives — is replaced with a ticket someone is genuinely queued behind.
+
 ### Added
 - `work-intake` skill: periodic sweep of the tracker and wiki for everything assigned to you or waiting on you, returned as one copy-pasteable digest. Leads with the items other people are blocked on, holds a fixed 14-day lookback so a skipped run drops nothing, and requires failed queries to be reported so an unsupported search never reads as a clean result. Estimation and workflow vocabulary come from the project contract rather than defaulting to points and sprints.
 - `evidence-check` skill: cross-cutting honesty gate that makes claims carry verified evidence instead of guesses, with a state-claims-default-to-Unverified rule, an unchecked-guardrail flag, and a human-SME routing clause
