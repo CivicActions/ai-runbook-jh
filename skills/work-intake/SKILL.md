@@ -91,7 +91,7 @@ Use the project contract's `## Tracker` markup. One line per item:
 Grouped under exactly these headings, in this order:
 
 ```
-### Waiting on me (mentions, reviews, unanswered comments)
+### Waiting on me (someone else is stopped until you act)
 ### Assigned & moving
 ### Stale (14+ days no movement)
 ```
@@ -99,6 +99,22 @@ Grouped under exactly these headings, in this order:
 Waiting-on-me leads because it is the only group with someone else's time attached.
 
 Rules:
+- **Waiting-on-me has one test: would someone else's work proceed if you acted today?** If the
+  honest answer is no, it belongs in another group or nowhere. A mention, an open review, or a
+  comment with no reply under it are *signals* worth checking — none of them is the test. The
+  common false positives, all of which look identical to a real blocker in a query result:
+  - Someone claiming work for themselves ("I'll add a draft for DevOps") reads as an unanswered
+    comment, but nothing is owed.
+  - A pull request sitting in review is routine unless the project contract's `## Team context`
+    says an unsubmitted review blocks the merge.
+  - A thread you already handled somewhere else — in a call, in chat, in the code — has no reply
+    *in* it, which is not the same as no reply.
+  - A ping you sent that went cold is your follow-up to chase, not someone else's move to make.
+  When the signal is real but the test fails, downgrade rather than drop: it is `Assigned & moving`
+  if it is yours, `Stale` if it has aged out, and absent if it is neither.
+  A false positive here is expensive out of proportion to its size, because downstream tools rank
+  this group highest *on the promise that someone is blocked* — so a wrong row outranks correct
+  ones, and the reader learns to distrust the whole section.
 - **Title is the action, not the ticket's title verbatim.** "Document sandbox access in the VM setup"
   beats "PROJ-8685". If the reader has to open the ticket to learn what they are being asked to do,
   the line failed.
@@ -141,9 +157,9 @@ the last line. Skip it for personal-use output; a digest read only by its author
 **You get:**
 
 ```
-### Waiting on me (mentions, reviews, unanswered comments)
+### Waiting on me (someone else is stopped until you act)
 
-- [ ] **Answer the criteria-format question on PROJ-1377** - Reviewer replied to your review comment asking you to weigh in on JSON vs markdown. Thread open, no reply from you. https://tracker.example/browse/PROJ-1377
+- [ ] **Approve or reject the PROJ-1377 schema so QA can build fixtures** - QA moved the ticket to Blocked naming your sign-off as the gate; two people have the work queued behind it. https://tracker.example/browse/PROJ-1377
 
 ### Assigned & moving
 
@@ -162,6 +178,10 @@ mention search returned nothing and was replaced by an authored-pages sweep.
 
 Note the estimation line borrows the project's vocabulary ("LOE", "iteration") from the contract
 rather than defaulting to points and sprints.
+
+Note also what the waiting-on-me line does and does not say. It names who is stopped and what
+unblocks them. "Reviewer replied and there is no reply from you" would describe the same ticket
+and fail the test — an open thread is a signal, not a blocker.
 
 ## Related Skills
 - **Next step:** `triage` for any swept item you have not assessed yet
