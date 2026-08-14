@@ -102,3 +102,9 @@ that regex to `commit-message-writer` so it produces a conforming subject.
 If the project contract has no `## Commit conventions` section, fall back to a conventional subject:
 `<ISSUE-REF> Subject in imperative mood`; and ask the user whether the project enforces a stricter
 format before committing.
+
+## Shared Branch Safety
+Before organizing commits:
+- Run `git branch --show-current` to confirm you're on the intended branch — committing on the wrong branch is a common mistake when context-switching
+- Avoid force-push to branches with active collaborators; coordinate a "squashing now" window or accept messier history
+- Run `git status --short` before each commit to confirm the right files are staged

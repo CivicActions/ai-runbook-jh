@@ -69,6 +69,12 @@ that hold across projects:
 - Body explains the why, not the how
 - Never squash commits already pushed to a shared branch without coordinating with the team
 
+## Shared Branch Safety
+Before squashing or amending commits:
+- Run `git branch --show-current` to confirm you're on the intended branch — amending on the wrong branch is a common mistake when context-switching
+- Avoid force-push to branches with active collaborators; coordinate a "squashing now" window or accept messier history
+- Run `git status --short` before committing to confirm the right files are staged
+
 ## Example
 
 **You ask:** `use the squash-commits skill on these 4 commits`
