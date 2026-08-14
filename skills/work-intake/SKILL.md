@@ -93,6 +93,7 @@ Grouped under exactly these headings, in this order:
 ```
 ### Waiting on me (someone else is stopped until you act)
 ### Assigned & moving
+### Follow-up needed (actionable but not blocking)
 ### Stale (14+ days no movement)
 ```
 
@@ -111,7 +112,9 @@ Rules:
     *in* it, which is not the same as no reply.
   - A ping you sent that went cold is your follow-up to chase, not someone else's move to make.
   When the signal is real but the test fails, downgrade rather than drop: it is `Assigned & moving`
-  if it is yours, `Stale` if it has aged out, and absent if it is neither.
+  if it is yours and active, `Follow-up needed` if it requires your action but isn't blocking
+  anyone else (cold pings to chase, non-blocking mentions, items you raised), `Stale` if it has
+  aged out, and absent if it is none of these.
   A false positive here is expensive out of proportion to its size, because downstream tools rank
   this group highest *on the promise that someone is blocked* — so a wrong row outranks correct
   ones, and the reader learns to distrust the whole section.
