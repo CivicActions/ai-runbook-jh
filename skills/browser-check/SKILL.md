@@ -30,9 +30,9 @@ Invoke when the user wants to validate a frontend change, bug fix, or new featur
 2. **Establish environment**, the project contract's local dev server by default (`## Environments` → Local);
    higher environments (`## Environments` → Higher) are human-only; see Security
 3. **Pre-inspection verification** — confirm you're testing current code before debugging:
-   - Run the project's build/compile command (per `## Environments` → Local)
+   - Run the project's build/compile command if one exists (check `## Environments` → Local for the command; if none is defined, skip this step)
    - Use cache-busting reload or hard refresh
-   - Confirm asset URLs changed (check query strings in Network tab for JS/CSS files)
+   - Verify assets loaded from network (check Network tab: response should show "200" from server, not "from disk cache")
    - If a local cache clear command hangs, restart the dev environment rather than manually clearing cache tables — partial clears produce misleading results
 4. **Navigate and inspect using the project contract's browser-inspection MCP** (`## Sanctioned AI`):
    - Navigate to the target page(s)
@@ -43,7 +43,7 @@ Invoke when the user wants to validate a frontend change, bug fix, or new featur
    - Take additional screenshots for specific states or viewports
    (Exact tool names vary by MCP; map these steps to the sanctioned tool's API.)
 5. **Debug instrumentation** (only when investigating unexpected behavior):
-   - If something isn't working as expected during step 3, add temporary `console.log`
+   - If something isn't working as expected during step 4, add temporary `console.log`
      statements at key decision points in the code under test before re-navigating
    - Use a consistent prefix (e.g. `[debug:browser-check]`) so logs are easy to filter
    - Target: function entry/exit, conditional branches, AJAX/event callbacks, DOM mutation points
