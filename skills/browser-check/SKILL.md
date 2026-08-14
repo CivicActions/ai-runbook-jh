@@ -29,7 +29,12 @@ Invoke when the user wants to validate a frontend change, bug fix, or new featur
 1. **Identify scope**, which pages, flows, or components to validate
 2. **Establish environment**, the project contract's local dev server by default (`## Environments` → Local);
    higher environments (`## Environments` → Higher) are human-only; see Security
-3. **Navigate and inspect using the project contract's browser-inspection MCP** (`## Sanctioned AI`):
+3. **Pre-inspection verification** — confirm you're testing current code before debugging:
+   - Run the project's build/compile command (per `## Environments` → Local)
+   - Use cache-busting reload or hard refresh
+   - Confirm asset URLs changed (check query strings in Network tab for JS/CSS files)
+   - If a local cache clear command hangs, restart the dev environment rather than manually clearing cache tables — partial clears produce misleading results
+4. **Navigate and inspect using the project contract's browser-inspection MCP** (`## Sanctioned AI`):
    - Navigate to the target page(s)
    - Capture a screenshot to confirm visual output
    - Check the console for errors, warnings, and debug log output (if instrumented)
@@ -37,7 +42,7 @@ Invoke when the user wants to validate a frontend change, bug fix, or new featur
    - Review network requests for failures
    - Take additional screenshots for specific states or viewports
    (Exact tool names vary by MCP; map these steps to the sanctioned tool's API.)
-4. **Debug instrumentation** (only when investigating unexpected behavior):
+5. **Debug instrumentation** (only when investigating unexpected behavior):
    - If something isn't working as expected during step 3, add temporary `console.log`
      statements at key decision points in the code under test before re-navigating
    - Use a consistent prefix (e.g. `[debug:browser-check]`) so logs are easy to filter
@@ -45,11 +50,11 @@ Invoke when the user wants to validate a frontend change, bug fix, or new featur
    - Keep instrumentation minimal but sufficient to trace the execution path
    - Skip this step entirely for straightforward validation where behavior matches expectations
    - Remove all debug logs before finishing the check (they are ephemeral, not committed)
-5. **Cross-viewport check**, test at mobile (375px), tablet (768px), and desktop (1280px) widths where relevant
-6. **Authenticated flows**, use the project's local admin-access method (`## Environments` →
+6. **Cross-viewport check**, test at mobile (375px), tablet (768px), and desktop (1280px) widths where relevant
+7. **Authenticated flows**, use the project's local admin-access method (`## Environments` →
    Local: e.g. a Drupal `drush uli` URL, a login route, or none for a public component library)
-7. **Document results**, record what was checked, what passed, what failed
-8. **Clean up**, remove any debug instrumentation added in step 4
+8. **Document results**, record what was checked, what passed, what failed
+9. **Clean up**, remove any debug instrumentation added in step 5
 
 ## Output Format
 
@@ -80,6 +85,12 @@ generated text: results summaries, open questions, environment notes.
 - Note if any environment or page was inaccessible, and document what was skipped.
 - Save screenshots to `.agents/reviews/[ISSUE-REF]-[description].png` (issue-ref format per the
   project contract's `## Tracker`).
+
+**Embedded content testing:**
+When validating behavior in embedded contexts (iframes, modals, third-party widgets):
+- Test in the actual deployment context, not direct/shortcut URLs
+- Direct URLs may disable AJAX wiring, change runtime configuration, or alter the JS event context
+- The surrounding container's JS context, event bubbling, and configuration objects can all differ between direct access and embedded access
 
 ## Security
 

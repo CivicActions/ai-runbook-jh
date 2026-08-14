@@ -283,22 +283,19 @@ anything."
 
 ### Bad: confident state claim that was never inspected (real failure)
 
-~~"The org dropdown is sorted by result count; should be alphabetical. Fix: add the
-`display_value_widget_order` processor (sort ASC) to the facet config, same as `file_type`
-already has."~~
+~~"The dropdown is sorted by result count; should be alphabetical. Fix: add the sort processor to
+the config, same as the other dropdown already has."~~
 
-The processor was *already enabled*. The real cause was two other sort processors fighting it,
-unknowable without opening the facet config. A real mechanism, named confidently, for a state never
-checked. (A second recommendation in the same exchange suggested `min_count: 0`, which the facet
-config form explicitly warns against relying on, exactly the buried guardrail rule 6 covers.)
+The processor was *already enabled*. The real cause was two other processors conflicting with it —
+unknowable without opening the config. A real mechanism, named confidently, for a state never
+checked.
 
 ### Good: same situation, state treated as Unverified
 
-"The org dropdown is sorting by count instead of alphabetically. I haven't opened the facet config
-this session, so I don't actually know which processors are currently enabled, and that's the whole
-answer here. Let me read `facets.facet.file_organization.yml` first; the fix depends entirely on
-what's already on versus off, and the config form has its own caveats worth checking. Worth looping
-in whoever owns the BE for this facet too."
+"The dropdown is sorting by count instead of alphabetically. I haven't opened the config this
+session, so I don't actually know which processors are currently enabled. Let me read the config
+first; the fix depends entirely on what's already on versus off, and the config may have its own
+caveats worth checking."
 
 ## Output Format
 
