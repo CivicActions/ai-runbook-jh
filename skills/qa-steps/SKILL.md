@@ -91,11 +91,6 @@ Pull from the project contract's `## Environments`: note local-vs-CI differences
 local URL pattern, flag if higher-environment validation is required, add the project contract's a11y check
 command when the change has accessibility implications, and respect any tooling caveats.
 
-## Definition of Done
-After writing QA steps, append the relevant DoD by invoking `definition-of-done` with the
-ticket/PR type. The DoD lives in one place (the project contract, surfaced via `definition-of-done`) so it
-doesn't drift across QA steps, refinement output, and closure notes.
-
 ## Attribution
 QA steps are appended to a ticket/PR. **This skill does not emit a marker.** If the active project contract
 defines an attribution marker, ensure the **final assembled ticket/PR** ends with that marker as its
@@ -136,7 +131,7 @@ Page now stays scrollable after deselecting any facet on /search.
 ```
 
 ## Related Skills
-- **Invokes:** `browser-check` (live page validation), `definition-of-done` (appends the DoD)
+- **Invokes:** `browser-check` (live page validation)
 - **Often invoked by:** `issue-closure-notes` (closure notes link to QA steps), `ticket-refinement`
   (QA steps may be written ahead of time during refinement)
 - **Downstream:** `tone-check` (run the "What Changed" summary and explanatory prose through tone check before posting)
