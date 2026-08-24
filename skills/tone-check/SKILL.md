@@ -37,6 +37,14 @@ Invoke when the user wants to review written content for tone, clarity, professi
    - Tone mismatches (too casual for docs, too stiff for a comment)
    - Em-dashes (use colons or semicolons instead, or restructure the sentence)
    - Code comments that read like spec writing rather than plain explanation; prefer "sits outside the form" over "escapes the form ancestor in the top layer stacking context"
+   - **AI writing smells** — patterns that read as machine-generated even when technically correct:
+     - Abstract architectural praise no human reviewer would reach for ("keeps X focused on what's shared and lets Y own its own Z")
+     - Diplomatic hedges that are more cautious than a human would be ("in case they're watching", "worth a X call on Y", "be open to")
+     - Rubric-style section headings on informal content (`## Good Calls`, `## Strengths`, `## Areas for Improvement`)
+     - Over-structured output: bullet lists where a sentence would do, or sections for every minor point
+     - Transition phrases that signal enumeration rather than thought ("Additionally", "Furthermore", "It's worth noting that")
+     - Closing affirmations that summarize what was just said ("Overall this is a solid approach")
+     - Symmetrical praise-then-critique patterns that feel templated rather than earned
 4. **Suggest rewrites** for flagged passages
 
 ### Code comment bar
