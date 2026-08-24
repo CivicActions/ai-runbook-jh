@@ -43,15 +43,21 @@ Invoke when a ticket has passed triage and now needs the full description, accep
 
 ## Approach
 
-1. **Confirm scope**: what's in, what's explicitly out
-2. **Write the user story**: `As a [user], I want to [action], so that I can [outcome]`
-3. **Define acceptance criteria** (for tasks/stories) or steps to reproduce + expected behavior (for
+1. **Classify the ticket type** before writing anything else. Choose one:
+   - **Bug**: something is broken — a feature exists but behaves incorrectly, produces wrong output, or fails in a reproducible way. Use the Bug Body template.
+   - **Task / Story**: new functionality, a configuration change, a cleanup, or an improvement to existing behavior that isn't broken. Use the Task / Story Body template.
+
+   Base the classification on the source ticket content and any codebase evidence gathered. If the source ticket was filed as a Task but investigation reveals a defect (wrong behavior, not just missing behavior), reclassify it as a Bug and note the reclassification in chat before writing the body. Do not defer this decision — pick the template first, then write.
+
+2. **Confirm scope**: what's in, what's explicitly out
+3. **Write the user story**: `As a [user], I want to [action], so that I can [outcome]`
+4. **Define acceptance criteria** (for tasks/stories) or steps to reproduce + expected behavior (for
    bugs). Write each criterion as an observable outcome, not an implementation step. A reviewer or
    stakeholder should be able to verify it without reading the diff. Avoid file paths, internal
    naming, and technical shorthand in criterion text; move those details to Technical notes. For
    batched housekeeping or cleanup tickets, describe the end state of the batch rather than
    itemizing each individual fix.
-4. **Preserve useful source content (CRITICAL: do not lose context)**: if the source ticket or
+5. **Preserve useful source content (CRITICAL: do not lose context)**: if the source ticket or
    epic contains anything that would help a person or AI understand, execute, or plan the work,
    keep it verbatim or as a clearly labeled block. Do not summarize it into a single line or drop
    it in the interest of brevity. When in doubt, keep it.
@@ -68,38 +74,42 @@ Invoke when a ticket has passed triage and now needs the full description, accep
    readability). A link to a Confluence page about NVDA setup, for example, is not "context you
    can paraphrase": it's an actionable prerequisite the developer needs. Embed it where a
    developer would look for it (usually Context/background or Technical notes).
-5. **Fold dependencies and surface area into Technical notes**: other tickets, modules, services, files, and people who need to weigh in all go in Technical notes as bullets; no separate sections.
-6. **Answer open questions first, then flag what remains**: if the ticket already has open questions, attempt to resolve them using available context (codebase, config, existing docs, triage notes) before listing them as still-open. Only surface a question if it genuinely cannot be answered from what's available. The goal is to reduce open questions, not accumulate them.
+6. **Fold dependencies and surface area into Technical notes**: other tickets, modules, services, files, and people who need to weigh in all go in Technical notes as bullets; no separate sections.
+7. **Answer open questions first, then flag what remains**: if the ticket already has open questions, attempt to resolve them using available context (codebase, config, existing docs, triage notes) before listing them as still-open. Only surface a question if it genuinely cannot be answered from what's available. The goal is to reduce open questions, not accumulate them.
 
    Questions that can be resolved by reading the codebase (e.g. "what selector targets X?", "which file handles Y?") must be answered in Technical notes, not listed as open questions. Open questions are for decisions that require another person or external input — things like scope calls, product decisions, confirmation from a stakeholder, or investigation that requires running the site.
-7. **Accessibility bugs: map WCAG criteria**: if the ticket is an accessibility bug (Component =
+8. **Accessibility bugs: map WCAG criteria**: if the ticket is an accessibility bug (Component =
    Accessibility, or the issue describes an AT/keyboard/perceivability failure), identify the
    specific WCAG 2.1 success criteria violated and recommend them as Jira labels in the format
    `WCAG-X.X.X` (e.g. `WCAG-4.1.2`, `WCAG-2.4.7`). Use the `accessibility-wcag` skill's
    checklist and process reference to determine the correct criteria. Include multiple labels if
    more than one criterion applies. These labels go in the "Recommended fields" output alongside
    Component, Priority, etc.
-8. **Confirm fields, labels, and priority**: fill the project contract's `## Required fields`; add any
+9. **Confirm fields, labels, and priority**: fill the project contract's `## Required fields`; add any
    pre-merge review labels the project contract defines (e.g. visual / UX QA) when the relevant surface changes;
    revisit the initial priority set during triage if scope or risk understanding has shifted, using
    the project contract's `## Priority guide`
-9. **Append Definition of Done**: invoke the `definition-of-done` skill for the appropriate subset
+10. **Append Definition of Done**: invoke the `definition-of-done` skill for the appropriate subset, then prune items that genuinely don't apply to this ticket. Base pruning on the ticket type and surface area:
+    - Drop visual/UX review-label lines if the change has no visual or UX surface (e.g. a config-only or backend-only change).
+    - Drop the layout builder palette contrast line if the change doesn't touch a layout builder component.
+    - Drop environment-comparison lines if the change is internal-only or has no user-facing output to compare.
+    - For bugs, the DoD is typically smaller than for features — err toward dropping items that are clearly N/A rather than leaving everything in.
+    - When in doubt, leave the item in. An assignee can mark "N/A" faster than they can remember a missing item later.
 
 ## Output Format
 
-Wrap the output per the project contract's `## Tracker` output-wrapping rule (e.g. a code block) so the user
-can paste it directly into the tracker, and render headings/checkboxes/monospace using the project contract's
-Tracker markup. The structure below is generic; substitute the project contract's markup for the labels and
-checkboxes.
+**Save the ticket body to a file** at `.agents/reports/[ISSUE-KEY]-refined.txt` rather than emitting it in a chat code block. Chat code blocks impose a fixed column width that causes long lines to wrap and paste into Jira as hard line breaks. A plain `.txt` file copies cleanly with no wrapping artifacts.
+
+The file must use the tracker's native markup throughout — read from the project contract's `## Tracker` section. Apply it consistently to section labels, checkboxes, bullets, and inline code identifiers (file paths, function names, class names, variables). No markdown conventions in the file; the output is for the tracker, not for a markdown renderer.
 
 Section labels must be bolded using the project contract's tracker markup. For Jira that means
 `*Label:*` syntax. Use the project contract's `## Tracker` section for the exact markup rules.
 
+After saving, tell the user the file path so they can open and copy from it directly.
+
 ### Suggested title
 
-Always output 1–3 suggested titles before the ticket body, outside the copyable code block. Titles should be
-concise, action-oriented, and specific enough to distinguish the ticket from similar work. Lead with the
-affected area or component, not generic verbs like "Fix" or "Update" when a more specific framing exists.
+Always output 1–3 suggested titles **in chat** (not in the file) before reporting the file path. Titles should be concise, action-oriented, and specific enough to distinguish the ticket from similar work. Lead with the affected area or component, not generic verbs like "Fix" or "Update" when a more specific framing exists.
 
 ```
 Suggested title(s):
@@ -196,6 +206,27 @@ Surface project-specific risks during refinement, drawn from the project contrac
 (These are the project-specific instances; pull the exact services, commands, and labels from the
 project contract rather than assuming a default set.)
 
+## Verbosity
+
+Ticket bodies are read by humans under time pressure. Every sentence competes for attention.
+
+**Principles:**
+- One fact per bullet. No compound sentences.
+- Technical notes orient the developer; they don't explain the fix. If it's discoverable in the code or PR, don't write it here.
+- Context/background: 1–2 sentences max. If you need more, the ticket is too big.
+- User story: keep the formula, drop the filler. "As a developer, I want X, so Y" — not "As a developer working on the NSF.gov platform, I want to be able to X in order to ensure that Y."
+- Acceptance criteria: observable outcomes only. "Tests pass" not "All 9 test cases in the spec file execute successfully without failures."
+- Prune the DoD to what actually applies. A test-only change doesn't need visual regression, responsiveness, or browser console checks.
+
+**Anti-patterns:**
+- Restating the title in the user story
+- Explaining *why* the fix works (that's PR description territory)
+- Listing every file that might be touched (one primary file is enough; the rest is discoverable)
+- Hedging language ("This might be related to...", "It's possible that...")
+- Repeating information across sections
+
+**Test:** If a section could be deleted and the developer would still know what to do, delete it.
+
 ## Voice
 
 Apply `.agents/style/voice.md` to context/background prose, technical notes, and open questions. Run the assembled ticket body through `tone-check` before pasting it into the tracker.
@@ -249,27 +280,35 @@ _AI-assisted draft, reviewed before submission._   <- only if the project contra
 
 **You ask:** `use the ticket-refinement skill on PROJ-1234`
 
-**You get:**
+**You get (in chat):**
 
 ```
-User story:
+Suggested title(s):
+1. Facet deselect: restore page scroll after filter toggle
+2. Search page locks after facet deselect
+```
+
+Ticket body saved to `.agents/reports/PROJ-1234-refined.txt`.
+
+**Contents of `.agents/reports/PROJ-1234-refined.txt`:**
+
+```
+*User story:*
 As a search user, I want the page to stay scrollable after deselecting a facet, so I can keep browsing results.
 
-Acceptance criteria:
-- Deselecting any facet leaves the page scrollable
-- No regression on facet checkbox interactions
-- Verified on desktop, tablet, mobile
+*Acceptance criteria:*
+* Deselecting any facet leaves the page scrollable.
+* No regression on facet checkbox interactions.
+* Verified on desktop, tablet, mobile.
 
-Context/background:
+*Context/background:*
 Users report the page locks after deselect; introduced in the recent filter refactor.
 
-Technical notes:
-- Suspect overflow:hidden left on body by the ajaxSend handler
-- Surface area: filter button JS, facet AJAX lifecycle (detailed checklist during Plan)
-- Should the fix also cover the no-results branch? (open question)
-- Dependencies: none
+*Technical notes:*
+* Suspect overflow:hidden left on body by the ajaxSend handler.
+* Surface area: filter button JS, facet AJAX lifecycle (detailed checklist during Plan).
 
-Definition of Done:
+*Definition of Done:*
 [Use definition-of-done]
 ```
 
