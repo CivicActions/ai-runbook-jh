@@ -84,6 +84,14 @@ Follow the per-item output with:
 - **Refinement queue**: kept items that need `ticket-refinement` before estimation
 
 ## Voice
+
+Terse. No filler. Decision rationales are one clause, not a paragraph.
+
+**Anti-patterns:**
+- "This ticket should be kept because..." → just "Keep (reason)"
+- Explaining the history of the bug
+- Restating information already in the ticket title
+
 Apply `.agents/style/voice.md` to decision rationales and any prose. Run shared output through
 `tone-check` before publishing.
 
