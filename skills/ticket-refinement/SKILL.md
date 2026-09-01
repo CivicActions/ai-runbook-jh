@@ -49,15 +49,56 @@ Invoke when a ticket has passed triage and now needs the full description, accep
 
    Base the classification on the source ticket content and any codebase evidence gathered. If the source ticket was filed as a Task but investigation reveals a defect (wrong behavior, not just missing behavior), reclassify it as a Bug and note the reclassification in chat before writing the body. Do not defer this decision — pick the template first, then write.
 
+   **Gate (required):** State the classification explicitly in chat (e.g., "This is a **Bug**")
+   before writing the ticket body. Do not skip this step or bury it in the output file.
+
 2. **Confirm scope**: what's in, what's explicitly out
-3. **Write the user story**: `As a [user], I want to [action], so that I can [outcome]`
-4. **Define acceptance criteria** (for tasks/stories) or steps to reproduce + expected behavior (for
+3. **Write the Purpose statement**: this is the first thing a PM, stakeholder, or product owner
+   reads. It must communicate *business or user value*, not describe the technical fix. Follow the
+   project contract's `## Required fields` → Purpose statement format strictly.
+
+   **How to write it:**
+   - Start with the audience tag (`Public:` or `Non-Public:`).
+   - Describe what the user/audience *experiences* or *can't do* — the impact on them, not the
+     mechanism behind it.
+   - Use plain language a non-technical stakeholder would understand in isolation, without reading
+     the rest of the ticket.
+   - One sentence. No implementation detail (no CSS properties, no module names, no file paths).
+
+   **The test:** if a PM reads only the Purpose line, do they understand *who is affected* and
+   *what's wrong or what's improved* without knowing anything about the codebase? If not, rewrite.
+
+   **Common failure mode:** restating the title or describing the technical symptom instead of the
+   user impact. "The default news thumbnail displays at wrong dimensions on the news feed" is a
+   technical symptom. "Visitors see inconsistent image sizes on the news page, making the feed
+   look broken" is user impact.
+
+   **Good examples:**
+   - `Public: Visitors see a broken-looking news feed when stories use the placeholder image instead of a real photo.`
+   - `Non-Public: Content authors can save event forms without the page locking up.`
+   - `Public: Search results disappear when removing a filter, forcing visitors to start their search over.`
+
+   **Bad examples (technical descriptions disguised as purpose):**
+   - ~~`Public: The default news thumbnail displays at wrong dimensions on the news feed, appearing square instead of matching the 3:2 landscape ratio of actual hero images.`~~ (describes the CSS problem, not the user impact)
+   - ~~`Non-Public: The config export command fails silently when run outside DDEV.`~~ (describes the technical failure, not why it matters to the author)
+
+   **Gate (required):** After drafting the Purpose, scan it for implementation jargon: field names,
+   file paths, module names, CSS properties, config values, API terms, or any phrase a PM wouldn't
+   understand. If any appear, rewrite before proceeding. The Purpose is the one line stakeholders
+   read — it must stand alone without codebase knowledge.
+
+4. **Write the user story**: `As a [user], I want to [action], so that I can [outcome]`
+5. **Define acceptance criteria** (for tasks/stories) or steps to reproduce + expected behavior (for
    bugs). Write each criterion as an observable outcome, not an implementation step. A reviewer or
    stakeholder should be able to verify it without reading the diff. Avoid file paths, internal
    naming, and technical shorthand in criterion text; move those details to Technical notes. For
    batched housekeeping or cleanup tickets, describe the end state of the batch rather than
    itemizing each individual fix.
-5. **Preserve useful source content (CRITICAL: do not lose context)**: if the source ticket or
+
+   **Gate (required):** Scan acceptance criteria / "What should happen?" for implementation
+   language: file paths, function names, template names, config keys, CSS properties. If any
+   appear, move them to Technical notes and rewrite the criterion as an observable user outcome.
+6. **Preserve useful source content (CRITICAL: do not lose context)**: if the source ticket or
    epic contains anything that would help a person or AI understand, execute, or plan the work,
    keep it verbatim or as a clearly labeled block. Do not summarize it into a single line or drop
    it in the interest of brevity. When in doubt, keep it.
@@ -68,28 +109,45 @@ Invoke when a ticket has passed triage and now needs the full description, accep
    - **Reproduction-critical details** (specific URLs, browser/AT versions, device configurations)
    - **Quoted conversations** that contain diagnostic observations or ruling-out info
    - **Attachments, screenshots, or video references**
+   - **Embedded images** (inline `![]()` or `!image.png!` markup) and their surrounding context
    - **Workarounds or partial fixes** already attempted
 
    These should appear in the refined body in their original form (or lightly reformatted for
    readability). A link to a Confluence page about NVDA setup, for example, is not "context you
    can paraphrase": it's an actionable prerequisite the developer needs. Embed it where a
    developer would look for it (usually Context/background or Technical notes).
-6. **Fold dependencies and surface area into Technical notes**: other tickets, modules, services, files, and people who need to weigh in all go in Technical notes as bullets; no separate sections.
-7. **Answer open questions first, then flag what remains**: if the ticket already has open questions, attempt to resolve them using available context (codebase, config, existing docs, triage notes) before listing them as still-open. Only surface a question if it genuinely cannot be answered from what's available. The goal is to reduce open questions, not accumulate them.
+
+   **Embedded images deserve special attention.** Someone took the time to capture a screenshot,
+   annotate it, or paste a visual into the ticket. That visual context is often more informative
+   than the text around it. Preserve every embedded image reference exactly as it appears in the
+   source (e.g. `!image-2026-08-24-08-35-11-248.png!` in Jira markup), along with the sentence
+   or paragraph that gives it context (e.g. "Here's what it looks like currently:" or "After
+   shrinking the header:"). Never strip images to "clean up" the ticket body. Place them in
+   whichever section they logically support: reproduction screenshots go in "How to reproduce"
+   or "What's wrong?", diagnostic screenshots go in "Technical notes", expected-behavior
+   screenshots go in "What should happen?".
+7. **Fold dependencies and surface area into Technical notes**: other tickets, modules, services, files, and people who need to weigh in all go in Technical notes as bullets; no separate sections.
+8. **Answer open questions first, then flag what remains**: if the ticket already has open questions, attempt to resolve them using available context (codebase, config, existing docs, triage notes) before listing them as still-open. Only surface a question if it genuinely cannot be answered from what's available. The goal is to reduce open questions, not accumulate them.
 
    Questions that can be resolved by reading the codebase (e.g. "what selector targets X?", "which file handles Y?") must be answered in Technical notes, not listed as open questions. Open questions are for decisions that require another person or external input — things like scope calls, product decisions, confirmation from a stakeholder, or investigation that requires running the site.
-8. **Accessibility bugs: map WCAG criteria**: if the ticket is an accessibility bug (Component =
+9. **Accessibility bugs: map WCAG criteria**: if the ticket is an accessibility bug (Component =
    Accessibility, or the issue describes an AT/keyboard/perceivability failure), identify the
    specific WCAG 2.1 success criteria violated and recommend them as Jira labels in the format
    `WCAG-X.X.X` (e.g. `WCAG-4.1.2`, `WCAG-2.4.7`). Use the `accessibility-wcag` skill's
    checklist and process reference to determine the correct criteria. Include multiple labels if
    more than one criterion applies. These labels go in the "Recommended fields" output alongside
    Component, Priority, etc.
-9. **Confirm fields, labels, and priority**: fill the project contract's `## Required fields`; add any
+10. **Confirm fields, labels, and priority**: fill the project contract's `## Required fields`; add any
    pre-merge review labels the project contract defines (e.g. visual / UX QA) when the relevant surface changes;
    revisit the initial priority set during triage if scope or risk understanding has shifted, using
    the project contract's `## Priority guide`
-10. **Append Definition of Done**: invoke the `definition-of-done` skill for the appropriate subset, then prune items that genuinely don't apply to this ticket. Base pruning on the ticket type and surface area:
+
+   **Field value validation (required):** Before recommending any value for a select/dropdown field
+   (Component, Functional Area, Priority, etc.), retrieve the actual valid options from the tracker.
+   Do not invent or assume field values. See the project contract's `## Field value lookup` section
+   for how to query valid options in this project's tracker. If a field value cannot be verified,
+   flag it as "needs confirmation" rather than guessing.
+11. **Append Definition of Done**: invoke the `definition-of-done` skill for the appropriate subset, then prune items that genuinely don't apply to this ticket. Base pruning on the ticket type and surface area:
     - Drop visual/UX review-label lines if the change has no visual or UX surface (e.g. a config-only or backend-only change).
     - Drop the layout builder palette contrast line if the change doesn't touch a layout builder component.
     - Drop environment-comparison lines if the change is internal-only or has no user-facing output to compare.

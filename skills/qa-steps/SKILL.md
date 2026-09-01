@@ -41,6 +41,19 @@ verify the change works correctly.
 - If a bug was fixed as part of the work, one scenario confirming the fixed behavior is fine — but only if it was a stated AC item or was explicitly called out in the ticket, not because it happened to come up during implementation.
 - **When no ticket or AC is available** (e.g. PR-only request): derive scenarios from the PR description and the user-stated expected behavior. State that AC was not available and list the source used.
 
+## Output
+
+**ALWAYS write the QA steps to a file artifact** at `.agents/qa/[ISSUE-REF]-qa.md` (issue-ref
+format per the project contract's `## Tracker`; e.g. `.agents/qa/NSF-14384-qa.md`). When no ticket
+exists (PR-only request), name it for the PR (e.g. `.agents/qa/pr-164-qa.md`). Writing to a file
+makes the steps easy to copy into the tracker or PR without re-scrolling the chat.
+
+If `.agents/qa/` does not exist, create it before writing. After writing, tell the user where the
+file was saved.
+
+The file contents use the project contract's `## Tracker` markup (see Output Format below), so the
+saved artifact is paste-ready for the tracker.
+
 ## Output Format
 Render using the project contract's `## Tracker` markup. In the structure below, `[heading]` = the project contract's
 section-heading markup, `[checkbox]` = its checkbox markup, and `[step]` = a plain bullet (no
@@ -101,7 +114,7 @@ it entirely if no section was AI-assisted, or if the project contract defines no
 
 **You ask:** `use the qa-steps skill on PROJ-1234`
 
-**You get:**
+**You get:** a file at `.agents/qa/PROJ-1234-qa.md`, and a note telling you where it was saved:
 
 ```
 ## What Changed
@@ -129,6 +142,10 @@ Page now stays scrollable after deselecting any facet on /search.
 - [ ] Expected: no console errors
 
 ```
+
+## Git exclusion
+QA-step files are personal working artifacts; exclude `.agents/qa/` via `.git/info/exclude`, not
+`.gitignore`. Never add AI runbook working directories to the team-owned `.gitignore`.
 
 ## Related Skills
 - **Invokes:** `browser-check` (live page validation)

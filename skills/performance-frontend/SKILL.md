@@ -30,6 +30,11 @@ Invoke when the user wants to audit a page, component, or asset pipeline for fro
 
 1. **Identify scope**, page URL, component, or asset pipeline area
 2. **Live page audit**, use the `browser-check` skill with the project contract's sanctioned browser MCP: navigate to the page (use the local env from the project contract's `## Environments`), check network requests for asset sizes and render-blocking resources, capture console output, inspect DOM for lazy loading and image attributes
+   - **Firefox profiler note:** When the project contract lists `firefox-devtools` as an available
+     cross-browser MCP (with `--tool-preset developer`), Firefox's built-in profiler provides
+     detailed paint/reflow/layout-shift analysis that complements Chrome Lighthouse. It
+     visualizes reflow triggers more explicitly than Chrome's Performance panel, making it useful
+     for diagnosing CLS and layout thrashing when Chrome alone isn't enough.
 3. **Check Core Web Vitals targets**: LCP < 2.5s, CLS < 0.1, INP < 200ms
 4. **Review asset loading**:
    - Render-blocking CSS or JS in `<head>`

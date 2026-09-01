@@ -27,6 +27,11 @@ Section 508, or project-specific a11y requirements.
 1. **Identify scope**: page URL, component path, or template file
 2. **Live page inspection**: use `browser-check` (with the project contract's browser MCP) to navigate,
    capture screenshots, and inspect the rendered DOM before static analysis
+   - **Cross-browser a11y note:** Firefox's accessibility inspector surfaces ARIA issues and
+     computed accessible names differently than Chromium. When the project contract lists
+     `firefox-devtools` as an available cross-browser MCP, consider running the a11y inspection
+     in Firefox too, especially for ARIA widget patterns (combobox, dialog, tabs) where
+     browser-specific accessibility tree construction varies.
 3. **Static analysis**: review markup for:
    - Missing or inadequate alt text on images
    - Heading hierarchy violations (skipped levels, multiple H1s)
