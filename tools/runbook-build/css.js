@@ -174,58 +174,6 @@ ${roundedVars()}
       font-weight: 600;
     }
 
-    /* ============ Hero right rail (desktop only) ============ */
-    .page-header__rail { display: none; }
-    @media (min-width: 1100px) {
-      .page-header {
-        display: flex;
-        align-items: flex-start;
-        gap: var(--s-xl);
-      }
-      .page-header__main { flex: 1 1 auto; min-width: 0; }
-      .page-header__rail {
-        display: flex;
-        flex-direction: column;
-        gap: var(--s-base);
-        flex: 0 0 220px;
-        padding-top: var(--s-sm);
-      }
-      .rail-stat {
-        display: block;
-        text-decoration: none;
-        color: var(--c-bark);
-        padding: 6px 0;
-        border-top: 1px solid var(--c-hairline);
-      }
-      .rail-stat:first-child { border-top: none; padding-top: 0; }
-      .rail-stat__num {
-        ${typeVar("display-sm")}
-        display: block;
-        color: var(--c-graphite);
-        font-size: 28px;
-        line-height: 1;
-        margin-bottom: 4px;
-      }
-      .rail-stat__label {
-        ${typeVar("mono-sm")}
-        color: var(--c-bark);
-        text-transform: uppercase;
-        letter-spacing: 0.08em;
-        line-height: 1.4;
-      }
-      .rail-stat__label--long {
-        text-transform: none;
-        letter-spacing: 0.02em;
-        line-height: 1.35;
-      }
-      .rail-stat:hover .rail-stat__num { color: var(--c-ink); }
-      .rail-stat:hover .rail-stat__label { color: var(--c-ink); }
-      .rail-stat:focus-visible {
-        outline: 2px solid var(--c-focus-ring);
-        outline-offset: 3px;
-      }
-    }
-
     /* ============ Wave divider ============ */
     .wave-divider {
       display: block;
