@@ -27,6 +27,18 @@ Invoke when a ticket is complete and the user wants to write closure notes, a du
 2. **Summarize changes by logical area**, not by commit. Group related changes together (e.g. "component markup and styles," "JS behavior," "Storybook," "CI/testing"). List commits only when there is a single commit directly worth linking, or when the commit hash is the most useful reference (e.g. a fix commit that can be cherry-picked). Never list every commit.
 3. **Note follow-up work**, only if there's genuinely ticketable deferred work
 
+## Output
+
+**ALWAYS write the closure notes to a file artifact** at `.agents/closure/[ISSUE-REF]-closure.md`
+(issue-ref format per the project contract's `## Tracker`; e.g. `.agents/closure/NSF-14384-closure.md`).
+Writing to a file makes the notes easy to copy into the tracker without re-scrolling the chat.
+
+If `.agents/closure/` does not exist, create it before writing. After writing, tell the user where
+the file was saved.
+
+The file contents use the project contract's `## Tracker` markup (see Output Format below), so the
+saved artifact is paste-ready for the tracker.
+
 ## Output Format
 
 If the project contract's Tracker section calls for it (Output wrapping), wrap the **entire copyable output** in that wrapper so the user can paste it directly into the tracker without reformatting. Use the project contract's section heading markup for headings and its monospace markup for inline code references (file paths, selectors, module names, commit hashes), NOT a hardcoded syntax.
@@ -57,9 +69,10 @@ Sections that are NOT included (handled elsewhere):
 
 ## Definition of Done
 
-After the closure notes (outside any code block), append the relevant DoD checklist by invoking the `definition-of-done` skill with the ticket type (the project contract defines which types exist: e.g. FE/BE/DevOps, or a single PR checklist). The assignee confirms the items before closing.
+Do NOT include the DoD checklist in closure notes output. The DoD is already in the ticket description
+and adding it to closure notes creates duplication. The assignee confirms DoD items separately before closing.
 
-The DoD lives in one place, `definition-of-done`, so it doesn't drift across QA steps, refinement output, and closure notes.
+If the user explicitly asks for the DoD, direct them to the `definition-of-done` skill instead.
 
 ## Attribution
 
@@ -94,7 +107,7 @@ PR delivers a clean fix; page stays scrollable after deselect across viewports.
 
 **You ask:** `use the issue-closure-notes skill on PROJ-1234`
 
-**You get:**
+**You get:** a file at `.agents/closure/PROJ-1234-closure.md`, and a note telling you where it was saved:
 
 ```
 ## Problem & Approach
@@ -112,10 +125,14 @@ PR delivers a focused fix; page stays scrollable after deselect across desktop, 
 - None.
 ```
 
+## Git exclusion
+Closure-note files are personal working artifacts; exclude `.agents/closure/` via
+`.git/info/exclude`, not `.gitignore`. Never add AI runbook working directories to the team-owned
+`.gitignore`.
+
 ## Related Skills
 
 - **Upstream:** `qa-steps` (closure notes reference the QA steps written earlier), `handoff-message` (closure notes summarize what the handoffs documented)
-- **Invokes:** `definition-of-done` (appends the DoD checklist)
 - **Downstream:** `tone-check` (run closure-note prose through tone check before posting)
 - **Phase placement:** Closure notes are pre-review communication. They live in Phase 6 (Communicate) alongside `lessons-learned`, both running at handoff time.
 

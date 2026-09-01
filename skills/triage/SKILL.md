@@ -59,7 +59,13 @@ starting.
      review; the stakeholder can override.
    - Bugs: classify per the project contract's bug priority levels.
    - Tasks/features: judgment based on user impact and dependencies.
-4. **Flag for deeper refinement**: note items that need a full refinement pass before estimation.
+4. **Preserve embedded images and visual context**: if the source ticket contains inline images
+   (screenshots, annotated visuals, before/after comparisons), keep them in the ticket body.
+   Someone did the work of capturing and embedding them; they provide context that text alone
+   can't replace. When writing or updating the ticket description during triage, preserve every
+   `!image-name.png!` reference and its surrounding explanatory text. Place screenshots near the
+   content they illustrate.
+5. **Flag for deeper refinement**: note items that need a full refinement pass before estimation.
    Use `ticket-refinement` for that work.
 
 ## Output Format

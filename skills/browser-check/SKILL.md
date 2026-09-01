@@ -51,10 +51,28 @@ Invoke when the user wants to validate a frontend change, bug fix, or new featur
    - Skip this step entirely for straightforward validation where behavior matches expectations
    - Remove all debug logs before finishing the check (they are ephemeral, not committed)
 6. **Cross-viewport check**, test at mobile (375px), tablet (768px), and desktop (1280px) widths where relevant
-7. **Authenticated flows**, use the project's local admin-access method (`## Environments` →
+7. **Cross-browser check** (opt-in, triggered when the user says "cross-browser," "test in
+   Firefox/Edge," or "check target browsers"):
+   - Read the project contract's `## Sanctioned AI` → cross-browser MCPs to see what's available
+   - Inform the user which browser MCP needs to be enabled (only one browser MCP should be active
+     at a time to avoid tool-name collisions)
+   - Once the target browser MCP is active, repeat steps 3–6 against the same page(s)
+   - Note browser-specific rendering differences (layout, font rendering, scrollbar behavior,
+     form control styling)
+   - This satisfies the FE DoD item: "Target browsers have been checked"
+   - **Tool differences by browser:**
+     - **chrome-devtools / edge-devtools**: identical tool surface (CDP-based); same tool names,
+       same capabilities. Edge uses `--executablePath` to target the Edge binary.
+     - **firefox-devtools**: WebDriver BiDi protocol; similar tool names but some differ (e.g.
+       `click_by_uid` vs `click`). Check the available tools when the MCP connects. Firefox
+       offers a dedicated profiler module (`--tool-preset developer`) useful for paint/reflow
+       analysis.
+   - If cross-browser testing surfaces inconsistencies, document them in the Results section with
+     a per-browser breakdown
+8. **Authenticated flows**, use the project's local admin-access method (`## Environments` →
    Local: e.g. a Drupal `drush uli` URL, a login route, or none for a public component library)
-8. **Document results**, record what was checked, what passed, what failed
-9. **Clean up**, remove any debug instrumentation added in step 5
+9. **Document results**, record what was checked, what passed, what failed
+10. **Clean up**, remove any debug instrumentation added in step 5
 
 ## Output Format
 
@@ -70,6 +88,14 @@ Invoke when the user wants to validate a frontend change, bug fix, or new featur
 - Console errors (if any)
 - Network failures (if any)
 - Screenshots saved to `.agents/reviews/` (if applicable)
+
+### Cross-Browser Results (when cross-browser mode is active)
+| Check | Chrome | Edge | Firefox |
+|-------|--------|------|---------|
+| [description] | ✅ / ❌ / ⚠️ | ✅ / ❌ / ⚠️ | ✅ / ❌ / ⚠️ |
+
+Note browser-specific differences (rendering, layout, form controls, scrollbar behavior) even when
+both pass. "Passes differently" is still worth documenting for the team.
 
 ### Open Questions
 - Anything that could not be validated (access denied, environment unavailable, etc.)

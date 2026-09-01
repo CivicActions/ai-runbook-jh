@@ -40,6 +40,11 @@ grid system, and styling rules rather than assuming a specific design system.
 8. **Validate with viewport simulation**, use the `browser-check` skill with the browser inspection
    MCP from the project contract `## Sanctioned AI`: navigate to the page, set the viewport to test at small,
    medium, and large widths (e.g. 375px, 768px, 1280px), capture screenshots at each breakpoint
+9. **Cross-browser viewport check** (opt-in): if the user requests cross-browser validation, or
+   the change involves layout features with known browser differences (container queries, subgrid,
+   `dvh` units, flex `gap`), invoke `browser-check` in cross-browser mode. Firefox and Chrome can
+   render responsive layouts differently, especially for newer CSS features that are Baseline
+   Newly Available. Satisfies the FE DoD item "Target browsers have been checked."
 
 ## Output Format
 
