@@ -293,29 +293,13 @@ const html = `<!DOCTYPE html>
 <body>
   <a class="skip-link" href="#phases">Skip to skills</a>
   <header class="page-header container">
-    <div class="page-header__main">
-      <div class="title-wrap">
-        <h1>How I work with AI.</h1>
-        ${SVG.underline}
-      </div>
-      <p class="tagline">This is my AI runbook for taking a ticket from inbox to shipped: keep the writing clear and keep sensitive details out of chat.</p>
-      <aside class="newcomer-note" aria-label="New to AI skills">
-        <p><strong>New to AI skills?</strong> A "skill" is a short Markdown (text) file that tells an AI assistant how to do one specific job, like a checklist a coworker would follow for you. Reference one in your agent (<code>@triage</code>), paste it into a browser chat. Browse docs at <a href="https://agentskills.io/">agentskills.io</a>. If you can paste text into a chat window, you can use one.</p>
-      </aside>
+    <div class="title-wrap">
+      <h1>How I work with AI.</h1>
+      ${SVG.underline}
     </div>
-    <aside class="page-header__rail" aria-label="At a glance">
-      <a class="rail-stat" href="#phases">
-        <span class="rail-stat__num">${String(skills.length).padStart(2, "0")}</span>
-        <span class="rail-stat__label">skills</span>
-      </a>
-      <a class="rail-stat" href="#phases">
-        <span class="rail-stat__num">${String(PHASES.filter(p => p.num).length).padStart(2, "0")}</span>
-        <span class="rail-stat__label">phases</span>
-      </a>
-      <a class="rail-stat" href="#phase-cross-cutting">
-        <span class="rail-stat__num">${String(skills.filter(s => s.phase === "cross-cutting").length).padStart(2, "0")}</span>
-        <span class="rail-stat__label rail-stat__label--long">always-on gates<br>voice + security + evidence</span>
-      </a>
+    <p class="tagline">This is my AI runbook for taking a ticket from inbox to shipped: keep the writing clear and keep sensitive details out of chat.</p>
+    <aside class="newcomer-note" aria-label="New to AI skills">
+      <p><strong>New to AI skills?</strong> A "skill" is a short Markdown (text) file that tells an AI assistant how to do one specific job, like a checklist a coworker would follow for you. Reference one in your agent (<code>@triage</code>), paste it into a browser chat. Browse docs at <a href="https://agentskills.io/">agentskills.io</a>. If you can paste text into a chat window, you can use one.</p>
     </aside>
   </header>
 
