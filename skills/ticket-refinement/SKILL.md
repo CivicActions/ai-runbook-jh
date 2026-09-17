@@ -219,7 +219,7 @@ As a [type of user], I want to [perform an action], so that I can [achieve a goa
 3. [observed result]
 
 *Technical notes:*
-[Hypotheses, file paths, related areas of code, and high-level implementation surface area (modules, services, files likely affected). Prefer concise bullets over prose paragraphs. Lead each bullet with the key fact; save full sentences for genuinely complex reasoning that can't be compressed. Detailed implementation checklist is generated during Plan via `issue-plan` + `implementation-details`.]
+[Surface area: modules, services, files, or patterns likely affected. Hypotheses worth investigating. Dependencies (other tickets, people who need to weigh in). Do NOT prescribe the fix or list specific line numbers — that's implementation detail for `issue-plan`. Prefer concise bullets. Lead each bullet with the key fact.]
 
 *Questions for refinement:*
 * [open question that needs a decision before estimation]
