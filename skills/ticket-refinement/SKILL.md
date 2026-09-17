@@ -192,7 +192,7 @@ As a [type of user], I want to [perform an action], so that I can [achieve a goa
 [1–2 paragraphs setting the stage, what's the world look like now, why does this matter]
 
 *Technical notes:*
-[Hypotheses, file paths, related areas of code, high-level surface area (modules, services, files likely affected), dependencies (other tickets, people who need to weigh in). Prefer concise bullets. Lead each bullet with the key fact; save full sentences for genuinely complex reasoning that can't be compressed. Detailed implementation checklist is generated during Plan via `issue-plan` + `implementation-details`.]
+[Surface area: modules, services, files, or patterns likely affected. Hypotheses worth investigating. Dependencies (other tickets, people who need to weigh in). Do NOT prescribe the fix or list specific line numbers — that's implementation detail for `issue-plan`. Prefer concise bullets. Lead each bullet with the key fact.]
 
 *Definition of Done:*
 [Use @definition-of-done for the appropriate subset]
@@ -282,6 +282,12 @@ Ticket bodies are read by humans under time pressure. Every sentence competes fo
 - Listing every file that might be touched (one primary file is enough; the rest is discoverable)
 - Hedging language ("This might be related to...", "It's possible that...")
 - Repeating information across sections
+- **Prescribing the solution**: Technical notes describe *surface area* (what areas are affected),
+  not *implementation* (what to change). "Cypress tests reference the old facet label" is surface
+  area. "Update line 21 in FacetBlockPresence.cy.ts to change 'Directorate/Division' to 'NSF
+  organization'" is implementation — save that for `issue-plan`.
+- **Specific line numbers**: Line numbers go stale. Describe the area or pattern, not the exact
+  location. The developer will find the code.
 
 **Test:** If a section could be deleted and the developer would still know what to do, delete it.
 
