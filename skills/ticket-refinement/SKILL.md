@@ -272,7 +272,7 @@ Ticket bodies are read by humans under time pressure. Every sentence competes fo
 - One fact per bullet. No compound sentences.
 - Technical notes orient the developer; they don't explain the fix. If it's discoverable in the code or PR, don't write it here.
 - Context/background: 1–2 sentences max. If you need more, the ticket is too big.
-- User story: keep the formula, drop the filler. "As a developer, I want X, so Y" — not "As a developer working on the NSF.gov platform, I want to be able to X in order to ensure that Y."
+- User story: keep the formula, drop the filler. "As a developer, I want X, so Y" — not "As a developer working on the project platform, I want to be able to X in order to ensure that Y."
 - Acceptance criteria: observable outcomes only. "Tests pass" not "All 9 test cases in the spec file execute successfully without failures."
 - Prune the DoD to what actually applies. A test-only change doesn't need visual regression, responsiveness, or browser console checks.
 
@@ -284,8 +284,8 @@ Ticket bodies are read by humans under time pressure. Every sentence competes fo
 - Repeating information across sections
 - **Prescribing the solution**: Technical notes describe *surface area* (what areas are affected),
   not *implementation* (what to change). "Cypress tests reference the old facet label" is surface
-  area. "Update line 21 in FacetBlockPresence.cy.ts to change 'Directorate/Division' to 'NSF
-  organization'" is implementation — save that for `issue-plan`.
+  area. "Update line 21 in FacetBlockPresence.cy.ts to change 'Directorate/Division' to 'Organization
+  Type'" is implementation — save that for `issue-plan`.
 - **Specific line numbers**: Line numbers go stale. Describe the area or pattern, not the exact
   location. The developer will find the code.
 

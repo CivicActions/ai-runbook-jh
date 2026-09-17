@@ -25,8 +25,8 @@ run commands, or modify code. The plan is the only deliverable.
 
 Before writing, check for existing files in `.agents/plans/`. The contract path is authoritative;
 existing files may inform slug formatting only when consistent with the contract (e.g. if the
-contract specifies `NSF-[ticket]-plan.md` and existing files use a description slug like
-`NSF-13747-select-file-plan.md`, adopt the slug format). If existing files contradict the contract,
+contract specifies `PROJ-[ticket]-plan.md` and existing files use a description slug like
+`PROJ-123-select-file-plan.md`, adopt the slug format). If existing files contradict the contract,
 follow the contract.
 If `.agents/plans/` does not exist, create it before writing.
 
