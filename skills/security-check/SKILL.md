@@ -130,7 +130,7 @@ Per CA policy: "Clearly disclose and label AI-generated or AI-assisted content i
 
 The canonical marker string is read from the project contract's `## Attribution marker` section. The original CA convention is:
 
-`_AI-assisted draft, reviewed before submission._`
+`_AI-assisted draft, reviewed & edited by a human before submission._`
 
 **Important:** this marker wording is a **team-chosen convention** to satisfy CA policy, not policy text verbatim. CA policy requires clear disclosure and labeling; this specific phrasing is one way to do that. If a surface needs a more accurate phrasing (e.g., "AI-assisted reflection" reads more naturally on a lessons-learned note), prioritize honest disclosure over wording fidelity. The skills default to the project contract's marker for consistency. If the project contract defines no marker (e.g. public OSS contributions where the marker reads oddly), skip it but still human-review every AI-assisted output.
 

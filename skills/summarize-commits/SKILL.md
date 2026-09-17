@@ -113,7 +113,7 @@ project contract's issue-ref format and attribution marker.
 ```
 Fixes PROJ-123 by restoring focus to the active filter after the result list re-renders. Retries kick in only after the async update completes; existing keyboard handlers are unchanged.
 
-_AI-assisted draft, reviewed before submission._
+_AI-assisted draft, reviewed & edited by a human before submission._
 AI co-authored the code (filter-button.js + regression test); human-edited and reviewed line by line.
 ```
 

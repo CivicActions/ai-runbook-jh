@@ -154,7 +154,7 @@ h3. Implementation Details
 () Update visual-regression ref shot
 () Run the linter
 
-_AI-assisted draft, reviewed before submission._   <- only if the project contract defines a marker
+_AI-assisted draft, reviewed & edited by a human before submission._   <- only if the project contract defines a marker
 ```
 
 ## Example

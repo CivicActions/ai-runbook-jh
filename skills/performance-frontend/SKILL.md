@@ -144,7 +144,7 @@ where one is defined (see `security-check`).
 - **Issue:** LCP at 3.8s, hero image is 2.4MB. **Priority:** High. **Fix:** [...]
 - [...]
 
-_AI-assisted draft, reviewed before submission._
+_AI-assisted draft, reviewed & edited by a human before submission._
 ```
 
 **Personal use only** (no marker):
