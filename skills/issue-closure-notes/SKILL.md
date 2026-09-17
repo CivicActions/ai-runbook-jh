@@ -30,7 +30,7 @@ Invoke when a ticket is complete and the user wants to write closure notes, a du
 ## Output
 
 **ALWAYS write the closure notes to a file artifact** at `.agents/closure/[ISSUE-REF]-closure.md`
-(issue-ref format per the project contract's `## Tracker`; e.g. `.agents/closure/NSF-14384-closure.md`).
+(issue-ref format per the project contract's `## Tracker`; e.g. `.agents/closure/PROJ-123-closure.md`).
 Writing to a file makes the notes easy to copy into the tracker without re-scrolling the chat.
 
 If `.agents/closure/` does not exist, create it before writing. After writing, tell the user where

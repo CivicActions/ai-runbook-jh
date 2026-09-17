@@ -44,7 +44,7 @@ verify the change works correctly.
 ## Output
 
 **ALWAYS write the QA steps to a file artifact** at `.agents/qa/[ISSUE-REF]-qa.md` (issue-ref
-format per the project contract's `## Tracker`; e.g. `.agents/qa/NSF-14384-qa.md`). When no ticket
+format per the project contract's `## Tracker`; e.g. `.agents/qa/PROJ-123-qa.md`). When no ticket
 exists (PR-only request), name it for the PR (e.g. `.agents/qa/pr-164-qa.md`). Writing to a file
 makes the steps easy to copy into the tracker or PR without re-scrolling the chat.
 

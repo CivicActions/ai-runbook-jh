@@ -192,7 +192,7 @@ As a [type of user], I want to [perform an action], so that I can [achieve a goa
 [1–2 paragraphs setting the stage, what's the world look like now, why does this matter]
 
 *Technical notes:*
-[Hypotheses, file paths, related areas of code, high-level surface area (modules, services, files likely affected), dependencies (other tickets, people who need to weigh in). Prefer concise bullets. Lead each bullet with the key fact; save full sentences for genuinely complex reasoning that can't be compressed. Detailed implementation checklist is generated during Plan via `issue-plan` + `implementation-details`.]
+[Surface area: modules, services, files, or patterns likely affected. Hypotheses worth investigating. Dependencies (other tickets, people who need to weigh in). Do NOT prescribe the fix or list specific line numbers — that's implementation detail for `issue-plan`. Prefer concise bullets. Lead each bullet with the key fact.]
 
 *Definition of Done:*
 [Use @definition-of-done for the appropriate subset]
@@ -219,7 +219,7 @@ As a [type of user], I want to [perform an action], so that I can [achieve a goa
 3. [observed result]
 
 *Technical notes:*
-[Hypotheses, file paths, related areas of code, and high-level implementation surface area (modules, services, files likely affected). Prefer concise bullets over prose paragraphs. Lead each bullet with the key fact; save full sentences for genuinely complex reasoning that can't be compressed. Detailed implementation checklist is generated during Plan via `issue-plan` + `implementation-details`.]
+[Surface area: modules, services, files, or patterns likely affected. Hypotheses worth investigating. Dependencies (other tickets, people who need to weigh in). Do NOT prescribe the fix or list specific line numbers — that's implementation detail for `issue-plan`. Prefer concise bullets. Lead each bullet with the key fact.]
 
 *Questions for refinement:*
 * [open question that needs a decision before estimation]
@@ -272,7 +272,7 @@ Ticket bodies are read by humans under time pressure. Every sentence competes fo
 - One fact per bullet. No compound sentences.
 - Technical notes orient the developer; they don't explain the fix. If it's discoverable in the code or PR, don't write it here.
 - Context/background: 1–2 sentences max. If you need more, the ticket is too big.
-- User story: keep the formula, drop the filler. "As a developer, I want X, so Y" — not "As a developer working on the NSF.gov platform, I want to be able to X in order to ensure that Y."
+- User story: keep the formula, drop the filler. "As a developer, I want X, so Y" — not "As a developer working on the project platform, I want to be able to X in order to ensure that Y."
 - Acceptance criteria: observable outcomes only. "Tests pass" not "All 9 test cases in the spec file execute successfully without failures."
 - Prune the DoD to what actually applies. A test-only change doesn't need visual regression, responsiveness, or browser console checks.
 
@@ -282,6 +282,12 @@ Ticket bodies are read by humans under time pressure. Every sentence competes fo
 - Listing every file that might be touched (one primary file is enough; the rest is discoverable)
 - Hedging language ("This might be related to...", "It's possible that...")
 - Repeating information across sections
+- **Prescribing the solution**: Technical notes describe *surface area* (what areas are affected),
+  not *implementation* (what to change). "Cypress tests reference the old facet label" is surface
+  area. "Update line 21 in FacetBlockPresence.cy.ts to change 'Directorate/Division' to 'Organization
+  Type'" is implementation — save that for `issue-plan`.
+- **Specific line numbers**: Line numbers go stale. Describe the area or pattern, not the exact
+  location. The developer will find the code.
 
 **Test:** If a section could be deleted and the developer would still know what to do, delete it.
 
