@@ -52,7 +52,9 @@ identifying risks, and clarifying acceptance criteria.
 9. **Include branch creation**: first implementation step creates a feature branch from the
    project contract's base branch, named per the project contract's branch convention
 10. **Explore available skills**: scan all skill sources to find skills relevant to this work:
-    - The project's skills directory (whatever path this project uses for its AI skills)
+    - The project's skills directory and any client-native skill locations your AI client reads
+      (e.g. `.agents/skills/`, `.github/skills/`, `.claude/skills/`, and user-level paths such as
+      `~/.copilot/skills/` or `~/.agents/skills/`)
     - External skill repositories the user maintains (check for symlinks in the project's skills
       directory, or ask the user if they have external skill repos)
     - Read the `description` field or first paragraph of each SKILL.md to understand what it does
@@ -73,7 +75,9 @@ Before writing the plan, discover what skills are available to support the work.
 plan in actual automation rather than generic advice.
 
 **Where to look:**
-1. The project's skills directory (whatever path this project uses for its AI skills)
+1. The project's skills directory and any client-native skill locations your AI client reads.
+   Depending on client, these include `.agents/skills/`, `.github/skills/`, `.claude/skills/`,
+   and user-level paths such as `~/.copilot/skills/` or `~/.agents/skills/`
 2. External skill repositories (check for symlinks in the project's skills directory, or ask
    the user if they maintain external skill repos)
 3. Skills symlinked into the project from external sources
