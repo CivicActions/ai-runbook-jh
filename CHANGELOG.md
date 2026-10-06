@@ -6,6 +6,13 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ## [Unreleased]
 
+### Changed
+- `ticket-refinement` skill: Purpose statements now emphasize value unlocked / pain removed rather than just capability delivered. New contrastive examples show the difference between "users can see a drag handle" (capability) and "users can tell files are reorderable without guessing" (value). Common failure modes catalog added (technical symptoms vs user impact, developer pain vs business value).
+- `ticket-refinement` skill: voice config (`.agents/style/voice.md` + personal overlay) now loads before drafting rather than as a post-pass, so first output already sounds human
+- `ticket-refinement` skill: refinement now preserves existing acceptance criteria verbatim unless they're broken; doesn't rewrite for style consistency
+- `ticket-refinement` skill: "NEVER remove embedded images" directive strengthened with placement guidance
+- `issue-plan` skill: skill discovery expanded from simple file finding to full exploration workflow; paths now project-agnostic; enumerates client-native discovery paths (Kiro, Claude, Copilot, Cursor)
+
 ### Fixed
 - `work-intake` skill: the waiting-on-me heading qualified on "mentions, reviews, unanswered comments," which flagged any thread where the reader was tagged and hadn't replied — whether or not anyone was actually stopped. A live run returned six rows and all six were false positives (a colleague claiming work for themselves, a routine open PR, a thread already handled off-ticket, a cold ping that was the reader's own follow-up to chase). The heading now reads "someone else is stopped until you act," a rule states that single test with the four shapes above, and the worked example — which was the sanitized version of one of the false positives — is replaced with a ticket someone is genuinely queued behind.
 
