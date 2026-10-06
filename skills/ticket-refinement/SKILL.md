@@ -28,6 +28,9 @@ estimation/LOE scale are **project-specific**. Read them from `.agents/project-c
 - **`## Environments`** / **`## Stack`**: for the project-specific context flags (config exports,
   shared infrastructure, higher-env validation, compliance surfaces).
 - **`## Attribution marker`**: the trailing marker for shared output, *if the project contract defines one*.
+- **`## Voice`**: path to the voice config (default `.agents/style/voice.md`). Load this *before drafting* — see the Voice section below.
+
+Also load `.agents/style/voice.personal.md` if it exists (personal overlay, typically gitignored). Personal entries win where they overlap with the shared voice config.
 
 If no project contract is present, ask the user for the project's fields, workflow states, and markup rather
 than inventing them.
@@ -65,22 +68,43 @@ Invoke when a ticket has passed triage and now needs the full description, accep
      the rest of the ticket.
    - One sentence. No implementation detail (no CSS properties, no module names, no file paths).
 
+   **Value vs. capability:** The Purpose describes the *value unlocked* or *pain removed*, not
+   just the capability delivered. "Content editors can drag files to reorder them" describes a
+   capability. "Content editors can confidently arrange files without guessing whether drag-and-drop
+   works" describes the value — it names the pain point being eliminated. Always aim for the value
+   framing.
+
    **The test:** if a PM reads only the Purpose line, do they understand *who is affected* and
    *what's wrong or what's improved* without knowing anything about the codebase? If not, rewrite.
 
-   **Common failure mode:** restating the title or describing the technical symptom instead of the
-   user impact. "The default news thumbnail displays at wrong dimensions on the news feed" is a
-   technical symptom. "Visitors see inconsistent image sizes on the news page, making the feed
-   look broken" is user impact.
+   **Rewrite prompt:** After drafting, ask: "Does this describe what the user *gains* (reduced
+   frustration, new ability, time saved, confusion eliminated) or just what the feature *does*?"
+   If it's the latter, rewrite to emphasize the value.
+
+   **Common failure modes:**
+   - Restating the title or describing the technical symptom instead of user/business impact. "The default news thumbnail displays at wrong dimensions" is a symptom. "Visitors see inconsistent image sizes on the news page, making the feed look broken" is impact.
+   - Describing the developer pain point instead of business value. "CI builds will fail after the data update" is a developer problem. "Developers can merge code without builds blocking the team after the data update" is business value.
+   - **Describing capability instead of value.** "Users can see a drag handle on files" is capability. "Users can tell at a glance that files are reorderable, eliminating guesswork" is value.
+   - The Purpose must always answer: *what can the audience do, or stop experiencing, as a result of this work?* If it describes what broke or what needs to change technically, rewrite it.
 
    **Good examples:**
    - `Public: Visitors see a broken-looking news feed when stories use the placeholder image instead of a real photo.`
    - `Non-Public: Content authors can save event forms without the page locking up.`
    - `Public: Search results disappear when removing a filter, forcing visitors to start their search over.`
+   - `Non-Public: Developers can merge code changes without CI builds blocking the team after a scheduled data migration.`
+   - `Non-Public: Content editors can confidently arrange featured files without guessing whether drag-and-drop works or which order appears on the live page.`
 
-   **Bad examples (technical descriptions disguised as purpose):**
+   **Bad examples (technical descriptions or developer pain disguised as purpose):**
    - ~~`Public: The default news thumbnail displays at wrong dimensions on the news feed, appearing square instead of matching the 3:2 landscape ratio of actual hero images.`~~ (describes the CSS problem, not the user impact)
    - ~~`Non-Public: The config export command fails silently when run outside DDEV.`~~ (describes the technical failure, not why it matters to the author)
+   - ~~`Non-Public: CI builds will fail after the data migration rolls out.`~~ (developer pain, not business value)
+   - ~~`Non-Public: Content editors can see attached files in a single column with a drag handle.`~~ (describes the capability, not the value — what pain does this solve?)
+
+   **Contrastive example (same ticket, two framings):**
+   - Capability: `Non-Public: Content editors can see a drag handle icon next to featured files.`
+   - Value: `Non-Public: Content editors can tell at a glance that featured files are reorderable, eliminating the guesswork about whether drag-and-drop works.`
+
+   The second version names the pain point (guesswork, uncertainty) being removed. That's the Purpose.
 
    **Gate (required):** After drafting the Purpose, scan it for implementation jargon: field names,
    file paths, module names, CSS properties, config values, API terms, or any phrase a PM wouldn't
@@ -94,6 +118,12 @@ Invoke when a ticket has passed triage and now needs the full description, accep
    naming, and technical shorthand in criterion text; move those details to Technical notes. For
    batched housekeeping or cleanup tickets, describe the end state of the batch rather than
    itemizing each individual fix.
+
+   **Preserve existing AC unless it needs to change.** If the source ticket already has acceptance
+   criteria, keep them verbatim — same wording, same structure, same numbering format. Only adjust
+   AC if there's a clear reason: a criterion is incorrect, ambiguous, untestable, or missing
+   something essential. Refinement adds context and technical notes around existing AC; it doesn't
+   rewrite working criteria for style consistency.
 
    **Gate (required):** Scan acceptance criteria / "What should happen?" for implementation
    language: file paths, function names, template names, config keys, CSS properties. If any
@@ -117,15 +147,16 @@ Invoke when a ticket has passed triage and now needs the full description, accep
    can paraphrase": it's an actionable prerequisite the developer needs. Embed it where a
    developer would look for it (usually Context/background or Technical notes).
 
-   **Embedded images deserve special attention.** Someone took the time to capture a screenshot,
-   annotate it, or paste a visual into the ticket. That visual context is often more informative
-   than the text around it. Preserve every embedded image reference exactly as it appears in the
-   source (e.g. `!image-2026-08-24-08-35-11-248.png!` in Jira markup), along with the sentence
-   or paragraph that gives it context (e.g. "Here's what it looks like currently:" or "After
-   shrinking the header:"). Never strip images to "clean up" the ticket body. Place them in
-   whichever section they logically support: reproduction screenshots go in "How to reproduce"
-   or "What's wrong?", diagnostic screenshots go in "Technical notes", expected-behavior
-   screenshots go in "What should happen?".
+   **Embedded images deserve special attention — NEVER remove them.** Someone took the time to
+   capture a screenshot, annotate it, or paste a visual into the ticket. That visual context is
+   often more informative than the text around it. Preserve every embedded image reference exactly
+   as it appears in the source (e.g. `!image-2026-08-24-08-35-11-248.png!` in Jira markup), along
+   with the sentence or paragraph that gives it context (e.g. "Here's what it looks like
+   currently:" or "After shrinking the header:"). Never strip images to "clean up" the ticket
+   body. Place them in whichever section they logically support: reproduction screenshots go in
+   "How to reproduce" or "What's wrong?", diagnostic screenshots go in "Technical notes",
+   expected-behavior screenshots go in "What should happen?". If unsure where an image belongs,
+   keep it in Context/background rather than dropping it.
 7. **Fold dependencies and surface area into Technical notes**: other tickets, modules, services, files, and people who need to weigh in all go in Technical notes as bullets; no separate sections.
 8. **Answer open questions first, then flag what remains**: if the ticket already has open questions, attempt to resolve them using available context (codebase, config, existing docs, triage notes) before listing them as still-open. Only surface a question if it genuinely cannot be answered from what's available. The goal is to reduce open questions, not accumulate them.
 
@@ -293,7 +324,19 @@ Ticket bodies are read by humans under time pressure. Every sentence competes fo
 
 ## Voice
 
-Apply `.agents/style/voice.md` to context/background prose, technical notes, and open questions. Run the assembled ticket body through `tone-check` before pasting it into the tracker.
+**Load voice configs before drafting.** Read `.agents/style/voice.md` (shared voice profile), then layer `.agents/style/voice.personal.md` on top if it exists (personal entries win where they overlap). Apply the merged voice *during* drafting — don't wait for a tone-check pass afterward.
+
+The goal: first draft already sounds human. Concise, direct, no spec-speak. Write like you're explaining to a colleague, not documenting for an audit.
+
+**During drafting, apply:**
+- Concise by default — say what needs to be said, nothing more
+- Plain English over jargon (e.g., "probably a race condition" not "suggests conditional library attachment")
+- One idea per sentence, one fact per bullet
+- Light hedging when genuinely uncertain ("probably," "likely"), not hedge-stacking
+- No throat-clearing ("It's worth noting that"), no academic connectors ("Furthermore")
+- No em-dashes — restructure or use commas/parens
+
+**After drafting:** a tone-check pass is still recommended before pasting into the tracker, but it should be minor polish, not a rewrite.
 
 ## Security
 
