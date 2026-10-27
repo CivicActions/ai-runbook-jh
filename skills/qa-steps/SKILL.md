@@ -26,10 +26,16 @@ verify the change works correctly.
    content, use a specific URL), per the project contract's `## Environments`
 3. **Execute browser validation**: use `browser-check` (with the project contract's browser MCP) to
    navigate the relevant pages, capture screenshots, check console for errors, and validate DOM
-4. **Test steps**: ordered, concrete steps to verify the change
-5. **Expected results**: what success looks like for each step
-6. **Regression check**: what adjacent functionality to spot-check
-7. **Success criteria**: the minimum bar for the change to be considered passing
+4. **Include screenshot placeholders**: for visual changes, add placeholder references with specific
+   filenames showing the final desired state. Format: `[Screenshot: {{issue-ref-scenario-N-state.png}} - description]`
+   (e.g., `[Screenshot: {{PROJ-123-scenario-1-collapsed.png}} - TOC with right-chevrons]`).
+   Use the project contract's monospace markup around the filename. The user will capture
+   screenshots locally with these exact filenames and upload them to the tracker. Place placeholders
+   inline with the expected-result checkboxes so reviewers know what visual outcome to compare against.
+5. **Test steps**: ordered, concrete steps to verify the change
+6. **Expected results**: what success looks like for each step, with screenshot placeholders
+7. **Regression check**: what adjacent functionality to spot-check
+8. **Success criteria**: the minimum bar for the change to be considered passing
 
 ## Scope rules
 
@@ -134,10 +140,30 @@ Page now stays scrollable after deselecting any facet on /search.
 - Select any facet (e.g. "Funding > Grants")
 - Wait for results to refresh
 - Deselect the facet
+
+[Screenshot: `proj-1234-scenario-1-deselected.png` - Page scrollable after deselect]
+
 - [ ] Expected: page scrolls; before fix it was locked
 
 ### Scenario 2: Cross-viewport
 - Repeat Scenario 1 at 768px and 375px
+```
+
+### Prose style reference
+
+The "What Changed" summary should read as *what was broken → what the fix does*, not just a
+description of the end state. One sentence on the before, one on the after.
+
+**Avoid** (end state only, no before):
+> "The page is now scrollable after facet deselect."
+
+**Good** (before → fix):
+> "Page locked scroll after any facet deselect; the overflow lock is now cleared after each
+> deselect so the page stays scrollable."
+
+[Screenshot: `proj-1234-scenario-2-tablet.png` - Tablet view (768px)]
+[Screenshot: `proj-1234-scenario-2-mobile.png` - Mobile view (375px)]
+
 - [ ] Expected: scrolls at all viewports
 - [ ] Expected: no console errors
 

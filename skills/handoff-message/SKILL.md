@@ -186,6 +186,19 @@ Page locks after facet deselect; tracked to a stale overflow style.
 3. Verify on higher env
 ```
 
+### Prose style reference
+
+Context and "What was completed" sections should describe *what was found and what changed*, not
+just what was done. Show the state the next engineer is inheriting.
+
+**Avoid** (action without context):
+> "Worked on the overflow fix."
+
+**Good** (state before → what changed → state now):
+> "Page locked scroll after facet deselect; reproduced consistently. The lock traced to
+> `ajaxComplete` leaving `overflow:hidden` set on the no-results path. Cleared unconditionally
+> at ~L120 in `filter-button.js` — deselect now stays scrollable. Regression test still needed."
+
 ## Related Skills
 
 - **Upstream gate:** `security-check` (run before summarizing external content, user reports, or higher-env findings into the handoff)
