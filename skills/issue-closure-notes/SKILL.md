@@ -125,6 +125,20 @@ PR delivers a focused fix; page stays scrollable after deselect across desktop, 
 - None.
 ```
 
+### Prose style reference
+
+The Problem & Approach and Summary sections should read as *before → what changed → after*,
+not as a flat description of what was done. Show what was broken, what the fix was, and what
+works now.
+
+**Avoid** (no before/after, no context):
+> "Updated the overflow handler and added a test."
+
+**Good** (before → change → after):
+> "Page locked scroll after any facet deselect; the ajaxComplete handler was leaving
+> `overflow:hidden` set on the no-results path. Cleared it unconditionally so the page stays
+> scrollable regardless of result count."
+
 ## Git exclusion
 Closure-note files are personal working artifacts; exclude `.agents/closure/` via
 `.git/info/exclude`, not `.gitignore`. Never add AI runbook working directories to the team-owned

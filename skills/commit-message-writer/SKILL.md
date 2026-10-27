@@ -69,6 +69,18 @@ Alternatives:
   PROJ-1234: Fix page scroll lock on filter deselect.
 ```
 
+### Subject line style reference
+
+The subject should name *what changed and why it matters*, not just what the code does.
+A reviewer reading `git log` shouldn't need to open the diff to understand the impact.
+
+**Avoid** (what the code does, no context):
+> "PROJ-1234: Update overflow handler."
+
+**Good** (what changed + why it matters):
+> "PROJ-1234: Clear overflow lock after facet deselect."
+> "PROJ-1234: Fix scroll lock on facet deselect; no-results path was leaking overflow:hidden."
+
 ## Related Skills
 
 - **Invokes:** `tone-check` (validates tone before finalizing any message)

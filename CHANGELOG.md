@@ -7,6 +7,10 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 ## [Unreleased]
 
 ### Changed
+- `commit-message-writer` skill: added a subject-line style reference showing subjects should name what changed and why it matters, not just what the code does.
+- `handoff-message` skill: added a prose style reference so Context and completed-work sections describe found state and change (before → change → now) rather than bare actions.
+- `issue-closure-notes` skill: added a prose style reference so Problem & Approach and Summary read as before → change → after rather than a flat description of work done.
+- `qa-steps` skill: added inline screenshot-placeholder guidance (`[Screenshot: {{issue-ref-scenario-N-state.png}} - description]`) for visual changes, plus a prose style reference framing "What Changed" as before → fix.
 - `ticket-refinement` skill: Purpose statements now emphasize value unlocked / pain removed rather than just capability delivered. New contrastive examples show the difference between "users can see a drag handle" (capability) and "users can tell files are reorderable without guessing" (value). Common failure modes catalog added (technical symptoms vs user impact, developer pain vs business value).
 - `ticket-refinement` skill: voice config (`.agents/style/voice.md` + personal overlay) now loads before drafting rather than as a post-pass, so first output already sounds human
 - `ticket-refinement` skill: refinement now preserves existing acceptance criteria verbatim unless they're broken; doesn't rewrite for style consistency
