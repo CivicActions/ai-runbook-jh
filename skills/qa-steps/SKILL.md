@@ -147,6 +147,12 @@ Page now stays scrollable after deselecting any facet on /search.
 
 ### Scenario 2: Cross-viewport
 - Repeat Scenario 1 at 768px and 375px
+
+[Screenshot: `proj-1234-scenario-2-tablet.png` - Tablet view (768px)]
+[Screenshot: `proj-1234-scenario-2-mobile.png` - Mobile view (375px)]
+
+- [ ] Expected: scrolls at all viewports
+- [ ] Expected: no console errors
 ```
 
 ### Prose style reference
@@ -160,14 +166,6 @@ description of the end state. One sentence on the before, one on the after.
 **Good** (before → fix):
 > "Page locked scroll after any facet deselect; the overflow lock is now cleared after each
 > deselect so the page stays scrollable."
-
-[Screenshot: `proj-1234-scenario-2-tablet.png` - Tablet view (768px)]
-[Screenshot: `proj-1234-scenario-2-mobile.png` - Mobile view (375px)]
-
-- [ ] Expected: scrolls at all viewports
-- [ ] Expected: no console errors
-
-```
 
 ## Git exclusion
 QA-step files are personal working artifacts; exclude `.agents/qa/` via `.git/info/exclude`, not
